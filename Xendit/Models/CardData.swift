@@ -61,3 +61,16 @@ public enum CYBCardTypes {
     open var amount: NSNumber!
     
 }
+
+@objc(XENAuthenticationData) open class AuthenticationData: NSObject {
+
+    // Token id value
+    open var tokenId: String!
+
+    // Card verification number (CVN) value
+    open var cardCvn: String!
+
+    // Card transaction amount
+    open var amount: NSNumber!
+
+}
