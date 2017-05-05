@@ -34,6 +34,7 @@
 		A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */; };
 		A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */; };
 		A05650F21EBC5B890019B64F /* WebViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F11EBC5B890019B64F /* WebViewConstants.swift */; };
+		A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F31EBC635E0019B64F /* AuthenticationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditAuthentication.swift; sourceTree = "<group>"; };
 		A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
 		A05650F11EBC5B890019B64F /* WebViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewConstants.swift; sourceTree = "<group>"; };
+		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */,
 				94AD221B1E855440009C00D5 /* XenditTokenCredentials.swift */,
 				A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */,
+				A05650F31EBC635E0019B64F /* AuthenticationData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				94AD221C1E855440009C00D5 /* XenditTokenCredentials.swift in Sources */,
 				A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */,
 				94AD223F1E859F59009C00D5 /* WebViewController.swift in Sources */,
+				A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */,
 				940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */,
 				943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */,
 				A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */,
