@@ -230,17 +230,15 @@ public enum XenditError: Error {
     }
     
     // MARK: - Networking
-    
-    private static let PRODUCTION_FLEX_BASE_URL = "https://api.visa.com";
-    private static let DEVELOPMENT_FLEX_BASE_URL = "https://sandbox.api.visa.com";
+
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     
     private static let STAGING_XENDIT_BASE_URL = "https://api-staging.xendit.co";
     private static let PRODUCTION_XENDIT_BASE_URL = "https://api.xendit.co";
     
-    private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_credentials";
+    private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration";
     private static let CREATE_CREDIT_CARD_PATH = "credit_card_tokens";
-    private static let TOKENIZE_CARD_PATH = "cybersource/payments/flex/v1/tokens";
+    private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
     
@@ -256,7 +254,7 @@ public enum XenditError: Error {
     
     // Tokenize Card. Returns a token representing the supplied card details.
     private static func tokenizeCreditCard(cardData: CardData, tokenCredentials: XenditTokenCredentials, completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
-        let flexBaseUrl = isProductionPublishableKey() ? PRODUCTION_FLEX_BASE_URL : WEBAPI_FLEX_BASE_URL
+        let flexBaseUrl = isProductionPublishableKey() ? tokenCredentials.flexProductionURL! : tokenCredentials.flexDevelopmentURL!
         var url = URL.init(string: flexBaseUrl)!
         url.appendPathComponent(TOKENIZE_CARD_PATH)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!

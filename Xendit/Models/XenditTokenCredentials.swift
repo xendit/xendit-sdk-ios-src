@@ -15,15 +15,25 @@ import Foundation
     
     // Tokenization auth key id
     var authKeyId : String!
+
+    // Flex URLs
+    var flexProductionURL : String!
+    var flexDevelopmentURL : String!
     
 }
 
 extension XenditTokenCredentials {
     convenience init?(dictionary: [String : Any]) {
-        guard let flexApiKey = dictionary["flex_api_key"] as? String,
-               let authKeyId = dictionary["tokenization_auth_key_id"] as? String else { return nil }
+        let flexApiKey = dictionary["flex_api_key"] as? String
+        let authKeyId = dictionary["tokenization_auth_key_id"] as? String
+        let flexProductionURL = dictionary["flex_production_url"] as? String
+        let flexDevelopmentURL = dictionary["flex_development_url"] as? String
+
+
         self.init()
         self.flexApiKey = flexApiKey
         self.authKeyId = authKeyId
+        self.flexProductionURL = flexProductionURL
+        self.flexDevelopmentURL = flexDevelopmentURL
     }
 }
