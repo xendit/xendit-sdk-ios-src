@@ -36,10 +36,10 @@ class CreateAuthentification: UIViewController {
         let int = Int(amountTextField.text!)
         let amount = NSNumber(value: int!)
 
-        Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount, cardCVN: cardCVN!) { (token, error) in
-            if token != nil {
+        Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount, cardCVN: cardCVN!) { (authentication, error) in
+            if authentication != nil {
                 // Will return authentication with id. ID will be used later
-                let message = String(format: "TokenID - %@, Status - %@", (token?.id)!, (token?.status)!)
+                let message = String(format: "TokenID - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError

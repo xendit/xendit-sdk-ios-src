@@ -59,5 +59,8 @@ public enum CYBCardTypes {
     
     // Card transaction amount
     open var amount: NSNumber!
+
+    // Multiple use flag
+    open var isMultipleUse: Bool!
     
 }

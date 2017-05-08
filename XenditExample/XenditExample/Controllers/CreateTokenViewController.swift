@@ -17,6 +17,7 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var cardExpYearTextField: UITextField!
     @IBOutlet weak var cardCvnTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var isMultipleUseSwitch: UISwitch!
 
     
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class CreateTokenViewController: UIViewController {
         cardData.cardExpMonth = cardExpMonthTextField.text
         cardData.cardExpYear = cardExpYearTextField.text
         cardData.cardCvn = cardCvnTextField.text
+        cardData.isMultipleUse = isMultipleUseSwitch.isOn;
         
         if (amountTextField.text?.characters.count)! > 0 {
             let int = Int(amountTextField.text!)

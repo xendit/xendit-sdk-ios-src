@@ -78,7 +78,7 @@ public enum XenditError: Error {
     // @param tokenId The credit card token id
     // @param amount The transaction amount
     // @param cardCVN The credit card CVN code for create token
-    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditCCToken?, _ : Error?) -> Void) {
+    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : Error?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError.invalidPublishableKey(description: "Empty publishable key"))
             return
@@ -89,15 +89,23 @@ public enum XenditError: Error {
             return
         }
         
-        let cardData = CardData()
-        cardData.amount = amount
-        cardData.cardCvn = cardCVN
-        
-        createCreditCardToken(CYBToken: tokenId, cardData: cardData) { (token, error) in
-            handleCreateCardToken(fromViewController: fromViewController, token: token, error: error, completion: completion)
+        let authenticationData = AuthenticationData()
+        authenticationData.tokenId = tokenId
+        authenticationData.amount = amount
+        authenticationData.cardCvn = cardCVN
+
+        var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
+        url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
+        url?.appendPathComponent(tokenId)
+        url?.appendPathComponent(AUTHENTICATION_PATH)
+        let requestBody = prepareCreateAuthenticationBody(authenticationData: authenticationData)
+
+        createAuthenticationRequest(URL: url!, bodyJson: requestBody) { (authentication, error) in
+            handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
         }
     }
-    
+
+
     // Card data validation method
     open static func isCardNumberValid(cardNumber: String) -> Bool {
         return NSRegularExpression.regexCardNumberValidation(cardNumber: cardNumber) &&
@@ -230,17 +238,16 @@ public enum XenditError: Error {
     }
     
     // MARK: - Networking
-    
-    private static let PRODUCTION_FLEX_BASE_URL = "https://api.visa.com";
-    private static let DEVELOPMENT_FLEX_BASE_URL = "https://sandbox.api.visa.com";
+
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     
     private static let STAGING_XENDIT_BASE_URL = "https://api-staging.xendit.co";
     private static let PRODUCTION_XENDIT_BASE_URL = "https://api.xendit.co";
     
-    private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_credentials";
+    private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration";
     private static let CREATE_CREDIT_CARD_PATH = "credit_card_tokens";
-    private static let TOKENIZE_CARD_PATH = "cybersource/payments/flex/v1/tokens";
+    private static let AUTHENTICATION_PATH = "authentications";
+    private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
     
@@ -256,7 +263,7 @@ public enum XenditError: Error {
     
     // Tokenize Card. Returns a token representing the supplied card details.
     private static func tokenizeCreditCard(cardData: CardData, tokenCredentials: XenditTokenCredentials, completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
-        let flexBaseUrl = isProductionPublishableKey() ? PRODUCTION_FLEX_BASE_URL : WEBAPI_FLEX_BASE_URL
+        let flexBaseUrl = isProductionPublishableKey() ? tokenCredentials.flexProductionURL! : tokenCredentials.flexDevelopmentURL!
         var url = URL.init(string: flexBaseUrl)!
         url.appendPathComponent(TOKENIZE_CARD_PATH)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
@@ -305,6 +312,34 @@ public enum XenditError: Error {
                     }
                 } else {
                     completion(nil, handleError)
+                }
+            })
+        }.resume()
+    }
+
+    private static func createAuthenticationRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
+        request.httpMethod = "POST"
+
+        do {
+            let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
+            request.httpBody = bodyData
+        } catch let error {
+            completion(nil, XenditError.jsonEncodingFailed(error: error))
+            return
+        }
+
+        session.dataTask(with: request) { (data, response, error) in
+            handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
+                if parsedData != nil {
+                    let authentication = XenditAuthentication.init(response: parsedData!)
+                    if authentication != nil {
+                        completion(authentication, nil)
+                    } else {
+                        completion(nil, XenditError.serializationDataFailed(description: "Failed serialize create authentication response"))
+                    }
+                } else {
+                    completion(nil, handledError)
                 }
             })
         }.resume()

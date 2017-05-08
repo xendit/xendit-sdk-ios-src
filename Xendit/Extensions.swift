@@ -37,7 +37,12 @@ extension Xendit {
     }
     
     static func prepareCreateTokenBody(cardToken: String, cardData: CardData) -> [String: Any] {
-        let json: [String: Any] = ["amount" : cardData.amount.intValue, "card_cvn" : cardData.cardCvn, "credit_card_token" : cardToken, "is_authentication_bundled" : "true"]
+        let json: [String: Any] = ["amount" : cardData.amount.intValue, "card_cvn" : cardData.cardCvn, "credit_card_token" : cardToken, "is_authentication_bundled" : !cardData.isMultipleUse]
+        return json
+    }
+
+    static func prepareCreateAuthenticationBody(authenticationData: AuthenticationData) -> [String: Any] {
+        let json: [String: Any] = ["amount" : authenticationData.amount.intValue, "card_cvn" : authenticationData.cardCvn]
         return json
     }
     
@@ -98,6 +103,36 @@ extension Xendit {
                 completion(nil, XenditError.requestFailedWithDescription(description: description))
             } else {
                 let description = String(format: "Something went wrong, XenditCCToken status: %@, XenditCCToken id: %@", status!, (token?.id)!)
+                completion(nil, XenditError.requestFailedWithDescription(description: description))
+            }
+        } else if error != nil {
+            completion(nil, error)
+        } else {
+            completion(nil, XenditError.requestFailedWithDescription(description: "Failed create credit card token"))
+        }
+    }
+
+    internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : Error?) -> Void) {
+        let status = authentication?.status
+
+        if status != nil {
+            if status == "APPROVED" || status == "VERIFIED" {
+                completion(authentication, nil)
+            } else if status == "IN_REVIEW" && authentication?.authenticationURL != nil {
+                let webViewController = AuthenticationWebViewController(URL: (authentication?.authenticationURL)!)
+                webViewController.authentication = authentication
+                webViewController.authenticateCompletion = { (updatedAuthentication, error) -> Void in
+                    webViewController.dismiss(animated: true, completion: nil)
+                    completion(updatedAuthentication, error)
+                }
+                DispatchQueue.main.async {
+                    fromViewController.present(webViewController, animated: true, completion: nil)
+                }
+            } else if status == "FRAUD" ||  status == "FAILED" {
+                let description = String(format: "Failed create authentication with status: %@", status!)
+                completion(nil, XenditError.requestFailedWithDescription(description: description))
+            } else {
+                let description = String(format: "Something went wrong, XenditCCToken status: %@, XenditAuthentication id: %@", status!, (authentication?.id)!)
                 completion(nil, XenditError.requestFailedWithDescription(description: description))
             }
         } else if error != nil {
