@@ -43,7 +43,7 @@ class CreateAuthentification: UIViewController {
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
-                self.showAlert(title: "Error", message: error.debugDescription)
+                self.showAlert(title: error!.errorCode, message: error!.message)
             }
         }
     }
