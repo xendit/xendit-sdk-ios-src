@@ -117,6 +117,10 @@ extension Xendit {
     }
     
     internal static func handleCreateCardToken(fromViewController: UIViewController, token: XenditCCToken?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        if (error != nil) {
+            completion(nil, error);
+        }
+
         let status = token?.status
         if status != nil {
             if status == "IN_REVIEW" && token?.authenticationURL != nil {
@@ -138,6 +142,10 @@ extension Xendit {
     }
 
     internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        if (error != nil) {
+            completion(nil, error);
+        }
+        
         let status = authentication?.status
 
         if status != nil {
