@@ -68,7 +68,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
             let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
             handlePostMessageResponse(response: parsedData!)
         } catch let error {
-            authenticateCompletion(nil, XenditError.jsonEncodingFailed(error: error))
+            authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
         }
     }
 
@@ -77,14 +77,14 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
         if updatedAuthentication != nil && authentication!.id == updatedAuthentication?.id {
             authenticateCompletion(updatedAuthentication, nil)
         } else {
-            authenticateCompletion(nil, XenditError.serializationDataFailed(description: "Wrong authenticate post message format or not equal authentication id"))
+            authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Incorrect webview post message format or wrong authentication id"))
         }
     }
 
     // MARK: - WKNavigationDelegate
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        authenticateCompletion(nil, XenditError.requestFailedWithError(error: error))
+        authenticateCompletion(nil, XenditError(errorCode: "WEBVIEW_ERROR", message: error.localizedDescription))
     }
 
 }

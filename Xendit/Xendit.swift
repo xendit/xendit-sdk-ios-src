@@ -8,18 +8,6 @@
 
 import Foundation
 
-public enum XenditError: Error {
-    case invalidPublishableKey(description: String)
-    case invalidCardNumber(description: String)
-    case invalidCardExpirationDate(description: String)
-    case invalidCardCVNCode(description: String)
-    case invalidAmount(description: String)
-    case requestFailedWithError(error: Error)
-    case requestFailedWithDescription(description: String)
-    case jsonEncodingFailed(error: Error)
-    case serializationDataFailed(description: String)
-}
-
 @objc(Xendit) open class Xendit: NSObject {
     
     // MARK: - Public methods
@@ -28,29 +16,29 @@ public enum XenditError: Error {
     open static var publishableKey: String?
 
     // Create token method
-    open static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : Error?) -> Void) {
+    open static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         guard publishableKey != nil else {
-            completion(nil, XenditError.invalidPublishableKey(description: "Empty publishable key"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
         guard cardData.amount != nil && cardData.amount.intValue > 0 else {
-            completion(nil, XenditError.invalidAmount(description: "Amount must be a number greater than 0"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0"))
             return
         }
         
         guard cardData.cardNumber != nil && isCardNumberValid(cardNumber: cardData.cardNumber) else {
-            completion(nil, XenditError.invalidCardNumber(description: "Card number is invalid"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card number is invalid"))
             return
         }
         
         guard cardData.cardExpMonth != nil && cardData.cardExpYear != nil && isExpiryValid(cardExpirationMonth: cardData.cardExpMonth, cardExpirationYear: cardData.cardExpYear) else {
-            completion(nil, XenditError.invalidCardExpirationDate(description: "Card expiration date is invalid"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card expiration date is invalid"))
             return
         }
         
         guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn) else {
-            completion(nil, XenditError.invalidCardCVNCode(description: "Card CVN is invalid"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
             return
         }
 
@@ -78,14 +66,14 @@ public enum XenditError: Error {
     // @param tokenId The credit card token id
     // @param amount The transaction amount
     // @param cardCVN The credit card CVN code for create token
-    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : Error?) -> Void) {
+    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if publishableKey == nil {
-            completion(nil, XenditError.invalidPublishableKey(description: "Empty publishable key"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
         guard isCvnValid(creditCardCVN: cardCVN) else {
-            completion(nil, XenditError.invalidCardCVNCode(description: "Card CVN is invalid"))
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
             return
         }
         
@@ -298,17 +286,17 @@ public enum XenditError: Error {
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody)
             request.httpBody = bodyData
         } catch let error {
-            completion(nil, XenditError.jsonEncodingFailed(error: error))
+            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
         
         session.dataTask(with: request) { (data, response, error) in
-            handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
+            handleFlexResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     if let CYBToken = parsedData!["token"] as? String {
                         completion(CYBToken, nil)
                     } else {
-                        completion(nil, XenditError.serializationDataFailed(description: "Failed serialize tokenization credit card response"))
+                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
                     }
                 } else {
                     completion(nil, handleError)
@@ -325,7 +313,7 @@ public enum XenditError: Error {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
         } catch let error {
-            completion(nil, XenditError.jsonEncodingFailed(error: error))
+            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
 
@@ -336,7 +324,7 @@ public enum XenditError: Error {
                     if authentication != nil {
                         completion(authentication, nil)
                     } else {
-                        completion(nil, XenditError.serializationDataFailed(description: "Failed serialize create authentication response"))
+                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
                     }
                 } else {
                     completion(nil, handledError)
@@ -353,7 +341,7 @@ public enum XenditError: Error {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
         } catch let error {
-            completion(nil, XenditError.jsonEncodingFailed(error: error))
+            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
 
@@ -364,7 +352,7 @@ public enum XenditError: Error {
                     if token != nil {
                         completion(token, nil)
                     } else {
-                        completion(nil, XenditError.serializationDataFailed(description: "Failed serialize create token response"))
+                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
                     }
                 } else {
                     completion(nil, handledError)
@@ -382,7 +370,7 @@ public enum XenditError: Error {
                     if tokenCredentials != nil {
                         completion(tokenCredentials, nil)
                     } else {
-                        completion(nil, XenditError.serializationDataFailed(description: "Failed serialize tokenization credentials response"))
+                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
                     }
                 } else {
                     completion(nil, handleError)
