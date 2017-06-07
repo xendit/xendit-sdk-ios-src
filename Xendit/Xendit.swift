@@ -42,6 +42,10 @@ import Foundation
             return
         }
 
+        if cardData.isMultipleUse == nil {
+            cardData.isMultipleUse = false
+        }
+
         getTokenizationCredentials { (tokenCredentials, error) in
             if let error = error {
                 completion(nil, error)
