@@ -118,18 +118,21 @@ extension Xendit {
     
     internal static func handleCreateCardToken(fromViewController: UIViewController, token: XenditCCToken?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         if (error != nil) {
-            completion(nil, error);
+            return completion(nil, error);
         }
 
         let status = token?.status
+        
         if status != nil {
             if status == "IN_REVIEW" && token?.authenticationURL != nil {
                 let webViewController = WebViewController(URL: (token?.authenticationURL)!)
+                
                 webViewController.token = token
                 webViewController.authenticateCompletion = { (token, error) -> Void in
                     webViewController.dismiss(animated: true, completion: nil)
                     completion(token, error)
                 }
+                
                 DispatchQueue.main.async {
                     fromViewController.present(webViewController, animated: true, completion: nil)
                 }
