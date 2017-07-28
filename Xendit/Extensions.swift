@@ -42,7 +42,7 @@ extension Xendit {
     }
 
     static func prepareCreateAuthenticationBody(authenticationData: AuthenticationData) -> [String: Any] {
-        let json: [String: Any] = ["amount" : authenticationData.amount.intValue, "card_cvn" : authenticationData.cardCvn]
+        let json: [String: Any] = ["amount" : authenticationData.amount.intValue]
         return json
     }
     
@@ -61,7 +61,7 @@ extension Xendit {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
                     handleCompletion(parsedData, nil)
-                } catch let error {
+                } catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             } else {
@@ -72,7 +72,7 @@ extension Xendit {
 
                     handleCompletion(nil, XenditError(errorCode: errorCode, message: message))
                 }
-                catch let error {
+                catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             }
@@ -87,12 +87,10 @@ extension Xendit {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
                     handleCompletion(parsedData, nil)
-                } catch let error {
+                } catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             } else {
-                var message = ""
-
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
 
