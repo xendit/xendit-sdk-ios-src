@@ -37,10 +37,13 @@ import Foundation
             return
         }
         
-        guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn) else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
-            return
+        if cardData.cardCvn != nil {
+            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn) else {
+                completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
+                return
+            }
         }
+        
 
         if cardData.isMultipleUse == nil {
             cardData.isMultipleUse = false
@@ -70,28 +73,31 @@ import Foundation
     // @param tokenId The credit card token id
     // @param amount The transaction amount
     // @param cardCVN The credit card CVN code for create token
+    @available(*, deprecated:1.1, message:"cvn no longer used")
     open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        self.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, completion: completion)
+    }
+    
+    // 3DS Authentication method
+    // @param fromViewController The UIViewController from which will be present webview for 3DS Authentication
+    // @param tokenId The credit card token id
+    // @param amount The transaction amount
+    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
-            return
-        }
-        
-        guard isCvnValid(creditCardCVN: cardCVN) else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
             return
         }
         
         let authenticationData = AuthenticationData()
         authenticationData.tokenId = tokenId
         authenticationData.amount = amount
-        authenticationData.cardCvn = cardCVN
-
+        
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
         url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
         url?.appendPathComponent(tokenId)
         url?.appendPathComponent(AUTHENTICATION_PATH)
         let requestBody = prepareCreateAuthenticationBody(authenticationData: authenticationData)
-
+        
         createAuthenticationRequest(URL: url!, bodyJson: requestBody) { (authentication, error) in
             handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
         }
@@ -289,7 +295,7 @@ import Foundation
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody)
             request.httpBody = bodyData
-        } catch let error {
+        } catch {
             completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
