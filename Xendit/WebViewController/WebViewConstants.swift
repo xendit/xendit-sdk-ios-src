@@ -14,8 +14,6 @@ open class WebViewConstants: NSObject {
         "<style type=\"text/css\">html, body {margin: 0; padding: 0;}" +
         "iframe {border: none;width: 100%;height: 100%;position: fixed;left: 0;top: 0;}</style>" +
         "</head><body>" +
-        "<script>addEventListener('message', function(e){ try { webkit.messageHandlers.callbackHandler.postMessage(e['data']);}" +
-        "catch(err) {console.log('iOS call error');} }, false);</script>" +
     "<iframe src='@xendit_src'></iframe></body></html>"
 
 }

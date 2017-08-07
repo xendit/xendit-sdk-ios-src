@@ -42,7 +42,7 @@ extension Xendit {
     }
 
     static func prepareCreateAuthenticationBody(authenticationData: AuthenticationData) -> [String: Any] {
-        let json: [String: Any] = ["amount" : authenticationData.amount.intValue, "card_cvn" : authenticationData.cardCvn]
+        let json: [String: Any] = ["amount" : authenticationData.amount.intValue]
         return json
     }
     
@@ -61,7 +61,7 @@ extension Xendit {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
                     handleCompletion(parsedData, nil)
-                } catch let error {
+                } catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             } else {
@@ -72,7 +72,7 @@ extension Xendit {
 
                     handleCompletion(nil, XenditError(errorCode: errorCode, message: message))
                 }
-                catch let error {
+                catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             }
@@ -87,12 +87,10 @@ extension Xendit {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
                     handleCompletion(parsedData, nil)
-                } catch let error {
+                } catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             } else {
-                var message = ""
-
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
 
@@ -118,18 +116,21 @@ extension Xendit {
     
     internal static func handleCreateCardToken(fromViewController: UIViewController, token: XenditCCToken?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         if (error != nil) {
-            completion(nil, error);
+            return completion(nil, error);
         }
 
         let status = token?.status
+        
         if status != nil {
             if status == "IN_REVIEW" && token?.authenticationURL != nil {
                 let webViewController = WebViewController(URL: (token?.authenticationURL)!)
+                
                 webViewController.token = token
                 webViewController.authenticateCompletion = { (token, error) -> Void in
                     webViewController.dismiss(animated: true, completion: nil)
                     completion(token, error)
                 }
+                
                 DispatchQueue.main.async {
                     fromViewController.present(webViewController, animated: true, completion: nil)
                 }
