@@ -15,6 +15,8 @@ import Foundation
     
     // Token status
     open var status : String!
+
+    open var authenticationId : String!
     
     // Authentication url
     open var authenticationURL : String?
@@ -23,11 +25,14 @@ import Foundation
 
 extension XenditCCToken {
     convenience init?(response: [String : Any]) {
-        guard let id = response["id"] as? String,
-            let status = response["status"] as? String else { return nil }
+        guard let id = response["id"] as? String else { return nil }
+        guard let status = response["status"] as? String else { return nil }
+
         self.init()
+        
         self.id = id
         self.status = status
+        self.authenticationId = (response["authentication_id"] as? String)
         self.authenticationURL = (response["payer_authentication_url"] as? String)
     }
 }

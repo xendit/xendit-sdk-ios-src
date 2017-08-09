@@ -67,7 +67,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
             let data = responseString?.data(using: .utf8)
             let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
             handlePostMessageResponse(response: parsedData!)
-        } catch let error {
+        } catch {
             authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
         }
     }
