@@ -16,7 +16,7 @@ import Foundation
     open static var publishableKey: String?
 
     // Create token method
-    open static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    open static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         guard publishableKey != nil else {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -52,20 +52,23 @@ import Foundation
         getTokenizationCredentials { (tokenCredentials, error) in
             if let error = error {
                 completion(nil, error)
-            } else if tokenCredentials != nil {
-                tokenizeCreditCard(cardData: cardData, tokenCredentials: tokenCredentials!, completion: { (CYBToken, error) in
-                    if CYBToken != nil {
-                        createCreditCardToken(CYBToken: CYBToken!, cardData: cardData, completion: { (xenditToken, createTokenError) in
-                            handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
-                        })
-                    } else {
-                        completion(nil, error)
-                    }
-                })
-            } else {
-                completion(nil, nil)
+                return
             }
+
+            tokenizeCreditCard(cardData: cardData, tokenCredentials: tokenCredentials!, completion: { (CYBToken, error) in
+                if CYBToken != nil {
+                    createCreditCardToken(CYBToken: CYBToken!, cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
+                        handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
+                    })
+                } else {
+                    completion(nil, error)
+                }
+            })
         }
+    }
+
+    open static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: true, completion: completion);
     }
     
     // 3DS Authentication method
@@ -276,10 +279,10 @@ import Foundation
     }
     
     // Create credit card Xendit token
-    private static func createCreditCardToken(CYBToken: String, cardData: CardData, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func createCreditCardToken(CYBToken: String, cardData: CardData, shouldAuthenticate: Bool, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
         url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
-        let requestBody = prepareCreateTokenBody(cardToken: CYBToken, cardData: cardData)
+        let requestBody = prepareCreateTokenBody(cardToken: CYBToken, cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         
         createTokenRequest(URL: url!, bodyJson: requestBody) { (token, error) in
             completion(token, error)
@@ -322,7 +325,7 @@ import Foundation
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
-        } catch let error {
+        } catch _ {
             completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
@@ -350,7 +353,7 @@ import Foundation
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
-        } catch let error {
+        } catch _ {
             completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }

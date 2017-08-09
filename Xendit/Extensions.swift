@@ -36,8 +36,15 @@ extension Xendit {
         return json
     }
     
-    static func prepareCreateTokenBody(cardToken: String, cardData: CardData) -> [String: Any] {
-        let json: [String: Any] = ["amount" : cardData.amount.intValue, "card_cvn" : cardData.cardCvn, "credit_card_token" : cardToken, "is_authentication_bundled" : !cardData.isMultipleUse]
+    static func prepareCreateTokenBody(cardToken: String, cardData: CardData, shouldAuthenticate: Bool) -> [String: Any] {
+        let json: [String: Any] = [
+            "amount" : cardData.amount.intValue,
+            "card_cvn" : cardData.cardCvn,
+            "credit_card_token" : cardToken,
+            "is_authentication_bundled" : !cardData.isMultipleUse,
+            "should_authenticate": shouldAuthenticate
+        ]
+        
         return json
     }
 
@@ -107,7 +114,7 @@ extension Xendit {
                         handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
                     }
                 }
-                catch let error {
+                catch _ {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             }
