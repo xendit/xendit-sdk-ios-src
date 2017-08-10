@@ -37,16 +37,11 @@ import Foundation
             return
         }
         
-        if cardData.cardCvn != nil {
-            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn) else {
+        if cardData.cardCvn != nil && cardData.cardCvn != "" {
+            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!) else {
                 completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
                 return
             }
-        }
-        
-
-        if cardData.isMultipleUse == nil {
-            cardData.isMultipleUse = false
         }
 
         getTokenizationCredentials { (tokenCredentials, error) in

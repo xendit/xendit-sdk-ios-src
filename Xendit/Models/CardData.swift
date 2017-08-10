@@ -55,12 +55,16 @@ public enum CYBCardTypes {
     open var cardExpYear: String!
     
     // Card verification number (CVN) value
-    open var cardCvn: String!
+    open var cardCvn: String?
     
     // Card transaction amount
     open var amount: NSNumber!
 
     // Multiple use flag
-    open var isMultipleUse: Bool!
+    open var isMultipleUse: Bool
+
+    public override init() {
+        self.isMultipleUse = false
+    }
     
 }
