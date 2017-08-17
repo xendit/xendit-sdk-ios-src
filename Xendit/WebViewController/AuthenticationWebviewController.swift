@@ -41,22 +41,35 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
             name: "callbackHandler"
         )
 
+        let button   = UIButton(type: UIButtonType.system) as UIButton
+        button.frame = CGRect(x: 10, y: 20, width: view.frame.maxX, height: view.frame.maxY)
+        button.setTitle("Cancel", for: UIControlState.normal)
+        button.addTarget(self, action: #selector(cancelAuthentication), for: UIControlEvents.touchUpInside)
+        button.sizeToFit()
+
+
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
 
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
+
         view.backgroundColor = UIColor.white
         view.addSubview(webView)
+        view.addSubview(button)
 
         let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
 
+    func cancelAuthentication() {
+        authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        webView.frame = CGRect(x: view.frame.origin.x, y: topLayoutGuide.length, width: view.frame.size.width, height: view.frame.size.height)
+        webView.frame = CGRect(x: view.frame.origin.x, y: topLayoutGuide.length + 20, width: view.frame.size.width, height: view.frame.size.height - 20)
     }
 
     // MARK: - WKScriptMessageHandler
