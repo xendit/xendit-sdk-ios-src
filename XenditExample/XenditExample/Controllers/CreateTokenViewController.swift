@@ -40,11 +40,11 @@ class CreateTokenViewController: UIViewController {
         cardData.cardCvn = cardCvnTextField.text
         cardData.isMultipleUse = isMultipleUseSwitch.isOn;
         
-        if (amountTextField.text?.characters.count)! > 0 {
+        if !cardData.isMultipleUse && (amountTextField.text?.characters.count)! > 0 {
             let int = Int(amountTextField.text!)
             cardData.amount = NSNumber(value: int!)
         }
-        
+
         Xendit.createToken(fromViewController: self, cardData: cardData) { (token, error) in
             if token != nil {
                 // Handle successful tokenization. Token is of type XenditCCToken

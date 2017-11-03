@@ -22,7 +22,7 @@ import Foundation
             return
         }
         
-        guard cardData.amount != nil && cardData.amount.intValue > 0 else {
+        guard cardData.amount != nil && cardData.amount.intValue >= 0 else {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0"))
             return
         }
