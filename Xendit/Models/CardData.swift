@@ -65,6 +65,7 @@ public enum CYBCardTypes {
 
     public override init() {
         self.isMultipleUse = false
+        self.amount = 0;
     }
     
 }
