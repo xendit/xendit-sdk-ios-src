@@ -62,7 +62,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
 
-    func cancelAuthentication() {
+    @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
     }
 

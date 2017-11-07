@@ -105,8 +105,8 @@ import Foundation
     // Card data validation method
     open static func isCardNumberValid(cardNumber: String) -> Bool {
         return NSRegularExpression.regexCardNumberValidation(cardNumber: cardNumber) &&
-                cardNumber.characters.count >= 12 &&
-                cardNumber.characters.count <= 19 &&
+                cardNumber.count >= 12 &&
+                cardNumber.count <= 19 &&
                 getCardType(cardNumber: cardNumber) != CYBCardTypes.UNKNOWN
     }
 
@@ -125,7 +125,7 @@ import Foundation
     
     // Card cvn validation method
     open static func isCvnValid(creditCardCVN: String) -> Bool {
-        let cvnLenght = creditCardCVN.characters.count
+        let cvnLenght = creditCardCVN.count
         return NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) && (cvnLenght == 3 || cvnLenght == 4)
     }
 
@@ -178,9 +178,10 @@ import Foundation
     
     // Validate Card for type Mastercard
     private static func isCardMastercard(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 2 {
+        if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
-            let startingNumber = Int(cardNumber.substring(to: index))
+
+            let startingNumber = Int(cardNumber[..<index])
             return startingNumber! >= 51 && startingNumber! <= 55
         }
         return false
@@ -188,11 +189,11 @@ import Foundation
     
     // Validate Card for type Discover
     private static func isCardDiscover(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 6 {
+        if cardNumber.count > 6 {
             let firstStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 3)
-            let firstStartingNumber = Int(cardNumber.substring(to: firstStartingIndex))!
+            let firstStartingNumber = Int(cardNumber[..<firstStartingIndex])!
             let secondStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 6)
-            let secondStartingNumber = Int(cardNumber.substring(to: secondStartingIndex))!
+            let secondStartingNumber = Int(cardNumber[..<secondStartingIndex])!
             let startIndex = cardNumber.startIndex
             let shortRange = startIndex..<cardNumber.index(startIndex, offsetBy: 2)
             let longRange = startIndex..<cardNumber.index(startIndex, offsetBy: 4)
@@ -207,9 +208,9 @@ import Foundation
   
     // Validate Card for type JCB
     private static func isCardJCB(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 4 {
+        if cardNumber.count > 4 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 4)
-            let startingNumber = Int(cardNumber.substring(to: index))!
+            let startingNumber = Int(cardNumber[..<index])!
             return startingNumber >= 3528 && startingNumber <= 3589
         }
         return false
@@ -223,9 +224,9 @@ import Foundation
     
     // Validate Card for type Maestro
     private static func isCardMaestro(cardNumber: String) -> Bool{
-        if cardNumber.characters.count > 2 {
+        if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
-            let startingNumber = Int(cardNumber.substring(to: index))!
+            let startingNumber = Int(cardNumber[..<index])!
             return startingNumber == 50 ||
                     (startingNumber >= 56 && startingNumber <= 64) ||
                     (startingNumber >= 66 && startingNumber <= 69)  
