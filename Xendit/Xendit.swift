@@ -38,8 +38,15 @@ import Foundation
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
-            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!, cardNumber: cardData.cardNumber!) else {
+            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!) else {
                 completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
+                return
+            }
+        }
+        
+        if cardData.cardCvn != nil && cardData.cardCvn != "" {
+            guard cardData.cardCvn != nil && cardData.cardNumber != nil && isCvnValidForCardType(creditCardCVN: cardData.cardCvn!, cardNumber: cardData.cardNumber!) else {
+                completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid for this card type"))
                 return
             }
         }
@@ -124,11 +131,17 @@ import Foundation
     }
     
     // Card cvn validation method
-    open static func isCvnValid(creditCardCVN: String, cardNumber: String) -> Bool {
+    open static func isCvnValid(creditCardCVN: String) -> Bool {
+        let cvnLength = creditCardCVN.characters.count
+        return NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) && (cvnLength == 3 || cvnLength == 4)
+    }
+    
+    // Card cvn validation for card type method
+    open static func isCvnValidForCardType(creditCardCVN: String, cardNumber: String) -> Bool {
         let cvnLength = creditCardCVN.characters.count
         let isCardTypeAmex = isCardAmex(cardNumber: cardNumber)
         if NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) {
-            return (isCardTypeAmex && cvnLength == 4) || (!isCardTypeAmex && cvnLength == 3)
+            return isCardTypeAmex ? cvnLength == 4 : cvnLength == 3
         }
         return false
     }
