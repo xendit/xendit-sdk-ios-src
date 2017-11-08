@@ -38,7 +38,7 @@ import Foundation
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
-            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!) else {
+            guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!, cardNumber: cardData.cardNumber!) else {
                 completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
                 return
             }
@@ -124,9 +124,13 @@ import Foundation
     }
     
     // Card cvn validation method
-    open static func isCvnValid(creditCardCVN: String) -> Bool {
-        let cvnLenght = creditCardCVN.characters.count
-        return NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) && (cvnLenght == 3 || cvnLenght == 4)
+    open static func isCvnValid(creditCardCVN: String, cardNumber: String) -> Bool {
+        let cvnLength = creditCardCVN.characters.count
+        let isCardTypeAmex = isCardAmex(cardNumber: cardNumber)
+        if NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) {
+            return (isCardTypeAmex && cvnLength == 4) || (!isCardTypeAmex && cvnLength == 3)
+        }
+        return false
     }
 
     // MARK: - Privat methods

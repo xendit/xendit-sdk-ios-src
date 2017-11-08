@@ -42,7 +42,7 @@ class ValidateCardViewController: UIViewController {
             return
         }
         
-        guard cardCvn != nil && Xendit.isCvnValid(creditCardCVN: cardCvn!) else {
+        guard cardCvn != nil && Xendit.isCvnValid(creditCardCVN: cardCvn!, cardNumber: cardNumber!) else {
             showAlert(title: "Validate Error", message: "Card CVN is invalid")
             return
         }
