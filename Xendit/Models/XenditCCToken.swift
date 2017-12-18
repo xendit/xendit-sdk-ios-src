@@ -21,6 +21,9 @@ import Foundation
     // Authentication url
     open var authenticationURL : String?
     
+    // Masked card number
+    open var maskedCardNumber : String?
+    
 }
 
 extension XenditCCToken {
@@ -34,5 +37,6 @@ extension XenditCCToken {
         self.status = status
         self.authenticationId = (response["authentication_id"] as? String)
         self.authenticationURL = (response["payer_authentication_url"] as? String)
+        self.maskedCardNumber = (response["masked_card_number"] as? String)
     }
 }
