@@ -13,10 +13,10 @@ import Foundation
     // MARK: - Public methods
     
     // Publishable key
-    open static var publishableKey: String?
+    public static var publishableKey: String?
 
     // Create token method
-    open static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         guard publishableKey != nil else {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -69,7 +69,7 @@ import Foundation
         }
     }
 
-    open static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: true, completion: completion);
     }
     
@@ -79,7 +79,7 @@ import Foundation
     // @param amount The transaction amount
     // @param cardCVN The credit card CVN code for create token
     @available(*, deprecated:1.1, message:"cvn no longer used")
-    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         self.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, completion: completion)
     }
     
@@ -87,7 +87,7 @@ import Foundation
     // @param fromViewController The UIViewController from which will be present webview for 3DS Authentication
     // @param tokenId The credit card token id
     // @param amount The transaction amount
-    open static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -110,15 +110,15 @@ import Foundation
 
 
     // Card data validation method
-    open static func isCardNumberValid(cardNumber: String) -> Bool {
+    public static func isCardNumberValid(cardNumber: String) -> Bool {
         return NSRegularExpression.regexCardNumberValidation(cardNumber: cardNumber) &&
-                cardNumber.characters.count >= 12 &&
-                cardNumber.characters.count <= 19 &&
+                cardNumber.count >= 12 &&
+                cardNumber.count <= 19 &&
                 getCardType(cardNumber: cardNumber) != CYBCardTypes.UNKNOWN
     }
 
     // Card expiration date validation method
-    open static func isExpiryValid(cardExpirationMonth: String, cardExpirationYear: String) -> Bool {
+    public static func isExpiryValid(cardExpirationMonth: String, cardExpirationYear: String) -> Bool {
         let cardExpMonthValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationMonth)
         let cardExpYearValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationYear)
         if cardExpMonthValid && cardExpYearValid  {
@@ -131,14 +131,14 @@ import Foundation
     }
     
     // Card cvn validation method
-    open static func isCvnValid(creditCardCVN: String) -> Bool {
-        let cvnLength = creditCardCVN.characters.count
+    public static func isCvnValid(creditCardCVN: String) -> Bool {
+        let cvnLength = creditCardCVN.count
         return NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) && (cvnLength == 3 || cvnLength == 4)
     }
     
     // Card cvn validation for card type method
-    open static func isCvnValidForCardType(creditCardCVN: String, cardNumber: String) -> Bool {
-        let cvnLength = creditCardCVN.characters.count
+    public static func isCvnValidForCardType(creditCardCVN: String, cardNumber: String) -> Bool {
+        let cvnLength = creditCardCVN.count
         let isCardTypeAmex = isCardAmex(cardNumber: cardNumber)
         if NSRegularExpression.regexCardNumberValidation(cardNumber: creditCardCVN) {
             return isCardTypeAmex ? cvnLength == 4 : cvnLength == 3
@@ -195,7 +195,7 @@ import Foundation
     
     // Validate Card for type Mastercard
     private static func isCardMastercard(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 2 {
+        if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
             let startingNumber = Int(cardNumber.substring(to: index))
             return startingNumber! >= 51 && startingNumber! <= 55
@@ -205,7 +205,7 @@ import Foundation
     
     // Validate Card for type Discover
     private static func isCardDiscover(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 6 {
+        if cardNumber.count > 6 {
             let firstStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 3)
             let firstStartingNumber = Int(cardNumber.substring(to: firstStartingIndex))!
             let secondStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 6)
@@ -224,7 +224,7 @@ import Foundation
   
     // Validate Card for type JCB
     private static func isCardJCB(cardNumber: String) -> Bool {
-        if cardNumber.characters.count > 4 {
+        if cardNumber.count > 4 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 4)
             let startingNumber = Int(cardNumber.substring(to: index))!
             return startingNumber >= 3528 && startingNumber <= 3589
@@ -240,7 +240,7 @@ import Foundation
     
     // Validate Card for type Maestro
     private static func isCardMaestro(cardNumber: String) -> Bool{
-        if cardNumber.characters.count > 2 {
+        if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
             let startingNumber = Int(cardNumber.substring(to: index))!
             return startingNumber == 50 ||
