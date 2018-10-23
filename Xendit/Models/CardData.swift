@@ -67,5 +67,16 @@ public enum CYBCardTypes {
         self.isMultipleUse = false
         self.amount = 0;
     }
-    
+
+    open var maskedNumber: String {
+        guard let cardNumber = cardNumber, cardNumber.count > 8 else {
+            return self.cardNumber ?? ""
+        }
+        let asterisk = String(repeating: "*", count: cardNumber.count - 8)
+        return "\(cardNumber.prefix(4))\(asterisk)\(cardNumber.suffix(4)))"
+    }
+
+    open override var description: String {
+        return "CardData(cardNumber: \(maskedNumber), amount: \(amount?.description ?? "nil"))"
+    }
 }

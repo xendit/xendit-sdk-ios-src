@@ -17,47 +17,55 @@ import Foundation
 
     // Create token method
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        let logPrefix = "createToken:"
+        func completionWithLog(error: XenditError) {
+            Log.shared.verbose("\(logPrefix) \(error)")
+            completion(nil, error)
+        }
+        Log.shared.verbose("\(logPrefix) start with \(cardData?.description ?? "nil")")
         guard publishableKey != nil else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
+            completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
         guard cardData.amount != nil && cardData.amount.intValue >= 0 else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0"))
+            completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0"))
             return
         }
         
         guard cardData.cardNumber != nil && isCardNumberValid(cardNumber: cardData.cardNumber) else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card number is invalid"))
+            completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Card number is invalid"))
             return
         }
         
         guard cardData.cardExpMonth != nil && cardData.cardExpYear != nil && isExpiryValid(cardExpirationMonth: cardData.cardExpMonth, cardExpirationYear: cardData.cardExpYear) else {
-            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card expiration date is invalid"))
+            completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Card expiration date is invalid"))
             return
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
             guard cardData.cardCvn != nil && isCvnValid(creditCardCVN: cardData.cardCvn!) else {
-                completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
+                completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid"))
                 return
             }
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
             guard cardData.cardCvn != nil && cardData.cardNumber != nil && isCvnValidForCardType(creditCardCVN: cardData.cardCvn!, cardNumber: cardData.cardNumber!) else {
-                completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid for this card type"))
+                completionWithLog(error: XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid for this card type"))
                 return
             }
         }
 
         getTokenizationCredentials { (tokenCredentials, error) in
+            Log.shared.verbose("\(logPrefix) getTokenizationCredentials response: \(tokenCredentials?.description ?? "nil"), error: \(error?.description ?? "nil")")
             if let error = error {
                 completion(nil, error)
                 return
             }
 
             tokenizeCreditCard(cardData: cardData, tokenCredentials: tokenCredentials!, completion: { (CYBToken, error) in
+                Log.shared.verbose("\(logPrefix) tokenizeCreditCard response: \(CYBToken ?? "nil"), error: \(error?.description ?? "nil")")
                 if CYBToken != nil {
                     createCreditCardToken(CYBToken: CYBToken!, cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
                         handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
@@ -304,9 +312,10 @@ import Foundation
     // MARK: - Networking requests
     
     private static func tokenizeCardRequest(URL: URL, requestBody: [String:Any], completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
+        Log.shared.verbose("tokenizeCardRequest: POST \(URL)")
         var request = URLRequest.request(ur: URL)
         request.httpMethod = "POST"
-        
+
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody)
             request.httpBody = bodyData
@@ -314,8 +323,9 @@ import Foundation
             completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
             return
         }
-        
+
         session.dataTask(with: request) { (data, response, error) in
+            Log.shared.logUrlResponse(prefix: "tokenizeCardRequest", data: data, response: response, error: error)
             handleFlexResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     if let CYBToken = parsedData!["token"] as? String {
@@ -331,6 +341,7 @@ import Foundation
     }
 
     private static func createAuthenticationRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        Log.shared.verbose("createAuthenticationRequest: POST \(URL)")
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
 
@@ -343,6 +354,7 @@ import Foundation
         }
 
         session.dataTask(with: request) { (data, response, error) in
+            Log.shared.logUrlResponse(prefix: "createAuthenticationRequest", data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
                     let authentication = XenditAuthentication.init(response: parsedData!)
@@ -359,6 +371,7 @@ import Foundation
     }
     
     private static func createTokenRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        Log.shared.verbose("createTokenRequest: POST \(URL)")
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
         
@@ -371,6 +384,7 @@ import Foundation
         }
 
         session.dataTask(with: request) { (data, response, error) in
+            Log.shared.logUrlResponse(prefix: "createTokenRequest", data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
                     let token = XenditCCToken.init(response: parsedData!)
@@ -388,7 +402,9 @@ import Foundation
     
     private static func tokenizationCredentialsRequest(URL: URL, completion: @escaping (_ : XenditTokenCredentials?, _ : XenditError?) -> Void) {
         let request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
+        Log.shared.verbose("tokenizationCredentialsRequest: GET \(URL)")
         session.dataTask(with: request) { (data, response, error) in
+            Log.shared.logUrlResponse(prefix: "tokenizationCredentialsRequest", data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     let tokenCredentials = XenditTokenCredentials.init(dictionary: parsedData!)

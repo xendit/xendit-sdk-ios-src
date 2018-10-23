@@ -16,10 +16,13 @@ import Foundation
     // Message
     open var message : String!
 
+    open override var description: String {
+        return "XenditError(\(errorCode ?? "nil"), \(message ?? "nil"))"
+    }
 }
 
 extension XenditError {
-    convenience init?(errorCode: String, message: String) {
+    convenience init(errorCode: String, message: String) {
         self.init()
         self.errorCode = errorCode
         self.message = message
