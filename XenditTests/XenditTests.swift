@@ -93,16 +93,29 @@ class XenditTests: XCTestCase {
         
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
         let viewController = UIViewController()
-        
-        Xendit.createAuthentication(fromViewController: viewController, tokenId: "0138172342720002", amount: 1231, cardCVN: "123") { (token, error) in
-            XCTAssertNotNil(token, "token should not be nil")
+
+        let cardData = CardData()
+        cardData.cardNumber = TestCard.validVisa
+        cardData.cardExpYear = "2027"
+        cardData.cardExpMonth = "10"
+        cardData.cardCvn = "123"
+        cardData.isMultipleUse = true
+
+        Xendit.createToken(fromViewController: viewController, cardData: cardData) { token, error in
             XCTAssertNil(error, "error should be nil")
-            expect.fulfill()
+            guard let token = token else {
+                XCTFail("Token is nil")
+                return
+            }
+            Xendit.createAuthentication(fromViewController: viewController, tokenId: token.id, amount: 1231) { (token, error) in
+                XCTAssertNil(error, "error should be nil")
+                XCTAssertNotNil(token, "token should not be nil")
+                expect.fulfill()
+            }
         }
-        
+
         waitForExpectations(timeout: 150) { error in
             XCTAssertNil(error, "Oh, we got timeout")
         }
     }
-    
 }
