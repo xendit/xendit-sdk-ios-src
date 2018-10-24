@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39C01AC3218355D90035C82C /* XenditExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01AC2218355D90035C82C /* XenditExampleUITests.swift */; };
 		946B4D771E8A6BCB0085EE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B4D761E8A6BCB0085EE04 /* AppDelegate.swift */; };
 		946B4D7C1E8A6BCB0085EE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946B4D7A1E8A6BCB0085EE04 /* Main.storyboard */; };
 		946B4D7E1E8A6BCB0085EE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946B4D7D1E8A6BCB0085EE04 /* Assets.xcassets */; };
@@ -18,6 +19,16 @@
 		94DED2191E8D45ED0092BEB7 /* ValidateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */; };
 		94DED21B1E8D4BC70092BEB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED21A1E8D4BC70092BEB7 /* ViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39C01AC5218355D90035C82C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946B4D6B1E8A6BCA0085EE04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 946B4D721E8A6BCA0085EE04;
+			remoteInfo = XenditExample;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9476724B1E8C1AD1004FD8E0 /* Embed Frameworks */ = {
@@ -34,6 +45,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39C01AC0218355D90035C82C /* XenditExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XenditExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39C01AC2218355D90035C82C /* XenditExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditExampleUITests.swift; sourceTree = "<group>"; };
+		39C01AC4218355D90035C82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946B4D731E8A6BCA0085EE04 /* XenditExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XenditExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946B4D761E8A6BCB0085EE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946B4D7B1E8A6BCB0085EE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +62,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		39C01ABD218355D90035C82C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		946B4D701E8A6BCA0085EE04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,11 +80,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39C01AC1218355D90035C82C /* XenditExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				39C01AC2218355D90035C82C /* XenditExampleUITests.swift */,
+				39C01AC4218355D90035C82C /* Info.plist */,
+			);
+			path = XenditExampleUITests;
+			sourceTree = "<group>";
+		};
 		946B4D6A1E8A6BCA0085EE04 = {
 			isa = PBXGroup;
 			children = (
 				947672481E8C1AD0004FD8E0 /* Xendit.framework */,
 				946B4D751E8A6BCA0085EE04 /* XenditExample */,
+				39C01AC1218355D90035C82C /* XenditExampleUITests */,
 				946B4D741E8A6BCA0085EE04 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				946B4D731E8A6BCA0085EE04 /* XenditExample.app */,
+				39C01AC0218355D90035C82C /* XenditExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +135,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		39C01ABF218355D90035C82C /* XenditExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39C01AC9218355D90035C82C /* Build configuration list for PBXNativeTarget "XenditExampleUITests" */;
+			buildPhases = (
+				39C01ABC218355D90035C82C /* Sources */,
+				39C01ABD218355D90035C82C /* Frameworks */,
+				39C01ABE218355D90035C82C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39C01AC6218355D90035C82C /* PBXTargetDependency */,
+			);
+			name = XenditExampleUITests;
+			productName = XenditExampleUITests;
+			productReference = 39C01AC0218355D90035C82C /* XenditExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		946B4D721E8A6BCA0085EE04 /* XenditExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 946B4D851E8A6BCB0085EE04 /* Build configuration list for PBXNativeTarget "XenditExample" */;
@@ -127,10 +177,15 @@
 		946B4D6B1E8A6BCA0085EE04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Xendit;
 				TargetAttributes = {
+					39C01ABF218355D90035C82C = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 946B4D721E8A6BCA0085EE04;
+					};
 					946B4D721E8A6BCA0085EE04 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = YTAZRVVYUC;
@@ -152,11 +207,19 @@
 			projectRoot = "";
 			targets = (
 				946B4D721E8A6BCA0085EE04 /* XenditExample */,
+				39C01ABF218355D90035C82C /* XenditExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		39C01ABE218355D90035C82C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		946B4D711E8A6BCA0085EE04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,6 +233,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		39C01ABC218355D90035C82C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39C01AC3218355D90035C82C /* XenditExampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		946B4D6F1E8A6BCA0085EE04 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +254,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39C01AC6218355D90035C82C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 946B4D721E8A6BCA0085EE04 /* XenditExample */;
+			targetProxy = 39C01AC5218355D90035C82C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		946B4D7A1E8A6BCB0085EE04 /* Main.storyboard */ = {
@@ -204,6 +283,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		39C01AC7218355D90035C82C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = XenditExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample.XenditExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XenditExample;
+			};
+			name = Debug;
+		};
+		39C01AC8218355D90035C82C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = XenditExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample.XenditExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XenditExample;
+			};
+			name = Release;
+		};
 		946B4D831E8A6BCB0085EE04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -344,6 +468,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		39C01AC9218355D90035C82C /* Build configuration list for PBXNativeTarget "XenditExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39C01AC7218355D90035C82C /* Debug */,
+				39C01AC8218355D90035C82C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		946B4D6E1E8A6BCA0085EE04 /* Build configuration list for PBXProject "XenditExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
