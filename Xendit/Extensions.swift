@@ -158,6 +158,7 @@ extension Xendit {
     internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if (error != nil) {
             completion(nil, error);
+            return
         }
         
         let status = authentication?.status
