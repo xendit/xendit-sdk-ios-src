@@ -17,7 +17,7 @@ class XenditTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
+        continueAfterFailure = false
     }
     
     override func tearDown() {
@@ -53,8 +53,8 @@ class XenditTests: XCTestCase {
         let viewController = UIViewController()
         
         Xendit.createToken(fromViewController: viewController, cardData: cardData) { (token, error) in
-            XCTAssertNotNil(token, "token should not be nil")
             XCTAssertNil(error, "error should be nil")
+            XCTAssertNotNil(token, "token should not be nil")
             expect.fulfill()
         }
         
@@ -78,8 +78,8 @@ class XenditTests: XCTestCase {
         let viewController = UIViewController()
         
         Xendit.createToken(fromViewController: viewController, cardData: cardData) { (token, error) in
-            XCTAssertNil(token, "token should be nil")
             XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertNil(token, "token should be nil")
             expect.fulfill()
         }
         
