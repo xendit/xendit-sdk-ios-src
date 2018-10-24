@@ -41,7 +41,7 @@ class XenditTests: XCTestCase {
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
         let cardData = CardData()
         cardData.cardNumber = "4000000000000002"
-        cardData.cardExpYear = "2017"
+        cardData.cardExpYear = "2027"
         cardData.cardExpMonth = "12"
         cardData.cardCvn = "123"
         cardData.amount = 1231
