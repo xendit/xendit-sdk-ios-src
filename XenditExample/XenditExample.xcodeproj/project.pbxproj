@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		39C01AC3218355D90035C82C /* XenditExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01AC2218355D90035C82C /* XenditExampleUITests.swift */; };
+		39C01ACB218357940035C82C /* BaseUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ACA218357940035C82C /* BaseUITestCase.swift */; };
+		39C01ACE21838A370035C82C /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ACD21838A370035C82C /* XCTest+Extensions.swift */; };
+		39C01AD121838A890035C82C /* HomeScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01AD021838A890035C82C /* HomeScreenHelper.swift */; };
+		39C01AD321838A9A0035C82C /* CreateTokenScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01AD221838A9A0035C82C /* CreateTokenScreenHelper.swift */; };
+		39C01AD521838E890035C82C /* WebAuthenticationScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C01AD421838E890035C82C /* WebAuthenticationScreenHelper.swift */; };
 		946B4D771E8A6BCB0085EE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B4D761E8A6BCB0085EE04 /* AppDelegate.swift */; };
 		946B4D7C1E8A6BCB0085EE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946B4D7A1E8A6BCB0085EE04 /* Main.storyboard */; };
 		946B4D7E1E8A6BCB0085EE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946B4D7D1E8A6BCB0085EE04 /* Assets.xcassets */; };
@@ -48,6 +53,11 @@
 		39C01AC0218355D90035C82C /* XenditExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XenditExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C01AC2218355D90035C82C /* XenditExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditExampleUITests.swift; sourceTree = "<group>"; };
 		39C01AC4218355D90035C82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39C01ACA218357940035C82C /* BaseUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUITestCase.swift; sourceTree = "<group>"; };
+		39C01ACD21838A370035C82C /* XCTest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
+		39C01AD021838A890035C82C /* HomeScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenHelper.swift; sourceTree = "<group>"; };
+		39C01AD221838A9A0035C82C /* CreateTokenScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTokenScreenHelper.swift; sourceTree = "<group>"; };
+		39C01AD421838E890035C82C /* WebAuthenticationScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAuthenticationScreenHelper.swift; sourceTree = "<group>"; };
 		946B4D731E8A6BCA0085EE04 /* XenditExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XenditExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946B4D761E8A6BCB0085EE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946B4D7B1E8A6BCB0085EE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,10 +93,31 @@
 		39C01AC1218355D90035C82C /* XenditExampleUITests */ = {
 			isa = PBXGroup;
 			children = (
+				39C01ACC2183872C0035C82C /* Helpers */,
 				39C01AC2218355D90035C82C /* XenditExampleUITests.swift */,
 				39C01AC4218355D90035C82C /* Info.plist */,
 			);
 			path = XenditExampleUITests;
+			sourceTree = "<group>";
+		};
+		39C01ACC2183872C0035C82C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				39C01ACF21838A7C0035C82C /* Screens */,
+				39C01ACA218357940035C82C /* BaseUITestCase.swift */,
+				39C01ACD21838A370035C82C /* XCTest+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		39C01ACF21838A7C0035C82C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				39C01AD021838A890035C82C /* HomeScreenHelper.swift */,
+				39C01AD221838A9A0035C82C /* CreateTokenScreenHelper.swift */,
+				39C01AD421838E890035C82C /* WebAuthenticationScreenHelper.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		946B4D6A1E8A6BCA0085EE04 = {
@@ -237,7 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C01ACB218357940035C82C /* BaseUITestCase.swift in Sources */,
+				39C01AD521838E890035C82C /* WebAuthenticationScreenHelper.swift in Sources */,
 				39C01AC3218355D90035C82C /* XenditExampleUITests.swift in Sources */,
+				39C01AD121838A890035C82C /* HomeScreenHelper.swift in Sources */,
+				39C01AD321838A9A0035C82C /* CreateTokenScreenHelper.swift in Sources */,
+				39C01ACE21838A370035C82C /* XCTest+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
