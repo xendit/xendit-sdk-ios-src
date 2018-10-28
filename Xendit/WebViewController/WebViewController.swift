@@ -41,10 +41,10 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
             name: "callbackHandler"
         )
 
-        let button   = UIButton(type: UIButtonType.system) as UIButton
+        let button   = UIButton(type: .system)
         button.frame = CGRect(x: 10, y: 20, width: view.frame.maxX, height: view.frame.maxY)
-        button.setTitle("Cancel", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(cancelAuthentication), for: UIControlEvents.touchUpInside)
+        button.setTitle("Cancel", for: .normal)
+        button.addTarget(self, action: #selector(cancelAuthentication), for: .touchUpInside)
         button.sizeToFit()
 
         let webConfiguration = WKWebViewConfiguration()
@@ -60,7 +60,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
 
-    func cancelAuthentication() {
+    @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
     }
     

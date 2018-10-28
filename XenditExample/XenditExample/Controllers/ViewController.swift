@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 extension UIViewController {
     
     func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message,preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message,preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         DispatchQueue.main.async {

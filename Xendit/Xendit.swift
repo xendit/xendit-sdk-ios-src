@@ -205,7 +205,7 @@ import Foundation
     private static func isCardMastercard(cardNumber: String) -> Bool {
         if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
-            let startingNumber = Int(cardNumber.substring(to: index))
+            let startingNumber = Int(cardNumber[..<index])
             return startingNumber! >= 51 && startingNumber! <= 55
         }
         return false
@@ -215,9 +215,9 @@ import Foundation
     private static func isCardDiscover(cardNumber: String) -> Bool {
         if cardNumber.count > 6 {
             let firstStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 3)
-            let firstStartingNumber = Int(cardNumber.substring(to: firstStartingIndex))!
+            let firstStartingNumber = Int(cardNumber[..<firstStartingIndex])!
             let secondStartingIndex = cardNumber.index(cardNumber.startIndex, offsetBy: 6)
-            let secondStartingNumber = Int(cardNumber.substring(to: secondStartingIndex))!
+            let secondStartingNumber = Int(cardNumber[..<secondStartingIndex])!
             let startIndex = cardNumber.startIndex
             let shortRange = startIndex..<cardNumber.index(startIndex, offsetBy: 2)
             let longRange = startIndex..<cardNumber.index(startIndex, offsetBy: 4)
@@ -234,7 +234,7 @@ import Foundation
     private static func isCardJCB(cardNumber: String) -> Bool {
         if cardNumber.count > 4 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 4)
-            let startingNumber = Int(cardNumber.substring(to: index))!
+            let startingNumber = Int(cardNumber[..<index])!
             return startingNumber >= 3528 && startingNumber <= 3589
         }
         return false
@@ -250,7 +250,7 @@ import Foundation
     private static func isCardMaestro(cardNumber: String) -> Bool{
         if cardNumber.count > 2 {
             let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
-            let startingNumber = Int(cardNumber.substring(to: index))!
+            let startingNumber = Int(cardNumber[..<index])!
             return startingNumber == 50 ||
                     (startingNumber >= 56 && startingNumber <= 64) ||
                     (startingNumber >= 66 && startingNumber <= 69)  
