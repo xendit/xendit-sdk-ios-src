@@ -15,6 +15,7 @@ class HomeScreenHelper {
     let title = "Xendit"
 
     var createTokenButton: XCUIElement { return app.buttons["Create Token"] }
+    var authenticate3DSButton: XCUIElement { return app.buttons["3DS Authentication"] }
 
     init(app: XCUIApplication) {
         self.app = app

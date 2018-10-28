@@ -12,6 +12,7 @@ class BaseTestCase: XCTestCase {
     lazy var homeScreen = HomeScreenHelper(app: app)
     lazy var createTokenScreen = CreateTokenScreenHelper(app: app)
     lazy var webAuthenticationScreen = WebAuthenticationScreenHelper(app: app)
+    lazy var authenticate3DSScreen = Authenticate3DSScreen(app: app)
     var app: XCUIApplication!
 
     var navBackButton: XCUIElement { return
@@ -39,5 +40,34 @@ class BaseTestCase: XCTestCase {
 
     func expectScreenTitle(_ title: String, file: String = #file, line: Int = #line) {
         waitForElementToAppear(app.navigationBars[title], file: file, line: line)
+    }
+
+    func matches(for regex: String, in text: String) -> [String] {
+
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+
+    func matchesWithSubgroups(for regex: String, in text: String) -> [[String]] {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map { result in
+                (0..<result.numberOfRanges).map { result.range(at: $0).location != NSNotFound ? String(text[Range(result.range(at: $0), in: text)!]) : "" }
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
 }

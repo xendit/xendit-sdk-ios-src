@@ -1,5 +1,5 @@
 //
-//  XenditExampleUITests.swift
+//  CreteTokenUITests.swift
 //  XenditExampleUITests
 //
 //  Created by Vladimir Lyukov on 24/10/2018.
@@ -8,15 +8,7 @@
 
 import XCTest
 
-class XenditExampleUITests: BaseTestCase {
-    enum TestCards {
-        static let validVisa = "4111111111111111"
-        static let validVisa3ds = "4000000000000002"
-        static let refusedVisa = "4111113333333333"
-
-        static let password3ds = "1234"
-    }
-
+class CreateTokenUITests: BaseTestCase {
     override func setUp() {
         super.setUp()
 
@@ -25,7 +17,6 @@ class XenditExampleUITests: BaseTestCase {
     }
 
     func testCreateToken() {
-
         homeScreen.createTokenButton.tap()
 
         expectScreenTitle(createTokenScreen.title)
@@ -58,5 +49,23 @@ class XenditExampleUITests: BaseTestCase {
         let text = createTokenScreen.successAlert.alertMessage
         XCTAssert(text.hasPrefix("TokenID - "))
         XCTAssert(text.contains("Status - VERIFIED"))
+
+        createTokenScreen.successAlert.buttons["OK"].tap()
+        navBackButton.tap()
+    }
+
+    func testCreateTokenInvalidCard() {
+        homeScreen.createTokenButton.tap()
+
+        expectScreenTitle(createTokenScreen.title)
+        createTokenScreen.cardNumberTextField.clearAndEnterText(TestCards.refusedVisa)
+        createTokenScreen.createTokenButton.tap()
+
+        let alert = app.alerts["TEMPORARY_SERVICE_ERROR"]
+        waitForElementToAppear(alert, timeout: 60)
+        XCTAssertEqual(alert.alertMessage, "Could not process this transaction due to network errors, try again later")
+
+        alert.buttons["OK"].tap()
+        navBackButton.tap()
     }
 }
