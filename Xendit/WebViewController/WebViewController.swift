@@ -9,6 +9,7 @@
 import Foundation
 import WebKit
 
+@objcMembers
 class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
     
     private var urlString : String!

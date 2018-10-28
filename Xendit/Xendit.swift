@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(Xendit) open class Xendit: NSObject {
     
     // MARK: - Public methods

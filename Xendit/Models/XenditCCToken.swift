@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(XENCCToken) open class XenditCCToken: NSObject {
     
     // Token id
@@ -26,7 +27,7 @@ import Foundation
     
 }
 
-extension XenditCCToken {
+@objc extension XenditCCToken {
     convenience init?(response: [String : Any]) {
         guard let id = response["id"] as? String else { return nil }
         guard let status = response["status"] as? String else { return nil }

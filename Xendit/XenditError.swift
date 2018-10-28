@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(XENError) open class XenditError: NSObject {
 
     // Error Code
@@ -21,7 +22,7 @@ import Foundation
     }
 }
 
-extension XenditError {
+@objc extension XenditError {
     convenience init(errorCode: String, message: String) {
         self.init()
         self.errorCode = errorCode

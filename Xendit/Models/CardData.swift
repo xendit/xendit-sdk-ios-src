@@ -43,6 +43,7 @@ public enum CYBCardTypes {
     }
 }
 
+@objcMembers
 @objc(XENCardData) open class CardData: NSObject {
     
     // Card Number value

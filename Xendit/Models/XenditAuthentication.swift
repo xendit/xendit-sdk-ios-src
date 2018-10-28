@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(XENAuthentication) open class XenditAuthentication: NSObject {
 
     // Token id
@@ -21,7 +22,7 @@ import Foundation
 
 }
 
-extension XenditAuthentication {
+@objc extension XenditAuthentication {
     convenience init?(response: [String : Any]) {
         let id = response["id"] as? String
         let status = response["status"] as? String
