@@ -44,6 +44,8 @@ internal class Log {
                     line: "Failed request: \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
                     level: level,
                     meta: [
+                        "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
+                        "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
                         "statusCode" : response.statusCode,
                         "requestURL": request.url?.absoluteString ?? "",
                         "responseHeaders": (response.allHeaderFields as? [String: String]) ?? [:],

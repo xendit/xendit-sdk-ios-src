@@ -13,8 +13,8 @@
 @import AdSupport;
 #endif
 
-NSString * const ISHLogDNAServiceKeyBundleShortVersion = @"version";
-NSString * const ISHLogDNAServiceKeyBundleVersion = @"build";
+NSString * const ISHLogDNAServiceKeyBundleShortVersion = @"hostAppVersion";
+NSString * const ISHLogDNAServiceKeyBundleVersion = @"hostAppBuild";
 NSString * const ISHLogDNAServiceKeyErrorCode = @"errorCode";
 NSString * const ISHLogDNAServiceKeyErrorDescription = @"errorDescription";
 NSString * const ISHLogDNAServiceKeyErrorDomain = @"errorDomain";
