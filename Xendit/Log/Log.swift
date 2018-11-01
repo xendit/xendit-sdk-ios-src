@@ -8,11 +8,16 @@
 import Foundation
 
 
+@objc(XENLogLevel) public enum XenditLogLevel: UInt {
+    case verbose, info, warning, error
+}
+
+
 internal class Log {
-    enum Level {
-        case verbose, info, warning, error
-    }
     static let shared = Log()
+
+    public var level: XenditLogLevel? = .info
+    public var logDNALevel: ISHLogDNALevel? = .warn
 
     let sanitizer = LogSanitizer()
 
@@ -20,7 +25,10 @@ internal class Log {
         ISHLogDNAService.setup(withIngestionKey: "db91ce0574a2ef343bd753485b81b0bd", hostName: "xendit.co", appName: "iOS SDK")
     }
 
-    func log(_ level: Level = .info, _ message: String) {
+    func log(_ level: XenditLogLevel = .info, _ message: String) {
+        guard let lvl = self.level, level.rawValue >= lvl.rawValue else {
+            return
+        }
         print("[xendit] \(message)")
     }
 
@@ -37,24 +45,29 @@ internal class Log {
             dataString = nil
         }
         if let response = response as? HTTPURLResponse {
-            verbose("response: \(response)")
-            if response.statusCode >= 400 {
-                let level = response.statusCode >= 500 ? ISHLogDNALevel.error : ISHLogDNALevel.warn
-                let message = ISHLogDNAMessage(
-                    line: "\(response.statusCode): \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
-                    level: level,
-                    meta: [
-                        "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
-                        "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
-                        "statusCode" : response.statusCode,
-                        "requestURL": request.url?.absoluteString ?? "",
-                        "requestBody": sanitizer.sanitizeRequestBody(requestBody ?? [:]),
-                        "responseHeaders": (response.allHeaderFields as? [String: String]) ?? [:],
-                        "responseBody": dataString ?? ""
-                    ]
-                )
-                ISHLogDNAService.logMessages([message]);
+            log(.info, "response: \(response.statusCode) \(response.url?.absoluteString ?? "n/a")")
+            log(.verbose, "headers: \(response.allHeaderFields as? [String: String] ?? [:])")
+
+            let logDNAlevel: ISHLogDNALevel
+            switch response.statusCode {
+            case (500...): logDNAlevel = .error
+            case (400...): logDNAlevel = .warn
+            default: logDNAlevel = .info
             }
+            let message = ISHLogDNAMessage(
+                line: "\(response.statusCode): \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
+                level: logDNAlevel,
+                meta: [
+                    "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
+                    "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
+                    "statusCode" : response.statusCode,
+                    "requestURL": request.url?.absoluteString ?? "",
+                    "requestBody": sanitizer.sanitizeRequestBody(requestBody ?? [:]),
+                    "responseHeaders": (response.allHeaderFields as? [String: String]) ?? [:],
+                    "responseBody": dataString ?? ""
+                ]
+            )
+            logDNASend(message)
         }
         if let dataString = dataString {
             verbose("data: \(dataString)")
@@ -62,5 +75,12 @@ internal class Log {
         if let error = error {
             verbose("error: \(error)")
         }
+    }
+
+    func logDNASend(_ message: ISHLogDNAMessage) {
+        guard let level = logDNALevel, message.level.rawValue >= level.rawValue else {
+            return
+        }
+        ISHLogDNAService.logMessages([message])
     }
 }

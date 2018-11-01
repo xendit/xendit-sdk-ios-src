@@ -155,7 +155,16 @@ import Foundation
         return false
     }
 
-    // MARK: - Privat methods
+    // MARK: - Logging
+    public static func setLogLevel(_ level: XenditLogLevel?) {
+        Log.shared.level = level
+    }
+
+    public static func setLogDNALevel(_ level: ISHLogDNALevel?) {
+        Log.shared.logDNALevel = level
+    }
+
+    // MARK: - Private methods
     
     // Get Card Type
     internal static func getCardType(cardNumber: String) -> CYBCardTypes {
