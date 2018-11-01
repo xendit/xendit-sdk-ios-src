@@ -96,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3907BA5B2190698B00EF1B72 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				39C01ADD218B45580035C82C /* LogDNA */,
+				3979BDFF2181A1C000A226B8 /* Log.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		39C01ADD218B45580035C82C /* LogDNA */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +148,10 @@
 		943ABDBE1E79614400B61098 /* Xendit */ = {
 			isa = PBXGroup;
 			children = (
-				39C01ADD218B45580035C82C /* LogDNA */,
+				3907BA5B2190698B00EF1B72 /* Log */,
 				94AD223D1E859CC6009C00D5 /* WebViewController */,
 				940EA6441E82EEDC004ADA90 /* Models */,
 				943ABDBF1E79614400B61098 /* Xendit.h */,
-				3979BDFF2181A1C000A226B8 /* Log.swift */,
 				943ABDD61E7963CC00B61098 /* Xendit.swift */,
 				94AD22191E8534C6009C00D5 /* Extensions.swift */,
 				943ABDC01E79614400B61098 /* Info.plist */,
