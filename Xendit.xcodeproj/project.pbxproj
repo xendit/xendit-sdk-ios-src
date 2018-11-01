@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5C219069F900EF1B72 /* LogSanitizer.swift */; };
+		3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */; };
 		3979BE002181A1C500A226B8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3979BDFF2181A1C000A226B8 /* Log.swift */; };
 		39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */; };
 		39C01AE2218B466A0035C82C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 39C01AE1218B466A0035C82C /* LICENSE */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3907BA5C219069F900EF1B72 /* LogSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizer.swift; sourceTree = "<group>"; };
+		3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
 		3979BDFF2181A1C000A226B8 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		39C01ADE218B457D0035C82C /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
 		39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			children = (
 				39C01ADD218B45580035C82C /* LogDNA */,
 				3979BDFF2181A1C000A226B8 /* Log.swift */,
+				3907BA5C219069F900EF1B72 /* LogSanitizer.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -163,8 +168,9 @@
 		943ABDC91E79614400B61098 /* XenditTests */ = {
 			isa = PBXGroup;
 			children = (
-				943ABDCA1E79614400B61098 /* XenditTests.swift */,
 				943ABDDE1E79A72F00B61098 /* CardDataTest.swift */,
+				943ABDCA1E79614400B61098 /* XenditTests.swift */,
+				3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */,
 				943ABDCC1E79614400B61098 /* Info.plist */,
 			);
 			path = XenditTests;
@@ -323,6 +329,7 @@
 				940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */,
 				39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */,
 				943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */,
+				3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */,
 				A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */,
 				940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */,
 				94AD221A1E8534C6009C00D5 /* Extensions.swift in Sources */,
@@ -335,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				943ABDCB1E79614400B61098 /* XenditTests.swift in Sources */,
+				3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */,
 				943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

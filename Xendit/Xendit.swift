@@ -326,7 +326,7 @@ import Foundation
         }
 
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "tokenizeCardRequest", request: request, data: data, response: response, error: error)
+            Log.shared.logUrlResponse(prefix: "tokenizeCardRequest", request: request, requestBody: requestBody, data: data, response: response, error: error)
             handleFlexResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     if let CYBToken = parsedData!["token"] as? String {
@@ -355,7 +355,7 @@ import Foundation
         }
 
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "createAuthenticationRequest", request: request, data: data, response: response, error: error)
+            Log.shared.logUrlResponse(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
                     let authentication = XenditAuthentication.init(response: parsedData!)
@@ -385,7 +385,7 @@ import Foundation
         }
 
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "createTokenRequest", request: request, data: data, response: response, error: error)
+            Log.shared.logUrlResponse(prefix: "createTokenRequest", request: request, requestBody: bodyJson, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
                     let token = XenditCCToken.init(response: parsedData!)
@@ -405,7 +405,7 @@ import Foundation
         let request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         Log.shared.verbose("tokenizationCredentialsRequest: GET \(URL)")
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "tokenizationCredentialsRequest", request: request, data: data, response: response, error: error)
+            Log.shared.logUrlResponse(prefix: "tokenizationCredentialsRequest", request: request, requestBody: nil, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     let tokenCredentials = XenditTokenCredentials.init(dictionary: parsedData!)

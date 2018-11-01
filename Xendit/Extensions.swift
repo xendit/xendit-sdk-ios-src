@@ -24,6 +24,15 @@ extension String {
     func toBase64() -> String {
         return Data(self.utf8).base64EncodedString()
     }
+
+    // Masks symbols in string, leaving only `prefix` unmasked symbols from beginning of string and `suffix` symbols at the end of string
+    func mask(_ symbol: String = "*", prefix: Int = 0, suffix: Int = 0) -> String {
+        guard self.count > prefix + suffix else {
+            return self
+        }
+        let mask = String(repeating: symbol, count: max(0, self.count - prefix - suffix))
+        return "\(self.prefix(prefix))\(mask)\(self.suffix(suffix))"
+    }
 }
 
     // MARK: - Xendit

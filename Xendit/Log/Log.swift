@@ -14,7 +14,7 @@ internal class Log {
     }
     static let shared = Log()
 
-    var isEnabled = true
+    let sanitizer = LogSanitizer()
 
     init() {
         ISHLogDNAService.setup(withIngestionKey: "db91ce0574a2ef343bd753485b81b0bd", hostName: "xendit.co", appName: "iOS SDK")
@@ -28,7 +28,7 @@ internal class Log {
         log(.verbose, message)
     }
 
-    func logUrlResponse(prefix: String, request: URLRequest, data: Data?, response: URLResponse?, error: Error?) {
+    func logUrlResponse(prefix: String, request: URLRequest, requestBody: [String: Any]?, data: Data?, response: URLResponse?, error: Error?) {
         verbose("\(prefix) finished request")
         let dataString: String?
         if let data = data {
@@ -41,13 +41,14 @@ internal class Log {
             if response.statusCode >= 400 {
                 let level = response.statusCode >= 500 ? ISHLogDNALevel.error : ISHLogDNALevel.warn
                 let message = ISHLogDNAMessage(
-                    line: "Failed request: \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
+                    line: "\(response.statusCode): \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
                     level: level,
                     meta: [
                         "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
                         "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
                         "statusCode" : response.statusCode,
                         "requestURL": request.url?.absoluteString ?? "",
+                        "requestBody": sanitizer.sanitizeRequestBody(requestBody ?? [:]),
                         "responseHeaders": (response.allHeaderFields as? [String: String]) ?? [:],
                         "responseBody": dataString ?? ""
                     ]
