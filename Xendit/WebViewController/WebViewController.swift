@@ -32,43 +32,42 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+
+    override func loadView() {
+        view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = .white
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAuthentication))
+
         let contentController = WKUserContentController();
         contentController.add(
             self,
             name: "callbackHandler"
         )
 
-        let button   = UIButton(type: .system)
-        button.frame = CGRect(x: 10, y: 20, width: view.frame.maxX, height: view.frame.maxY)
-        button.setTitle("Cancel", for: .normal)
-        button.addTarget(self, action: #selector(cancelAuthentication), for: .touchUpInside)
-        button.sizeToFit()
-
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
 
-        view.backgroundColor = UIColor.white
         view.addSubview(webView)
-        view.addSubview(button)
-        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0),
+        ])
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
 
     @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        webView.frame = CGRect(x: view.frame.origin.x, y: topLayoutGuide.length + 20, width: view.frame.size.width, height: view.frame.size.height - 20)
     }
     
     // MARK: - WKScriptMessageHandler

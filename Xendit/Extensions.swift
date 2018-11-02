@@ -154,7 +154,8 @@ extension Xendit {
                 }
                 
                 DispatchQueue.main.async {
-                    fromViewController.present(webViewController, animated: true, completion: nil)
+                    let navigationController = UINavigationController(rootViewController: webViewController)
+                    fromViewController.present(navigationController, animated: true, completion: nil)
                 }
             } else {
                 completion(token, nil)
@@ -181,7 +182,8 @@ extension Xendit {
                     completion(updatedAuthentication, error)
                 }
                 DispatchQueue.main.async {
-                    fromViewController.present(webViewController, animated: true, completion: nil)
+                    let navigationController = UINavigationController(rootViewController: webViewController)
+                    fromViewController.present(navigationController, animated: true, completion: nil)
                 }
             } else {
                 completion(authentication, nil)
