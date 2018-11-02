@@ -36,6 +36,14 @@ internal class Log {
         log(.verbose, message)
     }
 
+    func logUrlRequest(prefix: String, request: URLRequest, requestBody: [String: Any]?) {
+        log(.verbose, "\(prefix) start request")
+        log(.info, "request: \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")")
+        if let requestBody = requestBody {
+            log(.verbose, "request body: \(sanitizer.sanitizeRequestBody(requestBody))")
+        }
+    }
+
     func logUrlResponse(prefix: String, request: URLRequest, requestBody: [String: Any]?, data: Data?, response: URLResponse?, error: Error?) {
         verbose("\(prefix) finished request")
         let dataString: String?
@@ -45,7 +53,7 @@ internal class Log {
             dataString = nil
         }
         if let response = response as? HTTPURLResponse {
-            log(.info, "response: \(response.statusCode) \(response.url?.absoluteString ?? "n/a")")
+            log(.info, "response: \(response.statusCode) \(request.httpMethod ?? "n/a") \(response.url?.absoluteString ?? "n/a")")
             log(.verbose, "headers: \(response.allHeaderFields as? [String: String] ?? [:])")
 
             let logDNAlevel: ISHLogDNALevel

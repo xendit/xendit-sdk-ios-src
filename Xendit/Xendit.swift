@@ -322,10 +322,10 @@ import Foundation
     // MARK: - Networking requests
     
     private static func tokenizeCardRequest(URL: URL, requestBody: [String:Any], completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
-        Log.shared.verbose("tokenizeCardRequest: POST \(URL)")
         var request = URLRequest.request(ur: URL)
         request.httpMethod = "POST"
 
+        Log.shared.logUrlRequest(prefix: "tokenizeCardRequest", request: request, requestBody: requestBody)
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody)
             request.httpBody = bodyData
@@ -351,10 +351,10 @@ import Foundation
     }
 
     private static func createAuthenticationRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        Log.shared.verbose("createAuthenticationRequest: POST \(URL)")
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
 
+        Log.shared.logUrlRequest(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
@@ -381,10 +381,10 @@ import Foundation
     }
     
     private static func createTokenRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        Log.shared.verbose("createTokenRequest: POST \(URL)")
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
-        
+
+        Log.shared.logUrlRequest(prefix: "createTokenRequest", request: request, requestBody: bodyJson)
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
@@ -412,7 +412,7 @@ import Foundation
     
     private static func tokenizationCredentialsRequest(URL: URL, completion: @escaping (_ : XenditTokenCredentials?, _ : XenditError?) -> Void) {
         let request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
-        Log.shared.verbose("tokenizationCredentialsRequest: GET \(URL)")
+        Log.shared.logUrlRequest(prefix: "tokenizationCredentialsRequest", request: request, requestBody: nil)
         session.dataTask(with: request) { (data, response, error) in
             Log.shared.logUrlResponse(prefix: "tokenizationCredentialsRequest", request: request, requestBody: nil, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
