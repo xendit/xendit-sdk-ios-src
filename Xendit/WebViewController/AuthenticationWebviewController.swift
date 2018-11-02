@@ -75,12 +75,12 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
     // MARK: - WKScriptMessageHandler
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        do {
-            let responseString = message.body as? String
-            let data = responseString?.data(using: .utf8)
-            let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
-            handlePostMessageResponse(response: parsedData!)
-        } catch _ {
+        if let responseString = message.body as? String,
+                let data = responseString.data(using: .utf8),
+                let parsedData = try? JSONSerialization.jsonObject(with: data, options: []),
+                let parsedDict = parsedData as? [String: Any] {
+            handlePostMessageResponse(response: parsedDict)
+        } else {
             authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
         }
     }
