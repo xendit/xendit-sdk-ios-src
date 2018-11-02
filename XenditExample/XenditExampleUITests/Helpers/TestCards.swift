@@ -12,6 +12,7 @@ import Foundation
 enum TestCards {
     static let validVisa = "4111111111111111"
     static let validVisa3ds = "4000000000000002"
+    static let failed3dsVisa = "4000000000000010"
     static let refusedVisa = "4111113333333333"
 
     static let password3ds = "1234"

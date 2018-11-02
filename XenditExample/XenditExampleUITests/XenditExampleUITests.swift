@@ -73,6 +73,28 @@ class CreateTokenUITests: BaseTestCase {
         navBackButton.tap()
     }
 
+    func testCreateToken3DS_FailedAuth() {
+        homeScreen.createTokenButton.tap()
+
+        expectScreenTitle(createTokenScreen.title)
+        createTokenScreen.cardNumberTextField.clearAndEnterText(TestCards.failed3dsVisa)
+        createTokenScreen.createTokenButton.tap()
+
+
+        waitForElementToAppear(webAuthenticationScreen.titleLabel, timeout: 30)
+        webAuthenticationScreen.passwordTextField.tap()
+        webAuthenticationScreen.passwordTextField.typeText(TestCards.password3ds)
+        webAuthenticationScreen.submitButton.tap()
+
+        waitForElementToAppear(createTokenScreen.successAlert, timeout: 60)
+        let text = createTokenScreen.successAlert.alertMessage
+        XCTAssert(text.hasPrefix("TokenID - "))
+        XCTAssert(text.contains("Status - FAILED"))
+
+        createTokenScreen.successAlert.buttons["OK"].tap()
+        navBackButton.tap()
+    }
+
     func testCreateTokenInvalidCard() {
         homeScreen.createTokenButton.tap()
 

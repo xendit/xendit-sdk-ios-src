@@ -18,7 +18,7 @@ class Authenticate3DSUITests: BaseTestCase {
     }
 
     func test3DSAuthentication() {
-        let token = getToken()
+        let token = getToken(cardNumber: TestCards.validVisa3ds)
 
         homeScreen.authenticate3DSButton.tap()
         authenticate3DSScreen.tokenIDTextField.clearAndEnterText(token)
@@ -39,7 +39,7 @@ class Authenticate3DSUITests: BaseTestCase {
     }
 
     func test3DSAuthentication_Cancel() {
-        let token = getToken()
+        let token = getToken(cardNumber: TestCards.validVisa3ds)
 
         homeScreen.authenticate3DSButton.tap()
         authenticate3DSScreen.tokenIDTextField.clearAndEnterText(token)
@@ -52,6 +52,27 @@ class Authenticate3DSUITests: BaseTestCase {
         waitForElementToAppear(alert, timeout: 30)
         XCTAssertEqual(alert.alertMessage, "Authentication was cancelled")
         alert.buttons["OK"].tap()
+        navBackButton.tap()
+    }
+
+    func test3DSAuthentication_Failed() {
+        let token = getToken(cardNumber: TestCards.failed3dsVisa)
+
+        homeScreen.authenticate3DSButton.tap()
+        authenticate3DSScreen.tokenIDTextField.clearAndEnterText(token)
+        authenticate3DSScreen.submitButton.tap()
+
+        waitForElementToAppear(webAuthenticationScreen.titleLabel, timeout: 30)
+        webAuthenticationScreen.passwordTextField.tap()
+        webAuthenticationScreen.passwordTextField.typeText(TestCards.password3ds)
+        webAuthenticationScreen.submitButton.tap()
+
+        waitForElementToAppear(authenticate3DSScreen.successAlert, timeout: 30)
+        let text = authenticate3DSScreen.successAlert.alertMessage
+        XCTAssert(text.hasPrefix("TokenID - "))
+        XCTAssert(text.contains("Status - FAILED"))
+
+        authenticate3DSScreen.successAlert.buttons["OK"].tap()
         navBackButton.tap()
     }
 
@@ -84,13 +105,13 @@ class Authenticate3DSUITests: BaseTestCase {
     }
 
 
-    fileprivate func getToken() -> String {
+    fileprivate func getToken(cardNumber: String) -> String {
         // ==== Step 1: Create token
         homeScreen.createTokenButton.tap()
 
         // Fill token form
         expectScreenTitle(createTokenScreen.title)
-        createTokenScreen.cardNumberTextField.clearAndEnterText(TestCards.validVisa3ds)
+        createTokenScreen.cardNumberTextField.clearAndEnterText(cardNumber)
         createTokenScreen.multipleUseSwitch.tap()
         createTokenScreen.createTokenButton.tap()
 
