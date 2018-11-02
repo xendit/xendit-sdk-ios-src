@@ -38,6 +38,23 @@ class Authenticate3DSUITests: BaseTestCase {
         navBackButton.tap()
     }
 
+    func test3DSAuthentication_Cancel() {
+        let token = getToken()
+
+        homeScreen.authenticate3DSButton.tap()
+        authenticate3DSScreen.tokenIDTextField.clearAndEnterText(token)
+        authenticate3DSScreen.submitButton.tap()
+
+        waitForElementToAppear(webAuthenticationScreen.titleLabel, timeout: 30)
+        webAuthenticationScreen.cancelButton.tap()
+
+        let alert = app.alerts["AUTHENTICATION_ERROR"]
+        waitForElementToAppear(alert, timeout: 30)
+        XCTAssertEqual(alert.alertMessage, "Authentication was cancelled")
+        alert.buttons["OK"].tap()
+        navBackButton.tap()
+    }
+
     func test3DSAuthentication_InvalidToken() {
         let token = "invalid_token"
 

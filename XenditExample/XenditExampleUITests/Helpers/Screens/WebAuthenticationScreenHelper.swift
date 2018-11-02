@@ -14,6 +14,7 @@ class WebAuthenticationScreenHelper {
 
     var titleLabel: XCUIElement { return app.staticTexts["Please submit your Verified by Visa password."] }
 
+    var cancelButton: XCUIElement { return app.navigationBars.buttons["Cancel"] }
     var passwordTextField: XCUIElement { return app.webViews.secureTextFields.element }
     var submitButton: XCUIElement { return app.webViews.buttons["Submit"] }
 

@@ -54,6 +54,25 @@ class CreateTokenUITests: BaseTestCase {
         navBackButton.tap()
     }
 
+    func testCreateToken3DS_CancelAuth() {
+        homeScreen.createTokenButton.tap()
+
+        expectScreenTitle(createTokenScreen.title)
+        createTokenScreen.cardNumberTextField.clearAndEnterText(TestCards.validVisa3ds)
+        createTokenScreen.createTokenButton.tap()
+
+
+        waitForElementToAppear(webAuthenticationScreen.titleLabel, timeout: 30)
+        webAuthenticationScreen.cancelButton.tap()
+
+        let alert = app.alerts["AUTHENTICATION_ERROR"]
+        waitForElementToAppear(alert, timeout: 60)
+        XCTAssertEqual(alert.alertMessage, "Authentication was cancelled")
+        alert.buttons["OK"].tap()
+
+        navBackButton.tap()
+    }
+
     func testCreateTokenInvalidCard() {
         homeScreen.createTokenButton.tap()
 
