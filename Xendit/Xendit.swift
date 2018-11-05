@@ -330,7 +330,9 @@ import Foundation
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody)
             request.httpBody = bodyData
         } catch {
-            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            DispatchQueue.main.async {
+                completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            }
             return
         }
 
@@ -339,12 +341,18 @@ import Foundation
             handleFlexResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
                 if parsedData != nil {
                     if let CYBToken = parsedData!["token"] as? String {
-                        completion(CYBToken, nil)
+                        DispatchQueue.main.async {
+                            completion(CYBToken, nil)
+                        }
                     } else {
-                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        DispatchQueue.main.async {
+                            completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        }
                     }
                 } else {
-                    completion(nil, handleError)
+                    DispatchQueue.main.async {
+                        completion(nil, handleError)
+                    }
                 }
             })
         }.resume()
@@ -359,7 +367,9 @@ import Foundation
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
         } catch _ {
-            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            DispatchQueue.main.async {
+                completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            }
             return
         }
 
@@ -369,12 +379,18 @@ import Foundation
                 if parsedData != nil {
                     let authentication = XenditAuthentication.init(response: parsedData!)
                     if authentication != nil {
-                        completion(authentication, nil)
+                        DispatchQueue.main.async {
+                            completion(authentication, nil)
+                        }
                     } else {
-                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        DispatchQueue.main.async {
+                            completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        }
                     }
                 } else {
-                    completion(nil, handledError)
+                    DispatchQueue.main.async {
+                        completion(nil, handledError)
+                    }
                 }
             })
         }.resume()
@@ -389,7 +405,9 @@ import Foundation
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
             request.httpBody = bodyData
         } catch _ {
-            completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            DispatchQueue.main.async {
+                completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            }
             return
         }
 
@@ -399,12 +417,18 @@ import Foundation
                 if parsedData != nil {
                     let token = XenditCCToken.init(response: parsedData!)
                     if token != nil {
-                        completion(token, nil)
+                        DispatchQueue.main.async {
+                            completion(token, nil)
+                        }
                     } else {
-                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        DispatchQueue.main.async {
+                            completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        }
                     }
                 } else {
-                    completion(nil, handledError)
+                    DispatchQueue.main.async {
+                        completion(nil, handledError)
+                    }
                 }
             })
         }.resume()
@@ -419,12 +443,18 @@ import Foundation
                 if parsedData != nil {
                     let tokenCredentials = XenditTokenCredentials.init(dictionary: parsedData!)
                     if tokenCredentials != nil {
-                        completion(tokenCredentials, nil)
+                        DispatchQueue.main.async {
+                            completion(tokenCredentials, nil)
+                        }
                     } else {
-                        completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        DispatchQueue.main.async {
+                            completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
+                        }
                     }
                 } else {
-                    completion(nil, handleError)
+                    DispatchQueue.main.async {
+                        completion(nil, handleError)
+                    }
                 }
             })
         }.resume()
