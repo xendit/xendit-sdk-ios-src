@@ -75,12 +75,14 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
     // MARK: - WKScriptMessageHandler
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        Log.shared.verbose("web auth: receive message \(message)")
         if let responseString = message.body as? String,
                 let data = responseString.data(using: .utf8),
                 let parsedData = try? JSONSerialization.jsonObject(with: data, options: []),
                 let parsedDict = parsedData as? [String: Any] {
             handlePostMessageResponse(response: parsedDict)
         } else {
+            Log.shared.logUnexpectedWebScriptMessage(url: urlString, message: message)
             authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
         }
     }
@@ -97,7 +99,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
     // MARK: - WKNavigationDelegate
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Log.shared.verbose("web auth: navigation error \(error)")
         authenticateCompletion(nil, XenditError(errorCode: "WEBVIEW_ERROR", message: error.localizedDescription))
     }
-
 }

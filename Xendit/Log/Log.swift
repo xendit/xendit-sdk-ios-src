@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WebKit
 
 
 @objc(XENLogLevel) public enum XenditLogLevel: UInt {
@@ -62,12 +63,10 @@ internal class Log {
             case (400...): logDNAlevel = .warn
             default: logDNAlevel = .info
             }
-            let message = ISHLogDNAMessage(
+            logDNA(
                 line: "\(response.statusCode): \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")",
                 level: logDNAlevel,
                 meta: [
-                    "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
-                    "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
                     "statusCode" : response.statusCode,
                     "requestURL": request.url?.absoluteString ?? "",
                     "requestBody": sanitizer.sanitizeRequestBody(requestBody ?? [:]),
@@ -75,7 +74,6 @@ internal class Log {
                     "responseBody": dataString ?? ""
                 ]
             )
-            logDNASend(message)
         }
         if let dataString = dataString {
             verbose("data: \(dataString)")
@@ -85,10 +83,37 @@ internal class Log {
         }
     }
 
-    func logDNASend(_ message: ISHLogDNAMessage) {
-        guard let level = logDNALevel, message.level.rawValue >= level.rawValue else {
+    func logUnexpectedWebScriptMessage(url: String, message: WKScriptMessage) {
+        let messageBody: Any
+        switch message.body {
+        case is NSNumber, is NSString: messageBody = message.body
+        case let date as NSDate: messageBody = date.description
+        default:
+            messageBody = JSONSerialization.isValidJSONObject(message.body) ? message.body : "<invalid JSON>"
+        }
+        logDNA(
+            line: "Unexpected web script message",
+            level: .error,
+            meta: [
+                "url": url,
+                "name": message.name,
+                "message": messageBody,
+            ]
+        )
+    }
+
+    fileprivate func logDNA(line: String, level: ISHLogDNALevel, meta: [String: Any]) {
+        guard let logDNALevel = logDNALevel, level.rawValue >= logDNALevel.rawValue else {
             return
         }
+        let message = ISHLogDNAMessage(
+            line: line,
+            level: level,
+            meta: meta.merging([
+                "hostAppBundleId": Bundle.main.bundleIdentifier ?? "n/a",
+                "frameworkVersion": Bundle(for: Xendit.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "n/a",
+            ], uniquingKeysWith: { first, _ in first })
+        )
         ISHLogDNAService.logMessages([message])
     }
 }
