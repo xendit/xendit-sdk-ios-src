@@ -8,9 +8,13 @@
 import Foundation
 import UIKit
 import SystemConfiguration.CaptiveNetwork
+import CoreLocation
 
 
-public class Fingerprint {
+public class Fingerprint: NSObject {
+    private var locationManager = CLLocationManager()
+
+    private(set) var location: CLLocation?
     var idfv: String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
@@ -41,6 +45,8 @@ public class Fingerprint {
         return address
     }
     var wiFiSsid: String? {
+        // Will only work if the host app has "Access WiFi Information" capability
+        // See https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo
         guard let interfaces = CNCopySupportedInterfaces() as? [String] else {
             return nil
         }
@@ -105,9 +111,46 @@ public class Fingerprint {
         if let wiFiSsid = wiFiSsid {
             res["fp_ssid"] = wiFiSsid
         }
+        if let location = location {
+            res["fp_lat"] = location.coordinate.latitude.description
+            res["fp_lon"] = location.coordinate.longitude.description
+        }
         return res
     }
 
-    public init() {
+    public override init() {
+        super.init()
+        locationManager.delegate = self
+        tryGetLocation()
+    }
+
+    private func tryGetLocation() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            return
+        }
+        guard CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse else {
+            return
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        if #available(iOS 9.0, *) {
+            locationManager.requestLocation()
+        } else {
+            locationManager.startUpdatingLocation()
+        }
+    }
+}
+
+
+@objc extension Fingerprint: CLLocationManagerDelegate {
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // Do nothing
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        location = manager.location
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        tryGetLocation()
     }
 }
