@@ -23,7 +23,12 @@ internal class Log {
     let sanitizer = LogSanitizer()
 
     init() {
-        ISHLogDNAService.setup(withIngestionKey: "db91ce0574a2ef343bd753485b81b0bd", hostName: "xendit.co", appName: "iOS SDK")
+        let LogDNAKey = ""
+        if !LogDNAKey.isEmpty {
+            ISHLogDNAService.setup(withIngestionKey: LogDNAKey, hostName: "xendit.co", appName: "iOS SDK")
+        } else {
+            ISHLogDNAService.enabled = false
+        }
     }
 
     func log(_ level: XenditLogLevel = .info, _ message: String) {
@@ -103,6 +108,9 @@ internal class Log {
     }
 
     fileprivate func logDNA(line: String, level: ISHLogDNALevel, meta: [String: Any]) {
+        guard ISHLogDNAService.enabled else {
+            return
+        }
         guard let logDNALevel = logDNALevel, level.rawValue >= logDNALevel.rawValue else {
             return
         }
