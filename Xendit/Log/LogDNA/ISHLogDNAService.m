@@ -9,10 +9,6 @@
 #import "ISHLogDNAService.h"
 #import <sys/utsname.h>
 
-#if TARGET_OS_IOS || TARGET_OS_TV
-@import AdSupport;
-#endif
-
 NSString * const ISHLogDNAServiceKeyBundleShortVersion = @"hostAppVersion";
 NSString * const ISHLogDNAServiceKeyBundleVersion = @"hostAppBuild";
 NSString * const ISHLogDNAServiceKeyErrorCode = @"errorCode";
@@ -181,10 +177,7 @@ NSString *NSStringFromLogDNALevel(ISHLogDNALevel level) {
 
     dispatch_once(&pred, ^{
         sharedInstance = [[self alloc] init];
-
-#if TARGET_OS_IOS || TARGET_OS_TV
-        sharedInstance.enabled = [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
-#endif
+        sharedInstance.enabled = YES;
     });
 
     return sharedInstance;
