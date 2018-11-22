@@ -11,7 +11,7 @@ import SystemConfiguration.CaptiveNetwork
 import CoreLocation
 
 
-public class Fingerprint: NSObject {
+class Fingerprint: NSObject {
     private var locationManager = CLLocationManager()
 
     private(set) var location: CLLocation?
@@ -88,7 +88,7 @@ public class Fingerprint: NSObject {
         return String(format: "%+.2d:%.2d", hours, minutes)
     }
 
-    public var payload: [String: String] {
+    var payload: [String: String] {
         var res = [
             "fp_language": language,
             "fp_os": "iOS \(osVersion)",
@@ -118,7 +118,7 @@ public class Fingerprint: NSObject {
         return res
     }
 
-    public override init() {
+    override init() {
         super.init()
         locationManager.delegate = self
         tryGetLocation()
@@ -142,15 +142,16 @@ public class Fingerprint: NSObject {
 
 
 @objc extension Fingerprint: CLLocationManagerDelegate {
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // Do nothing
     }
 
-    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = manager.location
+        print("Got location: \(payload)")
     }
 
-    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         tryGetLocation()
     }
 }
