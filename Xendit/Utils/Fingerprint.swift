@@ -14,6 +14,9 @@ public class Fingerprint {
     var idfv: String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
+    var idfa: String? {
+        return XENweakGetIDFA()
+    }
     var ipAddress: String? {
         var address: String?
         var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
@@ -92,6 +95,9 @@ public class Fingerprint {
         }
         if let idfv = idfv {
             res["fp_idfv"] = idfv
+        }
+        if let idfa = idfa {
+            res["fp_idfa"] = idfa
         }
         if let ipAddress = ipAddress {
             res["fp_ip"] = ipAddress

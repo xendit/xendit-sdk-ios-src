@@ -28,6 +28,8 @@
 		39C01AE2218B466A0035C82C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 39C01AE1218B466A0035C82C /* LICENSE */; };
 		39C01AE4218B46F10035C82C /* ISHLogDNAService.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C01ADE218B457D0035C82C /* ISHLogDNAService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205721A6887E00D0A005 /* Fingerprint.swift */; };
+		39CE205B21A6995A00D0A005 /* IDFAHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39CE205921A6995A00D0A005 /* IDFAHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205A21A6995A00D0A005 /* IDFAHelper.m */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
 		943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943ABDBC1E79614400B61098 /* Xendit.framework */; };
@@ -63,6 +65,8 @@
 		39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
 		39C01AE1218B466A0035C82C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		39CE205721A6887E00D0A005 /* Fingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprint.swift; sourceTree = "<group>"; };
+		39CE205921A6995A00D0A005 /* IDFAHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDFAHelper.h; sourceTree = "<group>"; };
+		39CE205A21A6995A00D0A005 /* IDFAHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDFAHelper.m; sourceTree = "<group>"; };
 		940EA6451E82EEFA004ADA90 /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
 		943ABDBC1E79614400B61098 /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				39CE205721A6887E00D0A005 /* Fingerprint.swift */,
+				39CE205921A6995A00D0A005 /* IDFAHelper.h */,
+				39CE205A21A6995A00D0A005 /* IDFAHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C01AE4218B46F10035C82C /* ISHLogDNAService.h in Headers */,
+				39CE205B21A6995A00D0A005 /* IDFAHelper.h in Headers */,
 				943ABDCD1E79614400B61098 /* Xendit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +349,7 @@
 				39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */,
 				943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */,
 				3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */,
+				39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */,
 				A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */,
 				940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */,
 				94AD221A1E8534C6009C00D5 /* Extensions.swift in Sources */,
