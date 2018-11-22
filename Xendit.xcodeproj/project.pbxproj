@@ -27,6 +27,7 @@
 		39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */; };
 		39C01AE2218B466A0035C82C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 39C01AE1218B466A0035C82C /* LICENSE */; };
 		39C01AE4218B46F10035C82C /* ISHLogDNAService.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C01ADE218B457D0035C82C /* ISHLogDNAService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205721A6887E00D0A005 /* Fingerprint.swift */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
 		943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943ABDBC1E79614400B61098 /* Xendit.framework */; };
@@ -61,6 +62,7 @@
 		39C01ADE218B457D0035C82C /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
 		39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
 		39C01AE1218B466A0035C82C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		39CE205721A6887E00D0A005 /* Fingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprint.swift; sourceTree = "<group>"; };
 		940EA6451E82EEFA004ADA90 /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
 		943ABDBC1E79614400B61098 /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,14 @@
 			path = LogDNA;
 			sourceTree = "<group>";
 		};
+		39CE205621A6883700D0A005 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				39CE205721A6887E00D0A005 /* Fingerprint.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		940EA6441E82EEDC004ADA90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 				3907BA5B2190698B00EF1B72 /* Log */,
 				94AD223D1E859CC6009C00D5 /* WebViewController */,
 				940EA6441E82EEDC004ADA90 /* Models */,
+				39CE205621A6883700D0A005 /* Utils */,
 				943ABDBF1E79614400B61098 /* Xendit.h */,
 				943ABDD61E7963CC00B61098 /* Xendit.swift */,
 				94AD22191E8534C6009C00D5 /* Extensions.swift */,
@@ -323,6 +334,7 @@
 				94AD221C1E855440009C00D5 /* XenditTokenCredentials.swift in Sources */,
 				A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */,
 				3979BE002181A1C500A226B8 /* Log.swift in Sources */,
+				39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */,
 				A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */,
 				94AD223F1E859F59009C00D5 /* WebViewController.swift in Sources */,
 				A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */,
