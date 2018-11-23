@@ -11,8 +11,8 @@ import XCTest
 
 class XenditTests: XCTestCase {
     enum TestCard {
-        static let validVisa = "4111111111111111"
-        static let validVisaWith3ds = "4000000000000002"
+        static let validCardNo3ds = "5200000000000056"
+        static let validCardWith3ds = "4000000000000002"
     }
 
     override func setUp() {
@@ -27,7 +27,7 @@ class XenditTests: XCTestCase {
 
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
         let cardData = CardData()
-        cardData.cardNumber = TestCard.validVisa
+        cardData.cardNumber = TestCard.validCardNo3ds
         cardData.cardExpYear = "2027"
         cardData.cardExpMonth = "12"
         cardData.cardCvn = "123"
@@ -53,7 +53,7 @@ class XenditTests: XCTestCase {
         
         Xendit.publishableKey = "xnd_development_NI+GfOQl1LCvkZQ/eOcbGjCSZ9f3pNh5kCax+R1k+mDV8LKgCwB0hQ=="
         let cardData = CardData()
-        cardData.cardNumber = TestCard.validVisa
+        cardData.cardNumber = TestCard.validCardNo3ds
         cardData.cardExpYear = "2017"
         cardData.cardExpMonth = "10"
         cardData.cardCvn = "123"
@@ -78,7 +78,7 @@ class XenditTests: XCTestCase {
         let viewController = UIViewController()
 
         let cardData = CardData()
-        cardData.cardNumber = TestCard.validVisa
+        cardData.cardNumber = TestCard.validCardNo3ds
         cardData.cardExpYear = "2027"
         cardData.cardExpMonth = "10"
         cardData.cardCvn = "123"
