@@ -35,7 +35,7 @@
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
 		943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943ABDBC1E79614400B61098 /* Xendit.framework */; };
-		943ABDCB1E79614400B61098 /* XenditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943ABDCA1E79614400B61098 /* XenditTests.swift */; };
+		943ABDCB1E79614400B61098 /* XenditIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943ABDCA1E79614400B61098 /* XenditIntegrationTests.swift */; };
 		943ABDCD1E79614400B61098 /* Xendit.h in Headers */ = {isa = PBXBuildFile; fileRef = 943ABDBF1E79614400B61098 /* Xendit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943ABDD61E7963CC00B61098 /* Xendit.swift */; };
 		943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943ABDDE1E79A72F00B61098 /* CardDataTest.swift */; };
@@ -90,7 +90,7 @@
 		943ABDBF1E79614400B61098 /* Xendit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xendit.h; sourceTree = "<group>"; };
 		943ABDC01E79614400B61098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		943ABDC51E79614400B61098 /* XenditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XenditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		943ABDCA1E79614400B61098 /* XenditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTests.swift; sourceTree = "<group>"; };
+		943ABDCA1E79614400B61098 /* XenditIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTests.swift; sourceTree = "<group>"; };
 		943ABDCC1E79614400B61098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		943ABDD61E7963CC00B61098 /* Xendit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xendit.swift; sourceTree = "<group>"; };
 		943ABDDE1E79A72F00B61098 /* CardDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDataTest.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				943ABDDE1E79A72F00B61098 /* CardDataTest.swift */,
-				943ABDCA1E79614400B61098 /* XenditTests.swift */,
+				943ABDCA1E79614400B61098 /* XenditIntegrationTests.swift */,
 				3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */,
 				943ABDCC1E79614400B61098 /* Info.plist */,
 			);
@@ -389,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				943ABDCB1E79614400B61098 /* XenditTests.swift in Sources */,
+				943ABDCB1E79614400B61098 /* XenditIntegrationTests.swift in Sources */,
 				3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */,
 				943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */,
 			);

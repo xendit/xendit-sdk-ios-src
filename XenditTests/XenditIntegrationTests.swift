@@ -1,5 +1,5 @@
 //
-//  XenditTests.swift
+//  XenditIntegrationTests.swift
 //  XenditTests
 //
 //  Created by Maxim Bolotov on 3/15/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Xendit
 
-class XenditTests: XCTestCase {
+class XenditIntegrationTests: XCTestCase {
     enum TestCard {
         static let validCardNo3ds = "5200000000000056"
         static let validCardWith3ds = "4000000000000002"
