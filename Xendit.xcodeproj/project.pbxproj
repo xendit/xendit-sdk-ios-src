@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5C219069F900EF1B72 /* LogSanitizer.swift */; };
 		3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */; };
+		3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */; };
+		3911B5EF21A7EDBE0051547F /* OHHTTPStubs.framework in Copy Files (Carthage) */ = {isa = PBXBuildFile; fileRef = 3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3979BE002181A1C500A226B8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3979BDFF2181A1C000A226B8 /* Log.swift */; };
 		39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */; };
 		39C01AE2218B466A0035C82C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 39C01AE1218B466A0035C82C /* LICENSE */; };
@@ -57,9 +59,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3911B5EE21A7EDB00051547F /* Copy Files (Carthage) */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3911B5EF21A7EDBE0051547F /* OHHTTPStubs.framework in Copy Files (Carthage) */,
+			);
+			name = "Copy Files (Carthage)";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3907BA5C219069F900EF1B72 /* LogSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizer.swift; sourceTree = "<group>"; };
 		3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
+		3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		3979BDFF2181A1C000A226B8 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		39C01ADE218B457D0035C82C /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
 		39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
@@ -99,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */,
 				943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +132,14 @@
 				3907BA5C219069F900EF1B72 /* LogSanitizer.swift */,
 			);
 			path = Log;
+			sourceTree = "<group>";
+		};
+		3911B5EB21A7ECCA0051547F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		39C01ADD218B45580035C82C /* LogDNA */ = {
@@ -154,6 +180,7 @@
 				943ABDBE1E79614400B61098 /* Xendit */,
 				943ABDC91E79614400B61098 /* XenditTests */,
 				943ABDBD1E79614400B61098 /* Products */,
+				3911B5EB21A7ECCA0051547F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,6 +271,7 @@
 				943ABDC11E79614400B61098 /* Sources */,
 				943ABDC21E79614400B61098 /* Frameworks */,
 				943ABDC31E79614400B61098 /* Resources */,
+				3911B5EE21A7EDB00051547F /* Copy Files (Carthage) */,
 			);
 			buildRules = (
 			);
@@ -542,6 +570,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditTests;
@@ -554,6 +586,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditTests;
