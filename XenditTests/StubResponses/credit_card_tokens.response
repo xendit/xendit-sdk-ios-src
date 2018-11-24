@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Fri, 23 Nov 2018 11:32:46 GMT
+Etag: W/"8c-+40oz93NcrIXJsOOKYUr0YIZf48"
+Server: nginx
+X-Powered-By: Express
+Content-Length: 140
+Connection: keep-alive
+
+{
+  "id": "5bf7e566399c7527e8e9fa5a",
+  "authentication_id": "5bf7e566399c7527e8e9fa5b",
+  "status": "VERIFIED",
+  "masked_card_number": "520000XXXXXX0056"
+}

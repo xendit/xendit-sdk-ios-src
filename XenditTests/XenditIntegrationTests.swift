@@ -10,11 +10,6 @@ import XCTest
 @testable import Xendit
 
 class XenditIntegrationTests: XCTestCase {
-    enum TestCard {
-        static let validCardNo3ds = "5200000000000056"
-        static let validCardWith3ds = "4000000000000002"
-    }
-
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
