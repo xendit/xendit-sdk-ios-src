@@ -33,3 +33,13 @@ import Foundation
         self.authenticationURL = (response["payer_authentication_url"] as? String)
     }
 }
+
+
+internal extension XenditAuthentication {
+    convenience init(id: String, status: String, authenticationURL: String?) {
+        self.init()
+        self.id = id
+        self.status = status
+        self.authenticationURL = authenticationURL
+    }
+}

@@ -11,6 +11,7 @@ import XCTest
 
 class XenditTests: XCTestCase {
     var http: HTTPStub!
+    var authenticationStub: AuthenticationProviderStub!
 
     lazy var cardData: CardData = {
         $0.cardNumber = TestCard.validCardNo3ds
@@ -25,10 +26,13 @@ class XenditTests: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
+        authenticationStub = AuthenticationProviderStub()
+        Xendit.authenticationProvider = authenticationStub
         http = HTTPStub()
     }
 
     override func tearDown() {
+        Xendit.authenticationProvider = AuthenticationProvider()
         http.tearDown()
     }
 
@@ -227,6 +231,109 @@ class XenditTests: XCTestCase {
             XCTAssertNotNil(error, "error should not be nil")
             XCTAssertEqual(error?.errorCode, "SERVER_ERROR")
             XCTAssertNil(token, "token should be nil")
+        }
+    }
+
+    // MARK: - Test createAuthentication
+    /**
+     * Sends Xendit.createAuthentication request, asynchronously waits for the response,
+     * ensures that completion callback is called on the main thread,
+     * then runs assertions block (passing response objects there).
+     * - Parameter authenticationResponse: the server response for "/credit_card_tokens/:tokenId/authentications" endpoint you want to test
+     * - Parameter webAuthenticationResponse: the `AuthenticationWebViewController` stub response you want to test
+     * - Parameter assertions: this callback will be called on `Xendit.createAuthentication` completion and you can run assertions on authentication result.
+     */
+    private func doTestCreateAuthenticationWhen(
+        authenticationResponse: HTTPStub.ResponseFixture,
+        webAuthenticationResponse: (XenditAuthentication?, XenditError?),
+        file: StaticString = #file, line: UInt = #line,
+        assertions: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+    ) {
+        let tokenId = "some_token"
+
+        http.failOnUnexpectedRequest()
+        http.respond(.authentication(token: tokenId), fixture: authenticationResponse)
+        authenticationStub.stubResponse = webAuthenticationResponse
+
+        let expect = expectation(description: "Create authentication callback")
+        Xendit.createAuthentication(fromViewController: UIViewController(), tokenId: tokenId, amount: 1000) { authentication, error in
+            // Ensure callback is called on the main thread
+            XCTAssertTrue(Thread.isMainThread, "Callback is called on background thread", file: file, line: line)
+            assertions(authentication, error)
+            expect.fulfill()
+        }
+        xenWait(for: expect, timeout: 1, file: file, line: line)
+    }
+
+    func testCreateAuthentication() {
+        // Test `createAuthentication` success workflow
+        let webAuthResponse = XenditAuthentication(id: "some_authentication_id", status: "VERIFIED", authenticationURL: nil)
+
+        doTestCreateAuthenticationWhen(authenticationResponse: .authenticationSuccess, webAuthenticationResponse: (webAuthResponse, nil)) { authentication, error in
+            XCTAssertNil(error, "error should be nil")
+            XCTAssertNotNil(authentication, "authentication should not be nil")
+            XCTAssertEqual(authentication?.id, webAuthResponse.id)
+            XCTAssertEqual(authentication?.status, webAuthResponse.status)
+            XCTAssertNil(authentication?.authenticationURL)
+        }
+    }
+
+    func testCreateAuthentication_tokenExpired() {
+        // The endpoint returned success response, but the token is expired
+        doTestCreateAuthenticationWhen(authenticationResponse: .authenticationTokenExpired, webAuthenticationResponse: (nil, nil)) { authentication, error in
+            XCTAssertNil(error, "error should be nil")
+            XCTAssertNotNil(authentication, "authentication should not be nil")
+            XCTAssertEqual(authentication?.id, "5bf6a29ac26d775e6c2481bd")
+            XCTAssertEqual(authentication?.status, "TOKEN_EXPIRED")
+            XCTAssertNil(authentication?.authenticationURL)
+        }
+    }
+
+    func testCreateAuthentication_webAuthenticationError() {
+        // The endpoint returned success response, but the web authentication failed
+        let webAuthError = XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now")
+
+        doTestCreateAuthenticationWhen(authenticationResponse: .authenticationSuccess, webAuthenticationResponse: (nil, webAuthError)) { authentication, error in
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, webAuthError.errorCode)
+            XCTAssertEqual(error?.message, webAuthError.message)
+            XCTAssertNil(authentication)
+        }
+    }
+
+    func testCreateAuthentication_badRequest() {
+        // The endpoint returned "bad request" response with a valid JSON error object
+        doTestCreateAuthenticationWhen(authenticationResponse: .badRequest, webAuthenticationResponse: (nil, nil)) { authentication, error in
+            XCTAssertNil(authentication, "authentication should be nil")
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, "INVALID_API_KEY")
+        }
+    }
+
+    func testCreateAuthentication_htmlResponse() {
+        // The endpoint responded with some unexpected HTML response
+        doTestCreateAuthenticationWhen(authenticationResponse: .htmlResponse, webAuthenticationResponse: (nil, nil)) { authentication, error in
+            XCTAssertNil(authentication, "authentication should be nil")
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, "SERVER_ERROR")
+        }
+    }
+
+    func testCreateAuthentication_corruptedJsonResponse() {
+        // the endpoint responded with corrupted JSON response
+        doTestCreateAuthenticationWhen(authenticationResponse: .corruptedJson, webAuthenticationResponse: (nil, nil)) { authentication, error in
+            XCTAssertNil(authentication, "authentication should be nil")
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, "SERVER_ERROR")
+        }
+    }
+
+    func testCreateAuthentication_networkError() {
+        // the request failed due to a network error
+        doTestCreateAuthenticationWhen(authenticationResponse: .networkError, webAuthenticationResponse: (nil, nil)) { authentication, error in
+            XCTAssertNil(authentication, "authentication should be nil")
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, "SERVER_ERROR")
         }
     }
 }

@@ -11,11 +11,20 @@ import OHHTTPStubs
 
 
 class HTTPStub {
-    enum Endpoint: String {
-        case tokenCredentials = "credit_card_tokenization_configuration"
-        case createCreditCard = "credit_card_tokens"
-        case authentication = "authentications"
-        case tokenizeCard = "cybersource/flex/v1/tokens"
+    enum Endpoint {
+        case tokenCredentials
+        case createCreditCard
+        case authentication(token: String)
+        case tokenizeCard
+
+        var path: String {
+            switch self {
+            case .tokenCredentials: return "/credit_card_tokenization_configuration"
+            case .createCreditCard: return "/credit_card_tokens"
+            case .authentication(let token): return "/credit_card_tokens/\(token)/authentications"
+            case .tokenizeCard: return "/cybersource/flex/v1/tokens"
+            }
+        }
     }
     enum ResponseFixture: String {
         // Common failures
@@ -28,6 +37,8 @@ class HTTPStub {
         case tokenCredentialsSuccess = "token_credentials"
         case tokenizeCardSuccess = "tokenize_card"
         case createCreditCardSuccess = "credit_card_tokens"
+        case authenticationSuccess = "authentication"
+        case authenticationTokenExpired = "authentication_token_expired"
     }
 
     func failOnUnexpectedRequest(file: StaticString = #file, line: UInt = #line) {
@@ -41,7 +52,7 @@ class HTTPStub {
     }
 
     func respond(_ endpoint: Endpoint, fixture: ResponseFixture) {
-        stub(condition: isPath("/" + endpoint.rawValue)) { _ in
+        stub(condition: isPath(endpoint.path)) { _ in
             if fixture == .networkError {
                 return OHHTTPStubsResponse(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil))
             }

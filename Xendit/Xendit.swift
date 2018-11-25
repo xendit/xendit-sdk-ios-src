@@ -165,7 +165,9 @@ import Foundation
     }
 
     // MARK: - Private methods
-    
+
+    internal static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
+
     // Get Card Type
     internal static func getCardType(cardNumber: String) -> CYBCardTypes {
         if cardNumber.hasPrefix("4") {
