@@ -12,6 +12,7 @@ import XCTest
 class XenditTests: XCTestCase {
     var http: HTTPStub!
     var authenticationStub: AuthenticationProviderStub!
+    var cardAuthenticationStub: CardAuthenticationProviderStub!
 
     lazy var cardData: CardData = {
         $0.cardNumber = TestCard.validCardNo3ds
@@ -27,12 +28,15 @@ class XenditTests: XCTestCase {
         continueAfterFailure = false
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
         authenticationStub = AuthenticationProviderStub()
+        cardAuthenticationStub = CardAuthenticationProviderStub()
         Xendit.authenticationProvider = authenticationStub
+        Xendit.cardAuthenticationProvider = cardAuthenticationStub
         http = HTTPStub()
     }
 
     override func tearDown() {
         Xendit.authenticationProvider = AuthenticationProvider()
+        Xendit.cardAuthenticationProvider = CardAuthenticationProvider()
         http.tearDown()
     }
 
@@ -84,6 +88,42 @@ class XenditTests: XCTestCase {
             XCTAssertEqual(token?.authenticationId, "5bf7e566399c7527e8e9fa5b")
             XCTAssertEqual(token?.status, "VERIFIED")
             XCTAssertEqual(token?.maskedCardNumber, "520000XXXXXX0056")
+        }
+    }
+
+    func testCreateToken_3ds() {
+        // Test `createToken` success workflow for card with 3ds
+        let cardAuthResponse = XenditCCToken(id: "cardTokenId", status: "VERIFIED", authenticationId: "authenticationId", authenticationURL: nil, maskedCardNumber: "520000XXXXXX0056")
+        cardAuthenticationStub.stubResponse = (cardAuthResponse, nil)
+        http.failOnUnexpectedRequest()
+        http.respond(.tokenCredentials, fixture: .tokenCredentialsSuccess)
+        http.respond(.tokenizeCard, fixture: .tokenizeCardSuccess)
+        http.respond(.createCreditCard, fixture: .createCreditCard3dsSuccess)
+
+        doTestCreateToken { token, error in
+            XCTAssertNil(error, "error should not be nil")
+            XCTAssertNotNil(token, "token should be nil")
+            XCTAssertEqual(token?.id, cardAuthResponse.id)
+            XCTAssertEqual(token?.authenticationId, cardAuthResponse.authenticationId)
+            XCTAssertEqual(token?.status, cardAuthResponse.status)
+            XCTAssertEqual(token?.maskedCardNumber, cardAuthResponse.maskedCardNumber)
+        }
+    }
+
+    func testCreateToken_3ds_Error() {
+        // Test `createToken` success workflow for card with 3ds error
+        let cardAuthError = XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now")
+        cardAuthenticationStub.stubResponse = (nil, cardAuthError)
+        http.failOnUnexpectedRequest()
+        http.respond(.tokenCredentials, fixture: .tokenCredentialsSuccess)
+        http.respond(.tokenizeCard, fixture: .tokenizeCardSuccess)
+        http.respond(.createCreditCard, fixture: .createCreditCard3dsSuccess)
+
+        doTestCreateToken { token, error in
+            XCTAssertNotNil(error, "error should not be nil")
+            XCTAssertEqual(error?.errorCode, cardAuthError.errorCode)
+            XCTAssertEqual(error?.message, cardAuthError.message)
+            XCTAssertNil(token, "token should be nil")
         }
     }
 

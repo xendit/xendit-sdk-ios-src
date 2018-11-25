@@ -142,18 +142,12 @@ extension Xendit {
         
         if status != nil {
             if status == "IN_REVIEW", let authenticationURL = token?.authenticationURL {
-                let webViewController = WebViewController(URL: authenticationURL)
-                
-                webViewController.token = token
-                webViewController.authenticateCompletion = { (token, error) -> Void in
-                    webViewController.dismiss(animated: true, completion: nil)
-                    completion(token, error)
-                }
-                
-                DispatchQueue.main.async {
-                    let navigationController = UINavigationController(rootViewController: webViewController)
-                    fromViewController.present(navigationController, animated: true, completion: nil)
-                }
+                cardAuthenticationProvider.authenticate(
+                    fromViewController: fromViewController,
+                    URL: authenticationURL,
+                    token: token!,
+                    completion: completion
+                )
             } else {
                 completion(token, nil)
             }

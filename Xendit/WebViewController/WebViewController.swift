@@ -9,7 +9,30 @@
 import Foundation
 import WebKit
 
-@objcMembers
+
+protocol CardAuthenticationProviderProtocol {
+    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+}
+
+
+class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
+    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+        let webViewController = WebViewController(URL: URL)
+
+        webViewController.token = token
+        webViewController.authenticateCompletion = { (token, error) -> Void in
+            webViewController.dismiss(animated: true, completion: nil)
+            completion(token, error)
+        }
+
+        DispatchQueue.main.async {
+            let navigationController = UINavigationController(rootViewController: webViewController)
+            fromViewController.present(navigationController, animated: true, completion: nil)
+        }
+    }
+}
+
+
 class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
     
     private var urlString : String!

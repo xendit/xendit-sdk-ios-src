@@ -166,6 +166,7 @@ import Foundation
 
     // MARK: - Private methods
 
+    internal static var cardAuthenticationProvider: CardAuthenticationProviderProtocol = CardAuthenticationProvider()
     internal static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
 
     // Get Card Type

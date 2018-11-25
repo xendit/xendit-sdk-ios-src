@@ -37,6 +37,7 @@ class HTTPStub {
         case tokenCredentialsSuccess = "token_credentials"
         case tokenizeCardSuccess = "tokenize_card"
         case createCreditCardSuccess = "credit_card_tokens"
+        case createCreditCard3dsSuccess = "credit_card_tokens_3ds"
         case authenticationSuccess = "authentication"
         case authenticationTokenExpired = "authentication_token_expired"
     }
