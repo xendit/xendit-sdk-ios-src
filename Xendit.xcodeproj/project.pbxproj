@@ -39,6 +39,7 @@
 		3953877121AAB60600585B97 /* authentication_token_expired.response in Resources */ = {isa = PBXBuildFile; fileRef = 3953877021AAB46B00585B97 /* authentication_token_expired.response */; };
 		3953877321ABBE6F00585B97 /* CardAuthenticationProviderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3953877221ABBE6F00585B97 /* CardAuthenticationProviderStub.swift */; };
 		3953877521ABC0BD00585B97 /* credit_card_tokens_3ds.response in Resources */ = {isa = PBXBuildFile; fileRef = 3953877421ABC0BD00585B97 /* credit_card_tokens_3ds.response */; };
+		3953877721ABC33100585B97 /* FingerprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3953877621ABC33100585B97 /* FingerprintTests.swift */; };
 		3979BE002181A1C500A226B8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3979BDFF2181A1C000A226B8 /* Log.swift */; };
 		39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */; };
 		39C01AE2218B466A0035C82C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 39C01AE1218B466A0035C82C /* LICENSE */; };
@@ -105,6 +106,7 @@
 		3953877021AAB46B00585B97 /* authentication_token_expired.response */ = {isa = PBXFileReference; lastKnownFileType = text; path = authentication_token_expired.response; sourceTree = "<group>"; };
 		3953877221ABBE6F00585B97 /* CardAuthenticationProviderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAuthenticationProviderStub.swift; sourceTree = "<group>"; };
 		3953877421ABC0BD00585B97 /* credit_card_tokens_3ds.response */ = {isa = PBXFileReference; lastKnownFileType = text; path = credit_card_tokens_3ds.response; sourceTree = "<group>"; };
+		3953877621ABC33100585B97 /* FingerprintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTests.swift; sourceTree = "<group>"; };
 		3979BDFF2181A1C000A226B8 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		39C01ADE218B457D0035C82C /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
 		39C01ADF218B45AB0035C82C /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				3949B8A621A8056B000F1417 /* StubResponses */,
 				3949B8A321A7FE76000F1417 /* Helpers */,
 				943ABDDE1E79A72F00B61098 /* CardDataTest.swift */,
+				3953877621ABC33100585B97 /* FingerprintTests.swift */,
 				943ABDCA1E79614400B61098 /* XenditIntegrationTests.swift */,
 				3949B8A021A7FD50000F1417 /* XenditTests.swift */,
 				3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */,
@@ -469,6 +472,7 @@
 				3953877321ABBE6F00585B97 /* CardAuthenticationProviderStub.swift in Sources */,
 				3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */,
 				3953876F21AAAAC700585B97 /* AuthenticationProviderStub.swift in Sources */,
+				3953877721ABC33100585B97 /* FingerprintTests.swift in Sources */,
 				943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */,
 				3949B8A121A7FD50000F1417 /* XenditTests.swift in Sources */,
 				3949B8AB21A80AB7000F1417 /* TestCards.swift in Sources */,
