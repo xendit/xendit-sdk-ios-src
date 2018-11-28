@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(XENTokenCredentials) class XenditTokenCredentials: NSObject {
     
     // Flex api key
@@ -22,7 +23,7 @@ import Foundation
     
 }
 
-extension XenditTokenCredentials {
+@objc extension XenditTokenCredentials {
     convenience init?(dictionary: [String : Any]) {
         let flexApiKey = dictionary["flex_api_key"] as? String
         let authKeyId = dictionary["tokenization_auth_key_id"] as? String

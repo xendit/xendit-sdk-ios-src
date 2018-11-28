@@ -24,6 +24,15 @@ extension String {
     func toBase64() -> String {
         return Data(self.utf8).base64EncodedString()
     }
+
+    // Masks symbols in string, leaving only `prefix` unmasked symbols from beginning of string and `suffix` symbols at the end of string
+    func mask(_ symbol: String = "*", prefix: Int = 0, suffix: Int = 0) -> String {
+        guard self.count > prefix + suffix else {
+            return self
+        }
+        let mask = String(repeating: symbol, count: max(0, self.count - prefix - suffix))
+        return "\(self.prefix(prefix))\(mask)\(self.suffix(suffix))"
+    }
 }
 
     // MARK: - Xendit
@@ -67,8 +76,8 @@ extension Xendit {
     private static var acceptableStatusCodes: [Int] { return Array(200..<300) }
     
     static func handleResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
-        if error != nil {
-            handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error!.localizedDescription))
+        if let error = error {
+            handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error.localizedDescription))
         } else if let httpResponse = urlResponse as? HTTPURLResponse {
             if acceptableStatusCodes.contains(httpResponse.statusCode) {
                 do {
@@ -78,14 +87,12 @@ extension Xendit {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             } else {
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
-                    let errorCode = parsedData?["error_code"] as! String
-                    let message = parsedData?["message"] as! String
-
+                if let parsedData = try? JSONSerialization.jsonObject(with: data!, options: []),
+                        let parsedDict = parsedData as? [String : Any],
+                        let errorCode = parsedDict["error_code"] as? String,
+                        let message = parsedDict["message"] as? String {
                     handleCompletion(nil, XenditError(errorCode: errorCode, message: message))
-                }
-                catch {
+                } else {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             }
@@ -93,8 +100,8 @@ extension Xendit {
     }
 
     static func handleFlexResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
-        if error != nil {
-            handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error!.localizedDescription))
+        if let error = error {
+            handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error.localizedDescription))
         } else if let httpResponse = urlResponse as? HTTPURLResponse {
             if acceptableStatusCodes.contains(httpResponse.statusCode) {
                 do {
@@ -107,10 +114,9 @@ extension Xendit {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
 
-                    if let responseStatus = parsedData?["responseStatus"] as? [String : Any] {
-                        let reason = responseStatus["reason"] as! String
-                        let message = responseStatus["message"] as! String
-
+                    if let responseStatus = parsedData?["responseStatus"] as? [String: Any],
+                            let reason = responseStatus["reason"] as? String,
+                            let message = responseStatus["message"] as? String {
                         if (reason == "VALIDATION_ERROR") {
                             handleCompletion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: message))
                         } else {
@@ -128,25 +134,20 @@ extension Xendit {
     }
     
     internal static func handleCreateCardToken(fromViewController: UIViewController, token: XenditCCToken?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        if (error != nil) {
-            return completion(nil, error);
+        if let error = error {
+            return completion(nil, error)
         }
 
         let status = token?.status
         
         if status != nil {
-            if status == "IN_REVIEW" && token?.authenticationURL != nil {
-                let webViewController = WebViewController(URL: (token?.authenticationURL)!)
-                
-                webViewController.token = token
-                webViewController.authenticateCompletion = { (token, error) -> Void in
-                    webViewController.dismiss(animated: true, completion: nil)
-                    completion(token, error)
-                }
-                
-                DispatchQueue.main.async {
-                    fromViewController.present(webViewController, animated: true, completion: nil)
-                }
+            if status == "IN_REVIEW", let authenticationURL = token?.authenticationURL {
+                cardAuthenticationProvider.authenticate(
+                    fromViewController: fromViewController,
+                    URL: authenticationURL,
+                    token: token!,
+                    completion: completion
+                )
             } else {
                 completion(token, nil)
             }
@@ -158,21 +159,19 @@ extension Xendit {
     internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if (error != nil) {
             completion(nil, error);
+            return
         }
         
         let status = authentication?.status
 
         if status != nil {
-            if status == "IN_REVIEW" && authentication?.authenticationURL != nil {
-                let webViewController = AuthenticationWebViewController(URL: (authentication?.authenticationURL)!)
-                webViewController.authentication = authentication
-                webViewController.authenticateCompletion = { (updatedAuthentication, error) -> Void in
-                    webViewController.dismiss(animated: true, completion: nil)
-                    completion(updatedAuthentication, error)
-                }
-                DispatchQueue.main.async {
-                    fromViewController.present(webViewController, animated: true, completion: nil)
-                }
+            if status == "IN_REVIEW", let authenticationURL = authentication?.authenticationURL {
+                authenticationProvider.authenticate(
+                    fromViewController: fromViewController,
+                    URL: authenticationURL,
+                    authentication: authentication!,
+                    completion: completion
+                )
             } else {
                 completion(authentication, nil)
             }

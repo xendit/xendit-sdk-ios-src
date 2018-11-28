@@ -9,6 +9,30 @@
 import Foundation
 import WebKit
 
+
+protocol CardAuthenticationProviderProtocol {
+    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+}
+
+
+class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
+    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+        let webViewController = WebViewController(URL: URL)
+
+        webViewController.token = token
+        webViewController.authenticateCompletion = { (token, error) -> Void in
+            webViewController.dismiss(animated: true, completion: nil)
+            completion(token, error)
+        }
+
+        DispatchQueue.main.async {
+            let navigationController = UINavigationController(rootViewController: webViewController)
+            fromViewController.present(navigationController, animated: true, completion: nil)
+        }
+    }
+}
+
+
 class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
     
     private var urlString : String!
@@ -24,6 +48,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     // MARK: - Initializer
     
     init(URL: String) {
+        Log.shared.log(.info, "web auth: \(URL)")
         super.init(nibName: nil, bundle: nil)
         urlString = URL
     }
@@ -31,54 +56,55 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+
+    override func loadView() {
+        view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = .white
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAuthentication))
+
         let contentController = WKUserContentController();
         contentController.add(
             self,
             name: "callbackHandler"
         )
 
-        let button   = UIButton(type: UIButtonType.system) as UIButton
-        button.frame = CGRect(x: 10, y: 20, width: view.frame.maxX, height: view.frame.maxY)
-        button.setTitle("Cancel", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(cancelAuthentication), for: UIControlEvents.touchUpInside)
-        button.sizeToFit()
-
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
 
-        view.backgroundColor = UIColor.white
         view.addSubview(webView)
-        view.addSubview(button)
-        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0),
+        ])
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
 
-    func cancelAuthentication() {
+    @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        webView.frame = CGRect(x: view.frame.origin.x, y: topLayoutGuide.length + 20, width: view.frame.size.width, height: view.frame.size.height - 20)
     }
     
     // MARK: - WKScriptMessageHandler
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        do {
-            let responseString = message.body as? String
-            let data = responseString?.data(using: .utf8)
-            let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
-            handlePostMessageResponse(response: parsedData!)
-        } catch {
+        Log.shared.verbose("web auth: receive message \(message)")
+        if let responseString = message.body as? String,
+                let data = responseString.data(using: .utf8),
+                let parsedData = try? JSONSerialization.jsonObject(with: data, options: []),
+                let parsedDict = parsedData as? [String: Any]{
+            handlePostMessageResponse(response: parsedDict)
+        } else {
+            Log.shared.logUnexpectedWebScriptMessage(url: urlString, message: message)
             authenticateCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
         }
     }
@@ -95,7 +121,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     // MARK: - WKNavigationDelegate
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Log.shared.verbose("web auth: navigation error \(error)")
         authenticateCompletion(nil, XenditError(errorCode: "WEBVIEW_ERROR", message: error.localizedDescription))
     }
-    
 }

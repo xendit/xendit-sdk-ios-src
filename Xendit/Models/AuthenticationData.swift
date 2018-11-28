@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(XENAuthenticationData) open class AuthenticationData: NSObject {
 
     // Token id value

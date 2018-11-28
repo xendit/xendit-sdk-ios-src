@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISHLogDNAService.h"
+#import "IDFAHelper.h"
 
 //! Project version number for Xendit.
 FOUNDATION_EXPORT double XenditVersionNumber;
