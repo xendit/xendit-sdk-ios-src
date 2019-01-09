@@ -57,25 +57,10 @@ import Foundation
                 return
             }
         }
-
-        getTokenizationCredentials { (tokenCredentials, error) in
-            Log.shared.verbose("\(logPrefix) getTokenizationCredentials response: \(tokenCredentials?.description ?? "nil"), error: \(error?.description ?? "nil")")
-            if let error = error {
-                completion(nil, error)
-                return
-            }
-
-            tokenizeCreditCard(cardData: cardData, tokenCredentials: tokenCredentials!, completion: { (CYBToken, error) in
-                Log.shared.verbose("\(logPrefix) tokenizeCreditCard response: \(CYBToken ?? "nil"), error: \(error?.description ?? "nil")")
-                if CYBToken != nil {
-                    createCreditCardToken(CYBToken: CYBToken!, cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
-                        handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
-                    })
-                } else {
-                    completion(nil, error)
-                }
-            })
-        }
+        
+        createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
+            handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
+        })
     }
 
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
@@ -279,7 +264,7 @@ import Foundation
     private static let PRODUCTION_XENDIT_BASE_URL = "https://api.xendit.co";
     
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration";
-    private static let CREATE_CREDIT_CARD_PATH = "credit_card_tokens";
+    private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens";
     private static let AUTHENTICATION_PATH = "authentications";
     private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
@@ -312,10 +297,10 @@ import Foundation
     }
     
     // Create credit card Xendit token
-    private static func createCreditCardToken(CYBToken: String, cardData: CardData, shouldAuthenticate: Bool, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func createCreditCardToken(cardData: CardData, shouldAuthenticate: Bool, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
         url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
-        let requestBody = prepareCreateTokenBody(cardToken: CYBToken, cardData: cardData, shouldAuthenticate: shouldAuthenticate)
+        let requestBody = prepareCreateTokenBody(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         
         createTokenRequest(URL: url!, bodyJson: requestBody) { (token, error) in
             completion(token, error)
