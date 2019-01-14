@@ -45,19 +45,25 @@ extension Xendit {
         return json
     }
     
-    static func prepareCreateTokenBody(cardToken: String, cardData: CardData, shouldAuthenticate: Bool) -> [String: Any] {
+    static func prepareCreateTokenBody(cardData: CardData, shouldAuthenticate: Bool) -> [String: Any] {
+        var card_json: [String: String] = [
+            "account_number": cardData.cardNumber,
+            "exp_month": cardData.cardExpMonth,
+            "exp_year": cardData.cardExpYear,
+        ]
+        
+        if cardData.cardCvn != nil && cardData.cardCvn != "" {
+            card_json["cvn"] = cardData.cardCvn
+        }
+        
         var json: [String: Any] = [
-            "credit_card_token" : cardToken,
-            "is_authentication_bundled" : !cardData.isMultipleUse,
-            "should_authenticate": shouldAuthenticate
+            "should_authenticate": shouldAuthenticate,
+            "card_data": card_json
         ]
 
         if (!cardData.isMultipleUse) {
-            json["amount"] = cardData.amount;
-        }
-
-        if cardData.cardCvn != nil && cardData.cardCvn != "" {
-            json["card_cvn"] = cardData.cardCvn
+            json["is_single_use"] = !cardData.isMultipleUse;
+            json["amount"] = 5000;
         }
         
         return json
