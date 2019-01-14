@@ -48,7 +48,7 @@ class CreateTokenViewController: UIViewController {
         Xendit.createToken(fromViewController: self, cardData: cardData) { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
-                let message = String(format: "TokenID - %@, Status - %@, MaskedCardNumber - %@", token.id, token.status, token.maskedCardNumber ?? "n/a")
+                let message = String(format: "TokenID - %@, AuthenticationID - %@, Status - %@, MaskedCardNumber - %@", token.id, token.authenticationId, token.status, token.maskedCardNumber ?? "n/a")
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
