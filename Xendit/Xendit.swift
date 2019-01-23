@@ -92,7 +92,7 @@ import Foundation
         authenticationData.amount = amount
         
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
-        url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
+        url?.appendPathComponent(CREDIT_CARD_PATH)
         url?.appendPathComponent(tokenId)
         url?.appendPathComponent(AUTHENTICATION_PATH)
         let requestBody = prepareCreateAuthenticationBody(authenticationData: authenticationData)
@@ -265,6 +265,7 @@ import Foundation
     
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration";
     private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens";
+    private static let CREDIT_CARD_PATH = "credit_card_tokens";
     private static let AUTHENTICATION_PATH = "authentications";
     private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
