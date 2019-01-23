@@ -58,12 +58,12 @@ extension Xendit {
         
         var json: [String: Any] = [
             "should_authenticate": shouldAuthenticate,
-            "card_data": card_json
+            "card_data": card_json,
+            "is_single_use": !cardData.isMultipleUse
         ]
 
         if (!cardData.isMultipleUse) {
-            json["is_single_use"] = !cardData.isMultipleUse;
-            json["amount"] = 5000;
+            json["amount"] = cardData.amount;
         }
         
         return json
