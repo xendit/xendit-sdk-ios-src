@@ -60,6 +60,9 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     override func loadView() {
         view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .white
+        
+        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=400,shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        let userScript = WKUserScript(source: jscript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAuthentication))
 
@@ -68,6 +71,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
             self,
             name: "callbackHandler"
         )
+        contentController.addUserScript(userScript)
 
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
