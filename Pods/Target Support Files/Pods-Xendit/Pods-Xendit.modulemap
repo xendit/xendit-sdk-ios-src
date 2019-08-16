@@ -1,0 +1,6 @@
+module Pods_Xendit {
+  umbrella header "Pods-Xendit-umbrella.h"
+
+  export *
+  module * { export * }
+}
