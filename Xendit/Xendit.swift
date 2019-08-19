@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SnowplowTracker
 
 @objcMembers
 @objc(Xendit) open class Xendit: NSObject {
@@ -57,6 +58,13 @@ import Foundation
                 return
             }
         }
+        
+        let tracker: SPTracker? = SnowplowManager.shared?.setTracker()
+        let event = SPStructured.build({builder in
+            builder?.setCategory("api-request")
+            builder?.setAction("create-token")
+        })
+        tracker?.trackStructuredEvent(event)
         
         createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
             handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
