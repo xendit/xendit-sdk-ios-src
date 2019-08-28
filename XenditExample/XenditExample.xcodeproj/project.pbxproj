@@ -26,6 +26,11 @@
 		94DED2171E8D3CE90092BEB7 /* CreateAuthentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED2161E8D3CE90092BEB7 /* CreateAuthentification.swift */; };
 		94DED2191E8D45ED0092BEB7 /* ValidateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */; };
 		94DED21B1E8D4BC70092BEB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED21A1E8D4BC70092BEB7 /* ViewController.swift */; };
+		A11F00092313E40700B91555 /* SPEvent.h in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FFFFC2313DF2600B91555 /* SPEvent.h */; };
+		A11F000A2313E40700B91555 /* SPPayload.h in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FFFF62313DF0C00B91555 /* SPPayload.h */; };
+		A11F000B2313E40700B91555 /* SPSelfDescribingJson.h in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FFFFA2313DF2000B91555 /* SPSelfDescribingJson.h */; };
+		A11F000C2313E40700B91555 /* SPTracker.h in Frameworks */ = {isa = PBXBuildFile; fileRef = A11FFFF82313DF1400B91555 /* SPTracker.h */; };
+		A11F000E2313E4B300B91555 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A11F000D2313E4B300B91555 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +80,12 @@
 		94DED2161E8D3CE90092BEB7 /* CreateAuthentification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAuthentification.swift; sourceTree = "<group>"; };
 		94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCardViewController.swift; sourceTree = "<group>"; };
 		94DED21A1E8D4BC70092BEB7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A11F00072313E3C000B91555 /* SnowplowTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnowplowTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11F000D2313E4B300B91555 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
+		A11FFFF62313DF0C00B91555 /* SPPayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPPayload.h; path = ../Pods/SnowplowTracker/Snowplow/SPPayload.h; sourceTree = "<group>"; };
+		A11FFFF82313DF1400B91555 /* SPTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPTracker.h; path = ../Pods/SnowplowTracker/Snowplow/SPTracker.h; sourceTree = "<group>"; };
+		A11FFFFA2313DF2000B91555 /* SPSelfDescribingJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSelfDescribingJson.h; path = ../Pods/SnowplowTracker/Snowplow/SPSelfDescribingJson.h; sourceTree = "<group>"; };
+		A11FFFFC2313DF2600B91555 /* SPEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPEvent.h; path = ../Pods/SnowplowTracker/Snowplow/SPEvent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11F00092313E40700B91555 /* SPEvent.h in Frameworks */,
+				A11F000A2313E40700B91555 /* SPPayload.h in Frameworks */,
+				A11F000B2313E40700B91555 /* SPSelfDescribingJson.h in Frameworks */,
+				A11F000C2313E40700B91555 /* SPTracker.h in Frameworks */,
 				947672491E8C1AD0004FD8E0 /* Xendit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,10 +147,12 @@
 		946B4D6A1E8A6BCA0085EE04 = {
 			isa = PBXGroup;
 			children = (
+				A11F000D2313E4B300B91555 /* Podfile */,
 				947672481E8C1AD0004FD8E0 /* Xendit.framework */,
 				946B4D751E8A6BCA0085EE04 /* XenditExample */,
 				39C01AC1218355D90035C82C /* XenditExampleUITests */,
 				946B4D741E8A6BCA0085EE04 /* Products */,
+				A11FFFF52313DF0C00B91555 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +187,18 @@
 				94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A11FFFF52313DF0C00B91555 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A11F00072313E3C000B91555 /* SnowplowTracker.framework */,
+				A11FFFF62313DF0C00B91555 /* SPPayload.h */,
+				A11FFFF82313DF1400B91555 /* SPTracker.h */,
+				A11FFFFA2313DF2000B91555 /* SPSelfDescribingJson.h */,
+				A11FFFFC2313DF2600B91555 /* SPEvent.h */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +296,7 @@
 			files = (
 				946B4D811E8A6BCB0085EE04 /* LaunchScreen.storyboard in Resources */,
 				946B4D7E1E8A6BCB0085EE04 /* Assets.xcassets in Resources */,
+				A11F000E2313E4B300B91555 /* Podfile in Resources */,
 				946B4D7C1E8A6BCB0085EE04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

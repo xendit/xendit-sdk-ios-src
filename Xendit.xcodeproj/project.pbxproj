@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2E906DC35C14A9B00D2B9C4A /* Pods_XenditTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01ADBCAD1DA78A8112308AC /* Pods_XenditTests.framework */; };
 		3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5C219069F900EF1B72 /* LogSanitizer.swift */; };
 		3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */; };
 		3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */; };
@@ -47,6 +48,7 @@
 		39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205721A6887E00D0A005 /* Fingerprint.swift */; };
 		39CE205B21A6995A00D0A005 /* IDFAHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39CE205921A6995A00D0A005 /* IDFAHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205A21A6995A00D0A005 /* IDFAHelper.m */; };
+		6DEC3E35CF43D4F5780C6F38 /* Pods_Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D3B35BDF9AD0868B9F258B /* Pods_Xendit.framework */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
 		943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943ABDBC1E79614400B61098 /* Xendit.framework */; };
@@ -62,6 +64,8 @@
 		A05650F21EBC5B890019B64F /* WebViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F11EBC5B890019B64F /* WebViewConstants.swift */; };
 		A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F31EBC635E0019B64F /* AuthenticationData.swift */; };
 		A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075BDD51ECBCA7900140B7A /* XenditError.swift */; };
+		A11FFFF32313DA8F00B91555 /* Snowplow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11FFFF22313DA8F00B91555 /* Snowplow.swift */; };
+		A11FFFF42313DA8F00B91555 /* Snowplow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11FFFF22313DA8F00B91555 /* Snowplow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05D3B35BDF9AD0868B9F258B /* Pods_Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3907BA5C219069F900EF1B72 /* LogSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizer.swift; sourceTree = "<group>"; };
 		3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
 		3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
@@ -127,11 +132,22 @@
 		94AD22191E8534C6009C00D5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		94AD221B1E855440009C00D5 /* XenditTokenCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditTokenCredentials.swift; sourceTree = "<group>"; };
 		94AD223E1E859F59009C00D5 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		9EC5B079EF59DACE53AB831D /* Pods-Xendit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xendit.release.xcconfig"; path = "Target Support Files/Pods-Xendit/Pods-Xendit.release.xcconfig"; sourceTree = "<group>"; };
 		A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditAuthentication.swift; sourceTree = "<group>"; };
 		A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
 		A05650F11EBC5B890019B64F /* WebViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewConstants.swift; sourceTree = "<group>"; };
 		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 		A075BDD51ECBCA7900140B7A /* XenditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
+		A11F00012313E04200B91555 /* SPTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPTracker.h; path = Pods/SnowplowTracker/Snowplow/SPTracker.h; sourceTree = "<group>"; };
+		A11F00032313E04800B91555 /* SPSelfDescribingJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSelfDescribingJson.h; path = Pods/SnowplowTracker/Snowplow/SPSelfDescribingJson.h; sourceTree = "<group>"; };
+		A11F00052313E04D00B91555 /* SPEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPEvent.h; path = Pods/SnowplowTracker/Snowplow/SPEvent.h; sourceTree = "<group>"; };
+		A11FFFF12313DA8F00B91555 /* XenditUniversal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XenditUniversal-Bridging-Header.h"; sourceTree = "<group>"; };
+		A11FFFF22313DA8F00B91555 /* Snowplow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snowplow.swift; sourceTree = "<group>"; };
+		A11FFFFF2313E03800B91555 /* SPPayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPPayload.h; path = Pods/SnowplowTracker/Snowplow/SPPayload.h; sourceTree = "<group>"; };
+		AFD2EAA8BF5275E711534B4B /* Pods-Xendit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xendit.debug.xcconfig"; path = "Target Support Files/Pods-Xendit/Pods-Xendit.debug.xcconfig"; sourceTree = "<group>"; };
+		B01ADBCAD1DA78A8112308AC /* Pods_XenditTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XenditTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA9879222BFF69C2F0648583 /* Pods-XenditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.release.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.release.xcconfig"; sourceTree = "<group>"; };
+		CCD0DD5EE4F18B6DBBBC1174 /* Pods-XenditTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.debug.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DEC3E35CF43D4F5780C6F38 /* Pods_Xendit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +165,7 @@
 			files = (
 				3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */,
 				943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */,
+				2E906DC35C14A9B00D2B9C4A /* Pods_XenditTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +186,12 @@
 			isa = PBXGroup;
 			children = (
 				3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */,
+				A11F00012313E04200B91555 /* SPTracker.h */,
+				A11F00032313E04800B91555 /* SPSelfDescribingJson.h */,
+				A11F00052313E04D00B91555 /* SPEvent.h */,
+				A11FFFFF2313E03800B91555 /* SPPayload.h */,
+				05D3B35BDF9AD0868B9F258B /* Pods_Xendit.framework */,
+				B01ADBCAD1DA78A8112308AC /* Pods_XenditTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -227,6 +251,17 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		8FE503841009E34AB380010B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFD2EAA8BF5275E711534B4B /* Pods-Xendit.debug.xcconfig */,
+				9EC5B079EF59DACE53AB831D /* Pods-Xendit.release.xcconfig */,
+				CCD0DD5EE4F18B6DBBBC1174 /* Pods-XenditTests.debug.xcconfig */,
+				BA9879222BFF69C2F0648583 /* Pods-XenditTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		940EA6441E82EEDC004ADA90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +281,7 @@
 				943ABDC91E79614400B61098 /* XenditTests */,
 				943ABDBD1E79614400B61098 /* Products */,
 				3911B5EB21A7ECCA0051547F /* Frameworks */,
+				8FE503841009E34AB380010B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +297,7 @@
 		943ABDBE1E79614400B61098 /* Xendit */ = {
 			isa = PBXGroup;
 			children = (
+				A11FFFF02313DA2000B91555 /* Tracker */,
 				3907BA5B2190698B00EF1B72 /* Log */,
 				94AD223D1E859CC6009C00D5 /* WebViewController */,
 				940EA6441E82EEDC004ADA90 /* Models */,
@@ -299,6 +336,15 @@
 			path = WebViewController;
 			sourceTree = "<group>";
 		};
+		A11FFFF02313DA2000B91555 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				A11FFFF22313DA8F00B91555 /* Snowplow.swift */,
+				A11FFFF12313DA8F00B91555 /* XenditUniversal-Bridging-Header.h */,
+			);
+			path = Tracker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -319,6 +365,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 943ABDD01E79614400B61098 /* Build configuration list for PBXNativeTarget "Xendit" */;
 			buildPhases = (
+				7CB1E6079458A0E54473646A /* [CP] Check Pods Manifest.lock */,
 				943ABDB71E79614400B61098 /* Sources */,
 				943ABDB81E79614400B61098 /* Frameworks */,
 				943ABDB91E79614400B61098 /* Headers */,
@@ -337,6 +384,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 943ABDD31E79614400B61098 /* Build configuration list for PBXNativeTarget "XenditTests" */;
 			buildPhases = (
+				77DF892960AE71F4D1DD162C /* [CP] Check Pods Manifest.lock */,
 				943ABDC11E79614400B61098 /* Sources */,
 				943ABDC21E79614400B61098 /* Frameworks */,
 				943ABDC31E79614400B61098 /* Resources */,
@@ -373,6 +421,7 @@
 					};
 					9476723E1E8C0710004FD8E0 = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -425,6 +474,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		77DF892960AE71F4D1DD162C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XenditTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CB1E6079458A0E54473646A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Xendit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		947672421E8C071F004FD8E0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,6 +540,7 @@
 			files = (
 				94AD221C1E855440009C00D5 /* XenditTokenCredentials.swift in Sources */,
 				A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */,
+				A11FFFF32313DA8F00B91555 /* Snowplow.swift in Sources */,
 				3979BE002181A1C500A226B8 /* Log.swift in Sources */,
 				39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */,
 				A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */,
@@ -474,6 +568,7 @@
 				3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */,
 				3953876F21AAAAC700585B97 /* AuthenticationProviderStub.swift in Sources */,
 				3953877721ABC33100585B97 /* FingerprintTests.swift in Sources */,
+				A11FFFF42313DA8F00B91555 /* Snowplow.swift in Sources */,
 				943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */,
 				3949B8A121A7FD50000F1417 /* XenditTests.swift in Sources */,
 				3949B8AB21A80AB7000F1417 /* TestCards.swift in Sources */,
@@ -612,6 +707,7 @@
 		};
 		943ABDD11E79614400B61098 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFD2EAA8BF5275E711534B4B /* Pods-Xendit.debug.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_MODULES = YES;
@@ -634,6 +730,7 @@
 		};
 		943ABDD21E79614400B61098 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EC5B079EF59DACE53AB831D /* Pods-Xendit.release.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_MODULES = YES;
@@ -655,6 +752,7 @@
 		};
 		943ABDD41E79614400B61098 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCD0DD5EE4F18B6DBBBC1174 /* Pods-XenditTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -671,6 +769,7 @@
 		};
 		943ABDD51E79614400B61098 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA9879222BFF69C2F0648583 /* Pods-XenditTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -689,8 +788,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Xendit/Tracker/XenditUniversal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -699,8 +802,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Xendit/Tracker/XenditUniversal-Bridging-Header.h";
 				"SWIFT_OPTIMIZATION_LEVEL[arch=*]" = "-O";
 				SWIFT_VERSION = 5.0;
 			};
