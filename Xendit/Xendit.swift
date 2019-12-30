@@ -59,7 +59,15 @@ import Foundation
         }
         
         createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
-            handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
+            if cardData.isMultipleUse == true && xenditToken != nil {
+                get3DSRecommendation(tokenId: xenditToken.id, completion: { (threeDSRecommendation, get3DSRecommendation) in
+                    let tokenWith3DSRecommendation = XenditCCToken(xenditToken, threeDSRecommendation.should3DS)
+
+                    handleCreateCardToken(fromViewController: fromViewController, token: tokenWith3DSRecommendation, error: createTokenError, completion: completion)
+                })
+            } else {
+                handleCreateCardToken(fromViewController: fromViewController, token: xenditToken, error: createTokenError, completion: completion)
+            }
         })
     }
 
@@ -272,22 +280,6 @@ import Foundation
     private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
-    
-    // Tokenize Card. Returns a token representing the supplied card details.
-    private static func tokenizeCreditCard(cardData: CardData, tokenCredentials: XenditTokenCredentials, completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
-        let flexBaseUrl = isProductionPublishableKey() ? tokenCredentials.flexProductionURL! : tokenCredentials.flexDevelopmentURL!
-        var url = URL.init(string: flexBaseUrl)!
-        url.appendPathComponent(TOKENIZE_CARD_PATH)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        components.queryItems = [URLQueryItem(name: "apikey", value: tokenCredentials.flexApiKey)]
-        
-        let cardType = getCardType(cardNumber: cardData.cardNumber).stringValue()
-        let requestBody = prepareTokenizeCreditCardBody(cardData: cardData, tokenCredentials: tokenCredentials, cardType: cardType)
-        
-        tokenizeCardRequest(URL: components.url!, requestBody: requestBody) { (CYBToken, error) in
-            completion(CYBToken, error)
-        }
-    }
     
     // Create credit card Xendit token
     private static func createCreditCardToken(cardData: CardData, shouldAuthenticate: Bool, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
