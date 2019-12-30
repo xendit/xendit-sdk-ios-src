@@ -262,24 +262,16 @@ import Foundation
     
     private static let STAGING_XENDIT_BASE_URL = "https://api-staging.xendit.co";
     private static let PRODUCTION_XENDIT_BASE_URL = "https://api.xendit.co";
+    private static let PRODUCTION_XENDIT_HOST = "api.xendit.co";
     
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration";
     private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens";
+    private static let GET_3DS_RECOMMENDATION_URL = "/3ds_bin_recommendation";
     private static let CREDIT_CARD_PATH = "credit_card_tokens";
     private static let AUTHENTICATION_PATH = "authentications";
     private static let TOKENIZE_CARD_PATH = "cybersource/flex/v1/tokens";
     
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
-    
-    // Get tokenizition credentials
-    private static func getTokenizationCredentials(completion: @escaping (_ : XenditTokenCredentials?, _ : XenditError?) -> Void) {
-        var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
-        url?.appendPathComponent(TOKEN_CREDENTIALS_PATH)
-    
-        tokenizationCredentialsRequest(URL: url!) { (tokenCredentials, error) in
-            completion(tokenCredentials, error)
-        }
-    }
     
     // Tokenize Card. Returns a token representing the supplied card details.
     private static func tokenizeCreditCard(cardData: CardData, tokenCredentials: XenditTokenCredentials, completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
@@ -305,6 +297,23 @@ import Foundation
         
         createTokenRequest(URL: url!, bodyJson: requestBody) { (token, error) in
             completion(token, error)
+        }
+    }
+
+    // Get 3DS recommendation
+    private static func get3DSRecommendation(tokenId: String, completion: @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
+        var components = URLComponents()
+
+        components.scheme = "https"
+        components.host = PRODUCTION_XENDIT_HOST
+        components.path = GET_3DS_RECOMMENDATION_URL
+        components.queryItems = [
+            URLQueryItem(name: "token_id", value: tokenId)
+        ]
+        var url = components.url
+        
+        create3DSRecommendationRequest(URL: url!) { (recommendation, error) in
+            completion(recommendation, error)
         }
     }
     
@@ -422,18 +431,21 @@ import Foundation
             })
         }.resume()
     }
-    
-    private static func tokenizationCredentialsRequest(URL: URL, completion: @escaping (_ : XenditTokenCredentials?, _ : XenditError?) -> Void) {
-        let request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
-        Log.shared.logUrlRequest(prefix: "tokenizationCredentialsRequest", request: request, requestBody: nil)
+
+    private static func create3DSRecommendationRequest(URL: URL, completion: @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
+        var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
+        request.httpMethod = "GET"
+
+        Log.shared.logUrlRequest(prefix: "create3DSRecommendationRequest", request: request)
+
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "tokenizationCredentialsRequest", request: request, requestBody: nil, data: data, response: response, error: error)
-            handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handleError) in
+            Log.shared.logUrlResponse(prefix: "create3DSRecommendationRequest", request: request, requestBody: bodyJson, data: data, response: response, error: error)
+            handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
-                    let tokenCredentials = XenditTokenCredentials.init(dictionary: parsedData!)
-                    if tokenCredentials != nil {
+                    let token = Xendit3DSRecommendation.init(response: parsedData!)
+                    if token != nil {
                         DispatchQueue.main.async {
-                            completion(tokenCredentials, nil)
+                            completion(token, nil)
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -442,7 +454,7 @@ import Foundation
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completion(nil, handleError)
+                        completion(nil, handledError)
                     }
                 }
             })
