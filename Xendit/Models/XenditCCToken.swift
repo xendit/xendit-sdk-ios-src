@@ -24,6 +24,9 @@ import Foundation
     
     // Masked card number
     open var maskedCardNumber : String?
+
+    // 3DS recommendation value
+    open var should3DS : Bool?
     
 }
 
@@ -51,5 +54,17 @@ internal extension XenditCCToken {
         self.authenticationId = authenticationId
         self.authenticationURL = authenticationURL
         self.maskedCardNumber = maskedCardNumber
+    }
+}
+
+internal extension XenditCCToken {
+    convenience init(token: XenditCCToken, should3DS: Bool?) {
+        self.init()
+        self.id = token.id
+        self.status = token.status
+        self.authenticationId = token.authenticationId
+        self.authenticationURL = token.authenticationURL
+        self.maskedCardNumber = token.maskedCardNumber
+        self.should3DS = should3DS
     }
 }

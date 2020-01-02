@@ -38,13 +38,6 @@ extension String {
     // MARK: - Xendit
 
 extension Xendit {
-    static func prepareTokenizeCreditCardBody(cardData: CardData, tokenCredentials: XenditTokenCredentials, cardType: String) -> [String: Any] {
-        let json: [String: Any] = ["keyId": tokenCredentials.authKeyId,
-                                   "cardInfo": ["cardNumber" : cardData.cardNumber, "cardExpirationMonth" : cardData.cardExpMonth,
-                                                "cardExpirationYear" : cardData.cardExpYear, "cardType" : cardType]]
-        return json
-    }
-    
     static func prepareCreateTokenBody(cardData: CardData, shouldAuthenticate: Bool) -> [String: Any] {
         var card_json: [String: String] = [
             "account_number": cardData.cardNumber,

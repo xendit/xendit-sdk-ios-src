@@ -24,7 +24,7 @@ class CreateTokenViewController: UIViewController {
         super.viewDidLoad()
         
         // Set Publishable Key
-        Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
+        Xendit.publishableKey = "xnd_public_development_VkuPX4KOseqq3vFvD4E8mqwIvsssAAgf9Z3OThQsuWIMzetnCoU2pUb0ud"
         
     }
     
@@ -48,7 +48,7 @@ class CreateTokenViewController: UIViewController {
         Xendit.createToken(fromViewController: self, cardData: cardData) { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
-                let message = String(format: "TokenID - %@, Status - %@, MaskedCardNumber - %@", token.id, token.status, token.maskedCardNumber ?? "n/a")
+                let message = String(format: "TokenID - %@, Status - %@, MaskedCardNumber - %@, Should_3DS - %@", token.id, token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a")
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
