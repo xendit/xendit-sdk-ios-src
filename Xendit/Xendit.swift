@@ -60,8 +60,8 @@ import Foundation
         
         createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
             if cardData.isMultipleUse == true && xenditToken != nil {
-                get3DSRecommendation(tokenId: xenditToken!.id, completion: { (threeDSRecommendation, get3DSRecommendation) in
-                    let tokenWith3DSRecommendation = XenditCCToken(token: xenditToken!, should3DS: threeDSRecommendation?.should3DS)
+                get3DSRecommendation(tokenId: xenditToken!.id, completion: { (threeDSRecommendation, get3DSRecommendationError) in
+                    let tokenWith3DSRecommendation = XenditCCToken(token: xenditToken!, should3DS: threeDSRecommendation?.should3DS ?? true)
 
                     handleCreateCardToken(fromViewController: fromViewController, token: tokenWith3DSRecommendation, error: createTokenError, completion: completion)
                 })
