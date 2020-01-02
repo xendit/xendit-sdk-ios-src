@@ -12,7 +12,7 @@ import Foundation
 @objc(XEN3DSRecommendation) open class Xendit3DSRecommendation: NSObject {
 
     // Token id
-    @objc(tokenID) open var id: tokenId!
+    @objc(tokenID) open var tokenId: String!
 
     // Authentication url
     open var should3DS : Bool!
@@ -22,7 +22,7 @@ import Foundation
 @objc extension Xendit3DSRecommendation {
     convenience init?(response: [String : Any]) {
         let tokenId = response["token_id"] as? String
-        let should3DS = response["should_3ds"] as? String
+        let should3DS = response["should_3ds"] as? Bool
 
         self.init()
         self.tokenId = tokenId

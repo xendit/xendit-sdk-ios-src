@@ -62,9 +62,9 @@ internal extension XenditCCToken {
         self.init()
         self.id = token.id
         self.status = token.status
-        self.authenticationId = token?.authenticationId
-        self.authenticationURL = token?.authenticationURL
-        self.maskedCardNumber = token?.maskedCardNumber
+        self.authenticationId = token.authenticationId
+        self.authenticationURL = token.authenticationURL
+        self.maskedCardNumber = token.maskedCardNumber
         self.should3DS = should3DS
     }
 }

@@ -60,8 +60,8 @@ import Foundation
         
         createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
             if cardData.isMultipleUse == true && xenditToken != nil {
-                get3DSRecommendation(tokenId: xenditToken.id, completion: { (threeDSRecommendation, get3DSRecommendation) in
-                    let tokenWith3DSRecommendation = XenditCCToken(xenditToken, threeDSRecommendation.should3DS)
+                get3DSRecommendation(tokenId: xenditToken!.id, completion: { (threeDSRecommendation, get3DSRecommendation) in
+                    let tokenWith3DSRecommendation = XenditCCToken(token: xenditToken!, should3DS: threeDSRecommendation?.should3DS)
 
                     handleCreateCardToken(fromViewController: fromViewController, token: tokenWith3DSRecommendation, error: createTokenError, completion: completion)
                 })
@@ -428,10 +428,10 @@ import Foundation
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "GET"
 
-        Log.shared.logUrlRequest(prefix: "create3DSRecommendationRequest", request: request)
+        Log.shared.logUrlRequest(prefix: "create3DSRecommendationRequest", request: request, requestBody: nil)
 
         session.dataTask(with: request) { (data, response, error) in
-            Log.shared.logUrlResponse(prefix: "create3DSRecommendationRequest", request: request, requestBody: bodyJson, data: data, response: response, error: error)
+            Log.shared.logUrlResponse(prefix: "create3DSRecommendationRequest", request: request, requestBody: nil, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
                     let token = Xendit3DSRecommendation.init(response: parsedData!)
