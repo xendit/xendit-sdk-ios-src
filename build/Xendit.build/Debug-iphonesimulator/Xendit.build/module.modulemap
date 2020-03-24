@@ -1,0 +1,11 @@
+framework module Xendit {
+  umbrella header "Xendit.h"
+
+  export *
+  module * { export * }
+}
+
+module Xendit.Swift {
+    header "Xendit-Swift.h"
+    requires objc
+}

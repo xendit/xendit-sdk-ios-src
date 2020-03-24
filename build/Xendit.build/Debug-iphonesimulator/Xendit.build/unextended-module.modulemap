@@ -1,0 +1,10 @@
+framework module Xendit {
+  umbrella header "Xendit.h"
+
+  export *
+  module * { export * }
+}
+
+module Xendit.__Swift {
+    exclude header "Xendit-Swift.h"
+}
