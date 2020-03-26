@@ -19,7 +19,7 @@ class CreateAuthentification: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
+        Xendit.publishableKey = "xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG"
     }
     
     @IBAction func authentificateAction(_ sender: UIButton) {
@@ -36,7 +36,7 @@ class CreateAuthentification: UIViewController {
         let int = Int(amountTextField.text!)
         let amount = NSNumber(value: int!)
 
-        Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount) { (authentication, error) in
+        Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount, onBehalfOf: "5cd8d52d9b60c752da69b9ec") { (authentication, error) in
             if authentication != nil {
                 // Will return authentication with id. ID will be used later
                 let message = String(format: "TokenID - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)

@@ -93,7 +93,7 @@ import Foundation
     // @param fromViewController The UIViewController from which will be present webview for 3DS Authentication
     // @param tokenId The credit card token id
     // @param amount The transaction amount
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -109,9 +109,17 @@ import Foundation
         url?.appendPathComponent(AUTHENTICATION_PATH)
         let requestBody = prepareCreateAuthenticationBody(authenticationData: authenticationData)
         
-        createAuthenticationRequest(URL: url!, bodyJson: requestBody) { (authentication, error) in
+        let header: [String: String] = [
+            "for-user-id": onBehalfOf
+        ]
+        
+        createAuthenticationRequest(URL: url!, bodyJson: requestBody, extraHeader: header) { (authentication, error) in
             handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
         }
+    }
+    
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        self.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: "", completion: completion)
     }
 
 
@@ -357,9 +365,13 @@ import Foundation
         }.resume()
     }
 
-    private static func createAuthenticationRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    private static func createAuthenticationRequest(URL: URL, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
+        
+        if let onBehalfOf = extraHeader["for-user-id"], !onBehalfOf.isEmpty {
+            request.setValue(onBehalfOf, forHTTPHeaderField: "for-user-id")
+        }
 
         Log.shared.logUrlRequest(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
