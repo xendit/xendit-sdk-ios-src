@@ -368,10 +368,7 @@ import Foundation
     private static func createAuthenticationRequest(URL: URL, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
-        
-        if let onBehalfOf = extraHeader["for-user-id"], !onBehalfOf.isEmpty {
-            request.setValue(onBehalfOf, forHTTPHeaderField: "for-user-id")
-        }
+        request.setValue(extraHeader["for-user-id"], forHTTPHeaderField: "for-user-id")
 
         Log.shared.logUrlRequest(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
@@ -410,10 +407,7 @@ import Foundation
     private static func createTokenRequest(URL: URL, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
-        
-        if let onBehalfOf = extraHeader["for-user-id"], !onBehalfOf.isEmpty {
-            request.setValue(onBehalfOf, forHTTPHeaderField: "for-user-id")
-        }
+        request.setValue(extraHeader["for-user-id"], forHTTPHeaderField: "for-user-id")
                 
         Log.shared.logUrlRequest(prefix: "createTokenRequest", request: request, requestBody: bodyJson)
         do {
