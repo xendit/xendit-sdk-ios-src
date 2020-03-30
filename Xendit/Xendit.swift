@@ -17,7 +17,7 @@ import Foundation
     public static var publishableKey: String?
 
     // Create token method
-    public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         let logPrefix = "createToken:"
         func completionWithLog(error: XenditError) {
             Log.shared.verbose("\(logPrefix) \(error)")
@@ -58,7 +58,7 @@ import Foundation
             }
         }
         
-        createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, completion: { (xenditToken, createTokenError) in
+        createCreditCardToken(cardData: cardData, shouldAuthenticate: shouldAuthenticate, onBehalfOf: onBehalfOf, completion: { (xenditToken, createTokenError) in
             if cardData.isMultipleUse == true && xenditToken != nil {
                 get3DSRecommendation(tokenId: xenditToken!.id, completion: { (threeDSRecommendation, get3DSRecommendationError) in
                     let tokenWith3DSRecommendation = XenditCCToken(token: xenditToken!, should3DS: threeDSRecommendation?.should3DS ?? true)
@@ -72,7 +72,11 @@ import Foundation
     }
 
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: true, completion: completion);
+        createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: true, onBehalfOf: "", completion: completion);
+    }
+    
+    public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: shouldAuthenticate, onBehalfOf: "", completion: completion);
     }
     
     // 3DS Authentication method
@@ -89,7 +93,7 @@ import Foundation
     // @param fromViewController The UIViewController from which will be present webview for 3DS Authentication
     // @param tokenId The credit card token id
     // @param amount The transaction amount
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -105,9 +109,17 @@ import Foundation
         url?.appendPathComponent(AUTHENTICATION_PATH)
         let requestBody = prepareCreateAuthenticationBody(authenticationData: authenticationData)
         
-        createAuthenticationRequest(URL: url!, bodyJson: requestBody) { (authentication, error) in
+        let header: [String: String] = [
+            "for-user-id": onBehalfOf
+        ]
+        
+        createAuthenticationRequest(URL: url!, bodyJson: requestBody, extraHeader: header) { (authentication, error) in
             handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
         }
+    }
+    
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        self.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: "", completion: completion)
     }
 
 
@@ -282,12 +294,17 @@ import Foundation
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
     
     // Create credit card Xendit token
-    private static func createCreditCardToken(cardData: CardData, shouldAuthenticate: Bool, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func createCreditCardToken(cardData: CardData, shouldAuthenticate: Bool, onBehalfOf: String, completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)
         url?.appendPathComponent(CREATE_CREDIT_CARD_PATH)
+
+        let header: [String: String] = [
+            "for-user-id": onBehalfOf
+        ]
+        
         let requestBody = prepareCreateTokenBody(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         
-        createTokenRequest(URL: url!, bodyJson: requestBody) { (token, error) in
+        createTokenRequest(URL: url!, bodyJson: requestBody, extraHeader: header) { (token, error) in
             completion(token, error)
         }
     }
@@ -302,7 +319,7 @@ import Foundation
         components.queryItems = [
             URLQueryItem(name: "token_id", value: tokenId)
         ]
-        var url = components.url
+        let url = components.url
         
         create3DSRecommendationRequest(URL: url!) { (recommendation, error) in
             completion(recommendation, error)
@@ -348,9 +365,10 @@ import Foundation
         }.resume()
     }
 
-    private static func createAuthenticationRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    private static func createAuthenticationRequest(URL: URL, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
+        request.setValue(extraHeader["for-user-id"], forHTTPHeaderField: "for-user-id")
 
         Log.shared.logUrlRequest(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
@@ -386,10 +404,11 @@ import Foundation
         }.resume()
     }
     
-    private static func createTokenRequest(URL: URL,  bodyJson: [String:Any], completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func createTokenRequest(URL: URL, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         var request = URLRequest.authorizationRequest(url: URL, publishableKey: publishableKey!)
         request.httpMethod = "POST"
-
+        request.setValue(extraHeader["for-user-id"], forHTTPHeaderField: "for-user-id")
+                
         Log.shared.logUrlRequest(prefix: "createTokenRequest", request: request, requestBody: bodyJson)
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)

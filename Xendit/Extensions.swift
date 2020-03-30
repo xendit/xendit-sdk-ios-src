@@ -134,6 +134,10 @@ extension Xendit {
     
     internal static func handleCreateCardToken(fromViewController: UIViewController, token: XenditCCToken?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         if let error = error {
+            // handle error message
+            if error.errorCode == "INVALID_USER_ID" {
+                error.message = error.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
+            }
             return completion(nil, error)
         }
 
@@ -157,6 +161,10 @@ extension Xendit {
 
     internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if (error != nil) {
+            // handle error message
+            if error!.errorCode == "INVALID_USER_ID" {
+                error!.message = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
+            }
             completion(nil, error);
             return
         }
