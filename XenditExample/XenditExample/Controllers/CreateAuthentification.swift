@@ -43,7 +43,11 @@ class CreateAuthentification: UIViewController {
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
-                self.showAlert(title: error!.errorCode, message: error!.message)
+                var errorMessage = error!.message
+                if error!.errorCode == "INVALID_USER_ID" {
+                    errorMessage = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
+                }
+                self.showAlert(title: error!.errorCode, message: errorMessage ?? "Error creating authentication.")
             }
         }
     }
