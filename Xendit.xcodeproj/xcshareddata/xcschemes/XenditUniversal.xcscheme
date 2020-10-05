@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "943ABDBB1E79614400B61098"
-               BuildableName = "Xendit.framework"
-               BlueprintName = "Xendit"
+               BlueprintIdentifier = "9476723E1E8C0710004FD8E0"
+               BuildableName = "XenditUniversal"
+               BlueprintName = "XenditUniversal"
                ReferencedContainer = "container:Xendit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,26 +27,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "943ABDBB1E79614400B61098"
-            BuildableName = "Xendit.framework"
-            BlueprintName = "Xendit"
-            ReferencedContainer = "container:Xendit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "943ABDC41E79614400B61098"
-               BuildableName = "XenditTests.xctest"
-               BlueprintName = "XenditTests"
-               ReferencedContainer = "container:Xendit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -59,15 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "943ABDBB1E79614400B61098"
-            BuildableName = "Xendit.framework"
-            BlueprintName = "Xendit"
-            ReferencedContainer = "container:Xendit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -78,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "943ABDBB1E79614400B61098"
-            BuildableName = "Xendit.framework"
-            BlueprintName = "Xendit"
+            BlueprintIdentifier = "9476723E1E8C0710004FD8E0"
+            BuildableName = "XenditUniversal"
+            BlueprintName = "XenditUniversal"
             ReferencedContainer = "container:Xendit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
