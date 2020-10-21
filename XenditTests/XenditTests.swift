@@ -88,6 +88,10 @@ class XenditTests: XCTestCase {
             XCTAssertEqual(token?.authenticationId, "5bf7e566399c7527e8e9fa5b")
             XCTAssertEqual(token?.status, "VERIFIED")
             XCTAssertEqual(token?.maskedCardNumber, "520000XXXXXX0056")
+            XCTAssertEqual(token?.cardMetadata?.bank, "Test bank")
+            XCTAssertEqual(token?.cardMetadata?.type, "CREDIT")
+            XCTAssertEqual(token?.cardMetadata?.countryCode, "ID")
+            XCTAssertEqual(token?.cardMetadata?.brand, "VISA")
         }
     }
 
