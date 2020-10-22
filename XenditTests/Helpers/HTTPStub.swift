@@ -48,21 +48,21 @@ class HTTPStub {
             let bodyString = bodyData == nil ? "<empty body>" : String(data: bodyData!, encoding: .utf8)!
             let message = "Unexpected request: \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")\n\(bodyString)"
             XCTFail(message, file: file, line: line)
-            return OHHTTPStubsResponse(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: nil))
+            return HTTPStubsResponse(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: nil))
         }
     }
 
     func respond(_ endpoint: Endpoint, fixture: ResponseFixture) {
         stub(condition: isPath(endpoint.path)) { _ in
             if fixture == .networkError {
-                return OHHTTPStubsResponse(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil))
+                return HTTPStubsResponse(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil))
             }
-            return OHHTTPStubsResponse(named: fixture.rawValue, in: Bundle(for: type(of: self)))
+            return HTTPStubsResponse()
         }
     }
 
     func tearDown() {
-        OHHTTPStubs.removeAllStubs()
+        HTTPStubs.removeAllStubs()
     }
 
 }

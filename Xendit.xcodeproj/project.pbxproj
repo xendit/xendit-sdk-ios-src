@@ -23,8 +23,6 @@
 /* Begin PBXBuildFile section */
 		3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5C219069F900EF1B72 /* LogSanitizer.swift */; };
 		3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */; };
-		3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */; };
-		3911B5EF21A7EDBE0051547F /* OHHTTPStubs.framework in Copy Files (Carthage) */ = {isa = PBXBuildFile; fileRef = 3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3949B8A121A7FD50000F1417 /* XenditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3949B8A021A7FD50000F1417 /* XenditTests.swift */; };
 		3949B8A521A7FE9F000F1417 /* HTTPStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3949B8A421A7FE9F000F1417 /* HTTPStub.swift */; };
 		3949B8A921A80658000F1417 /* bad_request.response in Resources */ = {isa = PBXBuildFile; fileRef = 3949B8A821A80658000F1417 /* bad_request.response */; };
@@ -47,6 +45,10 @@
 		39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205721A6887E00D0A005 /* Fingerprint.swift */; };
 		39CE205B21A6995A00D0A005 /* IDFAHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39CE205921A6995A00D0A005 /* IDFAHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205A21A6995A00D0A005 /* IDFAHelper.m */; };
+		761F874E8B709A41357EB5ED /* libPods-XenditTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2D8FC1BE74A4550740A40B /* libPods-XenditTests.a */; };
+		840F749A2540162300A5C2E5 /* CardMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F74992540162300A5C2E5 /* CardMetadata.swift */; };
+		8411079325411D7500B270E9 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411079225411D7500B270E9 /* CreditCard.swift */; };
+		841107952541203F00B270E9 /* CreditCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841107942541203F00B270E9 /* CreditCardTests.swift */; };
 		8482C71223BD911C00618F01 /* Xendit3DSRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
@@ -82,7 +84,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3911B5EF21A7EDBE0051547F /* OHHTTPStubs.framework in Copy Files (Carthage) */,
 			);
 			name = "Copy Files (Carthage)";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +116,14 @@
 		39CE205721A6887E00D0A005 /* Fingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprint.swift; sourceTree = "<group>"; };
 		39CE205921A6995A00D0A005 /* IDFAHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDFAHelper.h; sourceTree = "<group>"; };
 		39CE205A21A6995A00D0A005 /* IDFAHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDFAHelper.m; sourceTree = "<group>"; };
+		3F2D8FC1BE74A4550740A40B /* libPods-XenditTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XenditTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8345610132530E5593693A13 /* Pods-XenditTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.debug.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.debug.xcconfig"; sourceTree = "<group>"; };
+		840F74992540162300A5C2E5 /* CardMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMetadata.swift; sourceTree = "<group>"; };
+		8411079225411D7500B270E9 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		841107942541203F00B270E9 /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
+		841107962541259700B270E9 /* OHHTTPStubs.framework.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = OHHTTPStubs.framework.zip; sourceTree = "<group>"; };
+		841107992541278D00B270E9 /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8411079B2541282A00B270E9 /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
 		940EA6451E82EEFA004ADA90 /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 		A05650F11EBC5B890019B64F /* WebViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewConstants.swift; sourceTree = "<group>"; };
 		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 		A075BDD51ECBCA7900140B7A /* XenditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
+		C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.release.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +158,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3911B5ED21A7ECCA0051547F /* OHHTTPStubs.framework in Frameworks */,
 				943ABDC61E79614400B61098 /* Xendit.framework in Frameworks */,
+				761F874E8B709A41357EB5ED /* libPods-XenditTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +179,11 @@
 		3911B5EB21A7ECCA0051547F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8411079B2541282A00B270E9 /* libOHHTTPStubs.a */,
+				841107992541278D00B270E9 /* libOHHTTPStubs.a */,
+				841107962541259700B270E9 /* OHHTTPStubs.framework.zip */,
 				3911B5EC21A7ECCA0051547F /* OHHTTPStubs.framework */,
+				3F2D8FC1BE74A4550740A40B /* libPods-XenditTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,8 +239,18 @@
 				39CE205721A6887E00D0A005 /* Fingerprint.swift */,
 				39CE205921A6995A00D0A005 /* IDFAHelper.h */,
 				39CE205A21A6995A00D0A005 /* IDFAHelper.m */,
+				8411079225411D7500B270E9 /* CreditCard.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		77DED6CDB0161406E7D85DD8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8345610132530E5593693A13 /* Pods-XenditTests.debug.xcconfig */,
+				C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		940EA6441E82EEDC004ADA90 /* Models */ = {
@@ -238,6 +262,7 @@
 				940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */,
 				94AD221B1E855440009C00D5 /* XenditTokenCredentials.swift */,
 				8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */,
+				840F74992540162300A5C2E5 /* CardMetadata.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +274,7 @@
 				943ABDC91E79614400B61098 /* XenditTests */,
 				943ABDBD1E79614400B61098 /* Products */,
 				3911B5EB21A7ECCA0051547F /* Frameworks */,
+				77DED6CDB0161406E7D85DD8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,6 +314,7 @@
 				3949B8A021A7FD50000F1417 /* XenditTests.swift */,
 				3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */,
 				943ABDCC1E79614400B61098 /* Info.plist */,
+				841107942541203F00B270E9 /* CreditCardTests.swift */,
 			);
 			path = XenditTests;
 			sourceTree = "<group>";
@@ -340,6 +367,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 943ABDD31E79614400B61098 /* Build configuration list for PBXNativeTarget "XenditTests" */;
 			buildPhases = (
+				1C64F22844E8430FF517F030 /* [CP] Check Pods Manifest.lock */,
 				943ABDC11E79614400B61098 /* Sources */,
 				943ABDC21E79614400B61098 /* Frameworks */,
 				943ABDC31E79614400B61098 /* Resources */,
@@ -428,6 +456,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1C64F22844E8430FF517F030 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XenditTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		947672421E8C071F004FD8E0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +500,8 @@
 			files = (
 				94AD221C1E855440009C00D5 /* XenditTokenCredentials.swift in Sources */,
 				A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */,
+				8411079325411D7500B270E9 /* CreditCard.swift in Sources */,
+				840F749A2540162300A5C2E5 /* CardMetadata.swift in Sources */,
 				3979BE002181A1C500A226B8 /* Log.swift in Sources */,
 				39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */,
 				A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */,
@@ -480,6 +532,7 @@
 				3953877721ABC33100585B97 /* FingerprintTests.swift in Sources */,
 				943ABDDF1E79A72F00B61098 /* CardDataTest.swift in Sources */,
 				3949B8A121A7FD50000F1417 /* XenditTests.swift in Sources */,
+				841107952541203F00B270E9 /* CreditCardTests.swift in Sources */,
 				3949B8AB21A80AB7000F1417 /* TestCards.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,11 +716,13 @@
 		};
 		943ABDD41E79614400B61098 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8345610132530E5593693A13 /* Pods-XenditTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Xendit/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -680,11 +735,13 @@
 		};
 		943ABDD51E79614400B61098 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Xendit/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
