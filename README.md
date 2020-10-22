@@ -10,8 +10,8 @@ Slack Mentions: `@troops-tpi`
 
 ### Running Tests
 
-1. Install [Carthage](https://github.com/Carthage/Carthage) (if you have homebrew installed, `brew install carthage`)
-2. In console open repository root folder and install test dependencies by running `carthage bootstrap --platform ios --no-use-binaries`
+1. Install [Cocoapods](https://guides.cocoapods.org/using/using-cocoapods.html) (Ruby is required)
+2. In console open repository root folder and install test dependencies by running `pod install`
 3. Open `Xendit.xcworkspace`
 
 To run UI tests: choose `Xendit` scheme and press `cmd+u` (or "Run Product" -> "Test")
