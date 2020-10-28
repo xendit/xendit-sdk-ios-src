@@ -46,9 +46,15 @@
 		39CE205B21A6995A00D0A005 /* IDFAHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39CE205921A6995A00D0A005 /* IDFAHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE205A21A6995A00D0A005 /* IDFAHelper.m */; };
 		761F874E8B709A41357EB5ED /* libPods-XenditTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2D8FC1BE74A4550740A40B /* libPods-XenditTests.a */; };
-		840F749A2540162300A5C2E5 /* CardMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F74992540162300A5C2E5 /* CardMetadata.swift */; };
+		840F749A2540162300A5C2E5 /* XenditCardMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F74992540162300A5C2E5 /* XenditCardMetadata.swift */; };
 		8411079325411D7500B270E9 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411079225411D7500B270E9 /* CreditCard.swift */; };
 		841107952541203F00B270E9 /* CreditCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841107942541203F00B270E9 /* CreditCardTests.swift */; };
+		845651C92547F8AA005B997C /* XenditAuthenticatedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651C82547F8AA005B997C /* XenditAuthenticatedToken.swift */; };
+		845651CD254904C7005B997C /* XDTCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651CC254904C7005B997C /* XDTCards.swift */; };
+		845651CF25490A47005B997C /* Authenticatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651CE25490A47005B997C /* Authenticatable.swift */; };
+		845651D325491B50005B997C /* XDTApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651D225491B50005B997C /* XDTApiClient.swift */; };
+		845651DB25495D38005B997C /* CardinalMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845651D6254947FD005B997C /* CardinalMobile.framework */; };
+		845651DC25495D38005B997C /* CardinalMobile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 845651D6254947FD005B997C /* CardinalMobile.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8482C71223BD911C00618F01 /* Xendit3DSRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
@@ -88,6 +94,17 @@
 			name = "Copy Files (Carthage)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		845651DD25495D38005B997C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				845651DC25495D38005B997C /* CardinalMobile.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -118,12 +135,17 @@
 		39CE205A21A6995A00D0A005 /* IDFAHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDFAHelper.m; sourceTree = "<group>"; };
 		3F2D8FC1BE74A4550740A40B /* libPods-XenditTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XenditTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8345610132530E5593693A13 /* Pods-XenditTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.debug.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.debug.xcconfig"; sourceTree = "<group>"; };
-		840F74992540162300A5C2E5 /* CardMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMetadata.swift; sourceTree = "<group>"; };
+		840F74992540162300A5C2E5 /* XenditCardMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardMetadata.swift; sourceTree = "<group>"; };
 		8411079225411D7500B270E9 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		841107942541203F00B270E9 /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
 		841107962541259700B270E9 /* OHHTTPStubs.framework.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = OHHTTPStubs.framework.zip; sourceTree = "<group>"; };
 		841107992541278D00B270E9 /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8411079B2541282A00B270E9 /* libOHHTTPStubs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOHHTTPStubs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		845651C82547F8AA005B997C /* XenditAuthenticatedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticatedToken.swift; sourceTree = "<group>"; };
+		845651CC254904C7005B997C /* XDTCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTCards.swift; sourceTree = "<group>"; };
+		845651CE25490A47005B997C /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
+		845651D225491B50005B997C /* XDTApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTApiClient.swift; sourceTree = "<group>"; };
+		845651D6254947FD005B997C /* CardinalMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CardinalMobile.framework; sourceTree = "<group>"; };
 		8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
 		940EA6451E82EEFA004ADA90 /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
@@ -151,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845651DB25495D38005B997C /* CardinalMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +202,7 @@
 		3911B5EB21A7ECCA0051547F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				845651D6254947FD005B997C /* CardinalMobile.framework */,
 				8411079B2541282A00B270E9 /* libOHHTTPStubs.a */,
 				841107992541278D00B270E9 /* libOHHTTPStubs.a */,
 				841107962541259700B270E9 /* OHHTTPStubs.framework.zip */,
@@ -262,7 +286,9 @@
 				940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */,
 				94AD221B1E855440009C00D5 /* XenditTokenCredentials.swift */,
 				8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */,
-				840F74992540162300A5C2E5 /* CardMetadata.swift */,
+				840F74992540162300A5C2E5 /* XenditCardMetadata.swift */,
+				845651C82547F8AA005B997C /* XenditAuthenticatedToken.swift */,
+				845651CE25490A47005B997C /* Authenticatable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +325,8 @@
 				94AD22191E8534C6009C00D5 /* Extensions.swift */,
 				943ABDC01E79614400B61098 /* Info.plist */,
 				A075BDD51ECBCA7900140B7A /* XenditError.swift */,
+				845651CC254904C7005B997C /* XDTCards.swift */,
+				845651D225491B50005B997C /* XDTApiClient.swift */,
 			);
 			path = Xendit;
 			sourceTree = "<group>";
@@ -353,6 +381,7 @@
 				943ABDB81E79614400B61098 /* Frameworks */,
 				943ABDB91E79614400B61098 /* Headers */,
 				943ABDBA1E79614400B61098 /* Resources */,
+				845651DD25495D38005B997C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -501,21 +530,25 @@
 				94AD221C1E855440009C00D5 /* XenditTokenCredentials.swift in Sources */,
 				A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */,
 				8411079325411D7500B270E9 /* CreditCard.swift in Sources */,
-				840F749A2540162300A5C2E5 /* CardMetadata.swift in Sources */,
+				845651CD254904C7005B997C /* XDTCards.swift in Sources */,
+				840F749A2540162300A5C2E5 /* XenditCardMetadata.swift in Sources */,
 				3979BE002181A1C500A226B8 /* Log.swift in Sources */,
 				39CE205821A6887E00D0A005 /* Fingerprint.swift in Sources */,
 				A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */,
 				94AD223F1E859F59009C00D5 /* WebViewController.swift in Sources */,
 				A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */,
+				845651CF25490A47005B997C /* Authenticatable.swift in Sources */,
 				940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */,
 				39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */,
 				943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */,
 				8482C71223BD911C00618F01 /* Xendit3DSRecommendation.swift in Sources */,
+				845651C92547F8AA005B997C /* XenditAuthenticatedToken.swift in Sources */,
 				3907BA5D219069F900EF1B72 /* LogSanitizer.swift in Sources */,
 				39CE205C21A6995A00D0A005 /* IDFAHelper.m in Sources */,
 				A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */,
 				940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */,
 				94AD221A1E8534C6009C00D5 /* Extensions.swift in Sources */,
+				845651D325491B50005B997C /* XDTApiClient.swift in Sources */,
 				A05650F21EBC5B890019B64F /* WebViewConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +714,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Xendit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -703,6 +740,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Xendit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

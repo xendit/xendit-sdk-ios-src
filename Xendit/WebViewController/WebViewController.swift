@@ -11,18 +11,22 @@ import WebKit
 
 
 protocol CardAuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
 }
 
 
 class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         let webViewController = WebViewController(URL: URL)
 
-        webViewController.token = token
+        webViewController.token = authenticatedToken
         webViewController.authenticateCompletion = { (token, error) -> Void in
             webViewController.dismiss(animated: true, completion: nil)
-            completion(token, error)
+            guard error == nil else {
+                return completion(nil, error)
+            }
+            let token = XenditCCToken(authenticatedToken: token!)
+            return completion(token, error)
         }
 
         DispatchQueue.main.async {
@@ -37,12 +41,12 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     
     private var urlString : String!
     
-    public var token : XenditCCToken!
+    public var token : XenditAuthenticatedToken!
     
     var webView: WKWebView!
     
-    var authenticateCompletion: (XenditCCToken?, XenditError?) ->Void = {
-        (token: XenditCCToken?, error: XenditError?) -> Void in
+    var authenticateCompletion: (XenditAuthenticatedToken?, XenditError?) ->Void = {
+        (token: XenditAuthenticatedToken?, error: XenditError?) -> Void in
     }
     
     // MARK: - Initializer
@@ -114,7 +118,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     }
     
     func handlePostMessageResponse(response: [String:Any]) {
-        let authenticatedToken = XenditCCToken(response: response)
+        let authenticatedToken = XenditAuthenticatedToken(response: response)
         if authenticatedToken != nil && token.id == authenticatedToken?.id {
             authenticateCompletion(authenticatedToken, nil)
         } else {

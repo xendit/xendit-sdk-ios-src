@@ -28,4 +28,8 @@ import Foundation
         self.errorCode = errorCode
         self.message = message
     }
+    
+    public static func ServerError() -> XenditError {
+        return XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now")
+    }
 }

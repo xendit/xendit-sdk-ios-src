@@ -28,7 +28,7 @@ import Foundation
     // 3DS recommendation value
     open var should3DS : Bool?
     
-    open var metadata : CardMetadata?
+    open var metadata : XenditCardMetadata?
     
 }
 
@@ -46,12 +46,37 @@ import Foundation
         self.maskedCardNumber = (response["masked_card_number"] as? String)
         
         if (response["metadata"] != nil) {
-            self.metadata = CardMetadata(response: response["metadata"] as! [String : Any])
+            self.metadata = XenditCardMetadata(response: response["metadata"] as? [String : Any])
         }
         
     }
 }
 
+@objc extension XenditCCToken {
+    convenience init?(authenticatedToken: XenditAuthenticatedToken) {
+        self.init()
+        
+        self.id = authenticatedToken.id
+        self.status = authenticatedToken.status
+        self.authenticationId = authenticatedToken.authenticationId
+        self.authenticationURL = authenticatedToken.authenticationURL
+        self.maskedCardNumber = authenticatedToken.maskedCardNumber
+        self.metadata = authenticatedToken.metadata
+    }
+}
+
+@objc extension XenditCCToken {
+    convenience init?(tokenId: String, authentication: XenditAuthentication) {
+        self.init()
+        
+        self.id = tokenId
+        self.status = authentication.status
+        self.authenticationId = authentication.id
+        self.authenticationURL = authentication.authenticationURL
+        self.maskedCardNumber = authentication.maskedCardNumber
+        self.metadata = authentication.metadata
+    }
+}
 
 internal extension XenditCCToken {
     convenience init(id: String, status: String, authenticationId: String, authenticationURL: String?, maskedCardNumber: String?) {
