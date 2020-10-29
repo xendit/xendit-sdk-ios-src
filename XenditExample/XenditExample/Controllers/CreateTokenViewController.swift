@@ -38,14 +38,23 @@ class CreateTokenViewController: UIViewController {
         cardData.cardExpMonth = cardExpMonthTextField.text
         cardData.cardExpYear = cardExpYearTextField.text
         cardData.cardCvn = cardCvnTextField.text
-        cardData.isMultipleUse = isMultipleUseSwitch.isOn;
+        cardData.isMultipleUse = isMultipleUseSwitch.isOn
+        
+        let billingDetails: XenditBillingDetails = XenditBillingDetails()
+        billingDetails.givenNames = "John"
+        billingDetails.surname = "Smith"
+        billingDetails.address = XenditAddress()
+        billingDetails.address?.postalCode = "123456"
         
         if !cardData.isMultipleUse && (amountTextField.text?.count)! > 0 {
             let int = Int(amountTextField.text!)
             cardData.amount = NSNumber(value: int!)
         }
+        
+        let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: true)
+        tokenizationRequest.billingDetails = billingDetails
 
-        Xendit.createToken(fromViewController: self, cardData: cardData, shouldAuthenticate: true, onBehalfOf: "") { (token, error) in
+        Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: "") { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
                 let issuingBank = token.metadata?.bank ?? "n/a"

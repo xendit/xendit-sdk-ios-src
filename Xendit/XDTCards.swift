@@ -14,7 +14,7 @@ protocol CanTokenize {
     // @param shouldAuthenticate: Specify if authentication is bundled with the tokenization
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
-    static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String?, completion:@escaping (_: XenditCCToken?, _: XenditError?) -> Void)
+    static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
 }
 
 protocol CanAuthenticate {
@@ -52,40 +52,21 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         cardinalSession!.configure(config)
     }
     
-    public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         let logPrefix = "createToken:"
+        let cardData = tokenizationRequest.cardData
         
         if let error = validateTokenizationRequest(cardData: cardData) {
             Log.shared.verbose("\(logPrefix) \(error)")
             completion(nil, error)
-        }
-        Log.shared.verbose("\(logPrefix) start with \(cardData?.description ?? "nil")")
-        
-        // To be refactored using a request API DTO
-        var cardDataJson: [String: String] = [
-            "account_number": cardData.cardNumber,
-            "exp_month": cardData.cardExpMonth,
-            "exp_year": cardData.cardExpYear,
-        ]
-        
-        if cardData.cardCvn != nil && cardData.cardCvn != "" {
-            cardDataJson["cvn"] = cardData.cardCvn
-        }
-        
-        var requestBody: [String: Any] = [
-            "should_authenticate": shouldAuthenticate,
-            "card_data": cardDataJson,
-            "is_single_use": !cardData.isMultipleUse
-        ]
-        
-        if (!cardData.isMultipleUse) {
-            requestBody["amount"] = cardData.amount;
         }
         
         var extraHeaders: [String: String] = [:]
         if onBehalfOf != "" {
             extraHeaders["for-user-id"] = onBehalfOf
         }
+        
+        let requestBody = tokenizationRequest.toJsonObject()
         
         XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
             if cardData.isMultipleUse == true && authenticatedToken != nil {

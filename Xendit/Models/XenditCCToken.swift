@@ -19,7 +19,7 @@ import Foundation
 
     open var authenticationId : String!
     
-    // Authentication url
+    // Authentication redirect url
     open var authenticationURL : String?
     
     // Masked card number

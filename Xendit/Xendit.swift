@@ -21,19 +21,29 @@ import CardinalMobile
     private static var cardinalSession: CardinalSession!
     private static var isSetup = false
     
+    // Create token method with billing details and customer object
+    public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
+    }
+    
     // Create token method
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
-        XDTCards.createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: shouldAuthenticate, onBehalfOf: onBehalfOf, completion: completion)
+        let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
+        XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
     
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
-        XDTCards.createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: true, onBehalfOf: nil, completion: completion)    }
+        let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: true)
+        XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
+    }
     
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
-        XDTCards.createToken(fromViewController: fromViewController, cardData: cardData, shouldAuthenticate: shouldAuthenticate, onBehalfOf: nil, completion: completion)
+        let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
+        XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
     }
     
     // 3DS Authentication method
