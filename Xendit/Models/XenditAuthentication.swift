@@ -63,4 +63,12 @@ internal extension XenditAuthentication {
         self.status = status
         self.authenticationURL = authenticationURL
     }
+    
+    convenience init(id: String, status: String, maskedCardNumber: String?, metadata: XenditCardMetadata?) {
+        self.init()
+        self.id = id
+        self.status = status
+        self.maskedCardNumber = maskedCardNumber
+        self.metadata = metadata
+    }
 }

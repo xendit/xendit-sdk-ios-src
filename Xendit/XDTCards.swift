@@ -98,8 +98,34 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             extraHeaders["for-user-id"] = onBehalfOf
         }
         
-        XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: extraHeaders) { (authentication, error) in
-            handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
+        let jwtQuery: [String: String] = [
+            "amount": amount.stringValue,
+            "currency": "IDR" // TODO: fix
+        ]
+        
+        XDTApiClient.getJWT(publishableKey: publishableKey!, tokenId: tokenId, query: jwtQuery) {
+            (jwt, error) in
+                if error != nil || jwt?.jwt == nil {
+                    // Continue with normal flow
+                    XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: extraHeaders) { (authentication, error) in
+                        handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
+                    }
+                } else {
+                    // 3DS2 flow
+                    let environment = jwt?.environment;
+                    let jwt = jwt?.jwt
+                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: environment!, amount: amount, jwt: jwt!, onBehalfOf: onBehalfOf) {
+                        (token, error) in
+                        if token == nil || error != nil {
+                            completion(nil, error)
+                        } else {
+                            // mapping token response into authentication response
+                            let authentication = XenditAuthentication(id: token!.authenticationId, status: token!.status, maskedCardNumber: token!.maskedCardNumber, metadata: token!.metadata)
+                            completion(authentication, error)
+                        }
+
+                    }
+                }
         }
     }
     
@@ -217,24 +243,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         if status != nil {
             if status == "IN_REVIEW" {
                 if authenticatedToken?.threedsVersion == "2.0" && jwt != nil {
-                    let cardinalEnvironment = authenticatedToken?.environment == "DEVELOPMENT" ? CardinalSessionEnvironment.staging : CardinalSessionEnvironment.production;
-                    configureCardinal(environment: cardinalEnvironment);
-                    cardinalSession?.setup(jwtString: jwt!, completed: {
-                        (sessionId: String) in
-                        createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, onBehalfOf: onBehalfOf, completion: completion)
-                    }) {
-                        (response : CardinalResponse) in
-                            // Revert to 3DS1 flow
-                            createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
-                                if error != nil {
-                                    return completion(nil, error)
-                                }
-                                // Handle opening of OTP page
-                                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                                return completion(token, nil)
-                            }
-                            return
-                    }
+                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: authenticatedToken!.environment!, amount: amount, jwt: jwt!, onBehalfOf: onBehalfOf, completion: completion)
                 } else if let authenticationURL = authenticatedToken?.authenticationURL {
                     cardAuthenticationProvider.authenticate(
                         fromViewController: fromViewController,
@@ -249,6 +258,27 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             }
         } else {
             completion(nil, XenditError.ServerError())
+        }
+    }
+    
+    private static func handleEmv3DSFlow(fromViewController: UIViewController, tokenId: String, environment: String, amount: NSNumber, jwt: String, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        let cardinalEnvironment = environment == "DEVELOPMENT" ? CardinalSessionEnvironment.staging : CardinalSessionEnvironment.production;
+        configureCardinal(environment: cardinalEnvironment);
+        cardinalSession?.setup(jwtString: jwt, completed: {
+            (sessionId: String) in
+            createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, onBehalfOf: onBehalfOf, completion: completion)
+        }) {
+            (response : CardinalResponse) in
+                // Revert to 3DS1 flow
+                createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
+                    if error != nil {
+                        return completion(nil, error)
+                    }
+                    // Handle opening of OTP page
+                    let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
+                    return completion(token, nil)
+                }
+                return
         }
     }
     

@@ -46,6 +46,7 @@ class XDTApiClient {
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration"
     private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens"
     private static let VERIFY_AUTHENTICATION_PATH = "credit_card_authentications/:authentication_id/verification"
+    private static let JWT_PATH = "/credit-card-tokens/:token_id/jwt"
     private static let GET_3DS_RECOMMENDATION_URL = "/3ds_bin_recommendation"
     private static let CREDIT_CARD_PATH = "credit_card_tokens"
     private static let AUTHENTICATION_PATH = "authentications"
@@ -250,6 +251,35 @@ class XDTApiClient {
         }.resume()
     }
     
+    public static func getJWT(publishableKey: String, tokenId: String, query: [String: String], completion: @escaping (_ : XenditJWT?, _ : XenditError?) -> Void) {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = PRODUCTION_XENDIT_HOST
+        components.path = JWT_PATH.replacingOccurrences(of: ":token_id", with: tokenId)
+        components.queryItems = query.map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        let url = components.url!
+        let request = URLRequest.authorizedRequest(url: url, method: "GET", publishableKey: publishableKey, extraHeaders: nil)
+
+        Log.shared.logUrlRequest(prefix: "getJWT", request: request, requestBody: nil)
+
+        session.dataTask(with: request) { (data, response, error) in
+            Log.shared.logUrlResponse(prefix: "getJWT", request: request, requestBody: nil, data: data, response: response, error: error)
+            handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
+                if parsedData != nil {
+                    let jwt = XenditJWT.FromJson(response: parsedData)
+                    DispatchQueue.main.async {
+                        completion(jwt, nil)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(nil, handledError)
+                    }
+                }
+            })
+        }.resume()
+    }
+    
     static func handleResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
         if let error = error {
             handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error.localizedDescription))
@@ -305,34 +335,6 @@ class XDTApiClient {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
                 }
             }
-        }
-    }
-    
-    internal static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        if (error != nil) {
-            // handle error message
-            if error!.errorCode == "INVALID_USER_ID" {
-                error!.message = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
-            }
-            completion(nil, error);
-            return
-        }
-        
-        let status = authentication?.status
-
-        if status != nil {
-            if status == "IN_REVIEW", let authenticationURL = authentication?.authenticationURL {
-//                authenticationProvider.authenticate(
-//                    fromViewController: fromViewController,
-//                    URL: authenticationURL,
-//                    authentication: authentication!,
-//                    completion: completion
-//                )
-            } else {
-                completion(authentication, nil)
-            }
-        } else {
-            completion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Something unexpected happened, we are investigating this issue right now"))
         }
     }
     
