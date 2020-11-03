@@ -302,6 +302,11 @@ import Foundation
             "for-user-id": onBehalfOf
         ]
         
+        guard CreditCard.isValidCardNumber(cardNumber: cardData.cardNumber) else {
+            completion(nil, XenditError(errorCode: "API_VALIDATION_ERROR", message: "Card number is invalid"))
+            return
+        }
+        
         let requestBody = prepareCreateTokenBody(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         
         createTokenRequest(URL: url!, bodyJson: requestBody, extraHeader: header) { (token, error) in
