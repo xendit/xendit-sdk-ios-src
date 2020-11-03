@@ -14,5 +14,11 @@ Connection: keep-alive
   "id": "5bf7e566399c7527e8e9fa5a",
   "authentication_id": "5bf7e566399c7527e8e9fa5b",
   "status": "VERIFIED",
-  "masked_card_number": "520000XXXXXX0056"
+  "masked_card_number": "520000XXXXXX0056",
+  "metadata": {
+    "bank": "Test bank",
+    "type": "CREDIT",
+    "country_code": "ID",
+    "brand": "VISA"
+  }
 }
