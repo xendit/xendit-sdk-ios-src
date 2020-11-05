@@ -52,7 +52,7 @@ import CardinalMobile
     // @param amount The transaction amount
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
-        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf, completion: completion)
+        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf, customer: nil, completion: completion)
     }
     
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {

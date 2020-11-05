@@ -24,7 +24,7 @@ protocol CanAuthenticate {
     // @param amount The transaction amount
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when authentication is completed
-    static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, completion:@escaping (_: XenditAuthentication?, _: XenditError?) -> Void)
+    static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion:@escaping (_: XenditAuthentication?, _: XenditError?) -> Void)
 }
 
 public class XDTCards: CanTokenize, CanAuthenticate {
@@ -81,35 +81,21 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
-        let authenticationData = AuthenticationData()
-        authenticationData.tokenId = tokenId
-        authenticationData.amount = amount
+        let jwtRequest = XenditJWTRequest(amount: amount)
+        jwtRequest.currency = "IDR" // TODO: allow other currencies
+        jwtRequest.customer = customer
         
-        let requestBody = ["amount" : amount]
-        
-        var extraHeaders: [String: String] = [:]
-        if onBehalfOf != nil || onBehalfOf != "" {
-            extraHeaders["for-user-id"] = onBehalfOf
-        }
-        
-        let jwtQuery: [String: String] = [
-            "amount": amount.stringValue,
-            "currency": "IDR" // TODO: fix
-        ]
-        
-        XDTApiClient.getJWT(publishableKey: publishableKey!, tokenId: tokenId, query: jwtQuery) {
+        XDTApiClient.getJWT(publishableKey: publishableKey!, tokenId: tokenId, requestBody: jwtRequest) {
             (jwt, error) in
                 if error != nil || jwt?.jwt == nil {
                     // Continue with normal flow
-                    XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: extraHeaders) { (authentication, error) in
-                        handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
-                    }
+                    create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf, completion: completion)
                 } else {
                     // 3DS2 flow
                     let environment = jwt?.environment;
@@ -126,6 +112,26 @@ public class XDTCards: CanTokenize, CanAuthenticate {
 
                     }
                 }
+        }
+    }
+    
+    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+        if publishableKey == nil {
+            completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
+            return
+        }
+        let authenticationData = AuthenticationData()
+        authenticationData.tokenId = tokenId
+        authenticationData.amount = amount
+        
+        let requestBody = ["amount" : amount]
+        
+        var extraHeaders: [String: String] = [:]
+        if onBehalfOf != nil || onBehalfOf != "" {
+            extraHeaders["for-user-id"] = onBehalfOf
+        }
+        XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: extraHeaders) { (authentication, error) in
+            handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
         }
     }
     
@@ -153,7 +159,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             let requestPayload = authentication?.requestPayload
             if authenticationTransactionId == nil || requestPayload == nil {
                 // Revert to 3DS1 flow
-                createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
+                create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
                     if error != nil {
                         return completion(nil, error)
                     }
@@ -270,7 +276,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }) {
             (response : CardinalResponse) in
                 // Revert to 3DS1 flow
-                createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
+            create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
                     if error != nil {
                         return completion(nil, error)
                     }

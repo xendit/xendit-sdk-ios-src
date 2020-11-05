@@ -40,13 +40,13 @@ class XDTApiClient {
     
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     
-    private static let PRODUCTION_XENDIT_HOST = "api-integration.xendit.co"
+    private static let PRODUCTION_XENDIT_HOST = "api.xendit.co"
     private static let PRODUCTION_XENDIT_BASE_URL = "https://" + PRODUCTION_XENDIT_HOST
     
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration"
     private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens"
     private static let VERIFY_AUTHENTICATION_PATH = "credit_card_authentications/:authentication_id/verification"
-    private static let JWT_PATH = "/credit-card-tokens/:token_id/jwt"
+    private static let JWT_PATH = "/credit_card_tokens/:token_id/jwt"
     private static let GET_3DS_RECOMMENDATION_URL = "/3ds_bin_recommendation"
     private static let CREDIT_CARD_PATH = "credit_card_tokens"
     private static let AUTHENTICATION_PATH = "authentications"
@@ -251,16 +251,25 @@ class XDTApiClient {
         }.resume()
     }
     
-    public static func getJWT(publishableKey: String, tokenId: String, query: [String: String], completion: @escaping (_ : XenditJWT?, _ : XenditError?) -> Void) {
+    public static func getJWT(publishableKey: String, tokenId: String, requestBody: XenditJWTRequest, completion: @escaping (_ : XenditJWT?, _ : XenditError?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = PRODUCTION_XENDIT_HOST
         components.path = JWT_PATH.replacingOccurrences(of: ":token_id", with: tokenId)
-        components.queryItems = query.map { URLQueryItem(name: $0.key, value: $0.value) }
         
         let url = components.url!
-        let request = URLRequest.authorizedRequest(url: url, method: "GET", publishableKey: publishableKey, extraHeaders: nil)
+        var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: nil)
 
+        do {
+            let bodyData = try JSONSerialization.data(withJSONObject: requestBody.toJsonObject())
+            request.httpBody = bodyData
+        } catch _ {
+            DispatchQueue.main.async {
+                completion(nil, XenditError(errorCode: "JSON_SERIALIZATION_ERROR", message: "Failed to serialized JSON request data"))
+            }
+            return
+        }
+        
         Log.shared.logUrlRequest(prefix: "getJWT", request: request, requestBody: nil)
 
         session.dataTask(with: request) { (data, response, error) in
