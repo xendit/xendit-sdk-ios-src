@@ -39,7 +39,7 @@ class CreateAuthentification: UIViewController {
         Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount, onBehalfOf: "5cd8d52d9b60c752da69b9ec") { (authentication, error) in
             if authentication != nil {
                 // Will return authentication with id. ID will be used later
-                let message = String(format: "TokenID - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)
+                let message = String(format: "AuthenticationId - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
