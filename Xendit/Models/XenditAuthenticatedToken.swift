@@ -35,7 +35,7 @@ import Foundation
     open var threedsVersion : String?
     
     // Credit card metadata
-    open var metadata : XenditCardMetadata?
+    open var cardInfo : XenditCardMetadata?
     
     func getPayerAuthenticationUrl() -> String? {
         return authenticationURL;
@@ -54,6 +54,6 @@ import Foundation
         self.jwt = response["jwt"] as? String
         self.environment = response["environment"] as? String
         self.threedsVersion = response["threeds_version"] as? String
-        self.metadata = XenditCardMetadata(response: response["metadata"] as! [String : Any])
+        self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String : Any])
     }
 }

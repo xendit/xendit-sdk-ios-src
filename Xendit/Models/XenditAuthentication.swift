@@ -29,7 +29,7 @@ import Foundation
     
     open var maskedCardNumber: String?
     
-    open var metadata: XenditCardMetadata?
+    open var cardInfo: XenditCardMetadata?
     
     
     func getPayerAuthenticationUrl() -> String? {
@@ -51,7 +51,7 @@ import Foundation
         self.requestPayload = response["pa_req"] as? String
         self.maskedCardNumber = response["masked_card_number"] as? String
         self.tokenId = response["credit_card_token_id"] as? String
-        self.metadata = XenditCardMetadata(response: response["metadata"] as? [String: Any])
+        self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String: Any])
     }
 }
 
@@ -64,11 +64,11 @@ internal extension XenditAuthentication {
         self.authenticationURL = authenticationURL
     }
     
-    convenience init(id: String, status: String, maskedCardNumber: String?, metadata: XenditCardMetadata?) {
+    convenience init(id: String, status: String, maskedCardNumber: String?, cardInfo: XenditCardMetadata?) {
         self.init()
         self.id = id
         self.status = status
         self.maskedCardNumber = maskedCardNumber
-        self.metadata = metadata
+        self.cardInfo = cardInfo
     }
 }
