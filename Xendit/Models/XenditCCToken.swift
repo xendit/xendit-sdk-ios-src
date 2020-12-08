@@ -28,7 +28,7 @@ import Foundation
     // 3DS recommendation value
     open var should3DS : Bool?
     
-    open var metadata : XenditCardMetadata?
+    open var cardInfo : XenditCardMetadata?
     
 }
 
@@ -45,8 +45,8 @@ import Foundation
         self.authenticationURL = (response["payer_authentication_url"] as? String)
         self.maskedCardNumber = (response["masked_card_number"] as? String)
         
-        if (response["metadata"] != nil) {
-            self.metadata = XenditCardMetadata(response: response["metadata"] as? [String : Any])
+        if (response["card_info"] != nil) {
+            self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String : Any])
         }
         
     }
@@ -61,7 +61,7 @@ import Foundation
         self.authenticationId = authenticatedToken.authenticationId
         self.authenticationURL = authenticatedToken.authenticationURL
         self.maskedCardNumber = authenticatedToken.maskedCardNumber
-        self.metadata = authenticatedToken.metadata
+        self.cardInfo = authenticatedToken.cardInfo
     }
 }
 
@@ -74,7 +74,7 @@ import Foundation
         self.authenticationId = authentication.id
         self.authenticationURL = authentication.authenticationURL
         self.maskedCardNumber = authentication.maskedCardNumber
-        self.metadata = authentication.metadata
+        self.cardInfo = authentication.cardInfo
     }
 }
 
@@ -97,7 +97,7 @@ internal extension XenditCCToken {
         self.authenticationId = token.authenticationId
         self.authenticationURL = token.authenticationURL
         self.maskedCardNumber = token.maskedCardNumber
-        self.metadata = token.metadata
+        self.cardInfo = token.cardInfo
         self.should3DS = should3DS
     }
 }

@@ -106,7 +106,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                             completion(nil, error)
                         } else {
                             // mapping token response into authentication response
-                            let authentication = XenditAuthentication(id: token!.authenticationId, status: token!.status, maskedCardNumber: token!.maskedCardNumber, metadata: token!.metadata)
+                            let authentication = XenditAuthentication(id: token!.authenticationId, status: token!.status, maskedCardNumber: token!.maskedCardNumber, cardInfo: token!.cardInfo)
                             completion(authentication, error)
                         }
 
