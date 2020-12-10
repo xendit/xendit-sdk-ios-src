@@ -41,7 +41,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         cardinalSession = CardinalSession()
         let config = CardinalSessionConfiguration()
         config.deploymentEnvironment = environment
-        config.timeout = 8000
         config.uiType = .both
         
         let yourCustomUi = UiCustomization()
