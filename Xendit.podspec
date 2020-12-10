@@ -8,5 +8,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://www.facebook.com/xendit"
   s.platform     = :ios, "8.0"
   s.source       = { :git => 'https://github.com/xendit/xendit-sdk-ios.git', :tag => s.version }
-  s.ios.vendored_frameworks = 'Xendit.framework'
+  s.source_files = "Xendit/**/*.{h,m,swift}"
+  s.ios.deployment_target = '12.1'
+  s.ios.vendored_frameworks = 'CardinalMobile.framework'
 end
