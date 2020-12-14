@@ -156,6 +156,12 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             }
             let authenticationTransactionId = authentication?.authenticationTransactionId
             let requestPayload = authentication?.requestPayload
+            let status = authentication?.status
+            if status == "VERIFIED" {
+                // Handle frictionless flow
+                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
+                return completion(token, nil)
+            }
             if authenticationTransactionId == nil || requestPayload == nil {
                 // Revert to 3DS1 flow
                 create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
