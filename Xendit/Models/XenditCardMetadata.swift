@@ -14,7 +14,7 @@ import Foundation
     open var bank: String?
     
     // Card country
-    open var countryCode: String?
+    open var country: String?
     
     // Card type
     open var type: String?
@@ -36,7 +36,7 @@ import Foundation
             return
         }
         self.bank = (response!["bank"] as? String)
-        self.countryCode = (response!["country_code"] as? String)
+        self.country = (response!["country"] as? String)
         self.type = (response!["type"] as? String)
         self.brand = (response!["brand"] as? String)
         self.cardArtUrl = (response!["card_art_url"] as? String)

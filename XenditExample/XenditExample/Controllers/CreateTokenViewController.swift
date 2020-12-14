@@ -58,7 +58,8 @@ class CreateTokenViewController: UIViewController {
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
                 let issuingBank = token.cardInfo?.bank ?? "n/a"
-                let message = String(format: "TokenID - %@, AuthID - %@, Status - %@, MaskedCardNumber - %@, Should_3DS - %@, IssuingBank - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank)
+                let country = token.cardInfo?.country ?? "n/a"
+                let message = String(format: "TokenID - %@, AuthID - %@, Status - %@, MaskedCardNumber - %@, Should_3DS - %@, IssuingBank - %@, Country - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank, country)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
