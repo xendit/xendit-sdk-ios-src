@@ -36,7 +36,7 @@ import Foundation
             return
         }
         self.bank = (response!["bank"] as? String)
-        self.country = (response!["country_code"] as? String)
+        self.country = (response!["country"] as? String)
         self.type = (response!["type"] as? String)
         self.brand = (response!["brand"] as? String)
         self.cardArtUrl = (response!["card_art_url"] as? String)
