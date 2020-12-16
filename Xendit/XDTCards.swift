@@ -151,8 +151,19 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
         
         XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: header) { (authentication, error) in
-            if error != nil {
-                return completion(nil, error)
+            if error != nil ||
+                authentication?.status == "FAILED" ||
+                authentication?.authenticationTransactionId == nil ||
+                authentication?.requestPayload == nil {
+                // Revert to 3DS1 flow
+                return create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
+                    if error != nil {
+                        return completion(nil, error)
+                    }
+                    // Handle opening of OTP page
+                    let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
+                    return completion(token, nil)
+                }
             }
             let authenticationTransactionId = authentication?.authenticationTransactionId
             let requestPayload = authentication?.requestPayload
@@ -161,18 +172,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                 // Handle frictionless flow
                 let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
                 return completion(token, nil)
-            }
-            if authenticationTransactionId == nil || requestPayload == nil {
-                // Revert to 3DS1 flow
-                create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, onBehalfOf: onBehalfOf) { (authentication, error) in
-                    if error != nil {
-                        return completion(nil, error)
-                    }
-                    // Handle opening of OTP page
-                    let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                    return completion(token, nil)
-                }
-                return
             }
             
             let xdtDelegate = XDTValidationDelegate(completion: { (response, jwt, error) in
