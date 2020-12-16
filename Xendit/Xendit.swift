@@ -65,7 +65,7 @@ import CardinalMobile
     // @param tokenId The credit card token id
     // @param amount The transaction amount
     // @param cardCVN The credit card CVN code for create token
-    @available(*, deprecated:1.1, message:"cvn no longer used")
+    @available(*, deprecated, message:"cvn no longer used")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         self.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, completion: completion)
     }

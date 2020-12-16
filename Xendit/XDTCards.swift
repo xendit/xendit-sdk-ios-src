@@ -47,7 +47,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         //Set various customizations here. See "iOS UI Customization" documentation for detail.
         config.uiCustomization = yourCustomUi
         config.renderType = [CardinalSessionRenderTypeOTP, CardinalSessionRenderTypeHTML]
-        config.enableQuickAuth = true
         cardinalSession!.configure(config)
     }
     
