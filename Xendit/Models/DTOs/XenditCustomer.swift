@@ -10,8 +10,7 @@ import Foundation
 public class XenditCustomer: Jsonable {
     public var referenceId: String?
     public var email: String?
-    public var givenName: String?
-    public var middleName: String?
+    public var givenNames: String?
     public var surname: String?
     public var description: String?
     public var mobileNumber: String?
@@ -30,8 +29,7 @@ public class XenditCustomer: Jsonable {
         }
         xenditCustomer.referenceId = response!["reference_id"] as? String
         xenditCustomer.email = response!["email"] as? String
-        xenditCustomer.givenName = response!["given_names"] as? String
-        xenditCustomer.middleName = response!["middle_name"] as? String
+        xenditCustomer.givenNames = response!["given_names"] as? String
         xenditCustomer.surname = response!["surname"] as? String
         xenditCustomer.description = response!["description"] as? String
         xenditCustomer.mobileNumber = response!["mobile_number"] as? String
@@ -56,14 +54,13 @@ public class XenditCustomer: Jsonable {
         var json: [String: Any] = [:]
         if referenceId != nil { json["reference_id"] = referenceId }
         if email != nil { json["email"] = email }
-        if givenName != nil { json["given_names"] = givenName }
-        if middleName != nil { json["middle_name"] = middleName }
+        if givenNames != nil { json["given_names"] = givenNames }
         if surname != nil { json["surname"] = surname }
         if description != nil { json["description"] = description }
-        if phoneNumber != nil { json["phone_number"] = mobileNumber }
+        if phoneNumber != nil { json["phone_number"] = phoneNumber }
         if mobileNumber != nil { json["mobile_number"] = mobileNumber }
-        if nationality != nil { json["nationality"] = mobileNumber }
-        if dateOfBirth != nil { json["date_of_birth"] = mobileNumber }
+        if nationality != nil { json["nationality"] = nationality }
+        if dateOfBirth != nil { json["date_of_birth"] = dateOfBirth }
         if metadata != nil {
             var jsonMetadata = [:] as [String: String]
             for (key, value) in metadata! {

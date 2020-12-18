@@ -22,7 +22,6 @@ public class XenditBillingDetails: Jsonable {
     func toJsonObject() -> [String : Any] {
         var json: [String: Any] = [:]
         if givenNames != nil { json["given_names"] = givenNames }
-        if middleName != nil { json["middle_name"] = middleName }
         if surname != nil { json["surname"] = surname }
         if email != nil { json["email"] = email }
         if mobileNumber != nil { json["mobile_number"] = mobileNumber }
@@ -37,7 +36,6 @@ public class XenditBillingDetails: Jsonable {
             return billingDetails
         }
         billingDetails.givenNames = response!["given_names"] as? String
-        billingDetails.middleName = response!["middle_name"] as? String
         billingDetails.surname = response!["surname"] as? String
         billingDetails.email = response!["email"] as? String
         billingDetails.mobileNumber = response!["mobile_number"] as? String
