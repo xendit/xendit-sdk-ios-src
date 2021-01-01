@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,21 +35,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWP-q1-nTx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWP-q1-nTx">
                                 <rect key="frame" x="20" y="252" width="335" height="30"/>
                                 <state key="normal" title="Create Token"/>
                                 <connections>
                                     <segue destination="WxF-OF-wGW" kind="show" id="aPO-li-wS7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-3t-iUy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-3t-iUy">
                                 <rect key="frame" x="20" y="352" width="335" height="30"/>
                                 <state key="normal" title="Validation Util"/>
                                 <connections>
                                     <segue destination="R1S-eQ-A8s" kind="show" id="Y8r-Z6-Ru0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-zi-WvI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-zi-WvI">
                                 <rect key="frame" x="20" y="302" width="335" height="30"/>
                                 <state key="normal" title="3DS Authentication"/>
                                 <connections>
@@ -77,6 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1132" y="-573"/>
         </scene>
         <!--Create Token-->
         <scene sceneID="AsG-hT-tcS">
@@ -91,24 +89,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000000002" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
-                                <rect key="frame" x="20" y="84" width="335" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="64" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-yC-LbE">
-                                <rect key="frame" x="20" y="134" width="100" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="118" width="100" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Cvn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-fP-859">
-                                <rect key="frame" x="255" y="134" width="100" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="255" y="118" width="100" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
                                 <rect key="frame" x="20" y="318.5" width="335" height="30"/>
                                 <state key="normal" title="Create token"/>
                                 <connections>
@@ -116,30 +111,26 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-zB-QZK">
-                                <rect key="frame" x="20" y="184" width="335" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="172" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2020" borderStyle="roundedRect" placeholder="Exp Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-ij-bFC">
-                                <rect key="frame" x="138" y="134" width="100" height="30"/>
+                                <rect key="frame" x="137.5" y="118" width="100" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="uLM-vY-srE"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Multiple Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-x0-L4h">
-                                <rect key="frame" x="20" y="227" width="96" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-x0-L4h">
+                                <rect key="frame" x="20" y="226" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="033-hj-Fto">
-                                <rect key="frame" x="124" y="222" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="033-hj-Fto">
+                                <rect key="frame" x="125" y="221" width="51" height="31"/>
                                 <accessibility key="accessibilityConfiguration" label="Multiple Use"/>
                             </switch>
                         </subviews>
@@ -152,13 +143,17 @@
                             <constraint firstItem="IHb-fP-859" firstAttribute="top" secondItem="uNx-Bl-cvE" secondAttribute="bottom" constant="20" id="Bcs-xm-Etx"/>
                             <constraint firstItem="uNx-Bl-cvE" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="CqQ-5m-e5K"/>
                             <constraint firstItem="IHb-fP-859" firstAttribute="width" secondItem="p9g-yC-LbE" secondAttribute="width" id="FYD-hr-m7S"/>
+                            <constraint firstItem="033-hj-Fto" firstAttribute="centerY" secondItem="wC7-x0-L4h" secondAttribute="centerY" id="InB-4s-3PO"/>
                             <constraint firstItem="AaR-zB-QZK" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="JWt-DL-wUl"/>
+                            <constraint firstItem="wC7-x0-L4h" firstAttribute="leading" secondItem="AaR-zB-QZK" secondAttribute="leading" id="OKu-Ye-q9H"/>
                             <constraint firstItem="dxg-vm-fAA" firstAttribute="centerY" secondItem="uUf-ex-Vz9" secondAttribute="centerY" id="QD3-ww-hb0"/>
                             <constraint firstItem="p9g-yC-LbE" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="Sxh-OG-a5U"/>
                             <constraint firstItem="uNx-Bl-cvE" firstAttribute="top" secondItem="ltJ-E6-EqI" secondAttribute="bottom" constant="20" id="Uhf-oq-XvX"/>
+                            <constraint firstItem="wC7-x0-L4h" firstAttribute="top" secondItem="AaR-zB-QZK" secondAttribute="bottom" constant="20" id="WEe-k9-q2g"/>
                             <constraint firstAttribute="trailing" secondItem="dxg-vm-fAA" secondAttribute="trailing" constant="20" id="WcM-a6-0Lr"/>
                             <constraint firstItem="dxg-vm-fAA" firstAttribute="centerX" secondItem="uUf-ex-Vz9" secondAttribute="centerX" id="eAU-UR-cLc"/>
                             <constraint firstItem="xyV-ij-bFC" firstAttribute="centerX" secondItem="uNx-Bl-cvE" secondAttribute="centerX" id="hDD-qi-99G"/>
+                            <constraint firstItem="033-hj-Fto" firstAttribute="leading" secondItem="wC7-x0-L4h" secondAttribute="trailing" constant="10" id="nze-h5-rda"/>
                             <constraint firstItem="p9g-yC-LbE" firstAttribute="top" secondItem="uNx-Bl-cvE" secondAttribute="bottom" constant="20" id="qeB-Go-t6z"/>
                             <constraint firstItem="AaR-zB-QZK" firstAttribute="top" secondItem="p9g-yC-LbE" secondAttribute="bottom" constant="20" id="rqw-Rl-py5"/>
                             <constraint firstItem="xyV-ij-bFC" firstAttribute="width" secondItem="p9g-yC-LbE" secondAttribute="width" id="uOs-b3-RXX"/>
@@ -191,30 +186,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eo2-zo-6og">
-                                <rect key="frame" x="20" y="84" width="335" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="64" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-wB-oIt">
-                                <rect key="frame" x="20" y="134" width="157.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="118" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-I0-y0l">
-                                <rect key="frame" x="197.5" y="134" width="157.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="197.5" y="118" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-YR-0X4">
-                                <rect key="frame" x="20" y="184" width="157.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="172" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTe-Fo-rj6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTe-Fo-rj6">
                                 <rect key="frame" x="20" y="318.5" width="335" height="30"/>
                                 <state key="normal" title="Validate"/>
                                 <connections>
@@ -266,27 +257,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5X-cK-T79">
-                                <rect key="frame" x="20" y="84" width="335" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="64" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Card CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMW-15-FJr">
-                                <rect key="frame" x="197.5" y="134" width="157.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="197.5" y="118" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-aV-aGd">
-                                <rect key="frame" x="20" y="318" width="335" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-aV-aGd">
+                                <rect key="frame" x="20" y="318.5" width="335" height="30"/>
                                 <state key="normal" title="Authentificate"/>
                                 <connections>
                                     <action selector="authentificateAction:" destination="sKq-YQ-t0P" eventType="touchUpInside" id="lEa-Ic-oW9"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hs-dI-Mqd">
-                                <rect key="frame" x="20" y="134" width="157.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="118" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
