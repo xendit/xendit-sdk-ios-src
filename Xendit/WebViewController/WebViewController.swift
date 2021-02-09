@@ -37,7 +37,7 @@ class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
 }
 
 
-class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
+class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, UIAdaptivePresentationControllerDelegate {
     
     private var urlString : String!
     
@@ -97,9 +97,17 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
         let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
         webView.loadHTMLString(HTMLString, baseURL: nil)
     }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        self.parent?.presentationController?.delegate = self
+    }
 
     @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        cancelAuthentication()
     }
     
     // MARK: - WKScriptMessageHandler
