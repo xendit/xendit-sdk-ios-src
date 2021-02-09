@@ -31,7 +31,7 @@ class AuthenticationProvider: AuthenticationProviderProtocol {
 }
 
 
-class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
+class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, UIAdaptivePresentationControllerDelegate {
 
     private var urlString : String!
 
@@ -91,6 +91,14 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
 
     @objc func cancelAuthentication() {
         authenticateCompletion(nil, XenditError(errorCode: "AUTHENTICATION_ERROR", message: "Authentication was cancelled"))
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        self.parent?.presentationController?.delegate = self
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.cancelAuthentication()
     }
 
     // MARK: - WKScriptMessageHandler
