@@ -57,6 +57,10 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
     override func loadView() {
         view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .white
+        
+        // Script to scale the 3DS page
+        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=450,shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        let userScript = WKUserScript(source: jscript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAuthentication))
 
@@ -65,6 +69,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
             self,
             name: "callbackHandler"
         )
+        contentController.addUserScript(userScript)
 
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
@@ -84,9 +89,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
-        webView.loadHTMLString(HTMLString, baseURL: nil)
+        webView.load(URLRequest(url: URL(string: urlString)!))
     }
 
     @objc func cancelAuthentication() {

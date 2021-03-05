@@ -65,7 +65,8 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
         view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .white
         
-        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=400,shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        // Script to scale the 3DS page
+        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=450,shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta);"
         let userScript = WKUserScript(source: jscript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAuthentication))
@@ -93,9 +94,7 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let HTMLString = WebViewConstants.templateHTMLWithAuthenticateURL.replacingOccurrences(of: "@xendit_src", with: urlString)
-        webView.loadHTMLString(HTMLString, baseURL: nil)
+        webView.load(URLRequest(url: URL(string: urlString)!))
     }
     
     override func willMove(toParent parent: UIViewController?) {
