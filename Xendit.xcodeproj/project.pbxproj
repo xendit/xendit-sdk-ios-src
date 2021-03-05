@@ -75,7 +75,6 @@
 		94AD223F1E859F59009C00D5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD223E1E859F59009C00D5 /* WebViewController.swift */; };
 		A05650EE1EBC511E0019B64F /* XenditAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */; };
 		A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */; };
-		A05650F21EBC5B890019B64F /* WebViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F11EBC5B890019B64F /* WebViewConstants.swift */; };
 		A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F31EBC635E0019B64F /* AuthenticationData.swift */; };
 		A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075BDD51ECBCA7900140B7A /* XenditError.swift */; };
 /* End PBXBuildFile section */
@@ -176,7 +175,6 @@
 		94AD223E1E859F59009C00D5 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A05650ED1EBC511E0019B64F /* XenditAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditAuthentication.swift; sourceTree = "<group>"; };
 		A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
-		A05650F11EBC5B890019B64F /* WebViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewConstants.swift; sourceTree = "<group>"; };
 		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 		A075BDD51ECBCA7900140B7A /* XenditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
 		C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.release.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 			children = (
 				94AD223E1E859F59009C00D5 /* WebViewController.swift */,
 				A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */,
-				A05650F11EBC5B890019B64F /* WebViewConstants.swift */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -585,7 +582,6 @@
 				940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */,
 				94AD221A1E8534C6009C00D5 /* Extensions.swift in Sources */,
 				845651D325491B50005B997C /* XDTApiClient.swift in Sources */,
-				A05650F21EBC5B890019B64F /* WebViewConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
