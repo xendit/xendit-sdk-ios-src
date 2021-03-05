@@ -23,6 +23,7 @@ public class XenditTokenizationRequest: JsonSerializable {
         self.isSingleUse = !cardData.isMultipleUse
         self.shouldAuthenticate = shouldAuthenticate
         self.amount = cardData.amount
+        self.currency = cardData.currency
     }
     
     func toJsonObject() -> [String : Any] {
@@ -42,6 +43,10 @@ public class XenditTokenizationRequest: JsonSerializable {
             "card_data": cardDataJson,
             "is_single_use": !cardData.isMultipleUse
         ]
+        
+        if (currency != nil) {
+            json["currency"] = currency;
+        }
         
         if (!cardData.isMultipleUse) {
             json["amount"] = cardData.amount;
