@@ -39,6 +39,7 @@ class CreateTokenViewController: UIViewController {
         cardData.cardExpYear = cardExpYearTextField.text
         cardData.cardCvn = cardCvnTextField.text
         cardData.isMultipleUse = isMultipleUseSwitch.isOn
+        cardData.currency = "IDR"
         
         let billingDetails: XenditBillingDetails = XenditBillingDetails()
         billingDetails.givenNames = "John"
