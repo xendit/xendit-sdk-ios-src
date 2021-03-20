@@ -194,7 +194,12 @@ import Foundation
             return CYBCardTypes.DANKORT
         } else if isCardMaestro(cardNumber: cardNumber) {
             return CYBCardTypes.MAESTRO
+        } else if isCardDiner(cardNumber: cardNumber) {
+            return CYBCardTypes.DINER
+        } else if isCardUnionPay(cardNumber: cardNumber) {
+            return CYBCardTypes.UNIONPAY
         }
+        
         return CYBCardTypes.UNKNOWN
     }
     
@@ -272,6 +277,30 @@ import Foundation
             return startingNumber == 50 ||
                     (startingNumber >= 56 && startingNumber <= 64) ||
                     (startingNumber >= 66 && startingNumber <= 69)  
+        }
+        return false
+    }
+    
+    // Validate Card for type Diner
+    private static func isCardDiner(cardNumber: String) -> Bool{
+        if cardNumber.count > 2 {
+            let index3 = cardNumber.index(cardNumber.startIndex, offsetBy: 3)
+            let startingNumber3 = Int(cardNumber[..<index3])!
+            let index2 = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
+            let startingNumber2 = Int(cardNumber[..<index2])!
+            return startingNumber2 == 36 ||
+                   startingNumber3 == 309 ||
+                   (startingNumber3 >= 300 && startingNumber3 <= 305)
+        }
+        return false
+    }
+
+    // Validate Card for type UnionPay
+    private static func isCardUnionPay(cardNumber: String) -> Bool{
+        if cardNumber.count > 2 {
+            let index = cardNumber.index(cardNumber.startIndex, offsetBy: 2)
+            let startingNumber = Int(cardNumber[..<index])!
+            return startingNumber == 62
         }
         return false
     }

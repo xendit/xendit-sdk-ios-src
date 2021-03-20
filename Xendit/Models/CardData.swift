@@ -17,6 +17,8 @@ public enum CYBCardTypes {
     case VISA_ELECTRON
     case DANKORT
     case MAESTRO
+    case DINER
+    case UNIONPAY
     case UNKNOWN
     
     func stringValue() -> String {
@@ -37,6 +39,10 @@ public enum CYBCardTypes {
             return "034"
         case .MAESTRO:
             return "042"
+        case .DINER:
+            return "005"
+        case .UNIONPAY:
+            return "062"
         case .UNKNOWN:
             return "0"
         }
