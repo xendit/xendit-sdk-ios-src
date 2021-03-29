@@ -24,6 +24,9 @@ import Foundation
     
     // Card art url
     open var cardArtUrl: String?
+    
+    // Card fingerprint
+    open var fingerprint: String?
 
     public override init() {
     }
@@ -40,6 +43,6 @@ import Foundation
         self.type = (response!["type"] as? String)
         self.brand = (response!["brand"] as? String)
         self.cardArtUrl = (response!["card_art_url"] as? String)
-        
+        self.fingerprint = (response!["fingerprint"] as? String)
     }
 }
