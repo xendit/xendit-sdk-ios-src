@@ -24,7 +24,7 @@ class CreateTokenViewController: UIViewController {
         super.viewDidLoad()
         
         // Set Publishable Key
-        Xendit.publishableKey = "xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG"
+        Xendit.publishableKey = "xnd_public_development_9fB0J1Ase70afEL6FPJTBrpIc5NfJCu6evsAxiHSECvUDiz6ZAKWryQObfkS"
         
     }
     

@@ -62,6 +62,7 @@
 		845651DC25495D38005B997C /* CardinalMobile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 845651D6254947FD005B997C /* CardinalMobile.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		845651E2254AAC32005B997C /* Jsonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651E1254AAC32005B997C /* Jsonable.swift */; };
 		8482C71223BD911C00618F01 /* Xendit3DSRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */; };
+		8484F3A526423CF6001E37D0 /* JsonEncodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F3A426423CF6001E37D0 /* JsonEncodeTest.swift */; };
 		84A9F66C2553D77D00B735F8 /* XenditJWTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F66B2553D77D00B735F8 /* XenditJWTRequest.swift */; };
 		940EA6471E82EEFA004ADA90 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6451E82EEFA004ADA90 /* CardData.swift */; };
 		940EA6481E82EEFA004ADA90 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */; };
@@ -159,6 +160,7 @@
 		845651D6254947FD005B997C /* CardinalMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CardinalMobile.framework; sourceTree = "<group>"; };
 		845651E1254AAC32005B997C /* Jsonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jsonable.swift; sourceTree = "<group>"; };
 		8482C71123BD911C00618F01 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
+		8484F3A426423CF6001E37D0 /* JsonEncodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEncodeTest.swift; sourceTree = "<group>"; };
 		84A9F66B2553D77D00B735F8 /* XenditJWTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWTRequest.swift; sourceTree = "<group>"; };
 		940EA6451E82EEFA004ADA90 /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		940EA6461E82EEFA004ADA90 /* XenditCCToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				3907BA5E21906C4F00EF1B72 /* LogSanitizerTests.swift */,
 				943ABDCC1E79614400B61098 /* Info.plist */,
 				841107942541203F00B270E9 /* CreditCardTests.swift */,
+				8484F3A426423CF6001E37D0 /* JsonEncodeTest.swift */,
 			);
 			path = XenditTests;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 			files = (
 				943ABDCB1E79614400B61098 /* XenditIntegrationTests.swift in Sources */,
 				3949B8A521A7FE9F000F1417 /* HTTPStub.swift in Sources */,
+				8484F3A526423CF6001E37D0 /* JsonEncodeTest.swift in Sources */,
 				3953877321ABBE6F00585B97 /* CardAuthenticationProviderStub.swift in Sources */,
 				3907BA5F21906C4F00EF1B72 /* LogSanitizerTests.swift in Sources */,
 				3953876F21AAAAC700585B97 /* AuthenticationProviderStub.swift in Sources */,

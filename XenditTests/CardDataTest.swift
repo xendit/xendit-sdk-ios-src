@@ -48,13 +48,11 @@ class CardDataTest: XCTestCase {
     // MARK: Test Card Number Validation
     
     func testCardNumberValidationForValidVisaElectronCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "4508083412341234", cardName: "VisaElectron")
-        XCTAssert(cardType == CYBCardTypes.VISA_ELECTRON, "Card type should be VisaElectron")
+        testCardNumberValidationForValidCard(cardNumber: "4508083412341234", cardName: "VisaElectron")
     }
     
     func testCardNumberValidationForValidVisaCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "4045083412341234", cardName: "Visa")
-        XCTAssert(cardType == CYBCardTypes.VISA, "Card type should be Visa")
+        testCardNumberValidationForValidCard(cardNumber: "4045083412341234", cardName: "Visa")
     }
     
     func testCardNumberValidationForInvalidVisaCard() {
@@ -62,8 +60,7 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberForValidAmex() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "3726123412341234", cardName: "Amex")
-        XCTAssert(cardType == CYBCardTypes.AMEX, "Card type should be Amex")
+        testCardNumberValidationForValidCard(cardNumber: "3726123412341234", cardName: "Amex")
     }
     
     func testCardNumberForInvalidAmex() {
@@ -71,8 +68,7 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberValidationForValidMasterCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "5191381132754906", cardName: "MasterCard")
-        XCTAssert(cardType == CYBCardTypes.MASTERCARD, "Card type should be MasterCard")
+        testCardNumberValidationForValidCard(cardNumber: "5191381132754906", cardName: "MasterCard")
     }
     
     func testCardNumberValidationForInvalidMasterCard() {
@@ -80,8 +76,7 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberValidationForValidDiscoverCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "62292023412341647", cardName: "Discover")
-        XCTAssert(cardType == CYBCardTypes.DISCOVER, "Card type should be Discover")
+        testCardNumberValidationForValidCard(cardNumber: "62292023412341647", cardName: "Discover")
     }
     
     func testCardNumberValidationForInvalidDiscoverCard() {
@@ -89,8 +84,7 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberValidationForValidJBCCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "3528123412341647", cardName: "JBC")
-        XCTAssert(cardType == CYBCardTypes.JCB, "Card type should be JBC")
+        testCardNumberValidationForValidCard(cardNumber: "3528123412341647", cardName: "JBC")
     }
     
     func testCardNumberValidationForInvalidJBCCard() {
@@ -98,8 +92,7 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberValidationForValidDankortCard() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "5019123412341647", cardName: "Dankort")
-        XCTAssert(cardType == CYBCardTypes.DANKORT, "Card type should be Dankort")
+        testCardNumberValidationForValidCard(cardNumber: "5019123412341647", cardName: "Dankort")
     }
     
     func testCardNumberValidationForInvalidDankortCard() {
@@ -107,20 +100,17 @@ class CardDataTest: XCTestCase {
     }
     
     func testCardNumberValidationForValidMaestro() {
-        let cardType = testCardNumberValidationForValidCard(cardNumber: "5020123412341647", cardName: "Maestro")
-        XCTAssert(cardType == CYBCardTypes.MAESTRO, "Card type should be Maestro")
+        testCardNumberValidationForValidCard(cardNumber: "5020123412341647", cardName: "Maestro")
     }
     
     func testCardNumberValidationForInvalidMaestro() {
         testCardNumberValidationForInvalidCard(cardNumber: "1120123412341647", cardName: "Maestro")
     }
     
-    func testCardNumberValidationForValidCard(cardNumber: String, cardName: String) -> CYBCardTypes {
+    func testCardNumberValidationForValidCard(cardNumber: String, cardName: String) {
         let result = Xendit.isCardNumberValid(cardNumber: cardNumber)
-        let cardType = Xendit.getCardType(cardNumber: cardNumber)
         let message = String(format:"Invalid %@ Card Number", cardName)
         XCTAssert(result == true, message)
-        return cardType
     }
     
     func testCardNumberValidationForInvalidCard(cardNumber: String, cardName: String) {

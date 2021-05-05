@@ -10,11 +10,11 @@ import Foundation
 
 
 class CardAuthenticationProviderStub: CardAuthenticationProviderProtocol {
-    var stubResponse: (XenditCCToken?, XenditError?)
-
-    func authenticate(fromViewController: UIViewController, URL: String, token: XenditCCToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         DispatchQueue.main.async {
             completion(self.stubResponse.0, self.stubResponse.1)
         }
     }
+    
+    var stubResponse: (XenditCCToken?, XenditError?)
 }
