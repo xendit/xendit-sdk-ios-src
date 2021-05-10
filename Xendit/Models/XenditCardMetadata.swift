@@ -8,8 +8,8 @@
 import Foundation
 
 @objcMembers
-@objc(XENCardMetadata) open class XenditCardMetadata: NSObject {
-    
+@objc(XENCardMetadata) open class XenditCardMetadata: NSObject, Codable, JsonSerializable {
+
     // Issuing bank name
     open var bank: String?
     
@@ -30,6 +30,18 @@ import Foundation
 
     public override init() {
     }
+    
+    func toJsonObject() -> [String : Any] {
+        var json: [String: Any] = [:]
+        if bank != nil { json["bank"] = bank }
+        if country != nil { json["country"] = country }
+        if type != nil { json["type"] = type }
+        if brand != nil { json["brand"] = brand }
+        if cardArtUrl != nil { json["card_art_url"] = cardArtUrl }
+        if fingerprint != nil { json["fingerprint"] = fingerprint }
+        return json
+    }
+    
 }
 
 @objc extension XenditCardMetadata {

@@ -9,7 +9,7 @@
 import Foundation
 
 @objcMembers
-@objc(XENCCToken) open class XenditCCToken: NSObject {
+@objc(XENCCToken) open class XenditCCToken: NSObject, Codable, JsonSerializable {
     
     // Token id
     @objc(tokenID) open var id: String!
@@ -30,6 +30,17 @@ import Foundation
     
     open var cardInfo : XenditCardMetadata?
     
+    func toJsonObject() -> [String : Any] {
+        var json: [String: Any] = [:]
+        if id != nil { json["id"] = id }
+        if status != nil { json["status"] = status }
+        if authenticationId != nil { json["authentication_id"] = authenticationId }
+        if authenticationURL != nil { json["authentication_urL"] = authenticationURL }
+        if maskedCardNumber != nil { json["masked_card_number"] = maskedCardNumber }
+        if should3DS != nil { json["should_3ds"] = should3DS }
+        if cardInfo != nil { json["card_info"] = cardInfo!.toJsonObject() }
+        return json
+    }
 }
 
 @objc extension XenditCCToken {

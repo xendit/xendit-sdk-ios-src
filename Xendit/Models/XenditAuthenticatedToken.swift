@@ -8,7 +8,7 @@
 import Foundation
 
 @objcMembers
-@objc(XENAuthenticatedToken) open class XenditAuthenticatedToken: NSObject, Authenticatable {
+@objc(XENAuthenticatedToken) open class XenditAuthenticatedToken: NSObject, Authenticatable, Codable, JsonSerializable {
     
     // Token id
     @objc(tokenID) open var id: String!
@@ -39,6 +39,19 @@ import Foundation
     
     func getPayerAuthenticationUrl() -> String? {
         return authenticationURL;
+    }
+    
+    func toJsonObject() -> [String : Any] {
+        var json: [String: Any] = [:]
+        if id != nil { json["id"] = id }
+        if status != nil { json["status"] = status }
+        if authenticationURL != nil { json["authentication_url"] = authenticationURL }
+        if maskedCardNumber != nil { json["masked_card_number"] = maskedCardNumber }
+        if jwt != nil { json["jwt"] = jwt }
+        if environment != nil { json["environment"] = environment }
+        if threedsVersion != nil { json["threeds_version"] = threedsVersion }
+        if cardInfo != nil { json["card_info"] = cardInfo?.toJsonObject() }
+        return json
     }
     
 }
