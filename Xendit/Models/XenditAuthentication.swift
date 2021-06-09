@@ -31,6 +31,8 @@ import Foundation
     
     open var cardInfo: XenditCardMetadata?
     
+    // 3DS version
+    open var threedsVersion : String?
     
     func getPayerAuthenticationUrl() -> String? {
         return authenticationURL
@@ -45,6 +47,7 @@ import Foundation
         if requestPayload != nil { json["pa_res"] = requestPayload }
         if maskedCardNumber != nil { json["masked_card_number"] = maskedCardNumber }
         if cardInfo != nil { json["card_info"] = cardInfo?.toJsonObject() }
+        if threedsVersion != nil { json["threeds_version"] = threedsVersion }
         return json
     }
 
@@ -64,6 +67,7 @@ import Foundation
         self.maskedCardNumber = response["masked_card_number"] as? String
         self.tokenId = response["credit_card_token_id"] as? String
         self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String: Any])
+        self.threedsVersion = response["threeds_version"] as? String
     }
 }
 

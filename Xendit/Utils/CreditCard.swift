@@ -72,6 +72,16 @@ class CreditCard {
         return false
     }
     
+    // Check 3DS EMV version
+    public static func is3ds2Version(version: String?) -> Bool {
+        if version != nil {
+            let index = version!.index(version!.startIndex, offsetBy: 1)
+            let currentMajorVersion = Int(version![..<index])!
+            return currentMajorVersion >= 2
+        }
+        return false
+    }
+    
       // Get Card Type
       internal static func getCardType(cardNumber: String) -> CYBCardTypes {
           if cardNumber.hasPrefix("4") {

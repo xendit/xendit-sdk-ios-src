@@ -150,6 +150,13 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
         
         XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: header) { (authentication, error) in
+            if error == nil &&
+                (authentication?.status == "VERIFIED" || !CreditCard.is3ds2Version(version: authentication?.threedsVersion)) {
+                // Handle frictionless flow & 3ds version 1.0
+                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
+                return completion(token, nil)
+            }
+
             if error != nil ||
                 authentication?.status == "FAILED" ||
                 authentication?.authenticationTransactionId == nil ||
@@ -166,12 +173,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             }
             let authenticationTransactionId = authentication?.authenticationTransactionId
             let requestPayload = authentication?.requestPayload
-            let status = authentication?.status
-            if status == "VERIFIED" {
-                // Handle frictionless flow
-                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                return completion(token, nil)
-            }
             
             let xdtDelegate = XDTValidationDelegate(completion: { (response, jwt, error) in
                 verifyAuthentication(authentication: authentication!) { (authentication, error) in
@@ -251,7 +252,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if status != nil {
             if status == "IN_REVIEW" {
-                if authenticatedToken?.threedsVersion == "2.0" && jwt != nil {
+                if CreditCard.is3ds2Version(version: authenticatedToken?.threedsVersion) && jwt != nil {
                     handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: authenticatedToken!.environment!, amount: amount, jwt: jwt!, onBehalfOf: onBehalfOf, completion: completion)
                 } else if let authenticationURL = authenticatedToken?.authenticationURL {
                     cardAuthenticationProvider.authenticate(
