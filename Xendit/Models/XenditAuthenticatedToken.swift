@@ -37,6 +37,9 @@ import Foundation
     // Credit card metadata
     open var cardInfo : XenditCardMetadata?
     
+    // Failure reason
+    open var failureReason : String?
+    
     func getPayerAuthenticationUrl() -> String? {
         return authenticationURL;
     }
@@ -51,6 +54,7 @@ import Foundation
         if environment != nil { json["environment"] = environment }
         if threedsVersion != nil { json["threeds_version"] = threedsVersion }
         if cardInfo != nil { json["card_info"] = cardInfo?.toJsonObject() }
+        if failureReason != nil { json["failure_reason"] = failureReason }
         return json
     }
     
@@ -68,5 +72,6 @@ import Foundation
         self.environment = response["environment"] as? String
         self.threedsVersion = response["threeds_version"] as? String
         self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String : Any])
+        self.failureReason = response["failure_reason"] as? String
     }
 }

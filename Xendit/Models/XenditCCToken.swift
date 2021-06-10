@@ -30,6 +30,9 @@ import Foundation
     
     open var cardInfo : XenditCardMetadata?
     
+    // Failure reason
+    open var failureReason : String?
+    
     func toJsonObject() -> [String : Any] {
         var json: [String: Any] = [:]
         if id != nil { json["id"] = id }
@@ -39,6 +42,7 @@ import Foundation
         if maskedCardNumber != nil { json["masked_card_number"] = maskedCardNumber }
         if should3DS != nil { json["should_3ds"] = should3DS }
         if cardInfo != nil { json["card_info"] = cardInfo!.toJsonObject() }
+        if failureReason != nil { json["failure_reason"] = failureReason }
         return json
     }
 }
@@ -60,6 +64,9 @@ import Foundation
             self.cardInfo = XenditCardMetadata(response: response["card_info"] as? [String : Any])
         }
         
+        if (response["failure_reason"] != nil) {
+            self.failureReason = (response["failure_reason"] as? String)
+        }
     }
 }
 
@@ -73,6 +80,7 @@ import Foundation
         self.authenticationURL = authenticatedToken.authenticationURL
         self.maskedCardNumber = authenticatedToken.maskedCardNumber
         self.cardInfo = authenticatedToken.cardInfo
+        self.failureReason = authenticatedToken.failureReason
     }
 }
 
@@ -86,6 +94,8 @@ import Foundation
         self.authenticationURL = authentication.authenticationURL
         self.maskedCardNumber = authentication.maskedCardNumber
         self.cardInfo = authentication.cardInfo
+        self.failureReason = authentication.failureReason
+
     }
 }
 
