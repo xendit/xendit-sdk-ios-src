@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "Use XenditAuthenticationRequest instead")
 @objcMembers
 @objc(XENAuthenticationData) open class AuthenticationData: NSObject {
 
@@ -19,6 +20,9 @@ import Foundation
 
     // Card transaction amount
     open var amount: NSNumber!
+    
+    // Transaction currency
+    open var currency: String?
     
 }
 

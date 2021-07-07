@@ -32,30 +32,22 @@ class CreateTokenViewController: UIViewController {
     @IBAction func createTokenAction(_ sender: UIButton) {
         
         view.endEditing(true)
+        let cvn = cardCvnTextField.text
+        let cardData = XenditCardData.init(cardNumber: cardNumberTextField.text!, cardExpMonth: cardExpMonthTextField.text!, cardExpYear: cardExpYearTextField.text!)
+        cardData.cardCvn = cvn
         
-        let cardData = CardData()
-        cardData.cardNumber = cardNumberTextField.text
-        cardData.cardExpMonth = cardExpMonthTextField.text
-        cardData.cardExpYear = cardExpYearTextField.text
-        cardData.cardCvn = cardCvnTextField.text
-        cardData.isMultipleUse = isMultipleUseSwitch.isOn
-        cardData.currency = "IDR"
+        let isMultipleUse = isMultipleUseSwitch.isOn
+        let currency = "IDR"
+        let amount =  NSNumber(value: Double.init(amountTextField.text!)!)
+        let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: true, amount: amount, currency: currency)
         
         let billingDetails: XenditBillingDetails = XenditBillingDetails()
         billingDetails.givenNames = "John"
         billingDetails.surname = "Smith"
         billingDetails.address = XenditAddress()
         billingDetails.address?.postalCode = "123456"
-        
-        if !cardData.isMultipleUse && (amountTextField.text?.count)! > 0 {
-            let int = Int(amountTextField.text!)
-            cardData.amount = NSNumber(value: int!)
-        }
-        
-        let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: true)
-        tokenizationRequest.billingDetails = billingDetails
 
-        Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: "") { (token, error) in
+        Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: nil) { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
                 let issuingBank = token.cardInfo?.bank ?? "n/a"
