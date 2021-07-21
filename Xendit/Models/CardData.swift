@@ -67,6 +67,7 @@ public enum CYBCardTypes {
     // Multiple use flag
     open var isMultipleUse: Bool
 
+    @available(*, deprecated, message: "Use XenditCardData instead")
     public override init() {
         self.isMultipleUse = false
         self.amount = 0;

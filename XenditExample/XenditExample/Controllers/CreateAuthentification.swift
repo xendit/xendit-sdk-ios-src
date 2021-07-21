@@ -29,14 +29,17 @@ class CreateAuthentification: UIViewController {
         let tokenID = tokenIDTextField.text
         let cardCVN = cardCVNTextField.text
         
-        if  tokenID == nil, amountTextField.text == nil, cardCVN == nil {
+        if tokenID == nil, amountTextField.text == nil, cardCVN == nil {
             return
         }
         
-        let int = Int(amountTextField.text!)
-        let amount = NSNumber(value: int!)
+        let amount = NSNumber(value: Double.init(amountTextField.text!)!)
+        let currency = "IDR"
+        
+        let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenID!, amount: amount, currency: currency);
+        authenticationRequest.cardCvn = cardCVN;
 
-        Xendit.createAuthentication(fromViewController: self, tokenId: tokenID!, amount: amount, onBehalfOf: "5cd8d52d9b60c752da69b9ec") { (authentication, error) in
+        Xendit.createAuthentication(fromViewController: self, authenticationRequest: authenticationRequest, onBehalfOf: nil) { (authentication, error) in
             if authentication != nil {
                 // Will return authentication with id. ID will be used later
                 let message = String(format: "AuthenticationId - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)

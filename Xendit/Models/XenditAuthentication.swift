@@ -47,6 +47,7 @@ import Foundation
         if status != nil { json["status"] = status }
         if authenticationURL != nil { json["authentication_url"] = authenticationURL }
         if authenticationTransactionId != nil { json["authentication_transaction_id"] = authenticationTransactionId }
+        if tokenId != nil { json["credit_card_token_id"] = tokenId }
         if requestPayload != nil { json["pa_res"] = requestPayload }
         if maskedCardNumber != nil { json["masked_card_number"] = maskedCardNumber }
         if cardInfo != nil { json["card_info"] = cardInfo?.toJsonObject() }
