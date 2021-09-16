@@ -22,6 +22,7 @@ import Foundation
     @available(*, deprecated, message: "Use init(cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber, currency: String) instead" )
     public init(cardData: CardData, shouldAuthenticate: Bool) {
         self.cardData = XenditCardData.init(cardNumber: cardData.cardNumber, cardExpMonth: cardData.cardExpMonth, cardExpYear: cardData.cardExpYear)
+        self.cardData.cardCvn = cardData.cardCvn
         self.isSingleUse = !cardData.isMultipleUse
         self.shouldAuthenticate = shouldAuthenticate
         self.amount = cardData.amount
