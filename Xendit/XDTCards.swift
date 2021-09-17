@@ -74,15 +74,21 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                     completion(tokenWith3DSRecommendation, nil);
                 })
             } else {
-                handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: tokenizationRequest.amount, currency: currency, onBehalfOf: onBehalfOf, error: error, completion: completion)
+                handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: tokenizationRequest.amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: tokenizationRequest.cardData.cardCvn, error: error, completion: completion)
             }
         }
     }
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+        
         createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, completion: completion);
     }
         
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+        
+        createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, cardCvn: nil, completion: completion);
+    }
+    
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -96,12 +102,12 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             (jwt, error) in
                 if error != nil || jwt?.jwt == nil {
                     // Continue with normal flow
-                    create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, completion: completion)
+                    create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
                 } else {
                     // 3DS2 flow
                     let environment = jwt?.environment;
                     let jwt = jwt?.jwt
-                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf) {
+                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf, cardCvn: cardCvn) {
                         (token, error) in
                         if token == nil || error != nil {
                             completion(nil, error)
@@ -116,7 +122,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
-    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -128,6 +134,10 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if currency != nil {
             requestBody["currency"] = currency
+        }
+        
+        if cardCvn != nil {
+            requestBody["card_cvn"] = cardCvn
         }
         
         var extraHeaders: [String: String] = [:]
@@ -143,7 +153,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTApiClient.create3DSRecommendationRequest(publishableKey: publishableKey!, tokenId: tokenId, completion: completion)
     }
     
-    private static func createAuthenticationWithSessionId(fromViewController: UIViewController, tokenId: String, sessionId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func createAuthenticationWithSessionId(fromViewController: UIViewController, tokenId: String, sessionId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         
         var requestBody: [String: Any] = [
             "amount" : amount,
@@ -152,6 +162,10 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if currency != nil {
             requestBody["currency"] = currency
+        }
+        
+        if cardCvn != nil {
+            requestBody["card_cvn"] = cardCvn
         }
         
         var header: [String: String] = [:]
@@ -173,7 +187,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                 authentication?.authenticationTransactionId == nil ||
                 authentication?.requestPayload == nil {
                 // Revert to 3DS1 flow
-                return create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf) { (authentication, error) in
+                return create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
                     if error != nil {
                         return completion(nil, error)
                     }
@@ -246,7 +260,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         return nil
     }
     
-    private static func handleCreditCardTokenization(fromViewController: UIViewController, authenticatedToken: XenditAuthenticatedToken?, amount: NSNumber, currency: String?, onBehalfOf: String?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func handleCreditCardTokenization(fromViewController: UIViewController, authenticatedToken: XenditAuthenticatedToken?, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         if let error = error {
             // handle error message
             if error.errorCode == "INVALID_USER_ID" {
@@ -265,7 +279,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         if status != nil {
             if status == "IN_REVIEW" {
                 if CreditCard.is3ds2Version(version: authenticatedToken?.threedsVersion) && jwt != nil {
-                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: authenticatedToken!.environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf, completion: completion)
+                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: authenticatedToken!.environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
                 } else if let authenticationURL = authenticatedToken?.authenticationURL {
                     cardAuthenticationProvider.authenticate(
                         fromViewController: fromViewController,
@@ -283,16 +297,16 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
-    private static func handleEmv3DSFlow(fromViewController: UIViewController, tokenId: String, environment: String, amount: NSNumber, currency: String?, jwt: String, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func handleEmv3DSFlow(fromViewController: UIViewController, tokenId: String, environment: String, amount: NSNumber, currency: String?, jwt: String, onBehalfOf: String?, cardCvn: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         let cardinalEnvironment = environment == "DEVELOPMENT" ? CardinalSessionEnvironment.staging : CardinalSessionEnvironment.production;
         configureCardinal(environment: cardinalEnvironment);
         cardinalSession?.setup(jwtString: jwt, completed: {
             (sessionId: String) in
-            createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, completion: completion)
+            createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
         }) {
             (response : CardinalResponse) in
                 // Revert to 3DS1 flow
-            create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf) { (authentication, error) in
+            create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
                     if error != nil {
                         return completion(nil, error)
                     }
