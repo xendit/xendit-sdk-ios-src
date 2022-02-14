@@ -230,9 +230,21 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             return XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key")
             
         }
-        
-        guard tokenizationRequest.amount.doubleValue > 0 else {
-            return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0")
+
+        if (tokenizationRequest.isSingleUse) {
+            if (tokenizationRequest.amount != nil) {
+                guard tokenizationRequest.amount!.doubleValue > 0 else {
+                    return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0")
+                }
+            } else {
+                return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount is required for single use token")
+            }
+        } else {
+            if (tokenizationRequest.amount != nil) {
+                guard tokenizationRequest.amount!.doubleValue >= 0 else {
+                    return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must not be less than 0")
+                }
+            }
         }
         
         guard CreditCard.isValidCardNumber(cardNumber: cardData.cardNumber) else {

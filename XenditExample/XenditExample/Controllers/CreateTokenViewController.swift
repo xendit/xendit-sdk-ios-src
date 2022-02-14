@@ -38,7 +38,11 @@ class CreateTokenViewController: UIViewController {
         
         let isMultipleUse = isMultipleUseSwitch.isOn
         let currency = "IDR"
-        let amount =  NSNumber(value: Double.init(amountTextField.text!)!)
+        let amountText = amountTextField.text!
+        var amount: NSNumber?
+        if (amountText != "") {
+            amount = NSNumber(value: Double.init(amountText)!)
+        }
         let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: true, amount: amount, currency: currency)
         
         let billingDetails: XenditBillingDetails = XenditBillingDetails()

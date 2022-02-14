@@ -9,8 +9,7 @@ Slack Channel: [#p-cards-product](https://xendit.slack.com/messages/p-cards-prod
 Slack Mentions: `@troops-cards`
 
 ## Running Tests
-
-1. Install [Cocoapods](https://guides.cocoapods.org/using/using-cocoapods.html) (Ruby is required)
+1. Install [Cocoapods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
 2. In console open repository root folder and install test dependencies by running `pod install`
 3. Open `Xendit.xcworkspace`
 
