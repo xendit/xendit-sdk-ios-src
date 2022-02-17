@@ -10,7 +10,7 @@ import Foundation
 @objcMembers
 @objc(XenditTokenizationRequest) public class XenditTokenizationRequest: NSObject, JsonSerializable {
     
-    public var amount: NSNumber
+    public var amount: NSNumber?
     public var isSingleUse: Bool
     public var shouldAuthenticate: Bool
     public var cardData: XenditCardData
@@ -29,11 +29,13 @@ import Foundation
         self.currency = cardData.currency
     }
     
-    public init (cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber, currency: String?) {
+    public init (cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber?, currency: String?) {
         self.cardData = cardData
         self.isSingleUse = isSingleUse
         self.shouldAuthenticate = shouldAuthenticate
-        self.amount = amount
+        if (amount != nil) {
+            self.amount = amount
+        }
         self.currency = currency
     }
     
