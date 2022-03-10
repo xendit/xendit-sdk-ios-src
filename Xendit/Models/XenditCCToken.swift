@@ -33,7 +33,7 @@ import Foundation
     // Failure reason
     open var failureReason : String?
     
-    func toJsonObject() -> [String : Any] {
+    open func toJsonObject() -> [String : Any] {
         var json: [String: Any] = [:]
         if id != nil { json["id"] = id }
         if status != nil { json["status"] = status }
