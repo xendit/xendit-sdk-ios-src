@@ -74,7 +74,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                     completion(tokenWith3DSRecommendation, nil);
                 })
             } else {
-                handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: tokenizationRequest.amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: tokenizationRequest.cardData.cardCvn, error: error, completion: completion)
+                handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: tokenizationRequest.amount ?? 0, currency: currency, onBehalfOf: onBehalfOf, cardCvn: tokenizationRequest.cardData.cardCvn, error: error, completion: completion)
             }
         }
     }

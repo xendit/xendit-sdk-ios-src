@@ -7,6 +7,7 @@
 
 import Foundation
 import WebKit
+import XenditSDKObjC
 
 
 @objc(XENLogLevel) public enum XenditLogLevel: UInt {

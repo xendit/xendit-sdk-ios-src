@@ -8,6 +8,7 @@
 
 import Foundation
 import CardinalMobile
+import XenditSDKObjC
 
 
 @objcMembers
