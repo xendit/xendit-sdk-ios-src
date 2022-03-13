@@ -8,6 +8,7 @@
 import Foundation
 import XCTest
 import OHHTTPStubs
+import OHHTTPStubsSwift
 
 
 class HTTPStub {
