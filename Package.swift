@@ -24,11 +24,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "XenditSDKSwift",
-            dependencies: [],
+            dependencies: ["XenditSDKObjC"],
             exclude: ["Info.plist"]),
+        .target(
+            name: "XenditSDKObjC",
+            dependencies: [],
+            exclude: ["Log/LogDNA/LICENSE"]),
         .testTarget(
             name: "XenditSDKTests",
-            dependencies: ["XenditSDKSwift"],
+            dependencies: ["XenditSDKSwift", "XenditSDKObjC"],
             exclude: ["Info.plist"],
             resources: [
                 .process("StubResponses"),
