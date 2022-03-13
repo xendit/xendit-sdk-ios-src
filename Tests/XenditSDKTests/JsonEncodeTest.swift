@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Xendit
+@testable import XenditSDKSwift
 
 class JsonEncodeTests: XCTestCase {
     func testEncodeXenditCCToken() {

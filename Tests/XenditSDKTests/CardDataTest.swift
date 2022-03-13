@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Xendit
+@testable import XenditSDKSwift
 
 class CardDataTest: XCTestCase {
     

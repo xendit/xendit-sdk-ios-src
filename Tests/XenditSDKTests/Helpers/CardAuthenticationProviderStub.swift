@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import Xendit
+@testable import XenditSDKSwift
 
 
 class CardAuthenticationProviderStub: CardAuthenticationProviderProtocol {

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Xendit
+@testable import XenditSDKSwift
 
 class XenditIntegrationTests: XCTestCase {
     override func setUp() {
