@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "xendit-sdk-ios-src",
+    name: "XenditSDK",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "xendit-sdk-ios-src",
-            targets: ["xendit-sdk-ios-src"]),
+            name: "XenditSDK",
+            targets: ["XenditSDKSwift"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -19,10 +19,15 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "xendit-sdk-ios-src",
-            dependencies: []),
+            name: "XenditSDKSwift",
+            dependencies: [],
+            exclude: ["Info.plist"]),
         .testTarget(
-            name: "xendit-sdk-ios-srcTests",
-            dependencies: ["xendit-sdk-ios-src"]),
+            name: "XenditSDKTests",
+            dependencies: ["XenditSDKSwift"],
+            exclude: ["Info.plist"],
+            resources: [
+                .process("StubResponses"),
+            ]),
     ]
 )
