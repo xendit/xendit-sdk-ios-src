@@ -24,12 +24,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "XenditSDKSwift",
-            dependencies: ["XenditSDKObjC"],
+            dependencies: ["XenditSDKObjC", "CardinalMobile"],
             exclude: ["Info.plist"]),
         .target(
             name: "XenditSDKObjC",
             dependencies: [],
             exclude: ["Log/LogDNA/LICENSE"]),
+        .binaryTarget(
+            name: "CardinalMobile",
+            path: "CardinalMobile.xcframework"),
         .testTarget(
             name: "XenditSDKTests",
             dependencies: ["XenditSDKSwift", "XenditSDKObjC"],
