@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-@testable import XenditSDKSwift
+@testable import Xendit
 
 
 class CardAuthenticationProviderStub: CardAuthenticationProviderProtocol {
@@ -16,6 +16,6 @@ class CardAuthenticationProviderStub: CardAuthenticationProviderProtocol {
             completion(self.stubResponse.0, self.stubResponse.1)
         }
     }
-    
+
     var stubResponse: (XenditCCToken?, XenditError?)
 }

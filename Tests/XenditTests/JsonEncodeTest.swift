@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import XenditSDKSwift
+@testable import Xendit
 
 class JsonEncodeTests: XCTestCase {
     func testEncodeXenditCCToken() {
@@ -21,7 +21,7 @@ class JsonEncodeTests: XCTestCase {
         ])!
         let jsonString = try? encoder.encode(token);
         XCTAssertTrue(String(data: jsonString!, encoding: .utf8)! == "{\"id\":\"123\",\"status\":\"VERIFIED\",\"card_info\":{\"bank\":\"Test bank\"}}")
-        
+
         let jsonObject = token.toJsonObject()
         print(jsonObject)
         XCTAssertTrue(jsonObject["id"] as! String == "123")

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import XenditSDKSwift
+@testable import Xendit
 
 class FingerprintTests: XCTestCase {
     func testReturnsPayload() {

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import XenditSDKSwift
+@testable import Xendit
 
 class XenditIntegrationTests: XCTestCase {
     override func setUp() {
@@ -16,7 +16,7 @@ class XenditIntegrationTests: XCTestCase {
     }
 
     // MARK: Test create token
-    
+
     func testCreateToken() {
         let expect = expectation(description: "create token")
 
@@ -27,40 +27,40 @@ class XenditIntegrationTests: XCTestCase {
         cardData.cardExpMonth = "12"
         cardData.cardCvn = "123"
         cardData.amount = 1231
-        
+
         let viewController = UIViewController()
-        
+
         Xendit.createToken(fromViewController: viewController, cardData: cardData) { (token, error) in
             XCTAssertNil(error, "error should be nil")
             XCTAssertNotNil(token, "token should not be nil")
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: 200) { error in
             if error != nil {
                 print(error?.localizedDescription as Any)
             }
         }
     }
-    
+
     func testCreateTokenInvalid() {
         let expect = expectation(description: "create token")
-        
+
         Xendit.publishableKey = "xnd_development_NI+GfOQl1LCvkZQ/eOcbGjCSZ9f3pNh5kCax+R1k+mDV8LKgCwB0hQ=="
         let cardData = CardData()
         cardData.cardNumber = TestCard.validCardNo3ds
         cardData.cardExpYear = "2017"
         cardData.cardExpMonth = "10"
         cardData.cardCvn = "123"
-        
+
         let viewController = UIViewController()
-        
+
         Xendit.createToken(fromViewController: viewController, cardData: cardData) { (token, error) in
             XCTAssertNotNil(error, "error should not be nil")
             XCTAssertNil(token, "token should be nil")
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: 50) { error in
             XCTAssertNil(error, "Oh, we got timeout")
         }
@@ -68,7 +68,7 @@ class XenditIntegrationTests: XCTestCase {
 
     func testCreateAuthentication() {
         let expect = expectation(description: "Create Authentication")
-        
+
         Xendit.publishableKey = "xnd_public_development_O4iFfuQhgLOsl8M9eeEYGzeWYNH3otV5w3Dh/BFj/mHW+72nCQR/"
         let viewController = UIViewController()
 

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import XenditSDKSwift
+@testable import Xendit
 
 class CreditCardTests: XCTestCase {
     func testIsValidCardNumber() {
@@ -54,7 +54,7 @@ class CreditCardTests: XCTestCase {
         XCTAssertFalse(CreditCard.isValidCardNumber(cardNumber: "371040610573651")) //false
         XCTAssertFalse(CreditCard.isValidCardNumber(cardNumber: "341557151650399")) //false
         XCTAssertFalse(CreditCard.isValidCardNumber(cardNumber: "371673901387168")) //false
-        
+
         //Invalid values
         XCTAssertFalse(CreditCard.isValidCardNumber(cardNumber: "34857868")) //false
         XCTAssertFalse(CreditCard.isValidCardNumber(cardNumber: "12sdf")) //false

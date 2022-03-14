@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-@testable import XenditSDKSwift
+@testable import Xendit
 
 
 class AuthenticationProviderStub: AuthenticationProviderProtocol {
