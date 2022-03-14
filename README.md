@@ -21,7 +21,7 @@ To run unit tests: choose `XenditExample` scheme and press `cmd+u`
 ## Run the app
 
 ### Prerequisite
-- Latest xcode version 
+- Latest xcode version
 - Cocoapods installed
 
 1. Open your terminal, go to the repository root folder on the  and run `pod install`
@@ -61,3 +61,8 @@ To run unit tests: choose `XenditExample` scheme and press `cmd+u`
 
 <img width="434" alt="Screen Shot 2020-12-08 at 11 34 43" src="https://user-images.githubusercontent.com/16671326/101440486-66801d00-3949-11eb-8212-d5307ad0f5cb.png">
 
+
+
+## Swift Package Manager
+
+Xendit iOS SDK is compatible with Swift Package Manager, and provides target for consumption: `Xendit`.
