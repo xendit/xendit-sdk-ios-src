@@ -1,4 +1,11 @@
-# xendit-sdk-ios-src
+# Xendit iOS SDK
+
+Xendit iOS SDK is compatible with CocoaPods and Swift Package Manager, and provides target for consumption: `Xendit`.
+
+For CocoaPods, compatible with version `3.5.x`.
+
+For SPM, compatible with version `3.6.0` and above.
+
 
 ## Ownership
 
@@ -8,61 +15,108 @@ Slack Channel: [#p-cards-product](https://xendit.slack.com/messages/p-cards-prod
 
 Slack Mentions: `@troops-cards`
 
+
+## Usage
+
+### Install Xendit iOS SDK with CocoaPods
+
+Add this to your Podfile.
+
+```
+pod 'Xendit', '~> 3.5.2'
+```
+
+
+### Install Xendit iOS SDK with SPM
+
+1. Select your project in the Project Navigator on the right. Select the project in the Project section and click the Package Dependencies tab at the top.
+
+2. Click the + button at the bottom of the table to add Xendit iOS SDK using the Swift Package Manager.
+
+<img width="870" alt="Screenshot 2022-03-15 at 2 10 14 PM" src="https://user-images.githubusercontent.com/36880960/158318641-9d2fa77f-f6b2-4a9e-9d0a-b5f6348f1e39.png">
+
+3. Enter the package URL in the search field in the top right, that simply means the [GitHub URL](https://github.com/xendit/xendit-sdk-ios-src.git).
+
+4. Choose Dependency Rule as `Up to Next Major Version` from `3.6.0`.
+
+<img width="1080" alt="Screenshot 2022-03-15 at 10 11 26 PM" src="https://user-images.githubusercontent.com/36880960/158397849-5fd4f311-4ed4-4df5-a257-cd332462ce41.png">
+
+<img width="870" alt="Screenshot 2022-03-15 at 10 13 34 PM" src="https://user-images.githubusercontent.com/36880960/158397994-9253f9ab-124c-443e-b31c-5e09bcf0d4da.png">
+
+
 ## Running Tests
-1. Install [Cocoapods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
-2. In console open repository root folder and install test dependencies by running `pod install`
-3. Open `Xendit.xcworkspace`
 
-To run UI tests: choose `Xendit` scheme and press `cmd+u` (or "Run Product" -> "Test")
-To run unit tests: choose `XenditExample` scheme and press `cmd+u`
+### Prerequisite if using CocoaPods
 
+1. Checkout tag `3.5.2`
+
+```sh
+git clone https://github.com/xendit/xendit-sdk-ios-src
+git checkout 3.5.2
+```
+
+2. Install [CocoaPods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
+
+3. In console open repository root folder and install test dependencies by running `pod install`
+
+
+### Running Tests from Xcode
+
+Open `Xendit.xcworkspace`
+
+To run unit tests: choose `Xendit` scheme and press `cmd+u` (or "Run Product" -> "Test")
+
+To run UI tests: choose `XenditExample` scheme and press `cmd+u`
 
 
 ## Run the app
 
-### Prerequisite
-- Latest xcode version
-- Cocoapods installed
+#### Prerequisite if using CocoaPods
 
-1. Open your terminal, go to the repository root folder on the  and run `pod install`
+1. Checkout tag `3.5.2`
 
-2. Open xcode, click on the `Open a project or file`
+```sh
+git clone https://github.com/xendit/xendit-sdk-ios-src
+git checkout 3.5.2
+```
+
+2. Install [CocoaPods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
+
+3. In console open repository root folder and install app dependencies by running `pod install`
+
+
+### Running App with Xcode
+
+1. Open xcode, click on the `Open a project or file`
 
 <img width="809" alt="Screen Shot 2020-12-08 at 11 17 45" src="https://user-images.githubusercontent.com/16671326/101439516-3a639c80-3947-11eb-96de-f5aa518dd45b.png">
 
-3. Browse to the repository folder, and open `Xendit.xcworkspace`
+2. Browse to the repository folder, and open `Xendit.xcworkspace`
 
 <img width="643" alt="Screen Shot 2020-12-08 at 11 18 18" src="https://user-images.githubusercontent.com/16671326/101439618-6e3ec200-3947-11eb-96c8-2087dcfdcea8.png">
 
-4. Click the project scheme button (its beside stop button)
+3. Click the project scheme button (its beside stop button)
 
 <img width="319" alt="Screen Shot 2020-12-08 at 11 23 22" src="https://user-images.githubusercontent.com/16671326/101439776-d8effd80-3947-11eb-8218-9f621762a8f5.png">
 
 
-
-5. A dropdown list will appear, click `Edit scheme...`
+4. A dropdown list will appear, click `Edit scheme...`
 
 <img width="197" alt="Screen Shot 2020-12-08 at 11 24 26" src="https://user-images.githubusercontent.com/16671326/101439832-fde47080-3947-11eb-97ae-14f619a68d86.png">
 
-6. On the `Run` section, at the `Info` tab, click the `Executable` dropdown
+5. On the `Run` section, at the `Info` tab, click the `Executable` dropdown
 
 <img width="888" alt="Screen Shot 2020-12-08 at 11 28 21" src="https://user-images.githubusercontent.com/16671326/101440128-a4c90c80-3948-11eb-89d7-570f0dabc638.png">
 
-7. Select `XenditExample.app` and `Close` the window
+6. Select `XenditExample.app` and `Close` the window
 
 <img width="901" alt="Screen Shot 2020-12-08 at 11 30 31" src="https://user-images.githubusercontent.com/16671326/101440250-e954a800-3948-11eb-94a3-17d302948fd4.png">
 
-8. Click the `Run` button
+7. Click the `Run` button
 
 <img width="335" alt="Screen Shot 2020-12-08 at 11 32 29" src="https://user-images.githubusercontent.com/16671326/101440380-2d47ad00-3949-11eb-9615-c6aaa5928394.png">
 
 
-9. Wait for the app build and the simulator will showed up
+8. Wait for the app build and the simulator will showed up
 
 <img width="434" alt="Screen Shot 2020-12-08 at 11 34 43" src="https://user-images.githubusercontent.com/16671326/101440486-66801d00-3949-11eb-8212-d5307ad0f5cb.png">
-
-
-
-## Swift Package Manager
-
-Xendit iOS SDK is compatible with Swift Package Manager, and provides target for consumption: `Xendit`.
