@@ -7,6 +7,7 @@
 
 import Foundation
 import CardinalMobile
+import Sentry
 
 protocol CanTokenize {
     // Tokenization method
@@ -35,6 +36,12 @@ public class XDTCards: CanTokenize, CanAuthenticate {
     
     public static func setup(publishableKey: String) {
         XDTCards.publishableKey = publishableKey
+
+        SentrySDK.start { options in
+            // TODO: update the dsn to be the one for xendit-sdk-ios-src
+            options.dsn = "https://10f8efb998514c4bbb38f5e9409fa269@o30316.ingest.sentry.io/5385360"
+            options.debug = true
+        }
     }
     
     private static func configureCardinal(environment: CardinalSessionEnvironment) {
@@ -317,6 +324,19 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
         }) {
             (response : CardinalResponse) in
+            // Send log to Sentry
+            SentrySDK.configureScope { scope in
+                scope.setExtra(value: response.actionCode, key: "action_code")
+                scope.setExtra(value: environment, key: "environment")
+                scope.setExtra(value: response.errorDescription, key: "error_description")
+                scope.setExtra(value: response.errorNumber, key: "error_number")
+                scope.setExtra(value: tokenId, key: "token_id")
+                scope.setTag(value: "xendit-sdk-ios-src", key: "app_name")
+                scope.setTag(value: "error", key: "level")
+            }
+            
+            SentrySDK.capture(message: "EMV_3DS_ERROR")
+
                 // Revert to 3DS1 flow
             create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
                     if error != nil {
