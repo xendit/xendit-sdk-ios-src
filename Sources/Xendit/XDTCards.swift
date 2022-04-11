@@ -7,6 +7,7 @@
 
 import Foundation
 import CardinalMobile
+import Sentry
 
 protocol CanTokenize {
     // Tokenization method
@@ -317,6 +318,23 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
         }) {
             (response : CardinalResponse) in
+
+            var extra: [String: Any] = [
+                "action_code" : response.actionCode,
+                "error_description" : response.errorDescription,
+                "error_number" : response.errorNumber,
+                "token_id" : tokenId
+            ]
+            var tags: [String: String] = [
+                "app_name": "xendit-sdk-ios"
+            ]
+            var message: [String: Any] = [
+                "extra": extra,
+                "level": "error",
+                "tags": tags
+            ]
+            SentrySDK.capture(message: message)
+
                 // Revert to 3DS1 flow
             create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
                     if error != nil {
