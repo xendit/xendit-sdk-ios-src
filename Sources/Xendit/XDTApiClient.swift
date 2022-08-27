@@ -40,8 +40,10 @@ class XDTApiClient {
     
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     
-    private static let PRODUCTION_XENDIT_HOST = "api.xendit.co"
-    private static let PRODUCTION_XENDIT_BASE_URL = "https://" + PRODUCTION_XENDIT_HOST
+    // private static let PRODUCTION_XENDIT_HOST = "api.xendit.co"
+    // private static let PRODUCTION_XENDIT_BASE_URL = "https://" + PRODUCTION_XENDIT_HOST
+    private static let PRODUCTION_XENDIT_HOST = "localhost:3000"
+    private static let PRODUCTION_XENDIT_BASE_URL = "http://" + PRODUCTION_XENDIT_HOST
     
     private static let TOKEN_CREDENTIALS_PATH = "credit_card_tokenization_configuration"
     private static let CREATE_CREDIT_CARD_PATH = "v2/credit_card_tokens"
