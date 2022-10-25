@@ -231,7 +231,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             
         }
         
-        guard tokenizationRequest.amount.doubleValue > 0 else {
+        guard tokenizationRequest.amount.doubleValue >= 0 else {
             return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0")
         }
         
