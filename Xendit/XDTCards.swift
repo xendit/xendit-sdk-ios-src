@@ -287,6 +287,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                 } else if let authenticationURL = authenticatedToken?.authenticationURL {
                     cardAuthenticationProvider.authenticate(
                         fromViewController: fromViewController,
+                        webViewConfig: config?.webView,
                         URL: authenticationURL,
                         authenticatedToken: authenticatedToken!,
                         completion: completion
@@ -338,6 +339,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             if status == "IN_REVIEW", let authenticationURL = authentication?.authenticationURL {
                 authenticationProvider.authenticate(
                     fromViewController: fromViewController,
+                    webViewConfig: config?.webView,
                     URL: authenticationURL,
                     authentication: authentication!,
                     completion: completion

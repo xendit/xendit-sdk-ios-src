@@ -11,15 +11,16 @@ import WebKit
 
 
 protocol CardAuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    func authenticate(fromViewController: UIViewController, webViewConfig: Xendit.XenditWebViewConfiguration?, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
 }
 
 
 class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    func authenticate(fromViewController: UIViewController, webViewConfig: Xendit.XenditWebViewConfiguration?, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         let webViewController = WebViewController(URL: URL)
-
+        
         webViewController.token = authenticatedToken
+        webViewController.webViewConfig = (webViewConfig != nil ? webViewConfig : Xendit.defaultConfig.webView)
         webViewController.authenticateCompletion = { (token, error) -> Void in
             webViewController.dismiss(animated: true, completion: nil)
             guard error == nil else {
@@ -28,7 +29,7 @@ class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
             let token = XenditCCToken(authenticatedToken: token!)
             return completion(token, error)
         }
-
+        
         DispatchQueue.main.async {
             let navigationController = UINavigationController(rootViewController: webViewController)
             fromViewController.present(navigationController, animated: true, completion: nil)
@@ -45,7 +46,9 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     
     var webView: WKWebView!
     
-    var authenticateCompletion: (XenditAuthenticatedToken?, XenditError?) ->Void = {
+    var webViewConfig: Xendit.XenditWebViewConfiguration!
+    
+    var authenticateCompletion: (XenditAuthenticatedToken?, XenditError?) -> Void = {
         (token: XenditAuthenticatedToken?, error: XenditError?) -> Void in
     }
     
@@ -77,9 +80,13 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
             name: "callbackHandler"
         )
         contentController.addUserScript(userScript)
-
+        
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
+        if #available(iOS 14.0, *) {
+            webConfiguration.limitsNavigationsToAppBoundDomains = webViewConfig.limitsNavigationsToAppBoundDomains
+        }
+        
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
 

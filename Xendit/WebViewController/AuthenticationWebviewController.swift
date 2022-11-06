@@ -11,14 +11,16 @@ import WebKit
 
 
 protocol AuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void)
+    func authenticate(fromViewController: UIViewController, webViewConfig: Xendit.XenditWebViewConfiguration?, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void)
 }
 
 
 class AuthenticationProvider: AuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    func authenticate(fromViewController: UIViewController, webViewConfig: Xendit.XenditWebViewConfiguration?, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         let webViewController = AuthenticationWebViewController(URL: URL)
+        
         webViewController.authentication = authentication
+        webViewController.webViewConfig = (webViewConfig != nil ? webViewConfig : Xendit.defaultConfig.webView)
         webViewController.authenticateCompletion = { updatedAuthentication, error in
             webViewController.dismiss(animated: true, completion: nil)
             completion(updatedAuthentication, error)
@@ -32,13 +34,15 @@ class AuthenticationProvider: AuthenticationProviderProtocol {
 
 
 class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, UIAdaptivePresentationControllerDelegate {
-
+    
     private var urlString : String!
-
+    
     public var authentication : XenditAuthentication!
-
+    
     var webView: WKWebView!
-
+    
+    var webViewConfig: Xendit.XenditWebViewConfiguration!
+    
     var authenticateCompletion: (XenditAuthentication?, XenditError?) ->Void = {
         (authentication: XenditAuthentication?, error: XenditError?) -> Void in
     }
@@ -70,10 +74,13 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
             name: "callbackHandler"
         )
         contentController.addUserScript(userScript)
-
+        
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
-
+        if #available(iOS 14.0, *) {
+            webConfiguration.limitsNavigationsToAppBoundDomains = webViewConfig.limitsNavigationsToAppBoundDomains
+        }
+        
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
 
