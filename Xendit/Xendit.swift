@@ -42,12 +42,12 @@ import CardinalMobile
     
     // Create token method with billing details and customer object
     public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
     
     public static func createAuthentication(fromViewController: UIViewController, authenticationRequest: XenditAuthenticationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         let tokenId = authenticationRequest.tokenId
         let amount = authenticationRequest.amount
         let customer = authenticationRequest.customer
@@ -57,42 +57,43 @@ import CardinalMobile
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: true)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: nil, cardCvn: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        XDTCards.setup(publishableKey: publishableKey!)
-        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: cardCVN, completion: completion)    }
-
+        XDTCards.setup(publishableKey: publishableKey!, config: config)
+        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: cardCVN, completion: completion)
+    }
+    
     // Card data validation method
     public static func isCardNumberValid(cardNumber: String) -> Bool {
         return CreditCard.isValidCardNumber(cardNumber: cardNumber)

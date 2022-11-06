@@ -31,10 +31,14 @@ public class XDTCards: CanTokenize, CanAuthenticate {
     private static var cardAuthenticationProvider: CardAuthenticationProviderProtocol = CardAuthenticationProvider()
     private static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
     private static var cardinalSession: CardinalSession?
+    
     private static var publishableKey: String?
     
-    public static func setup(publishableKey: String) {
+    private static var config: Xendit.XenditConfiguration?
+    
+    public static func setup(publishableKey: String, config: Xendit.XenditConfiguration) {
         XDTCards.publishableKey = publishableKey
+        XDTCards.config = config
     }
     
     private static func configureCardinal(environment: CardinalSessionEnvironment) {
