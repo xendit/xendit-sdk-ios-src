@@ -18,6 +18,25 @@ import CardinalMobile
     // Publishable key
     public static var publishableKey: String?
     
+    // WKWebView configuration
+    public struct XenditWebViewConfiguration {
+        /**
+         * Controls whether navigation is limited to app-bound domains on iOS
+         *
+         * This field is ignored on iOS before iOS 14.0
+         *
+         * By default `limitsNavigationsToAppBoundDomains` is false
+         */
+        public var limitsNavigationsToAppBoundDomains: Bool = false
+    }
+    public struct XenditConfiguration {
+        public var webView: XenditWebViewConfiguration
+    }
+    
+    public static let defaultConfig = XenditConfiguration(webView: XenditWebViewConfiguration(limitsNavigationsToAppBoundDomains: false))
+    
+    public static var config = defaultConfig
+    
     private static var cardinalSession: CardinalSession!
     private static var isSetup = false
     
