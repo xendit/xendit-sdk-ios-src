@@ -18,7 +18,7 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var cardCvnTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var isMultipleUseSwitch: UISwitch!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class CreateTokenViewController: UIViewController {
         // Set Publishable Key
         Xendit.publishableKey = "xnd_public_development_9fB0J1Ase70afEL6FPJTBrpIc5NfJCu6evsAxiHSECvUDiz6ZAKWryQObfkS"
         
+        Xendit.config.webView.limitsNavigationsToAppBoundDomains = true
     }
     
     
@@ -46,7 +47,7 @@ class CreateTokenViewController: UIViewController {
         billingDetails.surname = "Smith"
         billingDetails.address = XenditAddress()
         billingDetails.address?.postalCode = "123456"
-
+        
         Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: nil) { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
