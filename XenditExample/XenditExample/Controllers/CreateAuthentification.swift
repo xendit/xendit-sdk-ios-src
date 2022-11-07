@@ -20,12 +20,14 @@ class CreateAuthentification: UIViewController {
         super.viewDidLoad()
         
         Xendit.publishableKey = "xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG"
+        
+        Xendit.config.webView.limitsNavigationsToAppBoundDomains = true
     }
     
     @IBAction func authentificateAction(_ sender: UIButton) {
         
         view.endEditing(true)
-                
+        
         let tokenID = tokenIDTextField.text
         let cardCVN = cardCVNTextField.text
         
@@ -38,7 +40,7 @@ class CreateAuthentification: UIViewController {
         
         let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenID!, amount: amount, currency: currency);
         authenticationRequest.cardCvn = cardCVN;
-
+        
         Xendit.createAuthentication(fromViewController: self, authenticationRequest: authenticationRequest, onBehalfOf: nil) { (authentication, error) in
             if authentication != nil {
                 // Will return authentication with id. ID will be used later

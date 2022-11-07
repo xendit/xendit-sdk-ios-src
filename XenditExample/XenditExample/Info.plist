@@ -34,5 +34,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-</dict>
+	<key>WKAppBoundDomains</key>
+	<array>
+		<string>xendit.co</string>
+		<string>cardinalcommerce.com</string>
+	</array></dict>
 </plist>
