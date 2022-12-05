@@ -27,6 +27,12 @@ import CardinalMobile
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
     
+    // Create token method with billing details and customer object
+    public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTCards.setup(publishableKey: publishableKey!)
+        XDTCards.createToken(fromViewController: fromViewController, retokenizationRequest: retokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
+    }
+    
     public static func createAuthentication(fromViewController: UIViewController, authenticationRequest: XenditAuthenticationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
         let tokenId = authenticationRequest.tokenId
@@ -73,7 +79,7 @@ import CardinalMobile
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: cardCVN, completion: completion)    }
-
+    
     // Card data validation method
     public static func isCardNumberValid(cardNumber: String) -> Bool {
         return CreditCard.isValidCardNumber(cardNumber: cardNumber)
