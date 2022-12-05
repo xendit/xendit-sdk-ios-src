@@ -80,6 +80,7 @@
 		A05650F01EBC53680019B64F /* AuthenticationWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */; };
 		A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F31EBC635E0019B64F /* AuthenticationData.swift */; };
 		A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075BDD51ECBCA7900140B7A /* XenditError.swift */; };
+		A1FA9A37293CF76300101C5B /* XenditRetokenizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA9A36293CF76300101C5B /* XenditRetokenizationRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		A05650EF1EBC53680019B64F /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
 		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 		A075BDD51ECBCA7900140B7A /* XenditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
+		A1FA9A36293CF76300101C5B /* XenditRetokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditRetokenizationRequest.swift; sourceTree = "<group>"; };
 		C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.release.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -307,6 +309,7 @@
 				84A9F66B2553D77D00B735F8 /* XenditJWTRequest.swift */,
 				8459CE86269583B800D54A4C /* XenditAuthenticationRequest.swift */,
 				8459CE89269588C300D54A4C /* XenditCardData.swift */,
+				A1FA9A36293CF76300101C5B /* XenditRetokenizationRequest.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				8459CE87269583B800D54A4C /* XenditAuthenticationRequest.swift in Sources */,
 				841816B7254AB60F00CC81AD /* XenditBillingDetails.swift in Sources */,
 				841816B9254AB7FE00CC81AD /* XenditCustomer.swift in Sources */,
+				A1FA9A37293CF76300101C5B /* XenditRetokenizationRequest.swift in Sources */,
 				39C01AE0218B45AB0035C82C /* ISHLogDNAService.m in Sources */,
 				943ABDD71E7963CC00B61098 /* Xendit.swift in Sources */,
 				8482C71223BD911C00618F01 /* Xendit3DSRecommendation.swift in Sources */,
