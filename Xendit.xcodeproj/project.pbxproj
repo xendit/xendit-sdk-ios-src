@@ -58,8 +58,6 @@
 		845651CD254904C7005B997C /* XDTCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651CC254904C7005B997C /* XDTCards.swift */; };
 		845651CF25490A47005B997C /* Authenticatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651CE25490A47005B997C /* Authenticatable.swift */; };
 		845651D325491B50005B997C /* XDTApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651D225491B50005B997C /* XDTApiClient.swift */; };
-		845651DB25495D38005B997C /* CardinalMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845651D6254947FD005B997C /* CardinalMobile.framework */; };
-		845651DC25495D38005B997C /* CardinalMobile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 845651D6254947FD005B997C /* CardinalMobile.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		845651E2254AAC32005B997C /* Jsonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845651E1254AAC32005B997C /* Jsonable.swift */; };
 		8459CE87269583B800D54A4C /* XenditAuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459CE86269583B800D54A4C /* XenditAuthenticationRequest.swift */; };
 		8459CE8A269588C300D54A4C /* XenditCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459CE89269588C300D54A4C /* XenditCardData.swift */; };
@@ -81,6 +79,8 @@
 		A05650F41EBC635E0019B64F /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05650F31EBC635E0019B64F /* AuthenticationData.swift */; };
 		A075BDD61ECBCA7900140B7A /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075BDD51ECBCA7900140B7A /* XenditError.swift */; };
 		A1FA9A37293CF76300101C5B /* XenditRetokenizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FA9A36293CF76300101C5B /* XenditRetokenizationRequest.swift */; };
+		A1ADBA2F2940F495007F28D1 /* CardinalMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1ADBA2E2940F495007F28D1 /* CardinalMobile.xcframework */; };
+		A1ADBA302940F495007F28D1 /* CardinalMobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1ADBA2E2940F495007F28D1 /* CardinalMobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				845651DC25495D38005B997C /* CardinalMobile.framework in Embed Frameworks */,
+				A1ADBA302940F495007F28D1 /* CardinalMobile.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +160,6 @@
 		845651CC254904C7005B997C /* XDTCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTCards.swift; sourceTree = "<group>"; };
 		845651CE25490A47005B997C /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
 		845651D225491B50005B997C /* XDTApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTApiClient.swift; sourceTree = "<group>"; };
-		845651D6254947FD005B997C /* CardinalMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CardinalMobile.framework; sourceTree = "<group>"; };
 		845651E1254AAC32005B997C /* Jsonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jsonable.swift; sourceTree = "<group>"; };
 		8459CE86269583B800D54A4C /* XenditAuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticationRequest.swift; sourceTree = "<group>"; };
 		8459CE89269588C300D54A4C /* XenditCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardData.swift; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		A05650F31EBC635E0019B64F /* AuthenticationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
 		A075BDD51ECBCA7900140B7A /* XenditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
 		A1FA9A36293CF76300101C5B /* XenditRetokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditRetokenizationRequest.swift; sourceTree = "<group>"; };
+		A1ADBA2E2940F495007F28D1 /* CardinalMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CardinalMobile.xcframework; sourceTree = "<group>"; };
 		C6586E1A779E2409A32DD826 /* Pods-XenditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XenditTests.release.xcconfig"; path = "Target Support Files/Pods-XenditTests/Pods-XenditTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845651DB25495D38005B997C /* CardinalMobile.framework in Frameworks */,
+				A1ADBA2F2940F495007F28D1 /* CardinalMobile.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +222,7 @@
 		3911B5EB21A7ECCA0051547F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				845651D6254947FD005B997C /* CardinalMobile.framework */,
+				A1ADBA2E2940F495007F28D1 /* CardinalMobile.xcframework */,
 				8411079B2541282A00B270E9 /* libOHHTTPStubs.a */,
 				841107992541278D00B270E9 /* libOHHTTPStubs.a */,
 				841107962541259700B270E9 /* OHHTTPStubs.framework.zip */,
@@ -743,7 +743,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -769,7 +770,11 @@
 				INFOPLIST_FILE = Xendit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -796,7 +801,11 @@
 				INFOPLIST_FILE = Xendit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -817,7 +826,11 @@
 				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -836,7 +849,11 @@
 				);
 				INFOPLIST_FILE = XenditTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
