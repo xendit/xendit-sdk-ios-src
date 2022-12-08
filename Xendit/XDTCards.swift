@@ -10,11 +10,16 @@ import CardinalMobile
 
 protocol CanTokenize {
     // Tokenization method
-    // @param cardData: Card and billing details
-    // @param shouldAuthenticate: Specify if authentication is bundled with the tokenization
+    // @param tokenizationRequest: Card and billing details
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
     static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    
+    // Retokenization method
+    // @param retokenizationRequest: Token ID and billing details
+    // @param onBehalfOf (Optional) Business id for xenPlaform use cases
+    // @param completion callback function when tokenization is completed
+    static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
 }
 
 protocol CanAuthenticate {
@@ -78,11 +83,33 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             }
         }
     }
+    
+    public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+        let logPrefix = "createToken:"
+        
+        if let error = validateRetokenizationRequest(retokenizationRequest: retokenizationRequest) {
+            Log.shared.verbose("\(logPrefix) \(error)")
+            completion(nil, error)
+        }
+        
+        var extraHeaders: [String: String] = [:]
+        if onBehalfOf != "" {
+            extraHeaders["for-user-id"] = onBehalfOf
+        }
+        
+        let requestBody = retokenizationRequest.toJsonObject()
+        
+        XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
+            
+            handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: 0, currency: nil, onBehalfOf: onBehalfOf, cardCvn: retokenizationRequest.cardCvn, error: error, completion: completion)
+        }
+    }
+    
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         
         createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, completion: completion);
     }
-        
+    
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         
         createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, cardCvn: nil, completion: completion);
@@ -181,7 +208,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                 let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
                 return completion(token, nil)
             }
-
+            
             if error != nil ||
                 authentication?.status == "FAILED" ||
                 authentication?.authenticationTransactionId == nil ||
@@ -223,12 +250,10 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTApiClient.verifyAuthenticationRequest(publishableKey: publishableKey!, authenticationId: authentication.id, bodyJson: requestBody, extraHeader: nil, completion: completion)
     }
     
-    
     private static func validateTokenizationRequest(tokenizationRequest: XenditTokenizationRequest) -> XenditError? {
         let cardData = tokenizationRequest.cardData
         guard publishableKey != nil else {
             return XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key")
-            
         }
         
         guard tokenizationRequest.amount.doubleValue >= 0 else {
@@ -237,18 +262,15 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         guard CreditCard.isValidCardNumber(cardNumber: cardData.cardNumber) else {
             return XenditError(errorCode: "VALIDATION_ERROR", message: "Card number is invalid")
-            
         }
         
         guard CreditCard.isExpiryValid(cardExpirationMonth: cardData.cardExpMonth, cardExpirationYear: cardData.cardExpYear) else {
             return XenditError(errorCode: "VALIDATION_ERROR", message: "Card expiration date is invalid")
-            
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
             guard cardData.cardCvn != nil && CreditCard.isCvnValid(creditCardCVN: cardData.cardCvn!) else {
                 return XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid")
-                
             }
         }
         
@@ -257,6 +279,25 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                 return XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid for this card type")
             }
         }
+        
+        return nil
+    }
+    
+    private static func validateRetokenizationRequest(retokenizationRequest: XenditRetokenizationRequest) -> XenditError? {
+        guard publishableKey != nil else {
+            return XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key")
+        }
+        
+        guard retokenizationRequest.tokenId != "" else {
+            return XenditError(errorCode: "VALIDATION_ERROR", message: "Empty token ID")
+        }
+        
+        if retokenizationRequest.cardCvn != nil && retokenizationRequest.cardCvn != "" {
+            guard retokenizationRequest.cardCvn != nil && CreditCard.isCvnValid(creditCardCVN: retokenizationRequest.cardCvn!) else {
+                return XenditError(errorCode: "VALIDATION_ERROR", message: "Card CVN is invalid")
+            }
+        }
+        
         return nil
     }
     
