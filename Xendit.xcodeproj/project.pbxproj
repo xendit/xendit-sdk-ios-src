@@ -1,0 +1,1376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"xendit-sdk-ios-src::XenditPackageTests::ProductTarget" /* XenditPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_187 /* Build configuration list for PBXAggregateTarget "XenditPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_190 /* PBXTargetDependency */,
+			);
+			name = XenditPackageTests;
+			productName = XenditPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		A17AD6992944E0D500DE1584 /* CardinalMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* CardinalMobile.xcframework */; };
+		A17AD69A2944E0D500DE1584 /* CardinalMobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* CardinalMobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		OBJ_111 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* HTTPStubs+NSURLSessionConfiguration.m */; };
+		OBJ_112 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* HTTPStubs.m */; };
+		OBJ_113 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* HTTPStubsMethodSwizzling.m */; };
+		OBJ_114 /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* HTTPStubsPathHelpers.m */; };
+		OBJ_115 /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* HTTPStubsResponse+JSON.m */; };
+		OBJ_116 /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* HTTPStubsResponse.m */; };
+		OBJ_117 /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* NSURLRequest+HTTPBodyTesting.m */; };
+		OBJ_124 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* Package.swift */; };
+		OBJ_130 /* OHHTTPStubsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* OHHTTPStubsSwift.swift */; };
+		OBJ_132 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */; };
+		OBJ_139 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Extensions.swift */; };
+		OBJ_140 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Log.swift */; };
+		OBJ_141 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* LogSanitizer.swift */; };
+		OBJ_142 /* Authenticatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Authenticatable.swift */; };
+		OBJ_143 /* AuthenticationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* AuthenticationData.swift */; };
+		OBJ_144 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* CardData.swift */; };
+		OBJ_145 /* Jsonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Jsonable.swift */; };
+		OBJ_146 /* XenditAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* XenditAddress.swift */; };
+		OBJ_147 /* XenditAuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* XenditAuthenticationRequest.swift */; };
+		OBJ_148 /* XenditBillingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* XenditBillingDetails.swift */; };
+		OBJ_149 /* XenditCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* XenditCardData.swift */; };
+		OBJ_150 /* XenditCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* XenditCustomer.swift */; };
+		OBJ_151 /* XenditJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* XenditJWT.swift */; };
+		OBJ_152 /* XenditJWTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* XenditJWTRequest.swift */; };
+		OBJ_154 /* XenditTokenizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* XenditTokenizationRequest.swift */; };
+		OBJ_155 /* Xendit3DSRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Xendit3DSRecommendation.swift */; };
+		OBJ_156 /* XenditAuthenticatedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* XenditAuthenticatedToken.swift */; };
+		OBJ_157 /* XenditAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* XenditAuthentication.swift */; };
+		OBJ_158 /* XenditCCToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* XenditCCToken.swift */; };
+		OBJ_159 /* XenditCardMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* XenditCardMetadata.swift */; };
+		OBJ_160 /* XenditTokenCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* XenditTokenCredentials.swift */; };
+		OBJ_161 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* CreditCard.swift */; };
+		OBJ_162 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Fingerprint.swift */; };
+		OBJ_163 /* AuthenticationWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AuthenticationWebviewController.swift */; };
+		OBJ_164 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* WebViewController.swift */; };
+		OBJ_165 /* XDTApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* XDTApiClient.swift */; };
+		OBJ_166 /* XDTCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* XDTCards.swift */; };
+		OBJ_167 /* Xendit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* Xendit.swift */; };
+		OBJ_168 /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* XenditError.swift */; };
+		OBJ_170 /* XenditObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */; };
+		OBJ_177 /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* ISHLogDNAService.m */; };
+		OBJ_178 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* IDFAHelper.m */; };
+		OBJ_185 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_196 /* CardDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* CardDataTest.swift */; };
+		OBJ_197 /* CreditCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* CreditCardTests.swift */; };
+		OBJ_198 /* FingerprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* FingerprintTests.swift */; };
+		OBJ_199 /* AuthenticationProviderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* AuthenticationProviderStub.swift */; };
+		OBJ_200 /* CardAuthenticationProviderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* CardAuthenticationProviderStub.swift */; };
+		OBJ_201 /* HTTPStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* HTTPStub.swift */; };
+		OBJ_202 /* TestCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* TestCards.swift */; };
+		OBJ_203 /* JsonEncodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* JsonEncodeTest.swift */; };
+		OBJ_204 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* LogSanitizerTests.swift */; };
+		OBJ_205 /* XenditIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* XenditIntegrationTests.swift */; };
+		OBJ_206 /* XenditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* XenditTests.swift */; };
+		OBJ_208 /* OHHTTPStubsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */; };
+		OBJ_209 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */; };
+		OBJ_210 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */; };
+		OBJ_211 /* XenditObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A17AD6912944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "xendit-sdk-ios-src::XenditObjC";
+			remoteInfo = XenditObjC;
+		};
+		A17AD6922944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubs";
+			remoteInfo = OHHTTPStubs;
+		};
+		A17AD6932944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubsSwift";
+			remoteInfo = OHHTTPStubsSwift;
+		};
+		A17AD6942944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubs";
+			remoteInfo = OHHTTPStubs;
+		};
+		A17AD6952944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "xendit-sdk-ios-src::Xendit";
+			remoteInfo = Xendit;
+		};
+		A17AD6962944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "xendit-sdk-ios-src::XenditObjC";
+			remoteInfo = XenditObjC;
+		};
+		A17AD6972944E08A00DE1584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "xendit-sdk-ios-src::XenditTests";
+			remoteInfo = XenditTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A17AD69B2944E0D600DE1584 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A17AD69A2944E0D500DE1584 /* CardinalMobile.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		OBJ_101 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_102 /* Xendit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xendit.podspec; sourceTree = "<group>"; };
+		OBJ_104 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_12 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		OBJ_13 /* LogSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizer.swift; sourceTree = "<group>"; };
+		OBJ_15 /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
+		OBJ_16 /* AuthenticationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
+		OBJ_17 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Jsonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jsonable.swift; sourceTree = "<group>"; };
+		OBJ_20 /* XenditAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAddress.swift; sourceTree = "<group>"; };
+		OBJ_21 /* XenditAuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticationRequest.swift; sourceTree = "<group>"; };
+		OBJ_22 /* XenditBillingDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditBillingDetails.swift; sourceTree = "<group>"; };
+		OBJ_23 /* XenditCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardData.swift; sourceTree = "<group>"; };
+		OBJ_24 /* XenditCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCustomer.swift; sourceTree = "<group>"; };
+		OBJ_25 /* XenditJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWT.swift; sourceTree = "<group>"; };
+		OBJ_26 /* XenditJWTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWTRequest.swift; sourceTree = "<group>"; };
+		OBJ_28 /* XenditTokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTokenizationRequest.swift; sourceTree = "<group>"; };
+		OBJ_29 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
+		OBJ_30 /* XenditAuthenticatedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticatedToken.swift; sourceTree = "<group>"; };
+		OBJ_31 /* XenditAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthentication.swift; sourceTree = "<group>"; };
+		OBJ_32 /* XenditCCToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
+		OBJ_33 /* XenditCardMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardMetadata.swift; sourceTree = "<group>"; };
+		OBJ_34 /* XenditTokenCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTokenCredentials.swift; sourceTree = "<group>"; };
+		OBJ_36 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		OBJ_37 /* Fingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprint.swift; sourceTree = "<group>"; };
+		OBJ_39 /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
+		OBJ_40 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		OBJ_41 /* XDTApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTApiClient.swift; sourceTree = "<group>"; };
+		OBJ_42 /* XDTCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDTCards.swift; sourceTree = "<group>"; };
+		OBJ_43 /* Xendit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xendit.swift; sourceTree = "<group>"; };
+		OBJ_44 /* XenditError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditError.swift; sourceTree = "<group>"; };
+		OBJ_48 /* ISHLogDNAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISHLogDNAService.m; sourceTree = "<group>"; };
+		OBJ_50 /* IDFAHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDFAHelper.m; sourceTree = "<group>"; };
+		OBJ_52 /* IDFAHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDFAHelper.h; sourceTree = "<group>"; };
+		OBJ_53 /* Xendit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xendit.h; sourceTree = "<group>"; };
+		OBJ_54 /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
+		OBJ_55 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		OBJ_58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		OBJ_59 /* CardDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataTest.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
+		OBJ_61 /* FingerprintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTests.swift; sourceTree = "<group>"; };
+		OBJ_63 /* AuthenticationProviderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderStub.swift; sourceTree = "<group>"; };
+		OBJ_64 /* CardAuthenticationProviderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAuthenticationProviderStub.swift; sourceTree = "<group>"; };
+		OBJ_65 /* HTTPStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStub.swift; sourceTree = "<group>"; };
+		OBJ_66 /* TestCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCards.swift; sourceTree = "<group>"; };
+		OBJ_67 /* JsonEncodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEncodeTest.swift; sourceTree = "<group>"; };
+		OBJ_68 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
+		OBJ_69 /* XenditIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTests.swift; sourceTree = "<group>"; };
+		OBJ_70 /* XenditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTests.swift; sourceTree = "<group>"; };
+		OBJ_74 /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
+		OBJ_75 /* HTTPStubs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubs.m; sourceTree = "<group>"; };
+		OBJ_76 /* HTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
+		OBJ_77 /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
+		OBJ_78 /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		OBJ_79 /* HTTPStubsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsResponse.m; sourceTree = "<group>"; };
+		OBJ_80 /* NSURLRequest+HTTPBodyTesting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HTTPBodyTesting.m"; sourceTree = "<group>"; };
+		OBJ_82 /* Compatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compatibility.h; sourceTree = "<group>"; };
+		OBJ_83 /* HTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
+		OBJ_84 /* HTTPStubsPathHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubsPathHelpers.h; sourceTree = "<group>"; };
+		OBJ_85 /* HTTPStubsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubsResponse.h; sourceTree = "<group>"; };
+		OBJ_86 /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
+		OBJ_87 /* HTTPStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubs.h; sourceTree = "<group>"; };
+		OBJ_9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		OBJ_90 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
+		OBJ_91 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = .build/checkouts/OHHTTPStubs/Package.swift; sourceTree = "<group>"; };
+		OBJ_99 /* CardinalMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CardinalMobile.xcframework; sourceTree = SOURCE_ROOT; };
+		"ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubsSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XenditObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = XenditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_118 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_132 /* OHHTTPStubs.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_169 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_170 /* XenditObjC.framework in Frameworks */,
+				A17AD6992944E0D500DE1584 /* CardinalMobile.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_179 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_208 /* OHHTTPStubsSwift.framework in Frameworks */,
+				OBJ_209 /* OHHTTPStubs.framework in Frameworks */,
+				OBJ_210 /* Xendit.framework in Frameworks */,
+				OBJ_211 /* XenditObjC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A17AD6982944E0D500DE1584 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		OBJ_11 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_12 /* Log.swift */,
+				OBJ_13 /* LogSanitizer.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		OBJ_14 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_15 /* Authenticatable.swift */,
+				OBJ_16 /* AuthenticationData.swift */,
+				OBJ_17 /* CardData.swift */,
+				OBJ_18 /* DTOs */,
+				OBJ_29 /* Xendit3DSRecommendation.swift */,
+				OBJ_30 /* XenditAuthenticatedToken.swift */,
+				OBJ_31 /* XenditAuthentication.swift */,
+				OBJ_32 /* XenditCCToken.swift */,
+				OBJ_33 /* XenditCardMetadata.swift */,
+				OBJ_34 /* XenditTokenCredentials.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		OBJ_18 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_19 /* Jsonable.swift */,
+				OBJ_20 /* XenditAddress.swift */,
+				OBJ_21 /* XenditAuthenticationRequest.swift */,
+				OBJ_22 /* XenditBillingDetails.swift */,
+				OBJ_23 /* XenditCardData.swift */,
+				OBJ_24 /* XenditCustomer.swift */,
+				OBJ_25 /* XenditJWT.swift */,
+				OBJ_26 /* XenditJWTRequest.swift */,
+				OBJ_28 /* XenditTokenizationRequest.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		OBJ_35 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_36 /* CreditCard.swift */,
+				OBJ_37 /* Fingerprint.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		OBJ_38 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_39 /* AuthenticationWebviewController.swift */,
+				OBJ_40 /* WebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		OBJ_45 /* XenditObjC */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_46 /* Log */,
+				OBJ_49 /* Utils */,
+				OBJ_51 /* include */,
+			);
+			name = XenditObjC;
+			path = Sources/XenditObjC;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_46 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_47 /* LogDNA */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		OBJ_47 /* LogDNA */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_48 /* ISHLogDNAService.m */,
+			);
+			path = LogDNA;
+			sourceTree = "<group>";
+		};
+		OBJ_49 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_50 /* IDFAHelper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_56 /* Tests */,
+				OBJ_71 /* Dependencies */,
+				OBJ_92 /* Products */,
+				OBJ_99 /* CardinalMobile.xcframework */,
+				OBJ_101 /* LICENSE */,
+				OBJ_102 /* Xendit.podspec */,
+				OBJ_104 /* README.md */,
+				A17AD6982944E0D500DE1584 /* Frameworks */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_51 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_52 /* IDFAHelper.h */,
+				OBJ_53 /* Xendit.h */,
+				OBJ_54 /* ISHLogDNAService.h */,
+				OBJ_55 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_56 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_57 /* XenditTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_57 /* XenditTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_58 /* Info.plist */,
+				OBJ_59 /* CardDataTest.swift */,
+				OBJ_60 /* CreditCardTests.swift */,
+				OBJ_61 /* FingerprintTests.swift */,
+				OBJ_62 /* Helpers */,
+				OBJ_67 /* JsonEncodeTest.swift */,
+				OBJ_68 /* LogSanitizerTests.swift */,
+				OBJ_69 /* XenditIntegrationTests.swift */,
+				OBJ_70 /* XenditTests.swift */,
+			);
+			name = XenditTests;
+			path = Tests/XenditTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_62 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_63 /* AuthenticationProviderStub.swift */,
+				OBJ_64 /* CardAuthenticationProviderStub.swift */,
+				OBJ_65 /* HTTPStub.swift */,
+				OBJ_66 /* TestCards.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Xendit */,
+				OBJ_45 /* XenditObjC */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_71 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_72 /* OHHTTPStubs 9.1.0 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_72 /* OHHTTPStubs 9.1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_73 /* OHHTTPStubs */,
+				OBJ_89 /* OHHTTPStubsSwift */,
+				OBJ_91 /* Package.swift */,
+			);
+			name = "OHHTTPStubs 9.1.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_73 /* OHHTTPStubs */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_74 /* HTTPStubs+NSURLSessionConfiguration.m */,
+				OBJ_75 /* HTTPStubs.m */,
+				OBJ_76 /* HTTPStubsMethodSwizzling.m */,
+				OBJ_77 /* HTTPStubsPathHelpers.m */,
+				OBJ_78 /* HTTPStubsResponse+JSON.m */,
+				OBJ_79 /* HTTPStubsResponse.m */,
+				OBJ_80 /* NSURLRequest+HTTPBodyTesting.m */,
+				OBJ_81 /* include */,
+			);
+			name = OHHTTPStubs;
+			path = .build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* Xendit */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Info.plist */,
+				OBJ_10 /* Extensions.swift */,
+				OBJ_11 /* Log */,
+				OBJ_14 /* Models */,
+				OBJ_35 /* Utils */,
+				OBJ_38 /* WebViewController */,
+				OBJ_41 /* XDTApiClient.swift */,
+				OBJ_42 /* XDTCards.swift */,
+				OBJ_43 /* Xendit.swift */,
+				OBJ_44 /* XenditError.swift */,
+			);
+			name = Xendit;
+			path = Sources/Xendit;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_81 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_82 /* Compatibility.h */,
+				OBJ_83 /* HTTPStubsResponse+JSON.h */,
+				OBJ_84 /* HTTPStubsPathHelpers.h */,
+				OBJ_85 /* HTTPStubsResponse.h */,
+				OBJ_86 /* NSURLRequest+HTTPBodyTesting.h */,
+				OBJ_87 /* HTTPStubs.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_89 /* OHHTTPStubsSwift */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_90 /* OHHTTPStubsSwift.swift */,
+			);
+			name = OHHTTPStubsSwift;
+			path = .build/checkouts/OHHTTPStubs/Sources/OHHTTPStubsSwift;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */,
+				"ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */,
+				"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */,
+				"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */,
+				"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_107 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */;
+			buildPhases = (
+				OBJ_110 /* Sources */,
+				OBJ_118 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OHHTTPStubs;
+			productName = OHHTTPStubs;
+			productReference = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_126 /* Build configuration list for PBXNativeTarget "OHHTTPStubsSwift" */;
+			buildPhases = (
+				OBJ_129 /* Sources */,
+				OBJ_131 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_133 /* PBXTargetDependency */,
+			);
+			name = OHHTTPStubsSwift;
+			productName = OHHTTPStubsSwift;
+			productReference = "ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"ohhttpstubs::SwiftPMPackageDescription" /* OHHTTPStubsPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_120 /* Build configuration list for PBXNativeTarget "OHHTTPStubsPackageDescription" */;
+			buildPhases = (
+				OBJ_123 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OHHTTPStubsPackageDescription;
+			productName = OHHTTPStubsPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"xendit-sdk-ios-src::SwiftPMPackageDescription" /* XenditPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_181 /* Build configuration list for PBXNativeTarget "XenditPackageDescription" */;
+			buildPhases = (
+				OBJ_184 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XenditPackageDescription;
+			productName = XenditPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"xendit-sdk-ios-src::Xendit" /* Xendit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_135 /* Build configuration list for PBXNativeTarget "Xendit" */;
+			buildPhases = (
+				OBJ_138 /* Sources */,
+				OBJ_169 /* Frameworks */,
+				A17AD69B2944E0D600DE1584 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_171 /* PBXTargetDependency */,
+			);
+			name = Xendit;
+			productName = Xendit;
+			productReference = "xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"xendit-sdk-ios-src::XenditObjC" /* XenditObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_173 /* Build configuration list for PBXNativeTarget "XenditObjC" */;
+			buildPhases = (
+				OBJ_176 /* Sources */,
+				OBJ_179 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XenditObjC;
+			productName = XenditObjC;
+			productReference = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"xendit-sdk-ios-src::XenditTests" /* XenditTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_192 /* Build configuration list for PBXNativeTarget "XenditTests" */;
+			buildPhases = (
+				OBJ_195 /* Sources */,
+				OBJ_207 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_212 /* PBXTargetDependency */,
+				OBJ_213 /* PBXTargetDependency */,
+				OBJ_214 /* PBXTargetDependency */,
+				OBJ_215 /* PBXTargetDependency */,
+			);
+			name = XenditTests;
+			productName = XenditTests;
+			productReference = "xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Xendit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_92 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */,
+				"ohhttpstubs::SwiftPMPackageDescription" /* OHHTTPStubsPackageDescription */,
+				"ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */,
+				"xendit-sdk-ios-src::Xendit" /* Xendit */,
+				"xendit-sdk-ios-src::XenditObjC" /* XenditObjC */,
+				"xendit-sdk-ios-src::SwiftPMPackageDescription" /* XenditPackageDescription */,
+				"xendit-sdk-ios-src::XenditPackageTests::ProductTarget" /* XenditPackageTests */,
+				"xendit-sdk-ios-src::XenditTests" /* XenditTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_110 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_111 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				OBJ_112 /* HTTPStubs.m in Sources */,
+				OBJ_113 /* HTTPStubsMethodSwizzling.m in Sources */,
+				OBJ_114 /* HTTPStubsPathHelpers.m in Sources */,
+				OBJ_115 /* HTTPStubsResponse+JSON.m in Sources */,
+				OBJ_116 /* HTTPStubsResponse.m in Sources */,
+				OBJ_117 /* NSURLRequest+HTTPBodyTesting.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_123 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_124 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_130 /* OHHTTPStubsSwift.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_139 /* Extensions.swift in Sources */,
+				OBJ_140 /* Log.swift in Sources */,
+				OBJ_141 /* LogSanitizer.swift in Sources */,
+				OBJ_142 /* Authenticatable.swift in Sources */,
+				OBJ_143 /* AuthenticationData.swift in Sources */,
+				OBJ_144 /* CardData.swift in Sources */,
+				OBJ_145 /* Jsonable.swift in Sources */,
+				OBJ_146 /* XenditAddress.swift in Sources */,
+				OBJ_147 /* XenditAuthenticationRequest.swift in Sources */,
+				OBJ_148 /* XenditBillingDetails.swift in Sources */,
+				OBJ_149 /* XenditCardData.swift in Sources */,
+				OBJ_150 /* XenditCustomer.swift in Sources */,
+				OBJ_151 /* XenditJWT.swift in Sources */,
+				OBJ_152 /* XenditJWTRequest.swift in Sources */,
+				OBJ_154 /* XenditTokenizationRequest.swift in Sources */,
+				OBJ_155 /* Xendit3DSRecommendation.swift in Sources */,
+				OBJ_156 /* XenditAuthenticatedToken.swift in Sources */,
+				OBJ_157 /* XenditAuthentication.swift in Sources */,
+				OBJ_158 /* XenditCCToken.swift in Sources */,
+				OBJ_159 /* XenditCardMetadata.swift in Sources */,
+				OBJ_160 /* XenditTokenCredentials.swift in Sources */,
+				OBJ_161 /* CreditCard.swift in Sources */,
+				OBJ_162 /* Fingerprint.swift in Sources */,
+				OBJ_163 /* AuthenticationWebviewController.swift in Sources */,
+				OBJ_164 /* WebViewController.swift in Sources */,
+				OBJ_165 /* XDTApiClient.swift in Sources */,
+				OBJ_166 /* XDTCards.swift in Sources */,
+				OBJ_167 /* Xendit.swift in Sources */,
+				OBJ_168 /* XenditError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_176 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_177 /* ISHLogDNAService.m in Sources */,
+				OBJ_178 /* IDFAHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_184 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_185 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_195 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_196 /* CardDataTest.swift in Sources */,
+				OBJ_197 /* CreditCardTests.swift in Sources */,
+				OBJ_198 /* FingerprintTests.swift in Sources */,
+				OBJ_199 /* AuthenticationProviderStub.swift in Sources */,
+				OBJ_200 /* CardAuthenticationProviderStub.swift in Sources */,
+				OBJ_201 /* HTTPStub.swift in Sources */,
+				OBJ_202 /* TestCards.swift in Sources */,
+				OBJ_203 /* JsonEncodeTest.swift in Sources */,
+				OBJ_204 /* LogSanitizerTests.swift in Sources */,
+				OBJ_205 /* XenditIntegrationTests.swift in Sources */,
+				OBJ_206 /* XenditTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */;
+			targetProxy = A17AD6922944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_171 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "xendit-sdk-ios-src::XenditObjC" /* XenditObjC */;
+			targetProxy = A17AD6912944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "xendit-sdk-ios-src::XenditTests" /* XenditTests */;
+			targetProxy = A17AD6972944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_212 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */;
+			targetProxy = A17AD6932944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_213 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */;
+			targetProxy = A17AD6942944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_214 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "xendit-sdk-ios-src::Xendit" /* Xendit */;
+			targetProxy = A17AD6952944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+		OBJ_215 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "xendit-sdk-ios-src::XenditObjC" /* XenditObjC */;
+			targetProxy = A17AD6962944E08A00DE1584 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_108 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubs_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubs;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = OHHTTPStubs;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubs_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubs;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = OHHTTPStubs;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_121 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -package-description-version 5.0.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -package-description-version 5.0.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubsSwift_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubsSwift;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = OHHTTPStubsSwift;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubsSwift_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubsSwift;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = OHHTTPStubsSwift;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/Xendit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Sources/XenditObjC/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = Xendit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Xendit;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/Xendit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Sources/XenditObjC/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = Xendit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Xendit;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_174 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/XenditObjC_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = XenditObjC;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = XenditObjC;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/XenditObjC_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = XenditObjC;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = XenditObjC;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_182 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -package-description-version 5.5.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_183 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -package-description-version 5.5.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_188 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_189 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/XenditTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Sources/XenditObjC/include/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = XenditTests;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		OBJ_194 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
+					"$(SRCROOT)/Sources/XenditObjC/include",
+				);
+				INFOPLIST_FILE = Xendit.xcodeproj/XenditTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Sources/XenditObjC/include/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = XenditTests;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_107 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_108 /* Debug */,
+				OBJ_109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_120 /* Build configuration list for PBXNativeTarget "OHHTTPStubsPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_121 /* Debug */,
+				OBJ_122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_126 /* Build configuration list for PBXNativeTarget "OHHTTPStubsSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_127 /* Debug */,
+				OBJ_128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_135 /* Build configuration list for PBXNativeTarget "Xendit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_136 /* Debug */,
+				OBJ_137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_173 /* Build configuration list for PBXNativeTarget "XenditObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_174 /* Debug */,
+				OBJ_175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_181 /* Build configuration list for PBXNativeTarget "XenditPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_182 /* Debug */,
+				OBJ_183 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_187 /* Build configuration list for PBXAggregateTarget "XenditPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_188 /* Debug */,
+				OBJ_189 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_192 /* Build configuration list for PBXNativeTarget "XenditTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_193 /* Debug */,
+				OBJ_194 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "Xendit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
