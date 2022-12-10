@@ -24,6 +24,7 @@
 		94DED2171E8D3CE90092BEB7 /* CreateAuthentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED2161E8D3CE90092BEB7 /* CreateAuthentification.swift */; };
 		94DED2191E8D45ED0092BEB7 /* ValidateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */; };
 		94DED21B1E8D4BC70092BEB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED21A1E8D4BC70092BEB7 /* ViewController.swift */; };
+		A159CAAD2942D49900A7B95B /* Xendit in Frameworks */ = {isa = PBXBuildFile; productRef = A159CAAC2942D49900A7B95B /* Xendit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,19 +36,6 @@
 			remoteInfo = XenditExample;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9476724B1E8C1AD1004FD8E0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		39C01AC0218355D90035C82C /* XenditExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XenditExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +59,7 @@
 		94DED2161E8D3CE90092BEB7 /* CreateAuthentification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAuthentification.swift; sourceTree = "<group>"; };
 		94DED2181E8D45ED0092BEB7 /* ValidateCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCardViewController.swift; sourceTree = "<group>"; };
 		94DED21A1E8D4BC70092BEB7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A159CA9D294242B500A7B95B /* xendit-sdk-ios-src */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "xendit-sdk-ios-src"; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A159CAAD2942D49900A7B95B /* Xendit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,9 +117,11 @@
 		946B4D6A1E8A6BCA0085EE04 = {
 			isa = PBXGroup;
 			children = (
+				A159CA9C294242B500A7B95B /* Packages */,
 				946B4D751E8A6BCA0085EE04 /* XenditExample */,
 				39C01AC1218355D90035C82C /* XenditExampleUITests */,
 				946B4D741E8A6BCA0085EE04 /* Products */,
+				A159CA8629423E2700A7B95B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +158,21 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A159CA8629423E2700A7B95B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A159CA9C294242B500A7B95B /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A159CA9D294242B500A7B95B /* xendit-sdk-ios-src */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,13 +201,15 @@
 				946B4D6F1E8A6BCA0085EE04 /* Sources */,
 				946B4D701E8A6BCA0085EE04 /* Frameworks */,
 				946B4D711E8A6BCA0085EE04 /* Resources */,
-				9476724B1E8C1AD1004FD8E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = XenditExample;
+			packageProductDependencies = (
+				A159CAAC2942D49900A7B95B /* Xendit */,
+			);
 			productName = XenditExample;
 			productReference = 946B4D731E8A6BCA0085EE04 /* XenditExample.app */;
 			productType = "com.apple.product-type.application";
@@ -338,7 +347,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = XenditExampleUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample.XenditExampleUITests;
@@ -361,7 +374,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = XenditExampleUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample.XenditExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -478,7 +495,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -491,7 +509,10 @@
 				DEVELOPMENT_TEAM = YTAZRVVYUC;
 				INFOPLIST_FILE = XenditExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -505,7 +526,10 @@
 				DEVELOPMENT_TEAM = YTAZRVVYUC;
 				INFOPLIST_FILE = XenditExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.xendit.XenditExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -543,6 +567,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A159CAAC2942D49900A7B95B /* Xendit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Xendit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 946B4D6B1E8A6BCA0085EE04 /* Project object */;
 }

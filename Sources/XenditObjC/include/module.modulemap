@@ -1,0 +1,4 @@
+module XenditObjC {
+    umbrella header "Xendit.h"
+    export *
+}
