@@ -47,6 +47,7 @@
 		OBJ_150 /* XenditCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* XenditCustomer.swift */; };
 		OBJ_151 /* XenditJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* XenditJWT.swift */; };
 		OBJ_152 /* XenditJWTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* XenditJWTRequest.swift */; };
+		OBJ_153 /* XenditRetokenizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* XenditRetokenizationRequest.swift */; };
 		OBJ_154 /* XenditTokenizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* XenditTokenizationRequest.swift */; };
 		OBJ_155 /* Xendit3DSRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Xendit3DSRecommendation.swift */; };
 		OBJ_156 /* XenditAuthenticatedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* XenditAuthenticatedToken.swift */; };
@@ -167,6 +168,7 @@
 		OBJ_24 /* XenditCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCustomer.swift; sourceTree = "<group>"; };
 		OBJ_25 /* XenditJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWT.swift; sourceTree = "<group>"; };
 		OBJ_26 /* XenditJWTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWTRequest.swift; sourceTree = "<group>"; };
+		OBJ_27 /* XenditRetokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditRetokenizationRequest.swift; sourceTree = "<group>"; };
 		OBJ_28 /* XenditTokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTokenizationRequest.swift; sourceTree = "<group>"; };
 		OBJ_29 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
 		OBJ_30 /* XenditAuthenticatedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticatedToken.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				OBJ_24 /* XenditCustomer.swift */,
 				OBJ_25 /* XenditJWT.swift */,
 				OBJ_26 /* XenditJWTRequest.swift */,
+				OBJ_27 /* XenditRetokenizationRequest.swift */,
 				OBJ_28 /* XenditTokenizationRequest.swift */,
 			);
 			path = DTOs;
@@ -732,6 +735,7 @@
 				OBJ_150 /* XenditCustomer.swift in Sources */,
 				OBJ_151 /* XenditJWT.swift in Sources */,
 				OBJ_152 /* XenditJWTRequest.swift in Sources */,
+				OBJ_153 /* XenditRetokenizationRequest.swift in Sources */,
 				OBJ_154 /* XenditTokenizationRequest.swift in Sources */,
 				OBJ_155 /* Xendit3DSRecommendation.swift in Sources */,
 				OBJ_156 /* XenditAuthenticatedToken.swift in Sources */,
