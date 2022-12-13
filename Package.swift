@@ -25,15 +25,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Xendit",
-            dependencies: ["XenditObjC", "CardinalMobile"],
+            dependencies: ["XenditObjC"],
             exclude: ["Info.plist"]),
         .target(
             name: "XenditObjC",
             dependencies: [],
             exclude: ["Log/LogDNA/LICENSE"]),
-        .binaryTarget(
-            name: "CardinalMobile",
-            path: "CardinalMobile.xcframework"),
         .testTarget(
             name: "XenditTests",
             dependencies: [
