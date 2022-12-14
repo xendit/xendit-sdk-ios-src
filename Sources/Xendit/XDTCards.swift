@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CardinalMobile
+import UIKit
 
 protocol CanTokenize {
     // Tokenization method
@@ -35,24 +35,10 @@ protocol CanAuthenticate {
 public class XDTCards: CanTokenize, CanAuthenticate {
     private static var cardAuthenticationProvider: CardAuthenticationProviderProtocol = CardAuthenticationProvider()
     private static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
-    private static var cardinalSession: CardinalSession?
     private static var publishableKey: String?
     
     public static func setup(publishableKey: String) {
         XDTCards.publishableKey = publishableKey
-    }
-    
-    private static func configureCardinal(environment: CardinalSessionEnvironment) {
-        cardinalSession = CardinalSession()
-        let config = CardinalSessionConfiguration()
-        config.deploymentEnvironment = environment
-        config.uiType = .both
-        
-        let yourCustomUi = UiCustomization()
-        //Set various customizations here. See "iOS UI Customization" documentation for detail.
-        config.uiCustomization = yourCustomUi
-        config.renderType = [CardinalSessionRenderTypeOTP, CardinalSessionRenderTypeHTML]
-        cardinalSession!.configure(config)
     }
     
     public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
