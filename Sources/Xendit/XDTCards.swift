@@ -107,32 +107,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             return
         }
         
-        let jwtRequest = XenditJWTRequest(amount: amount)
-        jwtRequest.currency = currency
-        jwtRequest.customer = customer
-        
-        XDTApiClient.getJWT(publishableKey: publishableKey!, tokenId: tokenId, requestBody: jwtRequest) {
-            (jwt, error) in
-            if error != nil || jwt?.jwt == nil {
-                // Continue with normal flow
-                create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
-            } else {
-                // 3DS2 flow
-                let environment = jwt?.environment;
-                let jwt = jwt?.jwt
-                handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf, cardCvn: cardCvn) {
-                    (token, error) in
-                    if token == nil || error != nil {
-                        completion(nil, error)
-                    } else {
-                        // mapping token response into authentication response
-                        let authentication = XenditAuthentication(id: token!.authenticationId, status: token!.status, maskedCardNumber: token!.maskedCardNumber, cardInfo: token!.cardInfo)
-                        completion(authentication, error)
-                    }
-                    
-                }
-            }
-        }
+        create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
     }
     
     private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
