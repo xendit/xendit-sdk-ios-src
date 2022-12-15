@@ -141,76 +141,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTApiClient.create3DSRecommendationRequest(publishableKey: publishableKey!, tokenId: tokenId, completion: completion)
     }
     
-    private static func createAuthenticationWithSessionId(fromViewController: UIViewController, tokenId: String, sessionId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        
-        var requestBody: [String: Any] = [
-            "amount" : amount,
-            "session_id" : sessionId
-        ]
-        
-        if currency != nil {
-            requestBody["currency"] = currency
-        }
-        
-        if cardCvn != nil {
-            requestBody["card_cvn"] = cardCvn
-        }
-        
-        var header: [String: String] = [:]
-        if onBehalfOf != nil {
-            header["for-user-id"] = onBehalfOf!
-        }
-        
-        XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: header) { (authentication, error) in
-            if error == nil &&
-                // If status = VERIFIED for 3DS 2.0, we dont need to do anymore verification
-                (authentication?.status == "VERIFIED") {
-                // Handle frictionless flow & 3ds version 1.0
-                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                return completion(token, nil)
-            }
-            
-            if error != nil ||
-                authentication?.status == "FAILED" ||
-                authentication?.authenticationTransactionId == nil ||
-                authentication?.requestPayload == nil {
-                // Revert to 3DS1 flow
-                return create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
-                    if error != nil {
-                        return completion(nil, error)
-                    }
-                    // Handle opening of OTP page
-                    let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                    return completion(token, nil)
-                }
-            }
-            let authenticationTransactionId = authentication?.authenticationTransactionId
-            let requestPayload = authentication?.requestPayload
-            
-            let xdtDelegate = XDTValidationDelegate(completion: { (response, jwt, error) in
-                verifyAuthentication(authentication: authentication!) { (authentication, error) in
-                    guard error == nil else {
-                        return completion(nil, error)
-                    }
-                    let token = XenditCCToken(tokenId: tokenId, authentication: authentication!);
-                    return completion(token, error);
-                }
-            })
-            
-            cardinalSession?.continueWith(transactionId: authenticationTransactionId!, payload: requestPayload!, validationDelegate: xdtDelegate)
-            return
-        }
-    }
-    
-    private static func verifyAuthentication(authentication: XenditAuthentication, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
-        
-        let requestBody: [String: Any] = [
-            "authentication_transaction_id": authentication.authenticationTransactionId!
-        ]
-        
-        XDTApiClient.verifyAuthenticationRequest(publishableKey: publishableKey!, authenticationId: authentication.id, bodyJson: requestBody, extraHeader: nil, completion: completion)
-    }
-    
     private static func validateTokenizationRequest(tokenizationRequest: XenditTokenizationRequest) -> XenditError? {
         let cardData = tokenizationRequest.cardData
         guard publishableKey != nil else {
@@ -305,27 +235,6 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
-    private static func handleEmv3DSFlow(fromViewController: UIViewController, tokenId: String, environment: String, amount: NSNumber, currency: String?, jwt: String, onBehalfOf: String?, cardCvn: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
-        let cardinalEnvironment = environment == "DEVELOPMENT" ? CardinalSessionEnvironment.staging : CardinalSessionEnvironment.production;
-        configureCardinal(environment: cardinalEnvironment);
-        cardinalSession?.setup(jwtString: jwt, completed: {
-            (sessionId: String) in
-            createAuthenticationWithSessionId(fromViewController: fromViewController, tokenId: tokenId, sessionId: sessionId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
-        }) {
-            (response : CardinalResponse) in
-            // Revert to 3DS1 flow
-            create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn) { (authentication, error) in
-                if error != nil {
-                    return completion(nil, error)
-                }
-                // Handle opening of OTP page
-                let token = XenditCCToken.init(tokenId: tokenId, authentication: authentication!)
-                return completion(token, nil)
-            }
-            return
-        }
-    }
-    
     private static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         if (error != nil) {
             // handle error message
@@ -352,16 +261,5 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         } else {
             completion(nil, XenditError.ServerError())
         }
-    }
-}
-
-
-class XDTValidationDelegate: CardinalValidationDelegate {
-    private var completion:  (_ : CardinalResponse?, _ : String?, _ : XenditError?) -> Void
-    init(completion: @escaping (_ : CardinalResponse?, _ : String?, _ : XenditError?) -> Void) {
-        self.completion = completion
-    }
-    func cardinalSession(cardinalSession session: CardinalSession!, stepUpValidated validateResponse: CardinalResponse!, serverJWT: String!) {
-        self.completion(validateResponse, serverJWT, nil);
     }
 }
