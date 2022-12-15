@@ -308,24 +308,19 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
         
         let status = authenticatedToken?.status
-        let jwt = authenticatedToken?.jwt
         
-        guard let tokenId = authenticatedToken?.id else {
+        guard authenticatedToken?.id != nil else {
             return completion(nil, XenditError.ServerError())
         }
         
         if status != nil {
-            if status == "IN_REVIEW" {
-                if CreditCard.is3ds2Version(version: authenticatedToken?.threedsVersion) && jwt != nil {
-                    handleEmv3DSFlow(fromViewController: fromViewController, tokenId: tokenId, environment: authenticatedToken!.environment!, amount: amount, currency: currency, jwt: jwt!, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
-                } else if let authenticationURL = authenticatedToken?.authenticationURL {
-                    cardAuthenticationProvider.authenticate(
-                        fromViewController: fromViewController,
-                        URL: authenticationURL,
-                        authenticatedToken: authenticatedToken!,
-                        completion: completion
-                    )
-                }
+            if status == "IN_REVIEW", let authenticationURL = authenticatedToken?.authenticationURL {
+                cardAuthenticationProvider.authenticate(
+                    fromViewController: fromViewController,
+                    URL: authenticationURL,
+                    authenticatedToken: authenticatedToken!,
+                    completion: completion
+                )
             } else {
                 let token = XenditCCToken(authenticatedToken: authenticatedToken!)
                 completion(token, nil)
