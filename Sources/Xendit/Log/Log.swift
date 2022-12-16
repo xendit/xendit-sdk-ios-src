@@ -7,7 +7,9 @@
 
 import Foundation
 import WebKit
+#if SWIFT_PACKAGE
 import XenditObjC
+#endif
 
 
 @objc(XENLogLevel) public enum XenditLogLevel: UInt {
@@ -17,12 +19,12 @@ import XenditObjC
 
 internal class Log {
     static let shared = Log()
-
+    
     public var level: XenditLogLevel? = .info
     public var logDNALevel: ISHLogDNALevel? = .warn
-
+    
     let sanitizer = LogSanitizer()
-
+    
     init() {
         let LogDNAKey = ""
         if !LogDNAKey.isEmpty {
@@ -31,18 +33,18 @@ internal class Log {
             ISHLogDNAService.enabled = false
         }
     }
-
+    
     func log(_ level: XenditLogLevel = .info, _ message: String) {
         guard let lvl = self.level, level.rawValue >= lvl.rawValue else {
             return
         }
         print("[xendit] \(message)")
     }
-
+    
     func verbose(_ message: String) {
         log(.verbose, message)
     }
-
+    
     func logUrlRequest(prefix: String, request: URLRequest, requestBody: [String: Any]?) {
         log(.verbose, "\(prefix) start request")
         log(.info, "request: \(request.httpMethod ?? "n/a") \(request.url?.absoluteString ?? "n/a")")
@@ -50,7 +52,7 @@ internal class Log {
             log(.verbose, "request body: \(sanitizer.sanitizeRequestBody(requestBody))")
         }
     }
-
+    
     func logUrlResponse(prefix: String, request: URLRequest, requestBody: [String: Any]?, data: Data?, response: URLResponse?, error: Error?) {
         verbose("\(prefix) finished request")
         let dataString: String?
@@ -62,7 +64,7 @@ internal class Log {
         if let response = response as? HTTPURLResponse {
             log(.info, "response: \(response.statusCode) \(request.httpMethod ?? "n/a") \(response.url?.absoluteString ?? "n/a")")
             log(.verbose, "headers: \(response.allHeaderFields as? [String: String] ?? [:])")
-
+            
             let logDNAlevel: ISHLogDNALevel
             switch response.statusCode {
             case (500...): logDNAlevel = .error
@@ -88,7 +90,7 @@ internal class Log {
             verbose("error: \(error)")
         }
     }
-
+    
     func logUnexpectedWebScriptMessage(url: String, message: WKScriptMessage) {
         let messageBody: Any
         switch message.body {
@@ -107,7 +109,7 @@ internal class Log {
             ]
         )
     }
-
+    
     fileprivate func logDNA(line: String, level: ISHLogDNALevel, meta: [String: Any]) {
         guard ISHLogDNAService.enabled else {
             return

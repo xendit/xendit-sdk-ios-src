@@ -2,11 +2,6 @@
 
 Xendit iOS SDK is compatible with CocoaPods and Swift Package Manager, and provides target for consumption: `Xendit`.
 
-For CocoaPods, compatible with version `3.5.x`.
-
-For SPM, compatible with version `3.6.0` and above.
-
-
 ## Ownership
 
 Team: [Credit Cards Team](https://www.draw.io/?state=%7B%22ids%22:%5B%221Vk1zqYgX2YqjJYieQ6qDPh0PhB2yAd0j%22%5D,%22action%22:%22open%22,%22userId%22:%22104938211257040552218%22%7D)
@@ -22,8 +17,8 @@ Slack Mentions: `@troops-cards`
 
 Add this to your Podfile.
 
-```
-pod 'Xendit', '~> 3.5.2'
+```ruby
+pod 'Xendit', '~> 3.7.0'
 ```
 
 
@@ -37,7 +32,7 @@ pod 'Xendit', '~> 3.5.2'
 
 3. Enter the package URL in the search field in the top right, that simply means the [GitHub URL](https://github.com/xendit/xendit-sdk-ios-src.git).
 
-4. Choose Dependency Rule as `Up to Next Major Version` from `3.6.0`.
+4. Choose Dependency Rule as `Up to Next Major Version` from `3.7.0`.
 
 <img width="1080" alt="Screenshot 2022-03-15 at 10 11 26 PM" src="https://user-images.githubusercontent.com/36880960/158397849-5fd4f311-4ed4-4df5-a257-cd332462ce41.png">
 
@@ -45,20 +40,6 @@ pod 'Xendit', '~> 3.5.2'
 
 
 ## Running Tests
-
-### Prerequisite if using CocoaPods
-
-1. Checkout tag `3.5.2`
-
-```sh
-git clone https://github.com/xendit/xendit-sdk-ios-src
-git checkout 3.5.2
-```
-
-2. Install [CocoaPods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
-
-3. In console open repository root folder and install test dependencies by running `pod install`
-
 
 ### Running Tests from Xcode
 
@@ -70,20 +51,6 @@ To run UI tests: choose `XenditExample` scheme and press `cmd+u`
 
 
 ## Run the app
-
-#### Prerequisite if using CocoaPods
-
-1. Checkout tag `3.5.2`
-
-```sh
-git clone https://github.com/xendit/xendit-sdk-ios-src
-git checkout 3.5.2
-```
-
-2. Install [CocoaPods](https://cocoapods.org/) by running `sudo gem install cocoapods`. Additionally, you can read how to setup and use it in you app [here](https://guides.cocoapods.org/using/using-cocoapods.html). (Ruby is required)
-
-3. In console open repository root folder and install app dependencies by running `pod install`
-
 
 ### Running App with Xcode
 

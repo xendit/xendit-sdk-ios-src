@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if SWIFT_PACKAGE
 import XenditObjC
+#endif
 
 
 @objcMembers
