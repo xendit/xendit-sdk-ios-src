@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Xendit
 
 class ViewController: UIViewController {
 
