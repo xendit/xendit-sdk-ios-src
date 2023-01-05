@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 import SystemConfiguration.CaptiveNetwork
 import CoreLocation
+#if SWIFT_PACKAGE
 import XenditObjC
+#endif
 
 
 class Fingerprint: NSObject {
     private var locationManager = CLLocationManager()
-
+    
     private(set) var location: CLLocation?
     var idfv: String? {
         return UIDevice.current.identifierForVendor?.uuidString
@@ -29,7 +31,7 @@ class Fingerprint: NSObject {
             var ptr = ifaddr
             while ptr != nil {
                 defer { ptr = ptr?.pointee.ifa_next }
-
+                
                 let interface = ptr!.pointee
                 let addrFamily = interface.ifa_addr.pointee.sa_family
                 if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
@@ -88,7 +90,7 @@ class Fingerprint: NSObject {
         let minutes = abs(seconds/60) % 60
         return String(format: "%+.2d:%.2d", hours, minutes)
     }
-
+    
     var payload: [String: String] {
         var res = [
             "fp_language": language,
@@ -118,13 +120,13 @@ class Fingerprint: NSObject {
         }
         return res
     }
-
+    
     override init() {
         super.init()
         locationManager.delegate = self
         tryGetLocation()
     }
-
+    
     private func tryGetLocation() {
         guard CLLocationManager.locationServicesEnabled() else {
             return
@@ -146,12 +148,12 @@ class Fingerprint: NSObject {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // Do nothing
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = manager.location
         print("Got location: \(payload)")
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         tryGetLocation()
     }

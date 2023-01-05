@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import CardinalMobile
+#if SWIFT_PACKAGE
 import XenditObjC
+#endif
 
 
 @objcMembers
@@ -18,9 +19,6 @@ import XenditObjC
     
     // Publishable key
     public static var publishableKey: String?
-    
-    private static var cardinalSession: CardinalSession!
-    private static var isSetup = false
     
     // Create token method with billing details and customer object
     public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {

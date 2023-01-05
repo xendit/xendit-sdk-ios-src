@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A17AD6992944E0D500DE1584 /* CardinalMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* CardinalMobile.xcframework */; };
-		A17AD69A2944E0D500DE1584 /* CardinalMobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* CardinalMobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		OBJ_111 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* HTTPStubs+NSURLSessionConfiguration.m */; };
 		OBJ_112 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* HTTPStubs.m */; };
 		OBJ_113 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* HTTPStubsMethodSwizzling.m */; };
@@ -143,7 +141,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A17AD69A2944E0D500DE1584 /* CardinalMobile.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +216,6 @@
 		OBJ_9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_90 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
 		OBJ_91 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = .build/checkouts/OHHTTPStubs/Package.swift; sourceTree = "<group>"; };
-		OBJ_99 /* CardinalMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CardinalMobile.xcframework; sourceTree = SOURCE_ROOT; };
 		"ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubsSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,7 +244,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_170 /* XenditObjC.framework in Frameworks */,
-				A17AD6992944E0D500DE1584 /* CardinalMobile.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +371,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -384,13 +379,11 @@
 				OBJ_56 /* Tests */,
 				OBJ_71 /* Dependencies */,
 				OBJ_92 /* Products */,
-				OBJ_99 /* CardinalMobile.xcframework */,
 				OBJ_101 /* LICENSE */,
 				OBJ_102 /* Xendit.podspec */,
 				OBJ_104 /* README.md */,
 				A17AD6982944E0D500DE1584 /* Frameworks */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_51 /* include */ = {
@@ -669,7 +662,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_92 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

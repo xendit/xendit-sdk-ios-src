@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Xendit'
-  s.version          = '3.6.1'
+  s.version          = '3.7.0'
   s.license          = 'MIT'
   s.homepage         = 'https://www.xendit.co'
   s.author           = { 'Juan Gonzalez’' => 'juan@xendit.co' }
@@ -12,10 +12,19 @@ Pod::Spec.new do |s|
   s.platform              = :ios, '9.0'
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'Sources/**/*.{h,m,swift}'
+  s.default_subspec = 'Default'
+  # Default subspec that includes the most commonly-used components
+  s.subspec 'Default' do |default|
+    default.dependency 'Xendit/XenditObjC'
+    default.source_files = 'Sources/Xendit/**/*.swift'
+  end
 
-  s.ios.vendored_frameworks = 'CardinalMobile.xcframework'
+  # The XenditObjC subspec, containing the Objective-C library needed
+  s.subspec 'XenditObjC' do |xenditobjc|
+    xenditobjc.source_files = "Sources/XenditObjC/**/*.{h,m}",
+        "Sources/XenditObjC/include/Xendit.h"
+  end
 
-  s.pod_target_xcconfig  = { 'ONLY_ACTIVE_ARCH' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end
