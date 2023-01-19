@@ -149,8 +149,8 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if (tokenizationRequest.isSingleUse) {
             if (tokenizationRequest.amount != nil) {
-                guard tokenizationRequest.amount!.doubleValue > 0 else {
-                    return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must be a number greater than 0")
+                guard tokenizationRequest.amount!.doubleValue >= 0 else {
+                    return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount must not be less than 0")
                 }
             } else {
                 return XenditError(errorCode: "VALIDATION_ERROR", message: "Amount is required for single use token")
