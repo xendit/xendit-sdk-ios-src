@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A1F7B53429B96F860063AE15 /* XenditStoreCVNRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7B53329B96F860063AE15 /* XenditStoreCVNRequest.swift */; };
 		OBJ_111 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* HTTPStubs+NSURLSessionConfiguration.m */; };
 		OBJ_112 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* HTTPStubs.m */; };
 		OBJ_113 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* HTTPStubsMethodSwizzling.m */; };
@@ -148,6 +149,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A1F7B53329B96F860063AE15 /* XenditStoreCVNRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditStoreCVNRequest.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_101 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_102 /* Xendit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xendit.podspec; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				OBJ_25 /* XenditJWT.swift */,
 				OBJ_26 /* XenditJWTRequest.swift */,
 				OBJ_27 /* XenditRetokenizationRequest.swift */,
+				A1F7B53329B96F860063AE15 /* XenditStoreCVNRequest.swift */,
 				OBJ_28 /* XenditTokenizationRequest.swift */,
 			);
 			path = DTOs;
@@ -714,6 +717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				A1F7B53429B96F860063AE15 /* XenditStoreCVNRequest.swift in Sources */,
 				OBJ_139 /* Extensions.swift in Sources */,
 				OBJ_140 /* Log.swift in Sources */,
 				OBJ_141 /* LogSanitizer.swift in Sources */,
