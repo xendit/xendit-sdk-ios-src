@@ -20,6 +20,12 @@ protocol CanTokenize {
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
     static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    
+    // Store CVN method
+    // @param storeCVNRequest: Token ID and billing details
+    // @param onBehalfOf (Optional) Business id for xenPlaform use cases
+    // @param completion callback function when tokenization is completed
+    static func storeCVN(fromViewController: UIViewController, storeCVNRequest: XenditStoreCVNRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
 }
 
 protocol CanAuthenticate {
@@ -70,6 +76,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
+    @available(*, deprecated, message: "Use storeCVN(UIViewController, XenditStoreCVNRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         let logPrefix = "createToken:"
         
@@ -88,6 +95,27 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
             
             handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: 0, currency: nil, onBehalfOf: onBehalfOf, cardCvn: retokenizationRequest.cardCvn, error: error, completion: completion)
+        }
+    }
+    
+    public static func storeCVN(fromViewController: UIViewController, storeCVNRequest: XenditStoreCVNRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+        let logPrefix = "storeCVN:"
+        
+        if let error = validateRetokenizationRequest(retokenizationRequest: storeCVNRequest) {
+            Log.shared.verbose("\(logPrefix) \(error)")
+            completion(nil, error)
+        }
+        
+        var extraHeaders: [String: String] = [:]
+        if onBehalfOf != "" {
+            extraHeaders["for-user-id"] = onBehalfOf
+        }
+        
+        let requestBody = storeCVNRequest.toJsonObject()
+        
+        XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
+            
+            handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: 0, currency: nil, onBehalfOf: onBehalfOf, cardCvn: storeCVNRequest.cardCvn, error: error, completion: completion)
         }
     }
     

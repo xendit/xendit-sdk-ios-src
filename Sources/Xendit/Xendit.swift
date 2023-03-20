@@ -26,11 +26,22 @@ import XenditObjC
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
     
-    // Create token method with billing details and customer object
+    // Retokenize method with billing details and customer object
+    @available(*, deprecated, message: "Use storeCVN(UIViewController, XenditStoreCVNRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createToken(fromViewController: fromViewController, retokenizationRequest: retokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
+    
+    // Store CVN with existing token method with billing details and customer object
+    public static func storeCVN(
+        fromViewController: UIViewController,
+        storeCVNRequest: XenditStoreCVNRequest,
+        onBehalfOf: String?,
+        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+            XDTCards.setup(publishableKey: publishableKey!)
+            XDTCards.storeCVN(fromViewController: fromViewController, storeCVNRequest: storeCVNRequest, onBehalfOf: onBehalfOf, completion: completion)
+        }
     
     public static func createAuthentication(fromViewController: UIViewController, authenticationRequest: XenditAuthenticationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
         XDTCards.setup(publishableKey: publishableKey!)
