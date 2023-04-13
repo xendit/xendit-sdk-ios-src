@@ -22,6 +22,7 @@ import XenditObjC
     
     // Create token method with billing details and customer object
     public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
@@ -29,6 +30,7 @@ import XenditObjC
     // Retokenize method with billing details and customer object
     @available(*, deprecated, message: "Use storeCVN(UIViewController, XenditStoreCVNRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createToken(fromViewController: fromViewController, retokenizationRequest: retokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
     }
@@ -39,11 +41,13 @@ import XenditObjC
         storeCVNRequest: XenditStoreCVNRequest,
         onBehalfOf: String?,
         completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+            XDTSentry.shared.configure()
             XDTCards.setup(publishableKey: publishableKey!)
             XDTCards.storeCVN(fromViewController: fromViewController, storeCVNRequest: storeCVNRequest, onBehalfOf: onBehalfOf, completion: completion)
         }
     
     public static func createAuthentication(fromViewController: UIViewController, authenticationRequest: XenditAuthenticationRequest, onBehalfOf: String?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         let tokenId = authenticationRequest.tokenId
         let amount = authenticationRequest.amount
@@ -54,6 +58,7 @@ import XenditObjC
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool, onBehalfOf: String, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: onBehalfOf, completion: completion)
@@ -61,6 +66,7 @@ import XenditObjC
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: true)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
@@ -68,6 +74,7 @@ import XenditObjC
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
     public static func createToken(fromViewController: UIViewController, cardData: CardData!, shouldAuthenticate: Bool!, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         let tokenizationRequest = XenditTokenizationRequest(cardData: cardData, shouldAuthenticate: shouldAuthenticate)
         XDTCards.createToken(fromViewController: fromViewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil, completion: completion)
@@ -75,18 +82,21 @@ import XenditObjC
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: nil, cardCvn: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: nil, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createAuthentication(UIViewController, XenditAuthenticationRequest, Callback) instead")
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, cardCVN: String, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+        XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
         XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: nil, customer: nil, cardCvn: cardCVN, completion: completion)    }
     
