@@ -17,6 +17,7 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var cardExpYearTextField: UITextField!
     @IBOutlet weak var cardCvnTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var midTextField: UITextField!
     @IBOutlet weak var isMultipleUseSwitch: UISwitch!
 
     
@@ -44,6 +45,10 @@ class CreateTokenViewController: UIViewController {
             amount = NSNumber(value: Double.init(amountText)!)
         }
         let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: true, amount: amount, currency: currency)
+        // Set MID if it is set
+        if let text = midTextField.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            tokenizationRequest.midLabel = text
+        }
         
         let billingDetails: XenditBillingDetails = XenditBillingDetails()
         billingDetails.givenNames = "John"

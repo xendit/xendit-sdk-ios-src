@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +13,7 @@
             <objects>
                 <navigationController id="Q2w-d8-3ZJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GtP-50-JCY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -88,76 +89,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000001091" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
-                                <rect key="frame" x="20" y="64" width="335" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-yC-LbE">
-                                <rect key="frame" x="20" y="118" width="100" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Cvn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-fP-859">
-                                <rect key="frame" x="255" y="118" width="100" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
-                                <rect key="frame" x="20" y="318.5" width="335" height="30"/>
-                                <state key="normal" title="Create token"/>
-                                <connections>
-                                    <action selector="createTokenAction:" destination="WxF-OF-wGW" eventType="touchUpInside" id="5jJ-d7-9xt"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-zB-QZK">
-                                <rect key="frame" x="20" y="172" width="335" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2023" borderStyle="roundedRect" placeholder="Exp Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-ij-bFC">
-                                <rect key="frame" x="137.5" y="118" width="100" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="uLM-vY-srE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-x0-L4h">
-                                <rect key="frame" x="20" y="226" width="95" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="033-hj-Fto">
-                                <rect key="frame" x="125" y="221" width="51" height="31"/>
-                                <accessibility key="accessibilityConfiguration" label="Multiple Use"/>
-                            </switch>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2KF-c8-hDj">
+                                <rect key="frame" x="16" y="80" width="343" height="277"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000001091" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RKg-Ti-Kff">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-yC-LbE">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2023" borderStyle="roundedRect" placeholder="Exp Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-ij-bFC">
+                                                <rect key="frame" x="119.5" y="0.0" width="104" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Cvn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-fP-859">
+                                                <rect key="frame" x="239.5" y="0.0" width="103.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-zB-QZK">
+                                        <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Merchant ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHt-Xw-jcz">
+                                        <rect key="frame" x="0.0" y="150" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ftO-Wf-9xL">
+                                        <rect key="frame" x="0.0" y="200" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-x0-L4h">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="033-hj-Fto">
+                                                <rect key="frame" x="111" y="0.0" width="51" height="31"/>
+                                                <accessibility key="accessibilityConfiguration" label="Multiple Use"/>
+                                            </switch>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPZ-B0-X2a">
+                                                <rect key="frame" x="176" y="0.0" width="167" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
+                                        <rect key="frame" x="0.0" y="247" width="343" height="30"/>
+                                        <state key="normal" title="Create token"/>
+                                        <connections>
+                                            <action selector="createTokenAction:" destination="WxF-OF-wGW" eventType="touchUpInside" id="5jJ-d7-9xt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xyV-ij-bFC" firstAttribute="top" secondItem="uNx-Bl-cvE" secondAttribute="bottom" constant="20" id="1PM-St-i3z"/>
-                            <constraint firstItem="dxg-vm-fAA" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="49e-Ql-Q7g"/>
-                            <constraint firstAttribute="trailing" secondItem="AaR-zB-QZK" secondAttribute="trailing" constant="20" id="6Av-jP-EYk"/>
-                            <constraint firstAttribute="trailing" secondItem="IHb-fP-859" secondAttribute="trailing" constant="20" id="A7v-Po-Qdg"/>
-                            <constraint firstItem="IHb-fP-859" firstAttribute="top" secondItem="uNx-Bl-cvE" secondAttribute="bottom" constant="20" id="Bcs-xm-Etx"/>
-                            <constraint firstItem="uNx-Bl-cvE" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="CqQ-5m-e5K"/>
-                            <constraint firstItem="IHb-fP-859" firstAttribute="width" secondItem="p9g-yC-LbE" secondAttribute="width" id="FYD-hr-m7S"/>
-                            <constraint firstItem="033-hj-Fto" firstAttribute="centerY" secondItem="wC7-x0-L4h" secondAttribute="centerY" id="InB-4s-3PO"/>
-                            <constraint firstItem="AaR-zB-QZK" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="JWt-DL-wUl"/>
-                            <constraint firstItem="wC7-x0-L4h" firstAttribute="leading" secondItem="AaR-zB-QZK" secondAttribute="leading" id="OKu-Ye-q9H"/>
-                            <constraint firstItem="dxg-vm-fAA" firstAttribute="centerY" secondItem="uUf-ex-Vz9" secondAttribute="centerY" id="QD3-ww-hb0"/>
-                            <constraint firstItem="p9g-yC-LbE" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="20" id="Sxh-OG-a5U"/>
-                            <constraint firstItem="uNx-Bl-cvE" firstAttribute="top" secondItem="ltJ-E6-EqI" secondAttribute="bottom" constant="20" id="Uhf-oq-XvX"/>
-                            <constraint firstItem="wC7-x0-L4h" firstAttribute="top" secondItem="AaR-zB-QZK" secondAttribute="bottom" constant="20" id="WEe-k9-q2g"/>
-                            <constraint firstAttribute="trailing" secondItem="dxg-vm-fAA" secondAttribute="trailing" constant="20" id="WcM-a6-0Lr"/>
-                            <constraint firstItem="dxg-vm-fAA" firstAttribute="centerX" secondItem="uUf-ex-Vz9" secondAttribute="centerX" id="eAU-UR-cLc"/>
-                            <constraint firstItem="xyV-ij-bFC" firstAttribute="centerX" secondItem="uNx-Bl-cvE" secondAttribute="centerX" id="hDD-qi-99G"/>
-                            <constraint firstItem="033-hj-Fto" firstAttribute="leading" secondItem="wC7-x0-L4h" secondAttribute="trailing" constant="10" id="nze-h5-rda"/>
-                            <constraint firstItem="p9g-yC-LbE" firstAttribute="top" secondItem="uNx-Bl-cvE" secondAttribute="bottom" constant="20" id="qeB-Go-t6z"/>
-                            <constraint firstItem="AaR-zB-QZK" firstAttribute="top" secondItem="p9g-yC-LbE" secondAttribute="bottom" constant="20" id="rqw-Rl-py5"/>
-                            <constraint firstItem="xyV-ij-bFC" firstAttribute="width" secondItem="p9g-yC-LbE" secondAttribute="width" id="uOs-b3-RXX"/>
-                            <constraint firstAttribute="trailing" secondItem="uNx-Bl-cvE" secondAttribute="trailing" constant="20" id="zgw-oI-mar"/>
+                            <constraint firstAttribute="trailing" secondItem="2KF-c8-hDj" secondAttribute="trailing" constant="16" id="Vdg-f2-Nie"/>
+                            <constraint firstItem="2KF-c8-hDj" firstAttribute="leading" secondItem="uUf-ex-Vz9" secondAttribute="leading" constant="16" id="kMQ-yF-Zap"/>
+                            <constraint firstItem="2KF-c8-hDj" firstAttribute="top" secondItem="ltJ-E6-EqI" secondAttribute="bottom" constant="16" id="xCM-7n-XHg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -167,6 +170,7 @@
                         <outlet property="cardExpYearTextField" destination="xyV-ij-bFC" id="FIe-qc-lzb"/>
                         <outlet property="cardNumberTextField" destination="uNx-Bl-cvE" id="WlL-CX-idt"/>
                         <outlet property="isMultipleUseSwitch" destination="033-hj-Fto" id="re7-C7-dln"/>
+                        <outlet property="midTextField" destination="dHt-Xw-jcz" id="GPz-mL-q4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v26-qP-iAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,22 +190,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eo2-zo-6og">
-                                <rect key="frame" x="20" y="64" width="335" height="34"/>
+                                <rect key="frame" x="20" y="84" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-wB-oIt">
-                                <rect key="frame" x="20" y="118" width="157.5" height="34"/>
+                                <rect key="frame" x="20" y="138" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-I0-y0l">
-                                <rect key="frame" x="197.5" y="118" width="157.5" height="34"/>
+                                <rect key="frame" x="197.5" y="138" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-YR-0X4">
-                                <rect key="frame" x="20" y="172" width="157.5" height="34"/>
+                                <rect key="frame" x="20" y="192" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -257,12 +261,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5X-cK-T79">
-                                <rect key="frame" x="20" y="64" width="335" height="34"/>
+                                <rect key="frame" x="20" y="84" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Card CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMW-15-FJr">
-                                <rect key="frame" x="197.5" y="118" width="157.5" height="34"/>
+                                <rect key="frame" x="197.5" y="138" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -274,7 +278,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hs-dI-Mqd">
-                                <rect key="frame" x="20" y="118" width="157.5" height="34"/>
+                                <rect key="frame" x="20" y="138" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -307,4 +311,9 @@
             <point key="canvasLocation" x="912.79999999999995" y="470.91454272863569"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

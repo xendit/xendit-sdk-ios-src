@@ -73,6 +73,10 @@ import Foundation
             json["customer"] = customer!.toJsonObject()
         }
         
+        if (midLabel != nil) {
+            json["mid_label"] = midLabel
+        }
+        
         return json
     }
     
