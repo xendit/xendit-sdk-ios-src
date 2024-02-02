@@ -10,7 +10,6 @@ Slack Channel: [#p-cards-product](https://xendit.slack.com/messages/p-cards-prod
 
 Slack Mentions: `@troops-cards`
 
-
 ## Usage
 
 ### Install Xendit iOS SDK with CocoaPods
@@ -20,7 +19,6 @@ Add this to your Podfile.
 ```ruby
 pod 'Xendit', '~> 3.7.0'
 ```
-
 
 ### Install Xendit iOS SDK with SPM
 
@@ -38,6 +36,20 @@ pod 'Xendit', '~> 3.7.0'
 
 <img width="870" alt="Screenshot 2022-03-15 at 10 13 34 PM" src="https://user-images.githubusercontent.com/36880960/158397994-9253f9ab-124c-443e-b31c-5e09bcf0d4da.png">
 
+### Creating token
+
+This function accepts parameters below:
+
+| Parameter          | Type                  | Description                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------ | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Card               | Card Object           | Card data that will be used to create a token                                                                                                                                                                                                                                                                                                                  |
+| amount             | String                | Amount that will be used to create a token bundled with 3DS authentication                                                                                                                                                                                                                                                                                     |
+| shouldAuthenticate | Boolean               | A flag indicating if 3DS authentication is required for this token. Will be set to `true` if you omit the parameter                                                                                                                                                                                                                                            |
+| isMultipleUse      | Boolean               | A flag to identify whether a token will be reusable or just for one-time use. Will be set to `false` if you omit the parameter                                                                                                                                                                                                                                 |
+| billingDetails     | billingDetails Object | Card holder's billing details                                                                                                                                                                                                                                                                                                                                  |
+| customer           | customer object       | Xendit customer object                                                                                                                                                                                                                                                                                                                                         |
+| currency           | String                | Currency of the transaction that will be submitted for 3DS authentication                                                                                                                                                                                                                                                                                      |
+| midLabel           | String                | _For switcher merchant only_ Specific string value which labels any of your Merchant IDs (MID) set up with Xendit. This can be configured in the list of MIDs on your Dashboard settings. (If this is not included in a request, and you have more than 1 MID in your list, the transaction will proceed using your prioritized MID (first MID on your list)). |
 
 ## Running Tests
 
@@ -48,7 +60,6 @@ Open `Xendit.xcworkspace`
 To run unit tests: choose `Xendit` scheme and press `cmd+u` (or "Run Product" -> "Test")
 
 To run UI tests: choose `XenditExample` scheme and press `cmd+u`
-
 
 ## Run the app
 
@@ -66,7 +77,6 @@ To run UI tests: choose `XenditExample` scheme and press `cmd+u`
 
 <img width="319" alt="Screen Shot 2020-12-08 at 11 23 22" src="https://user-images.githubusercontent.com/16671326/101439776-d8effd80-3947-11eb-8218-9f621762a8f5.png">
 
-
 4. A dropdown list will appear, click `Edit scheme...`
 
 <img width="197" alt="Screen Shot 2020-12-08 at 11 24 26" src="https://user-images.githubusercontent.com/16671326/101439832-fde47080-3947-11eb-97ae-14f619a68d86.png">
@@ -82,7 +92,6 @@ To run UI tests: choose `XenditExample` scheme and press `cmd+u`
 7. Click the `Run` button
 
 <img width="335" alt="Screen Shot 2020-12-08 at 11 32 29" src="https://user-images.githubusercontent.com/16671326/101440380-2d47ad00-3949-11eb-9615-c6aaa5928394.png">
-
 
 8. Wait for the app build and the simulator will showed up
 
