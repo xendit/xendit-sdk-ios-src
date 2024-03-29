@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Xendit'
-  s.version          = '3.8.2'
+  s.version          = '3.8.3'
   s.license          = 'MIT'
   s.homepage         = 'https://www.xendit.co'
   s.author           = { 'Juan Gonzalez’' => 'juan@xendit.co' }
@@ -11,6 +11,9 @@ Pod::Spec.new do |s|
 
   s.platform              = :ios, '9.0'
   s.ios.deployment_target = '9.0'
+  s.resource_bundles = {
+    'Xendit' => ['Sources/Xendit/PrivacyInfo.xcprivacy'] 
+  }
 
   s.default_subspec = 'Default'
   # Default subspec that includes the most commonly-used components

@@ -454,6 +454,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_100 /* SentryBaggage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBaggage.m; sourceTree = "<group>"; };
 		OBJ_101 /* SentryBaseIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBaseIntegration.m; sourceTree = "<group>"; };
@@ -749,9 +750,9 @@
 		OBJ_383 /* HTTPStubsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubsResponse.h; sourceTree = "<group>"; };
 		OBJ_384 /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
 		OBJ_385 /* HTTPStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubs.h; sourceTree = "<group>"; };
-		OBJ_386 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_386 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap; sourceTree = "<group>"; };
 		OBJ_388 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
-		OBJ_389 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/OHHTTPStubs/Package.swift"; sourceTree = "<group>"; };
+		OBJ_389 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = .build/checkouts/OHHTTPStubs/Package.swift; sourceTree = "<group>"; };
 		OBJ_40 /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
 		OBJ_401 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_402 /* Xendit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xendit.podspec; sourceTree = "<group>"; };
@@ -768,7 +769,7 @@
 		OBJ_54 /* IDFAHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDFAHelper.h; sourceTree = "<group>"; };
 		OBJ_55 /* Xendit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xendit.h; sourceTree = "<group>"; };
 		OBJ_56 /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
-		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "Sources/XenditObjC/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Sources/XenditObjC/include/module.modulemap; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_61 /* CardDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataTest.swift; sourceTree = "<group>"; };
@@ -1223,7 +1224,7 @@
 			path = LogDNA;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1236,7 +1237,6 @@
 				OBJ_404 /* README.md */,
 				OBJ_405 /* cortex.yaml */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_51 /* Utils */ = {
@@ -1563,6 +1563,7 @@
 				OBJ_44 /* XDTSentry.swift */,
 				OBJ_45 /* Xendit.swift */,
 				OBJ_46 /* XenditError.swift */,
+				644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */,
 			);
 			name = Xendit;
 			path = Sources/Xendit;
@@ -1805,7 +1806,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_390 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
