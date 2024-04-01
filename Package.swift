@@ -30,7 +30,11 @@ let package = Package(
                 "XenditObjC",
                 .product(name: "Sentry", package: "sentry-cocoa"),
             ],
-            exclude: ["Info.plist"]),
+            exclude: ["Info.plist"],
+            resources: [
+                .process("PrivacyInfo.xcprivacy")
+            ]
+        ),
         .target(
             name: "XenditObjC",
             dependencies: [],
