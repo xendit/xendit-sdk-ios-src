@@ -20,6 +20,12 @@ Add this to your Podfile.
 pod 'Xendit', '~> 3.7.0'
 ```
 
+**Important:** Import SDK in Objective-C project with CocoaPods integration, you can do as following
+
+```objective-c
+#import "Xendit-Swift.h"
+```
+
 ### Install Xendit iOS SDK with SPM
 
 1. Select your project in the Project Navigator on the right. Select the project in the Project section and click the Package Dependencies tab at the top.
@@ -35,6 +41,12 @@ pod 'Xendit', '~> 3.7.0'
 <img width="1080" alt="Screenshot 2022-03-15 at 10 11 26 PM" src="https://user-images.githubusercontent.com/36880960/158397849-5fd4f311-4ed4-4df5-a257-cd332462ce41.png">
 
 <img width="870" alt="Screenshot 2022-03-15 at 10 13 34 PM" src="https://user-images.githubusercontent.com/36880960/158397994-9253f9ab-124c-443e-b31c-5e09bcf0d4da.png">
+
+**Important:** Import SDK in Objective-C project with SPM integration, you can do as following
+
+```objective-c
+@import Xendit;
+```
 
 ### Creating token
 
