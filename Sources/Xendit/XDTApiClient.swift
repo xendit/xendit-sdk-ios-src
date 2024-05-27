@@ -37,7 +37,7 @@ class XDTApiClient {
     internal static let CLIENT_TYPE = "SDK";
     internal static let CLIENT_API_VERSION = "2.0.0";
     internal static let CLIENT_IDENTIFIER = "Xendit iOS SDK";
-    internal static let CLIENT_SDK_VERSION = "3.8.5";
+    internal static let CLIENT_SDK_VERSION = "3.8.6";
     
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     

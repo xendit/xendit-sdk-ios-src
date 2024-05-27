@@ -48,10 +48,15 @@ class CreditCard {
         let cardExpMonthValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationMonth)
         let cardExpYearValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationYear)
         if cardExpMonthValid && cardExpYearValid  {
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.month, .year], from: Date())
+            let currentMonth = components.month ?? 1
+            let currentYear = components.year ?? 2024
+
             let expMonthNumber = Int(cardExpirationMonth)!
             let expYearNumber = Int(cardExpirationYear)!
-            return expMonthNumber >= 1 && expMonthNumber <= 12 &&
-                    expYearNumber >= 2017 && expYearNumber <= 2100
+            return expMonthNumber >= currentMonth && expMonthNumber <= 12 &&
+                expYearNumber >= currentYear && expYearNumber <= currentYear + 100
         }
         return false
     }
@@ -161,7 +166,7 @@ class CreditCard {
           if cardNumber.count > 4 {
               let index = cardNumber.index(cardNumber.startIndex, offsetBy: 4)
               let startingNumber = Int(cardNumber[..<index])!
-              return startingNumber >= 3528 && startingNumber <= 3589
+              return startingNumber >= 3528 && startingNumber <= 3589 || cardNumber.hasPrefix("308800") || cardNumber.hasPrefix("333755")
           }
           return false
       }
