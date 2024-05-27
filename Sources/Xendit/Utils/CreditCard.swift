@@ -166,7 +166,7 @@ class CreditCard {
           if cardNumber.count > 4 {
               let index = cardNumber.index(cardNumber.startIndex, offsetBy: 4)
               let startingNumber = Int(cardNumber[..<index])!
-              return startingNumber >= 3528 && startingNumber <= 3589 || cardNumber.hasPrefix("308800") || cardNumber.hasPrefix("333755")
+              return (startingNumber >= 3528 && startingNumber <= 3589) || cardNumber.hasPrefix("308800") || cardNumber.hasPrefix("333755")
           }
           return false
       }
