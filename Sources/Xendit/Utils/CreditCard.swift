@@ -55,8 +55,9 @@ class CreditCard {
 
             let expMonthNumber = Int(cardExpirationMonth)!
             let expYearNumber = Int(cardExpirationYear)!
-            return expMonthNumber >= currentMonth && expMonthNumber <= 12 &&
-                expYearNumber >= currentYear && expYearNumber <= currentYear + 100
+            if (expYearNumber > currentYear) || (expYearNumber == currentYear && expMonthNumber >= currentMonth) {
+                return expMonthNumber >= 1 && expMonthNumber <= 12 && expYearNumber <= currentYear + 100
+            }
         }
         return false
     }
