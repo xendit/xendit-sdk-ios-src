@@ -14,6 +14,10 @@ class CreateAuthentification: UIViewController {
     
     @IBOutlet weak var tokenIDTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var cardHolderFirstNameTextField: UITextField!
+    @IBOutlet weak var cardHolderLastNameTextField: UITextField!
+    @IBOutlet weak var cardHolderEmailTextField: UITextField!
+    @IBOutlet weak var cardHolderPhoneNumberTextField: UITextField!
     
     @IBOutlet weak var cardCVNTextField: UITextField!
     override func viewDidLoad() {
@@ -28,15 +32,21 @@ class CreateAuthentification: UIViewController {
                 
         let tokenID = tokenIDTextField.text
         let cardCVN = cardCVNTextField.text
+        let cardData = XenditCardHolderInformation.init(
+            cardHolderFirstName: cardHolderFirstNameTextField.text,
+            cardHolderLastName: cardHolderLastNameTextField.text,
+            cardHolderEmail: cardHolderEmailTextField.text,
+            cardHolderPhoneNumber: cardHolderPhoneNumberTextField.text
+        )
         
-        if tokenID == nil, amountTextField.text == nil, cardCVN == nil {
+        if tokenID == nil, amountTextField.text == nil, cardCVN == nil, cardData == nil {
             return
         }
         
         let amount = NSNumber(value: Double.init(amountTextField.text!)!)
         let currency = "IDR"
         
-        let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenID!, amount: amount, currency: currency);
+        let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenID!, amount: amount, currency: currency, cardData: cardData);
         authenticationRequest.cardCvn = cardCVN;
 
         Xendit.createAuthentication(fromViewController: self, authenticationRequest: authenticationRequest, onBehalfOf: nil) { (authentication, error) in

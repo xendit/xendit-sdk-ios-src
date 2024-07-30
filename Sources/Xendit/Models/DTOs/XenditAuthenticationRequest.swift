@@ -17,11 +17,13 @@ import Foundation
     public var midLabel: String?
     public var billingDetails: XenditBillingDetails?
     public var customer: XenditCustomer?
+    public var cardData: XenditCardHolderInformation?
     
-    public init(tokenId: String, amount: NSNumber, currency: String) {
+    public init(tokenId: String, amount: NSNumber, currency: String, CardData: XenditCardHolderInformation?) {
         self.amount = amount
         self.tokenId = tokenId
         self.currency = currency
+        self.cardData = CardData
     }
     
     func toJsonObject() -> [String : Any] {
@@ -46,6 +48,10 @@ import Foundation
         
         if (customer != nil) {
             json["customer"] = customer!.toJsonObject()
+        }
+
+        if (cardData != nil) {
+            json["card_data"] = cardData!.toJsonObject()
         }
         
         return json

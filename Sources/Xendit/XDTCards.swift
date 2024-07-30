@@ -124,9 +124,9 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, completion: completion);
     }
     
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, cardData: XenditCardHolderInformation?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         
-        createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, cardCvn: nil, completion: completion);
+        createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, cardCvn: nil, cardData: cardData, completion: completion);
     }
     
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {

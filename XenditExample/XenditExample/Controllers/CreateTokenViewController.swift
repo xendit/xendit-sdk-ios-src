@@ -19,6 +19,10 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var midTextField: UITextField!
     @IBOutlet weak var isMultipleUseSwitch: UISwitch!
+    @IBOutlet weak var cardHolderFirstNameTextField: UITextField!
+    @IBOutlet weak var cardHolderLastNameTextField: UITextField!
+    @IBOutlet weak var cardHolderEmailTextField: UITextField!
+    @IBOutlet weak var cardHolderPhoneNumberTextField: UITextField!
 
     
     override func viewDidLoad() {
@@ -34,7 +38,15 @@ class CreateTokenViewController: UIViewController {
         
         view.endEditing(true)
         let cvn = cardCvnTextField.text
-        let cardData = XenditCardData.init(cardNumber: cardNumberTextField.text!, cardExpMonth: cardExpMonthTextField.text!, cardExpYear: cardExpYearTextField.text!)
+        let cardData = XenditCardData.init(
+            cardNumber: cardNumberTextField.text!,
+            cardExpMonth: cardExpMonthTextField.text!,
+            cardExpYear: cardExpYearTextField.text!,
+            cardHolderFirstName: cardHolderFirstNameTextField.text,
+            cardHolderLastName: cardHolderLastNameTextField.text,
+            cardHolderEmail: cardHolderEmailTextField.text,
+            cardHolderPhoneNumber: cardHolderPhoneNumberTextField.text
+        )
         cardData.cardCvn = cvn
         
         let isMultipleUse = isMultipleUseSwitch.isOn
