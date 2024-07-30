@@ -19,11 +19,11 @@ import Foundation
     public var customer: XenditCustomer?
     public var cardData: XenditCardHolderInformation?
     
-    public init(tokenId: String, amount: NSNumber, currency: String, CardData: XenditCardHolderInformation?) {
+    public init(tokenId: String, amount: NSNumber, currency: String, cardData: XenditCardHolderInformation?) {
         self.amount = amount
         self.tokenId = tokenId
         self.currency = currency
-        self.cardData = CardData
+        self.cardData = cardData
     }
     
     func toJsonObject() -> [String : Any] {

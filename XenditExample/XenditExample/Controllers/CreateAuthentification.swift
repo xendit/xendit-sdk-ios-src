@@ -32,6 +32,7 @@ class CreateAuthentification: UIViewController {
                 
         let tokenID = tokenIDTextField.text
         let cardCVN = cardCVNTextField.text
+        
         let cardData = XenditCardHolderInformation.init(
             cardHolderFirstName: cardHolderFirstNameTextField.text,
             cardHolderLastName: cardHolderLastNameTextField.text,
@@ -39,7 +40,7 @@ class CreateAuthentification: UIViewController {
             cardHolderPhoneNumber: cardHolderPhoneNumberTextField.text
         )
         
-        if tokenID == nil, amountTextField.text == nil, cardCVN == nil, cardData == nil {
+        if tokenID?.isEmpty == true || amountTextField.text?.isEmpty == true || cardCVN?.isEmpty == true {
             return
         }
         

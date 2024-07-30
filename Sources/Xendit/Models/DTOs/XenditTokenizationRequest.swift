@@ -24,11 +24,7 @@ import Foundation
         self.cardData = XenditCardData.init(
             cardNumber: cardData.cardNumber,
             cardExpMonth: cardData.cardExpMonth,
-            cardExpYear: cardData.cardExpYear,
-            cardHolderFirstName: cardData.cardHolderFirstName,
-            cardHolderLastName: cardData.cardHolderLastName,
-            cardHolderEmail: cardData.cardHolderEmail,
-            cardHolderPhoneNumber: cardData.cardHolderPhoneNumber
+            cardExpYear: cardData.cardExpYear
         )
         self.cardData.cardCvn = cardData.cardCvn
         self.isSingleUse = !cardData.isMultipleUse
@@ -37,7 +33,13 @@ import Foundation
         self.currency = cardData.currency
     }
     
-    public init (cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber?, currency: String?) {
+    public init (
+        cardData: XenditCardData,
+        isSingleUse: Bool,
+        shouldAuthenticate: Bool,
+        amount: NSNumber?,
+        currency: String?
+    ) {
         self.cardData = cardData
         self.isSingleUse = isSingleUse
         self.shouldAuthenticate = shouldAuthenticate
@@ -55,8 +57,8 @@ import Foundation
             "exp_year": cardData.cardExpYear,
             "card_holder_first_name": cardData.cardHolderFirstName ?? "",
             "card_holder_last_name": cardData.cardHolderLastName ?? "",
-            "email": cardData.cardHolderEmail ?? "",
-            "phone_number": cardData.cardHolderPhoneNumber ?? ""
+            "card_holder_email": cardData.cardHolderEmail ?? "",
+            "card_holder_phone_number": cardData.cardHolderPhoneNumber ?? ""
         ]
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
