@@ -17,7 +17,7 @@ Slack Mentions: `@troops-cards`
 Add this to your Podfile.
 
 ```ruby
-pod 'Xendit', '~> 3.7.0'
+pod 'Xendit', '~> 3.9.0'
 ```
 
 ### Install Xendit iOS SDK with SPM
