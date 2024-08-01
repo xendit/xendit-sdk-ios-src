@@ -21,7 +21,11 @@ import Foundation
     
     @available(*, deprecated, message: "Use init(cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber, currency: String) instead" )
     public init(cardData: CardData, shouldAuthenticate: Bool) {
-        self.cardData = XenditCardData.init(cardNumber: cardData.cardNumber, cardExpMonth: cardData.cardExpMonth, cardExpYear: cardData.cardExpYear)
+        self.cardData = XenditCardData.init(
+            cardNumber: cardData.cardNumber,
+            cardExpMonth: cardData.cardExpMonth,
+            cardExpYear: cardData.cardExpYear
+        )
         self.cardData.cardCvn = cardData.cardCvn
         self.isSingleUse = !cardData.isMultipleUse
         self.shouldAuthenticate = shouldAuthenticate
@@ -29,7 +33,13 @@ import Foundation
         self.currency = cardData.currency
     }
     
-    public init (cardData: XenditCardData, isSingleUse: Bool, shouldAuthenticate: Bool, amount: NSNumber?, currency: String?) {
+    public init (
+        cardData: XenditCardData,
+        isSingleUse: Bool,
+        shouldAuthenticate: Bool,
+        amount: NSNumber?,
+        currency: String?
+    ) {
         self.cardData = cardData
         self.isSingleUse = isSingleUse
         self.shouldAuthenticate = shouldAuthenticate
@@ -45,6 +55,10 @@ import Foundation
             "account_number": cardData.cardNumber,
             "exp_month": cardData.cardExpMonth,
             "exp_year": cardData.cardExpYear,
+            "card_holder_first_name": cardData.cardHolderFirstName ?? "",
+            "card_holder_last_name": cardData.cardHolderLastName ?? "",
+            "card_holder_email": cardData.cardHolderEmail ?? "",
+            "card_holder_phone_number": cardData.cardHolderPhoneNumber ?? ""
         ]
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {

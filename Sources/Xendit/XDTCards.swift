@@ -121,24 +121,81 @@ public class XDTCards: CanTokenize, CanAuthenticate {
     
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         
-        createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, completion: completion);
+        createAuthentication(
+            fromViewController: fromViewController,
+            tokenId: tokenId,
+            amount: amount,
+            currency: nil,
+            onBehalfOf: onBehalfOf,
+            customer: customer,
+            completion: completion);
     }
     
     public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         
-        createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: nil, onBehalfOf: onBehalfOf, customer: customer, cardCvn: nil, completion: completion);
+        createAuthentication(
+            fromViewController: fromViewController,
+            tokenId: tokenId,
+            amount: amount,
+            currency: nil,
+            onBehalfOf: onBehalfOf,
+            customer: customer,
+            cardCvn: nil,
+            completion: completion
+        );
     }
     
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    public static func createAuthentication(
+        fromViewController: UIViewController,
+        tokenId: String,
+        amount: NSNumber,
+        currency: String?,
+        onBehalfOf: String?,
+        customer: XenditCustomer?,
+        cardCvn: String?,
+        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
+    ) {
+        createAuthentication(
+            fromViewController: fromViewController,
+            tokenId: tokenId,
+            amount: amount,
+            currency: nil,
+            onBehalfOf: onBehalfOf,
+            customer: customer,
+            cardCvn: nil,
+            cardData: nil,
+            completion: completion
+        );
+    }
+    
+    public static func createAuthentication(
+        fromViewController: UIViewController,
+        tokenId: String,
+        amount: NSNumber,
+        currency: String?,
+        onBehalfOf: String?,
+        customer: XenditCustomer?,
+        cardCvn: String?,
+        cardData: XenditCardHolderInformation?,
+        completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
-        create3DS1Authentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, cardCvn: cardCvn, completion: completion)
+        create3DS1Authentication(
+            fromViewController: fromViewController,
+            tokenId: tokenId,
+            amount: amount,
+            currency: currency,
+            onBehalfOf: onBehalfOf,
+            cardCvn: cardCvn,
+            cardData:cardData,
+            completion: completion
+        )
     }
     
-    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, cardData: XenditCardHolderInformation?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -154,6 +211,10 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if cardCvn != nil {
             requestBody["card_cvn"] = cardCvn
+        }
+        
+        if let cardData {
+            requestBody["card_data"] = cardData
         }
         
         var extraHeaders: [String: String] = [:]

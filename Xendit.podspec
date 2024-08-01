@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Xendit'
-  s.version          = '3.8.7'
+  s.version          = '3.9.0'
   s.license          = 'MIT'
   s.homepage         = 'https://www.xendit.co'
   s.author           = { 'Juan Gonzalez’' => 'juan@xendit.co' }
