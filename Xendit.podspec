@@ -11,12 +11,15 @@ Pod::Spec.new do |s|
 
   s.platform              = :ios, '9.0'
   s.ios.deployment_target = '9.0'
+  s.resource_bundles = {
+    'Xendit' => ['Sources/Xendit/PrivacyInfo.xcprivacy'] 
+  }
 
   s.default_subspec = 'Default'
   # Default subspec that includes the most commonly-used components
   s.subspec 'Default' do |default|
     default.dependency 'Xendit/XenditObjC'
-    default.dependency 'Sentry'
+    default.dependency 'Sentry', '6.2.1'
     default.source_files = 'Sources/Xendit/**/*.swift'
   end
 
@@ -24,10 +27,6 @@ Pod::Spec.new do |s|
   s.subspec 'XenditObjC' do |xenditobjc|
     xenditobjc.source_files = 'Sources/XenditObjC/**/*.{h,m}',
         'Sources/XenditObjC/include/Xendit.h'
-  end
-
-  s.subspec 'Sentry' do |sentry|
-    sentry.vendored_frameworks = "Sentry.xcframework"
   end
 
   s.pod_target_xcconfig  = { 'ONLY_ACTIVE_ARCH' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

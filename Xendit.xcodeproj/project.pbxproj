@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,294 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		OBJ_411 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_372 /* HTTPStubs+NSURLSessionConfiguration.m */; };
-		OBJ_412 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_373 /* HTTPStubs.m */; };
-		OBJ_413 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_374 /* HTTPStubsMethodSwizzling.m */; };
-		OBJ_414 /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_375 /* HTTPStubsPathHelpers.m */; };
-		OBJ_415 /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_376 /* HTTPStubsResponse+JSON.m */; };
-		OBJ_416 /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_377 /* HTTPStubsResponse.m */; };
-		OBJ_417 /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_378 /* NSURLRequest+HTTPBodyTesting.m */; };
-		OBJ_424 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_389 /* Package.swift */; };
-		OBJ_430 /* OHHTTPStubsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_388 /* OHHTTPStubsSwift.swift */; };
-		OBJ_432 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */; };
-		OBJ_439 /* NSArray+SentrySanitize.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* NSArray+SentrySanitize.m */; };
-		OBJ_440 /* NSData+Sentry.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* NSData+Sentry.m */; };
-		OBJ_441 /* NSData+SentryCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* NSData+SentryCompression.m */; };
-		OBJ_442 /* NSDate+SentryExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* NSDate+SentryExtras.m */; };
-		OBJ_443 /* NSDictionary+SentrySanitize.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* NSDictionary+SentrySanitize.m */; };
-		OBJ_444 /* NSLocale+Sentry.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* NSLocale+Sentry.m */; };
-		OBJ_445 /* NSMutableDictionary+Sentry.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* NSMutableDictionary+Sentry.m */; };
-		OBJ_446 /* PrivateSentrySDKOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* PrivateSentrySDKOnly.m */; };
-		OBJ_447 /* SentryANRTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* SentryANRTracker.m */; };
-		OBJ_448 /* SentryANRTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* SentryANRTrackingIntegration.m */; };
-		OBJ_449 /* SentryAppStartMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* SentryAppStartMeasurement.m */; };
-		OBJ_450 /* SentryAppStartTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* SentryAppStartTracker.m */; };
-		OBJ_451 /* SentryAppStartTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* SentryAppStartTrackingIntegration.m */; };
-		OBJ_452 /* SentryAppState.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* SentryAppState.m */; };
-		OBJ_453 /* SentryAppStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* SentryAppStateManager.m */; };
-		OBJ_454 /* SentryAsynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* SentryAsynchronousOperation.m */; };
-		OBJ_455 /* SentryAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* SentryAttachment.m */; };
-		OBJ_456 /* SentryAutoBreadcrumbTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* SentryAutoBreadcrumbTrackingIntegration.m */; };
-		OBJ_457 /* SentryAutoSessionTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* SentryAutoSessionTrackingIntegration.m */; };
-		OBJ_458 /* SentryBacktrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* SentryBacktrace.cpp */; };
-		OBJ_459 /* SentryBaggage.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* SentryBaggage.m */; };
-		OBJ_460 /* SentryBaseIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* SentryBaseIntegration.m */; };
-		OBJ_461 /* SentryBreadcrumb.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* SentryBreadcrumb.m */; };
-		OBJ_462 /* SentryBreadcrumbTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* SentryBreadcrumbTracker.m */; };
-		OBJ_463 /* SentryByteCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* SentryByteCountFormatter.m */; };
-		OBJ_464 /* SentryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* SentryClient.m */; };
-		OBJ_465 /* SentryClientReport.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* SentryClientReport.m */; };
-		OBJ_466 /* SentryConcurrentRateLimitsDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* SentryConcurrentRateLimitsDictionary.m */; };
-		OBJ_467 /* SentryCoreDataSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* SentryCoreDataSwizzling.m */; };
-		OBJ_468 /* SentryCoreDataTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* SentryCoreDataTracker.m */; };
-		OBJ_469 /* SentryCoreDataTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* SentryCoreDataTrackingIntegration.m */; };
-		OBJ_470 /* SentryCrashDefaultBinaryImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* SentryCrashDefaultBinaryImageProvider.m */; };
-		OBJ_471 /* SentryCrashDefaultMachineContextWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* SentryCrashDefaultMachineContextWrapper.m */; };
-		OBJ_472 /* SentryCrashExceptionApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* SentryCrashExceptionApplication.m */; };
-		OBJ_473 /* SentryCrashInstallationReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* SentryCrashInstallationReporter.m */; };
-		OBJ_474 /* SentryCrashIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* SentryCrashIntegration.m */; };
-		OBJ_475 /* SentryCrashReportConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* SentryCrashReportConverter.m */; };
-		OBJ_476 /* SentryCrashReportSink.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* SentryCrashReportSink.m */; };
-		OBJ_477 /* SentryCrashScopeObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* SentryCrashScopeObserver.m */; };
-		OBJ_478 /* SentryCrashStackEntryMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* SentryCrashStackEntryMapper.m */; };
-		OBJ_479 /* SentryCrashWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* SentryCrashWrapper.m */; };
-		OBJ_480 /* SentryCurrentDate.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* SentryCurrentDate.m */; };
-		OBJ_481 /* SentryDataCategoryMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* SentryDataCategoryMapper.m */; };
-		OBJ_482 /* SentryDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* SentryDateUtil.m */; };
-		OBJ_483 /* SentryDebugImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* SentryDebugImageProvider.m */; };
-		OBJ_484 /* SentryDebugMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* SentryDebugMeta.m */; };
-		OBJ_485 /* SentryDefaultCurrentDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* SentryDefaultCurrentDateProvider.m */; };
-		OBJ_486 /* SentryDefaultObjCRuntimeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* SentryDefaultObjCRuntimeWrapper.m */; };
-		OBJ_487 /* SentryDefaultRateLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* SentryDefaultRateLimits.m */; };
-		OBJ_488 /* SentryDependencyContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* SentryDependencyContainer.m */; };
-		OBJ_489 /* SentryDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* SentryDevice.mm */; };
-		OBJ_490 /* SentryDiscardReasonMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* SentryDiscardReasonMapper.m */; };
-		OBJ_491 /* SentryDiscardedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* SentryDiscardedEvent.m */; };
-		OBJ_492 /* SentryDispatchFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* SentryDispatchFactory.m */; };
-		OBJ_493 /* SentryDispatchQueueWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* SentryDispatchQueueWrapper.m */; };
-		OBJ_494 /* SentryDispatchSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* SentryDispatchSourceWrapper.m */; };
-		OBJ_495 /* SentryDsn.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* SentryDsn.m */; };
-		OBJ_496 /* SentryEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SentryEnvelope.m */; };
-		OBJ_497 /* SentryEnvelopeAttachmentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* SentryEnvelopeAttachmentHeader.m */; };
-		OBJ_498 /* SentryEnvelopeItemHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* SentryEnvelopeItemHeader.m */; };
-		OBJ_499 /* SentryEnvelopeRateLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* SentryEnvelopeRateLimit.m */; };
-		OBJ_500 /* SentryError.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* SentryError.mm */; };
-		OBJ_501 /* SentryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SentryEvent.m */; };
-		OBJ_502 /* SentryException.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* SentryException.m */; };
-		OBJ_503 /* SentryExtraContextProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_144 /* SentryExtraContextProvider.m */; };
-		OBJ_504 /* SentryFileContents.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_145 /* SentryFileContents.m */; };
-		OBJ_505 /* SentryFileIOTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* SentryFileIOTrackingIntegration.m */; };
-		OBJ_506 /* SentryFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* SentryFileManager.m */; };
-		OBJ_507 /* SentryFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* SentryFrame.m */; };
-		OBJ_508 /* SentryFrameRemover.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* SentryFrameRemover.m */; };
-		OBJ_509 /* SentryFramesTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* SentryFramesTracker.m */; };
-		OBJ_510 /* SentryFramesTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* SentryFramesTrackingIntegration.m */; };
-		OBJ_511 /* SentryGeo.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* SentryGeo.m */; };
-		OBJ_512 /* SentryGlobalEventProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_153 /* SentryGlobalEventProcessor.m */; };
-		OBJ_513 /* SentryHttpDateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* SentryHttpDateParser.m */; };
-		OBJ_514 /* SentryHttpStatusCodeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_155 /* SentryHttpStatusCodeRange.m */; };
-		OBJ_515 /* SentryHttpTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_156 /* SentryHttpTransport.m */; };
-		OBJ_516 /* SentryHub.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_157 /* SentryHub.m */; };
-		OBJ_517 /* SentryId.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_158 /* SentryId.m */; };
-		OBJ_518 /* SentryInAppLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_159 /* SentryInAppLogic.m */; };
-		OBJ_519 /* SentryInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_160 /* SentryInstallation.m */; };
-		OBJ_520 /* SentryLevelMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_161 /* SentryLevelMapper.m */; };
-		OBJ_521 /* SentryLog.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_162 /* SentryLog.m */; };
-		OBJ_522 /* SentryLogOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_163 /* SentryLogOutput.m */; };
-		OBJ_523 /* SentryMachLogging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_164 /* SentryMachLogging.cpp */; };
-		OBJ_524 /* SentryMeasurementUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_165 /* SentryMeasurementUnit.m */; };
-		OBJ_525 /* SentryMeasurementValue.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_166 /* SentryMeasurementValue.m */; };
-		OBJ_526 /* SentryMechanism.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* SentryMechanism.m */; };
-		OBJ_527 /* SentryMechanismMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_168 /* SentryMechanismMeta.m */; };
-		OBJ_528 /* SentryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* SentryMessage.m */; };
-		OBJ_529 /* SentryMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* SentryMeta.m */; };
-		OBJ_530 /* SentryMetricKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_171 /* SentryMetricKitIntegration.m */; };
-		OBJ_531 /* SentryMetricProfiler.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_172 /* SentryMetricProfiler.mm */; };
-		OBJ_532 /* SentryMigrateSessionInit.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_173 /* SentryMigrateSessionInit.m */; };
-		OBJ_533 /* SentryNSDataSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_174 /* SentryNSDataSwizzling.m */; };
-		OBJ_534 /* SentryNSDataTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_175 /* SentryNSDataTracker.m */; };
-		OBJ_535 /* SentryNSError.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_176 /* SentryNSError.m */; };
-		OBJ_536 /* SentryNSNotificationCenterWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_177 /* SentryNSNotificationCenterWrapper.m */; };
-		OBJ_537 /* SentryNSProcessInfoWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_178 /* SentryNSProcessInfoWrapper.mm */; };
-		OBJ_538 /* SentryNSTimerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_179 /* SentryNSTimerWrapper.m */; };
-		OBJ_539 /* SentryNSURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_180 /* SentryNSURLRequest.m */; };
-		OBJ_540 /* SentryNSURLRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_181 /* SentryNSURLRequestBuilder.m */; };
-		OBJ_541 /* SentryNSURLSessionTaskSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_182 /* SentryNSURLSessionTaskSearch.m */; };
-		OBJ_542 /* SentryNetworkTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* SentryNetworkTracker.m */; };
-		OBJ_543 /* SentryNetworkTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* SentryNetworkTrackingIntegration.m */; };
-		OBJ_544 /* SentryNoOpSpan.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_185 /* SentryNoOpSpan.m */; };
-		OBJ_545 /* SentryOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* SentryOptions.m */; };
-		OBJ_546 /* SentryPerformanceTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* SentryPerformanceTracker.m */; };
-		OBJ_547 /* SentryPerformanceTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* SentryPerformanceTrackingIntegration.m */; };
-		OBJ_548 /* SentryPredicateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_189 /* SentryPredicateDescriptor.m */; };
-		OBJ_549 /* SentryProfileTimeseries.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_190 /* SentryProfileTimeseries.mm */; };
-		OBJ_550 /* SentryProfiler.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_191 /* SentryProfiler.mm */; };
-		OBJ_551 /* SentryProfilesSampler.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_192 /* SentryProfilesSampler.m */; };
-		OBJ_552 /* SentryProfilingLogging.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_193 /* SentryProfilingLogging.mm */; };
-		OBJ_553 /* SentryQueueableRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_194 /* SentryQueueableRequestManager.m */; };
-		OBJ_554 /* SentryRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_195 /* SentryRandom.m */; };
-		OBJ_555 /* SentryRateLimitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_196 /* SentryRateLimitParser.m */; };
-		OBJ_556 /* SentryReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_197 /* SentryReachability.m */; };
-		OBJ_557 /* SentryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_198 /* SentryRequest.m */; };
-		OBJ_558 /* SentryRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_199 /* SentryRequestOperation.m */; };
-		OBJ_559 /* SentryRetryAfterHeaderParser.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_200 /* SentryRetryAfterHeaderParser.m */; };
-		OBJ_560 /* SentrySDK.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_201 /* SentrySDK.m */; };
-		OBJ_561 /* SentrySampleDecision.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_202 /* SentrySampleDecision.m */; };
-		OBJ_562 /* SentrySamplingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_203 /* SentrySamplingContext.m */; };
-		OBJ_563 /* SentrySamplingProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_204 /* SentrySamplingProfiler.cpp */; };
-		OBJ_564 /* SentryScope.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_205 /* SentryScope.m */; };
-		OBJ_565 /* SentryScopeSyncC.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_206 /* SentryScopeSyncC.c */; };
-		OBJ_566 /* SentryScreenFrames.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_207 /* SentryScreenFrames.m */; };
-		OBJ_567 /* SentryScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_208 /* SentryScreenshot.m */; };
-		OBJ_568 /* SentryScreenshotIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_209 /* SentryScreenshotIntegration.m */; };
-		OBJ_569 /* SentrySdkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_210 /* SentrySdkInfo.m */; };
-		OBJ_570 /* SentrySerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_211 /* SentrySerialization.m */; };
-		OBJ_571 /* SentrySession.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_212 /* SentrySession.m */; };
-		OBJ_572 /* SentrySessionCrashedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_213 /* SentrySessionCrashedHandler.m */; };
-		OBJ_573 /* SentrySessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_214 /* SentrySessionTracker.m */; };
-		OBJ_574 /* SentrySpan.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_215 /* SentrySpan.m */; };
-		OBJ_575 /* SentrySpanContext.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_216 /* SentrySpanContext.m */; };
-		OBJ_576 /* SentrySpanId.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_217 /* SentrySpanId.m */; };
-		OBJ_577 /* SentrySpanStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_218 /* SentrySpanStatus.m */; };
-		OBJ_578 /* SentryStacktrace.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_219 /* SentryStacktrace.m */; };
-		OBJ_579 /* SentryStacktraceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_220 /* SentryStacktraceBuilder.m */; };
-		OBJ_580 /* SentrySubClassFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_221 /* SentrySubClassFinder.m */; };
-		OBJ_581 /* SentrySwiftAsyncIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_222 /* SentrySwiftAsyncIntegration.m */; };
-		OBJ_582 /* SentrySwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* SentrySwizzle.m */; };
-		OBJ_583 /* SentrySwizzleWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_224 /* SentrySwizzleWrapper.m */; };
-		OBJ_584 /* SentrySysctl.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_225 /* SentrySysctl.m */; };
-		OBJ_585 /* SentrySystemEventBreadcrumbs.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_226 /* SentrySystemEventBreadcrumbs.m */; };
-		OBJ_586 /* SentrySystemWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_227 /* SentrySystemWrapper.mm */; };
-		OBJ_587 /* SentryThread.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_228 /* SentryThread.m */; };
-		OBJ_588 /* SentryThreadHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_229 /* SentryThreadHandle.cpp */; };
-		OBJ_589 /* SentryThreadInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_230 /* SentryThreadInspector.m */; };
-		OBJ_590 /* SentryThreadMetadataCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_231 /* SentryThreadMetadataCache.cpp */; };
-		OBJ_591 /* SentryThreadWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_232 /* SentryThreadWrapper.m */; };
-		OBJ_592 /* SentryTime.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_233 /* SentryTime.mm */; };
-		OBJ_593 /* SentryTimeToDisplayTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_234 /* SentryTimeToDisplayTracker.m */; };
-		OBJ_594 /* SentryTraceContext.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_235 /* SentryTraceContext.m */; };
-		OBJ_595 /* SentryTraceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_236 /* SentryTraceHeader.m */; };
-		OBJ_596 /* SentryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_237 /* SentryTracer.m */; };
-		OBJ_597 /* SentryTracerConcurrency.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_238 /* SentryTracerConcurrency.mm */; };
-		OBJ_598 /* SentryTracerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_239 /* SentryTracerConfiguration.m */; };
-		OBJ_599 /* SentryTracesSampler.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_240 /* SentryTracesSampler.m */; };
-		OBJ_600 /* SentryTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_241 /* SentryTransaction.m */; };
-		OBJ_601 /* SentryTransactionContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_242 /* SentryTransactionContext.mm */; };
-		OBJ_602 /* SentryTransportAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_243 /* SentryTransportAdapter.m */; };
-		OBJ_603 /* SentryTransportFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_244 /* SentryTransportFactory.m */; };
-		OBJ_604 /* SentryUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_245 /* SentryUIApplication.m */; };
-		OBJ_605 /* SentryUIDeviceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_246 /* SentryUIDeviceWrapper.m */; };
-		OBJ_606 /* SentryUIEventTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_247 /* SentryUIEventTracker.m */; };
-		OBJ_607 /* SentryUIEventTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_248 /* SentryUIEventTrackingIntegration.m */; };
-		OBJ_608 /* SentryUIViewControllerPerformanceTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_249 /* SentryUIViewControllerPerformanceTracker.m */; };
-		OBJ_609 /* SentryUIViewControllerSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_250 /* SentryUIViewControllerSwizzling.m */; };
-		OBJ_610 /* SentryUser.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_251 /* SentryUser.m */; };
-		OBJ_611 /* SentryUserFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_252 /* SentryUserFeedback.m */; };
-		OBJ_612 /* SentryViewHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_253 /* SentryViewHierarchy.m */; };
-		OBJ_613 /* SentryViewHierarchyIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_254 /* SentryViewHierarchyIntegration.m */; };
-		OBJ_614 /* SentryWatchdogTerminationLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_255 /* SentryWatchdogTerminationLogic.m */; };
-		OBJ_615 /* SentryWatchdogTerminationScopeObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_256 /* SentryWatchdogTerminationScopeObserver.m */; };
-		OBJ_616 /* SentryWatchdogTerminationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_257 /* SentryWatchdogTerminationTracker.m */; };
-		OBJ_617 /* SentryWatchdogTerminationTrackingIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_258 /* SentryWatchdogTerminationTrackingIntegration.m */; };
-		OBJ_618 /* UIView+Sentry.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_259 /* UIView+Sentry.m */; };
-		OBJ_619 /* UIViewController+Sentry.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_260 /* UIViewController+Sentry.m */; };
-		OBJ_620 /* SentryDisplayLinkWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_262 /* SentryDisplayLinkWrapper.m */; };
-		OBJ_621 /* SentryCrashInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_308 /* SentryCrashInstallation.m */; };
-		OBJ_622 /* SentryCrashMonitor.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_311 /* SentryCrashMonitor.c */; };
-		OBJ_623 /* SentryCrashMonitorType.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_312 /* SentryCrashMonitorType.c */; };
-		OBJ_624 /* SentryCrashMonitor_AppState.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_313 /* SentryCrashMonitor_AppState.c */; };
-		OBJ_625 /* SentryCrashMonitor_CPPException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_314 /* SentryCrashMonitor_CPPException.cpp */; };
-		OBJ_626 /* SentryCrashMonitor_MachException.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_315 /* SentryCrashMonitor_MachException.c */; };
-		OBJ_627 /* SentryCrashMonitor_NSException.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_316 /* SentryCrashMonitor_NSException.m */; };
-		OBJ_628 /* SentryCrashMonitor_Signal.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_317 /* SentryCrashMonitor_Signal.c */; };
-		OBJ_629 /* SentryCrashMonitor_System.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_318 /* SentryCrashMonitor_System.m */; };
-		OBJ_630 /* SentryCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_319 /* SentryCrash.m */; };
-		OBJ_631 /* SentryCrashBinaryImageCache.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_320 /* SentryCrashBinaryImageCache.c */; };
-		OBJ_632 /* SentryCrashC.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_321 /* SentryCrashC.c */; };
-		OBJ_633 /* SentryCrashCachedData.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_322 /* SentryCrashCachedData.c */; };
-		OBJ_634 /* SentryCrashDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_323 /* SentryCrashDoctor.m */; };
-		OBJ_635 /* SentryCrashReport.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_324 /* SentryCrashReport.c */; };
-		OBJ_636 /* SentryCrashReportFixer.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_325 /* SentryCrashReportFixer.c */; };
-		OBJ_637 /* SentryCrashReportStore.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_326 /* SentryCrashReportStore.c */; };
-		OBJ_638 /* NSError+SentrySimpleConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_328 /* NSError+SentrySimpleConstructor.m */; };
-		OBJ_639 /* SentryCrashCPU.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_329 /* SentryCrashCPU.c */; };
-		OBJ_640 /* SentryCrashCPU_arm.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_330 /* SentryCrashCPU_arm.c */; };
-		OBJ_641 /* SentryCrashCPU_arm64.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_331 /* SentryCrashCPU_arm64.c */; };
-		OBJ_642 /* SentryCrashCPU_x86_32.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_332 /* SentryCrashCPU_x86_32.c */; };
-		OBJ_643 /* SentryCrashCPU_x86_64.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_333 /* SentryCrashCPU_x86_64.c */; };
-		OBJ_644 /* SentryCrashDate.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_334 /* SentryCrashDate.c */; };
-		OBJ_645 /* SentryCrashDebug.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_335 /* SentryCrashDebug.c */; };
-		OBJ_646 /* SentryCrashDynamicLinker.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_336 /* SentryCrashDynamicLinker.c */; };
-		OBJ_647 /* SentryCrashFileUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_337 /* SentryCrashFileUtils.c */; };
-		OBJ_648 /* SentryCrashID.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_338 /* SentryCrashID.c */; };
-		OBJ_649 /* SentryCrashJSONCodec.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_339 /* SentryCrashJSONCodec.c */; };
-		OBJ_650 /* SentryCrashJSONCodecObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_340 /* SentryCrashJSONCodecObjC.m */; };
-		OBJ_651 /* SentryCrashLogger.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_341 /* SentryCrashLogger.c */; };
-		OBJ_652 /* SentryCrashMach.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_342 /* SentryCrashMach.c */; };
-		OBJ_653 /* SentryCrashMachineContext.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_343 /* SentryCrashMachineContext.c */; };
-		OBJ_654 /* SentryCrashMemory.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_344 /* SentryCrashMemory.c */; };
-		OBJ_655 /* SentryCrashObjC.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_345 /* SentryCrashObjC.c */; };
-		OBJ_656 /* SentryCrashSignalInfo.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_346 /* SentryCrashSignalInfo.c */; };
-		OBJ_657 /* SentryCrashStackCursor.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_347 /* SentryCrashStackCursor.c */; };
-		OBJ_658 /* SentryCrashStackCursor_Backtrace.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_348 /* SentryCrashStackCursor_Backtrace.c */; };
-		OBJ_659 /* SentryCrashStackCursor_MachineContext.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_349 /* SentryCrashStackCursor_MachineContext.c */; };
-		OBJ_660 /* SentryCrashStackCursor_SelfThread.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_350 /* SentryCrashStackCursor_SelfThread.m */; };
-		OBJ_661 /* SentryCrashString.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_351 /* SentryCrashString.c */; };
-		OBJ_662 /* SentryCrashSymbolicator.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_352 /* SentryCrashSymbolicator.c */; };
-		OBJ_663 /* SentryCrashSysCtl.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_353 /* SentryCrashSysCtl.c */; };
-		OBJ_664 /* SentryCrashThread.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_354 /* SentryCrashThread.c */; };
-		OBJ_665 /* SentryCrashUUIDConversion.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_355 /* SentryCrashUUIDConversion.c */; };
-		OBJ_666 /* SentryCrashReportFilterBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_358 /* SentryCrashReportFilterBasic.m */; };
-		OBJ_667 /* Container+SentryDeepSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_360 /* Container+SentryDeepSearch.m */; };
-		OBJ_668 /* SentryCrashCString.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_362 /* SentryCrashCString.m */; };
-		OBJ_670 /* SentryMeasurementUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_264 /* SentryMeasurementUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_671 /* SentryNSError.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_265 /* SentryNSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_672 /* SentryEnvelopeItemHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_266 /* SentryEnvelopeItemHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_673 /* SentryBreadcrumb.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_267 /* SentryBreadcrumb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_674 /* SentryFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_268 /* SentryFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_675 /* SentryHttpStatusCodeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_269 /* SentryHttpStatusCodeRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_676 /* SentrySampleDecision.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_270 /* SentrySampleDecision.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_677 /* SentryUserFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_271 /* SentryUserFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_678 /* SentryEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_272 /* SentryEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_679 /* SentryDsn.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_273 /* SentryDsn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_680 /* SentryError.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_274 /* SentryError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_681 /* SentrySpanId.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_275 /* SentrySpanId.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_682 /* SentryException.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_276 /* SentryException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_683 /* SentrySpanContext.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_277 /* SentrySpanContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_684 /* SentryUser.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_278 /* SentryUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_685 /* SentryRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_279 /* SentryRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_686 /* SentryId.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_280 /* SentryId.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_687 /* SentryClient.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_281 /* SentryClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_688 /* SentryScope.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_282 /* SentryScope.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_689 /* SentryTransactionContext.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_283 /* SentryTransactionContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_690 /* SentryMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_284 /* SentryMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_691 /* SentrySerializable.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_285 /* SentrySerializable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_692 /* SentryDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_286 /* SentryDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_693 /* SentryStacktrace.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_287 /* SentryStacktrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_694 /* SentryOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_288 /* SentryOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_695 /* SentryHub.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_289 /* SentryHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_696 /* SentryCrashExceptionApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_290 /* SentryCrashExceptionApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_697 /* SentrySamplingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_291 /* SentrySamplingContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_698 /* SentryMechanismMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_292 /* SentryMechanismMeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_699 /* SentrySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_293 /* SentrySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_700 /* SentryDebugMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_294 /* SentryDebugMeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_701 /* SentrySpanStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_295 /* SentrySpanStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_702 /* SentryDebugImageProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_296 /* SentryDebugImageProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_703 /* Sentry.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_297 /* Sentry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_704 /* SentryGeo.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_298 /* SentryGeo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_705 /* SentryMechanism.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_299 /* SentryMechanism.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_706 /* SentryAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_300 /* SentryAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_707 /* SentryThread.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_301 /* SentryThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_708 /* SentryIntegrationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_302 /* SentryIntegrationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_709 /* SentrySpanProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_303 /* SentrySpanProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_710 /* SentryProfilingConditionals.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_304 /* SentryProfilingConditionals.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_711 /* SentryTraceHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_305 /* SentryTraceHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		OBJ_713 /* SentryPrivate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */; };
-		OBJ_721 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_369 /* Package.swift */; };
-		OBJ_726 /* SentryMXCallStackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_365 /* SentryMXCallStackTree.swift */; };
-		OBJ_727 /* SentryMXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_366 /* SentryMXManager.swift */; };
-		OBJ_728 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_367 /* Sentry.swift */; };
-		OBJ_729 /* SwiftDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_368 /* SwiftDescriptor.swift */; };
+		648184A52BF7556800DC5FBF /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A42BF7556800DC5FBF /* Sentry */; };
+		648184A82BF7558D00DC5FBF /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A72BF7558D00DC5FBF /* OHHTTPStubs */; };
+		648184AA2BF7558D00DC5FBF /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A92BF7558D00DC5FBF /* OHHTTPStubsSwift */; };
 		OBJ_736 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Extensions.swift */; };
 		OBJ_737 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Log.swift */; };
 		OBJ_738 /* LogSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* LogSanitizer.swift */; };
@@ -341,8 +56,6 @@
 		OBJ_765 /* XDTSentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* XDTSentry.swift */; };
 		OBJ_766 /* Xendit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* Xendit.swift */; };
 		OBJ_767 /* XenditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* XenditError.swift */; };
-		OBJ_769 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "sentry-cocoa::Sentry::Product" /* Sentry.framework */; };
-		OBJ_770 /* SentryPrivate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */; };
 		OBJ_771 /* XenditObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */; };
 		OBJ_780 /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* ISHLogDNAService.m */; };
 		OBJ_781 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* IDFAHelper.m */; };
@@ -358,36 +71,11 @@
 		OBJ_807 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* LogSanitizerTests.swift */; };
 		OBJ_808 /* XenditIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* XenditIntegrationTests.swift */; };
 		OBJ_809 /* XenditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* XenditTests.swift */; };
-		OBJ_811 /* OHHTTPStubsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */; };
-		OBJ_812 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */; };
 		OBJ_813 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */; };
-		OBJ_814 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "sentry-cocoa::Sentry::Product" /* Sentry.framework */; };
-		OBJ_815 /* SentryPrivate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */; };
 		OBJ_816 /* XenditObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A126D9962A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "sentry-cocoa::Sentry";
-			remoteInfo = Sentry;
-		};
-		A126D9972A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "sentry-cocoa::SentryPrivate";
-			remoteInfo = SentryPrivate;
-		};
-		A126D9982A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "sentry-cocoa::SentryPrivate";
-			remoteInfo = SentryPrivate;
-		};
 		A126D9992A529191009F715C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
@@ -395,47 +83,12 @@
 			remoteGlobalIDString = "xendit-sdk-ios-src::XenditObjC";
 			remoteInfo = XenditObjC;
 		};
-		A126D99A2A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubs";
-			remoteInfo = OHHTTPStubs;
-		};
-		A126D99B2A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubsSwift";
-			remoteInfo = OHHTTPStubsSwift;
-		};
-		A126D99C2A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "ohhttpstubs::OHHTTPStubs";
-			remoteInfo = OHHTTPStubs;
-		};
 		A126D99D2A529191009F715C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "xendit-sdk-ios-src::Xendit";
 			remoteInfo = Xendit;
-		};
-		A126D99E2A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "sentry-cocoa::Sentry";
-			remoteInfo = Sentry;
-		};
-		A126D99F2A529191009F715C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "sentry-cocoa::SentryPrivate";
-			remoteInfo = SentryPrivate;
 		};
 		A126D9A02A529191009F715C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -454,304 +107,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		OBJ_100 /* SentryBaggage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBaggage.m; sourceTree = "<group>"; };
-		OBJ_101 /* SentryBaseIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBaseIntegration.m; sourceTree = "<group>"; };
-		OBJ_102 /* SentryBreadcrumb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBreadcrumb.m; sourceTree = "<group>"; };
-		OBJ_103 /* SentryBreadcrumbTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryBreadcrumbTracker.m; sourceTree = "<group>"; };
-		OBJ_104 /* SentryByteCountFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryByteCountFormatter.m; sourceTree = "<group>"; };
-		OBJ_105 /* SentryClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryClient.m; sourceTree = "<group>"; };
-		OBJ_106 /* SentryClientReport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryClientReport.m; sourceTree = "<group>"; };
-		OBJ_107 /* SentryConcurrentRateLimitsDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryConcurrentRateLimitsDictionary.m; sourceTree = "<group>"; };
-		OBJ_108 /* SentryCoreDataSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCoreDataSwizzling.m; sourceTree = "<group>"; };
-		OBJ_109 /* SentryCoreDataTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCoreDataTracker.m; sourceTree = "<group>"; };
-		OBJ_110 /* SentryCoreDataTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCoreDataTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_111 /* SentryCrashDefaultBinaryImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashDefaultBinaryImageProvider.m; sourceTree = "<group>"; };
-		OBJ_112 /* SentryCrashDefaultMachineContextWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashDefaultMachineContextWrapper.m; sourceTree = "<group>"; };
-		OBJ_113 /* SentryCrashExceptionApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashExceptionApplication.m; sourceTree = "<group>"; };
-		OBJ_114 /* SentryCrashInstallationReporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashInstallationReporter.m; sourceTree = "<group>"; };
-		OBJ_115 /* SentryCrashIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashIntegration.m; sourceTree = "<group>"; };
-		OBJ_116 /* SentryCrashReportConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashReportConverter.m; sourceTree = "<group>"; };
-		OBJ_117 /* SentryCrashReportSink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashReportSink.m; sourceTree = "<group>"; };
-		OBJ_118 /* SentryCrashScopeObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashScopeObserver.m; sourceTree = "<group>"; };
-		OBJ_119 /* SentryCrashStackEntryMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashStackEntryMapper.m; sourceTree = "<group>"; };
 		OBJ_12 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		OBJ_120 /* SentryCrashWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashWrapper.m; sourceTree = "<group>"; };
-		OBJ_121 /* SentryCurrentDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCurrentDate.m; sourceTree = "<group>"; };
-		OBJ_122 /* SentryDataCategoryMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDataCategoryMapper.m; sourceTree = "<group>"; };
-		OBJ_123 /* SentryDateUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDateUtil.m; sourceTree = "<group>"; };
-		OBJ_124 /* SentryDebugImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDebugImageProvider.m; sourceTree = "<group>"; };
-		OBJ_125 /* SentryDebugMeta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDebugMeta.m; sourceTree = "<group>"; };
-		OBJ_126 /* SentryDefaultCurrentDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDefaultCurrentDateProvider.m; sourceTree = "<group>"; };
-		OBJ_127 /* SentryDefaultObjCRuntimeWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDefaultObjCRuntimeWrapper.m; sourceTree = "<group>"; };
-		OBJ_128 /* SentryDefaultRateLimits.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDefaultRateLimits.m; sourceTree = "<group>"; };
-		OBJ_129 /* SentryDependencyContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDependencyContainer.m; sourceTree = "<group>"; };
 		OBJ_13 /* LogSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizer.swift; sourceTree = "<group>"; };
-		OBJ_130 /* SentryDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryDevice.mm; sourceTree = "<group>"; };
-		OBJ_131 /* SentryDiscardReasonMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDiscardReasonMapper.m; sourceTree = "<group>"; };
-		OBJ_132 /* SentryDiscardedEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDiscardedEvent.m; sourceTree = "<group>"; };
-		OBJ_133 /* SentryDispatchFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDispatchFactory.m; sourceTree = "<group>"; };
-		OBJ_134 /* SentryDispatchQueueWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDispatchQueueWrapper.m; sourceTree = "<group>"; };
-		OBJ_135 /* SentryDispatchSourceWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDispatchSourceWrapper.m; sourceTree = "<group>"; };
-		OBJ_136 /* SentryDsn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDsn.m; sourceTree = "<group>"; };
-		OBJ_137 /* SentryEnvelope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryEnvelope.m; sourceTree = "<group>"; };
-		OBJ_138 /* SentryEnvelopeAttachmentHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryEnvelopeAttachmentHeader.m; sourceTree = "<group>"; };
-		OBJ_139 /* SentryEnvelopeItemHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryEnvelopeItemHeader.m; sourceTree = "<group>"; };
-		OBJ_140 /* SentryEnvelopeRateLimit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryEnvelopeRateLimit.m; sourceTree = "<group>"; };
-		OBJ_141 /* SentryError.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryError.mm; sourceTree = "<group>"; };
-		OBJ_142 /* SentryEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryEvent.m; sourceTree = "<group>"; };
-		OBJ_143 /* SentryException.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryException.m; sourceTree = "<group>"; };
-		OBJ_144 /* SentryExtraContextProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryExtraContextProvider.m; sourceTree = "<group>"; };
-		OBJ_145 /* SentryFileContents.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFileContents.m; sourceTree = "<group>"; };
-		OBJ_146 /* SentryFileIOTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFileIOTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_147 /* SentryFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFileManager.m; sourceTree = "<group>"; };
-		OBJ_148 /* SentryFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFrame.m; sourceTree = "<group>"; };
-		OBJ_149 /* SentryFrameRemover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFrameRemover.m; sourceTree = "<group>"; };
 		OBJ_15 /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
-		OBJ_150 /* SentryFramesTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFramesTracker.m; sourceTree = "<group>"; };
-		OBJ_151 /* SentryFramesTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryFramesTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_152 /* SentryGeo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryGeo.m; sourceTree = "<group>"; };
-		OBJ_153 /* SentryGlobalEventProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryGlobalEventProcessor.m; sourceTree = "<group>"; };
-		OBJ_154 /* SentryHttpDateParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryHttpDateParser.m; sourceTree = "<group>"; };
-		OBJ_155 /* SentryHttpStatusCodeRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryHttpStatusCodeRange.m; sourceTree = "<group>"; };
-		OBJ_156 /* SentryHttpTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryHttpTransport.m; sourceTree = "<group>"; };
-		OBJ_157 /* SentryHub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryHub.m; sourceTree = "<group>"; };
-		OBJ_158 /* SentryId.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryId.m; sourceTree = "<group>"; };
-		OBJ_159 /* SentryInAppLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryInAppLogic.m; sourceTree = "<group>"; };
 		OBJ_16 /* AuthenticationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationData.swift; sourceTree = "<group>"; };
-		OBJ_160 /* SentryInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryInstallation.m; sourceTree = "<group>"; };
-		OBJ_161 /* SentryLevelMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryLevelMapper.m; sourceTree = "<group>"; };
-		OBJ_162 /* SentryLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryLog.m; sourceTree = "<group>"; };
-		OBJ_163 /* SentryLogOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryLogOutput.m; sourceTree = "<group>"; };
-		OBJ_164 /* SentryMachLogging.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentryMachLogging.cpp; sourceTree = "<group>"; };
-		OBJ_165 /* SentryMeasurementUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMeasurementUnit.m; sourceTree = "<group>"; };
-		OBJ_166 /* SentryMeasurementValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMeasurementValue.m; sourceTree = "<group>"; };
-		OBJ_167 /* SentryMechanism.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMechanism.m; sourceTree = "<group>"; };
-		OBJ_168 /* SentryMechanismMeta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMechanismMeta.m; sourceTree = "<group>"; };
-		OBJ_169 /* SentryMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMessage.m; sourceTree = "<group>"; };
 		OBJ_17 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
-		OBJ_170 /* SentryMeta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMeta.m; sourceTree = "<group>"; };
-		OBJ_171 /* SentryMetricKitIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMetricKitIntegration.m; sourceTree = "<group>"; };
-		OBJ_172 /* SentryMetricProfiler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryMetricProfiler.mm; sourceTree = "<group>"; };
-		OBJ_173 /* SentryMigrateSessionInit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryMigrateSessionInit.m; sourceTree = "<group>"; };
-		OBJ_174 /* SentryNSDataSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSDataSwizzling.m; sourceTree = "<group>"; };
-		OBJ_175 /* SentryNSDataTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSDataTracker.m; sourceTree = "<group>"; };
-		OBJ_176 /* SentryNSError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSError.m; sourceTree = "<group>"; };
-		OBJ_177 /* SentryNSNotificationCenterWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSNotificationCenterWrapper.m; sourceTree = "<group>"; };
-		OBJ_178 /* SentryNSProcessInfoWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryNSProcessInfoWrapper.mm; sourceTree = "<group>"; };
-		OBJ_179 /* SentryNSTimerWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSTimerWrapper.m; sourceTree = "<group>"; };
-		OBJ_180 /* SentryNSURLRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSURLRequest.m; sourceTree = "<group>"; };
-		OBJ_181 /* SentryNSURLRequestBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSURLRequestBuilder.m; sourceTree = "<group>"; };
-		OBJ_182 /* SentryNSURLSessionTaskSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNSURLSessionTaskSearch.m; sourceTree = "<group>"; };
-		OBJ_183 /* SentryNetworkTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNetworkTracker.m; sourceTree = "<group>"; };
-		OBJ_184 /* SentryNetworkTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNetworkTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_185 /* SentryNoOpSpan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryNoOpSpan.m; sourceTree = "<group>"; };
-		OBJ_186 /* SentryOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryOptions.m; sourceTree = "<group>"; };
-		OBJ_187 /* SentryPerformanceTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryPerformanceTracker.m; sourceTree = "<group>"; };
-		OBJ_188 /* SentryPerformanceTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryPerformanceTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_189 /* SentryPredicateDescriptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryPredicateDescriptor.m; sourceTree = "<group>"; };
 		OBJ_19 /* Jsonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jsonable.swift; sourceTree = "<group>"; };
-		OBJ_190 /* SentryProfileTimeseries.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryProfileTimeseries.mm; sourceTree = "<group>"; };
-		OBJ_191 /* SentryProfiler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryProfiler.mm; sourceTree = "<group>"; };
-		OBJ_192 /* SentryProfilesSampler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryProfilesSampler.m; sourceTree = "<group>"; };
-		OBJ_193 /* SentryProfilingLogging.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryProfilingLogging.mm; sourceTree = "<group>"; };
-		OBJ_194 /* SentryQueueableRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryQueueableRequestManager.m; sourceTree = "<group>"; };
-		OBJ_195 /* SentryRandom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryRandom.m; sourceTree = "<group>"; };
-		OBJ_196 /* SentryRateLimitParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryRateLimitParser.m; sourceTree = "<group>"; };
-		OBJ_197 /* SentryReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryReachability.m; sourceTree = "<group>"; };
-		OBJ_198 /* SentryRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryRequest.m; sourceTree = "<group>"; };
-		OBJ_199 /* SentryRequestOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryRequestOperation.m; sourceTree = "<group>"; };
 		OBJ_20 /* XenditAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAddress.swift; sourceTree = "<group>"; };
-		OBJ_200 /* SentryRetryAfterHeaderParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryRetryAfterHeaderParser.m; sourceTree = "<group>"; };
-		OBJ_201 /* SentrySDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySDK.m; sourceTree = "<group>"; };
-		OBJ_202 /* SentrySampleDecision.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySampleDecision.m; sourceTree = "<group>"; };
-		OBJ_203 /* SentrySamplingContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySamplingContext.m; sourceTree = "<group>"; };
-		OBJ_204 /* SentrySamplingProfiler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentrySamplingProfiler.cpp; sourceTree = "<group>"; };
-		OBJ_205 /* SentryScope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryScope.m; sourceTree = "<group>"; };
-		OBJ_206 /* SentryScopeSyncC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryScopeSyncC.c; sourceTree = "<group>"; };
-		OBJ_207 /* SentryScreenFrames.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryScreenFrames.m; sourceTree = "<group>"; };
-		OBJ_208 /* SentryScreenshot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryScreenshot.m; sourceTree = "<group>"; };
-		OBJ_209 /* SentryScreenshotIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryScreenshotIntegration.m; sourceTree = "<group>"; };
 		OBJ_21 /* XenditAuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticationRequest.swift; sourceTree = "<group>"; };
-		OBJ_210 /* SentrySdkInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySdkInfo.m; sourceTree = "<group>"; };
-		OBJ_211 /* SentrySerialization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySerialization.m; sourceTree = "<group>"; };
-		OBJ_212 /* SentrySession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySession.m; sourceTree = "<group>"; };
-		OBJ_213 /* SentrySessionCrashedHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySessionCrashedHandler.m; sourceTree = "<group>"; };
-		OBJ_214 /* SentrySessionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySessionTracker.m; sourceTree = "<group>"; };
-		OBJ_215 /* SentrySpan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySpan.m; sourceTree = "<group>"; };
-		OBJ_216 /* SentrySpanContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySpanContext.m; sourceTree = "<group>"; };
-		OBJ_217 /* SentrySpanId.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySpanId.m; sourceTree = "<group>"; };
-		OBJ_218 /* SentrySpanStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySpanStatus.m; sourceTree = "<group>"; };
-		OBJ_219 /* SentryStacktrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryStacktrace.m; sourceTree = "<group>"; };
 		OBJ_22 /* XenditBillingDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditBillingDetails.swift; sourceTree = "<group>"; };
-		OBJ_220 /* SentryStacktraceBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryStacktraceBuilder.m; sourceTree = "<group>"; };
-		OBJ_221 /* SentrySubClassFinder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySubClassFinder.m; sourceTree = "<group>"; };
-		OBJ_222 /* SentrySwiftAsyncIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySwiftAsyncIntegration.m; sourceTree = "<group>"; };
-		OBJ_223 /* SentrySwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySwizzle.m; sourceTree = "<group>"; };
-		OBJ_224 /* SentrySwizzleWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySwizzleWrapper.m; sourceTree = "<group>"; };
-		OBJ_225 /* SentrySysctl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySysctl.m; sourceTree = "<group>"; };
-		OBJ_226 /* SentrySystemEventBreadcrumbs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentrySystemEventBreadcrumbs.m; sourceTree = "<group>"; };
-		OBJ_227 /* SentrySystemWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentrySystemWrapper.mm; sourceTree = "<group>"; };
-		OBJ_228 /* SentryThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryThread.m; sourceTree = "<group>"; };
-		OBJ_229 /* SentryThreadHandle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentryThreadHandle.cpp; sourceTree = "<group>"; };
 		OBJ_23 /* XenditCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardData.swift; sourceTree = "<group>"; };
-		OBJ_230 /* SentryThreadInspector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryThreadInspector.m; sourceTree = "<group>"; };
-		OBJ_231 /* SentryThreadMetadataCache.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentryThreadMetadataCache.cpp; sourceTree = "<group>"; };
-		OBJ_232 /* SentryThreadWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryThreadWrapper.m; sourceTree = "<group>"; };
-		OBJ_233 /* SentryTime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryTime.mm; sourceTree = "<group>"; };
-		OBJ_234 /* SentryTimeToDisplayTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTimeToDisplayTracker.m; sourceTree = "<group>"; };
-		OBJ_235 /* SentryTraceContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTraceContext.m; sourceTree = "<group>"; };
-		OBJ_236 /* SentryTraceHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTraceHeader.m; sourceTree = "<group>"; };
-		OBJ_237 /* SentryTracer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTracer.m; sourceTree = "<group>"; };
-		OBJ_238 /* SentryTracerConcurrency.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryTracerConcurrency.mm; sourceTree = "<group>"; };
-		OBJ_239 /* SentryTracerConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTracerConfiguration.m; sourceTree = "<group>"; };
 		OBJ_24 /* XenditCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCustomer.swift; sourceTree = "<group>"; };
-		OBJ_240 /* SentryTracesSampler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTracesSampler.m; sourceTree = "<group>"; };
-		OBJ_241 /* SentryTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTransaction.m; sourceTree = "<group>"; };
-		OBJ_242 /* SentryTransactionContext.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SentryTransactionContext.mm; sourceTree = "<group>"; };
-		OBJ_243 /* SentryTransportAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTransportAdapter.m; sourceTree = "<group>"; };
-		OBJ_244 /* SentryTransportFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryTransportFactory.m; sourceTree = "<group>"; };
-		OBJ_245 /* SentryUIApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIApplication.m; sourceTree = "<group>"; };
-		OBJ_246 /* SentryUIDeviceWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIDeviceWrapper.m; sourceTree = "<group>"; };
-		OBJ_247 /* SentryUIEventTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIEventTracker.m; sourceTree = "<group>"; };
-		OBJ_248 /* SentryUIEventTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIEventTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_249 /* SentryUIViewControllerPerformanceTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIViewControllerPerformanceTracker.m; sourceTree = "<group>"; };
 		OBJ_25 /* XenditJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWT.swift; sourceTree = "<group>"; };
-		OBJ_250 /* SentryUIViewControllerSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUIViewControllerSwizzling.m; sourceTree = "<group>"; };
-		OBJ_251 /* SentryUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUser.m; sourceTree = "<group>"; };
-		OBJ_252 /* SentryUserFeedback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryUserFeedback.m; sourceTree = "<group>"; };
-		OBJ_253 /* SentryViewHierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryViewHierarchy.m; sourceTree = "<group>"; };
-		OBJ_254 /* SentryViewHierarchyIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryViewHierarchyIntegration.m; sourceTree = "<group>"; };
-		OBJ_255 /* SentryWatchdogTerminationLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryWatchdogTerminationLogic.m; sourceTree = "<group>"; };
-		OBJ_256 /* SentryWatchdogTerminationScopeObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryWatchdogTerminationScopeObserver.m; sourceTree = "<group>"; };
-		OBJ_257 /* SentryWatchdogTerminationTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryWatchdogTerminationTracker.m; sourceTree = "<group>"; };
-		OBJ_258 /* SentryWatchdogTerminationTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryWatchdogTerminationTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_259 /* UIView+Sentry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sentry.m"; sourceTree = "<group>"; };
 		OBJ_26 /* XenditJWTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditJWTRequest.swift; sourceTree = "<group>"; };
-		OBJ_260 /* UIViewController+Sentry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Sentry.m"; sourceTree = "<group>"; };
-		OBJ_262 /* SentryDisplayLinkWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryDisplayLinkWrapper.m; sourceTree = "<group>"; };
-		OBJ_264 /* SentryMeasurementUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryMeasurementUnit.h; sourceTree = "<group>"; };
-		OBJ_265 /* SentryNSError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryNSError.h; sourceTree = "<group>"; };
-		OBJ_266 /* SentryEnvelopeItemHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryEnvelopeItemHeader.h; sourceTree = "<group>"; };
-		OBJ_267 /* SentryBreadcrumb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryBreadcrumb.h; sourceTree = "<group>"; };
-		OBJ_268 /* SentryFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryFrame.h; sourceTree = "<group>"; };
-		OBJ_269 /* SentryHttpStatusCodeRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryHttpStatusCodeRange.h; sourceTree = "<group>"; };
 		OBJ_27 /* XenditRetokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditRetokenizationRequest.swift; sourceTree = "<group>"; };
-		OBJ_270 /* SentrySampleDecision.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySampleDecision.h; sourceTree = "<group>"; };
-		OBJ_271 /* SentryUserFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryUserFeedback.h; sourceTree = "<group>"; };
-		OBJ_272 /* SentryEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryEvent.h; sourceTree = "<group>"; };
-		OBJ_273 /* SentryDsn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryDsn.h; sourceTree = "<group>"; };
-		OBJ_274 /* SentryError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryError.h; sourceTree = "<group>"; };
-		OBJ_275 /* SentrySpanId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySpanId.h; sourceTree = "<group>"; };
-		OBJ_276 /* SentryException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryException.h; sourceTree = "<group>"; };
-		OBJ_277 /* SentrySpanContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySpanContext.h; sourceTree = "<group>"; };
-		OBJ_278 /* SentryUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryUser.h; sourceTree = "<group>"; };
-		OBJ_279 /* SentryRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryRequest.h; sourceTree = "<group>"; };
 		OBJ_28 /* XenditStoreCVNRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditStoreCVNRequest.swift; sourceTree = "<group>"; };
-		OBJ_280 /* SentryId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryId.h; sourceTree = "<group>"; };
-		OBJ_281 /* SentryClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryClient.h; sourceTree = "<group>"; };
-		OBJ_282 /* SentryScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryScope.h; sourceTree = "<group>"; };
-		OBJ_283 /* SentryTransactionContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryTransactionContext.h; sourceTree = "<group>"; };
-		OBJ_284 /* SentryMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryMessage.h; sourceTree = "<group>"; };
-		OBJ_285 /* SentrySerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySerializable.h; sourceTree = "<group>"; };
-		OBJ_286 /* SentryDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryDefines.h; sourceTree = "<group>"; };
-		OBJ_287 /* SentryStacktrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryStacktrace.h; sourceTree = "<group>"; };
-		OBJ_288 /* SentryOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryOptions.h; sourceTree = "<group>"; };
-		OBJ_289 /* SentryHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryHub.h; sourceTree = "<group>"; };
 		OBJ_29 /* XenditTokenizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTokenizationRequest.swift; sourceTree = "<group>"; };
-		OBJ_290 /* SentryCrashExceptionApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryCrashExceptionApplication.h; sourceTree = "<group>"; };
-		OBJ_291 /* SentrySamplingContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySamplingContext.h; sourceTree = "<group>"; };
-		OBJ_292 /* SentryMechanismMeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryMechanismMeta.h; sourceTree = "<group>"; };
-		OBJ_293 /* SentrySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySDK.h; sourceTree = "<group>"; };
-		OBJ_294 /* SentryDebugMeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryDebugMeta.h; sourceTree = "<group>"; };
-		OBJ_295 /* SentrySpanStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySpanStatus.h; sourceTree = "<group>"; };
-		OBJ_296 /* SentryDebugImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryDebugImageProvider.h; sourceTree = "<group>"; };
-		OBJ_297 /* Sentry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sentry.h; sourceTree = "<group>"; };
-		OBJ_298 /* SentryGeo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryGeo.h; sourceTree = "<group>"; };
-		OBJ_299 /* SentryMechanism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryMechanism.h; sourceTree = "<group>"; };
 		OBJ_30 /* Xendit3DSRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xendit3DSRecommendation.swift; sourceTree = "<group>"; };
-		OBJ_300 /* SentryAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryAttachment.h; sourceTree = "<group>"; };
-		OBJ_301 /* SentryThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryThread.h; sourceTree = "<group>"; };
-		OBJ_302 /* SentryIntegrationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryIntegrationProtocol.h; sourceTree = "<group>"; };
-		OBJ_303 /* SentrySpanProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentrySpanProtocol.h; sourceTree = "<group>"; };
-		OBJ_304 /* SentryProfilingConditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryProfilingConditionals.h; sourceTree = "<group>"; };
-		OBJ_305 /* SentryTraceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SentryTraceHeader.h; sourceTree = "<group>"; };
-		OBJ_308 /* SentryCrashInstallation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashInstallation.m; sourceTree = "<group>"; };
 		OBJ_31 /* XenditAuthenticatedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthenticatedToken.swift; sourceTree = "<group>"; };
-		OBJ_311 /* SentryCrashMonitor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMonitor.c; sourceTree = "<group>"; };
-		OBJ_312 /* SentryCrashMonitorType.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMonitorType.c; sourceTree = "<group>"; };
-		OBJ_313 /* SentryCrashMonitor_AppState.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMonitor_AppState.c; sourceTree = "<group>"; };
-		OBJ_314 /* SentryCrashMonitor_CPPException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentryCrashMonitor_CPPException.cpp; sourceTree = "<group>"; };
-		OBJ_315 /* SentryCrashMonitor_MachException.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMonitor_MachException.c; sourceTree = "<group>"; };
-		OBJ_316 /* SentryCrashMonitor_NSException.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashMonitor_NSException.m; sourceTree = "<group>"; };
-		OBJ_317 /* SentryCrashMonitor_Signal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMonitor_Signal.c; sourceTree = "<group>"; };
-		OBJ_318 /* SentryCrashMonitor_System.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashMonitor_System.m; sourceTree = "<group>"; };
-		OBJ_319 /* SentryCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrash.m; sourceTree = "<group>"; };
 		OBJ_32 /* XenditAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditAuthentication.swift; sourceTree = "<group>"; };
-		OBJ_320 /* SentryCrashBinaryImageCache.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashBinaryImageCache.c; sourceTree = "<group>"; };
-		OBJ_321 /* SentryCrashC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashC.c; sourceTree = "<group>"; };
-		OBJ_322 /* SentryCrashCachedData.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCachedData.c; sourceTree = "<group>"; };
-		OBJ_323 /* SentryCrashDoctor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashDoctor.m; sourceTree = "<group>"; };
-		OBJ_324 /* SentryCrashReport.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashReport.c; sourceTree = "<group>"; };
-		OBJ_325 /* SentryCrashReportFixer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashReportFixer.c; sourceTree = "<group>"; };
-		OBJ_326 /* SentryCrashReportStore.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashReportStore.c; sourceTree = "<group>"; };
-		OBJ_328 /* NSError+SentrySimpleConstructor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+SentrySimpleConstructor.m"; sourceTree = "<group>"; };
-		OBJ_329 /* SentryCrashCPU.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCPU.c; sourceTree = "<group>"; };
 		OBJ_33 /* XenditCCToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCCToken.swift; sourceTree = "<group>"; };
-		OBJ_330 /* SentryCrashCPU_arm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCPU_arm.c; sourceTree = "<group>"; };
-		OBJ_331 /* SentryCrashCPU_arm64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCPU_arm64.c; sourceTree = "<group>"; };
-		OBJ_332 /* SentryCrashCPU_x86_32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCPU_x86_32.c; sourceTree = "<group>"; };
-		OBJ_333 /* SentryCrashCPU_x86_64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashCPU_x86_64.c; sourceTree = "<group>"; };
-		OBJ_334 /* SentryCrashDate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashDate.c; sourceTree = "<group>"; };
-		OBJ_335 /* SentryCrashDebug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashDebug.c; sourceTree = "<group>"; };
-		OBJ_336 /* SentryCrashDynamicLinker.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashDynamicLinker.c; sourceTree = "<group>"; };
-		OBJ_337 /* SentryCrashFileUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashFileUtils.c; sourceTree = "<group>"; };
-		OBJ_338 /* SentryCrashID.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashID.c; sourceTree = "<group>"; };
-		OBJ_339 /* SentryCrashJSONCodec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashJSONCodec.c; sourceTree = "<group>"; };
 		OBJ_34 /* XenditCardMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardMetadata.swift; sourceTree = "<group>"; };
-		OBJ_340 /* SentryCrashJSONCodecObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashJSONCodecObjC.m; sourceTree = "<group>"; };
-		OBJ_341 /* SentryCrashLogger.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashLogger.c; sourceTree = "<group>"; };
-		OBJ_342 /* SentryCrashMach.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMach.c; sourceTree = "<group>"; };
-		OBJ_343 /* SentryCrashMachineContext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMachineContext.c; sourceTree = "<group>"; };
-		OBJ_344 /* SentryCrashMemory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashMemory.c; sourceTree = "<group>"; };
-		OBJ_345 /* SentryCrashObjC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashObjC.c; sourceTree = "<group>"; };
-		OBJ_346 /* SentryCrashSignalInfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashSignalInfo.c; sourceTree = "<group>"; };
-		OBJ_347 /* SentryCrashStackCursor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashStackCursor.c; sourceTree = "<group>"; };
-		OBJ_348 /* SentryCrashStackCursor_Backtrace.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashStackCursor_Backtrace.c; sourceTree = "<group>"; };
-		OBJ_349 /* SentryCrashStackCursor_MachineContext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashStackCursor_MachineContext.c; sourceTree = "<group>"; };
 		OBJ_35 /* XenditTokenCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTokenCredentials.swift; sourceTree = "<group>"; };
-		OBJ_350 /* SentryCrashStackCursor_SelfThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashStackCursor_SelfThread.m; sourceTree = "<group>"; };
-		OBJ_351 /* SentryCrashString.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashString.c; sourceTree = "<group>"; };
-		OBJ_352 /* SentryCrashSymbolicator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashSymbolicator.c; sourceTree = "<group>"; };
-		OBJ_353 /* SentryCrashSysCtl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashSysCtl.c; sourceTree = "<group>"; };
-		OBJ_354 /* SentryCrashThread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashThread.c; sourceTree = "<group>"; };
-		OBJ_355 /* SentryCrashUUIDConversion.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SentryCrashUUIDConversion.c; sourceTree = "<group>"; };
-		OBJ_358 /* SentryCrashReportFilterBasic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashReportFilterBasic.m; sourceTree = "<group>"; };
-		OBJ_360 /* Container+SentryDeepSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Container+SentryDeepSearch.m"; sourceTree = "<group>"; };
-		OBJ_362 /* SentryCrashCString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryCrashCString.m; sourceTree = "<group>"; };
-		OBJ_365 /* SentryMXCallStackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryMXCallStackTree.swift; sourceTree = "<group>"; };
-		OBJ_366 /* SentryMXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryMXManager.swift; sourceTree = "<group>"; };
-		OBJ_367 /* Sentry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentry.swift; sourceTree = "<group>"; };
-		OBJ_368 /* SwiftDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDescriptor.swift; sourceTree = "<group>"; };
-		OBJ_369 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/sentry-cocoa/Package.swift"; sourceTree = "<group>"; };
 		OBJ_37 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
-		OBJ_372 /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
-		OBJ_373 /* HTTPStubs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubs.m; sourceTree = "<group>"; };
-		OBJ_374 /* HTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
-		OBJ_375 /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
-		OBJ_376 /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
-		OBJ_377 /* HTTPStubsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTPStubsResponse.m; sourceTree = "<group>"; };
-		OBJ_378 /* NSURLRequest+HTTPBodyTesting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HTTPBodyTesting.m"; sourceTree = "<group>"; };
 		OBJ_38 /* Fingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprint.swift; sourceTree = "<group>"; };
-		OBJ_380 /* Compatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compatibility.h; sourceTree = "<group>"; };
-		OBJ_381 /* HTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
-		OBJ_382 /* HTTPStubsPathHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubsPathHelpers.h; sourceTree = "<group>"; };
-		OBJ_383 /* HTTPStubsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubsResponse.h; sourceTree = "<group>"; };
-		OBJ_384 /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
-		OBJ_385 /* HTTPStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPStubs.h; sourceTree = "<group>"; };
-		OBJ_386 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap"; sourceTree = "<group>"; };
-		OBJ_388 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
-		OBJ_389 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/OHHTTPStubs/Package.swift"; sourceTree = "<group>"; };
 		OBJ_40 /* AuthenticationWebviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWebviewController.swift; sourceTree = "<group>"; };
 		OBJ_401 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_402 /* Xendit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xendit.podspec; sourceTree = "<group>"; };
@@ -768,7 +149,7 @@
 		OBJ_54 /* IDFAHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDFAHelper.h; sourceTree = "<group>"; };
 		OBJ_55 /* Xendit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xendit.h; sourceTree = "<group>"; };
 		OBJ_56 /* ISHLogDNAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISHLogDNAService.h; sourceTree = "<group>"; };
-		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "Sources/XenditObjC/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Sources/XenditObjC/include/module.modulemap; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_61 /* CardDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataTest.swift; sourceTree = "<group>"; };
@@ -782,74 +163,19 @@
 		OBJ_70 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
 		OBJ_71 /* XenditIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTests.swift; sourceTree = "<group>"; };
 		OBJ_72 /* XenditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTests.swift; sourceTree = "<group>"; };
-		OBJ_80 /* NSArray+SentrySanitize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SentrySanitize.m"; sourceTree = "<group>"; };
-		OBJ_81 /* NSData+Sentry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Sentry.m"; sourceTree = "<group>"; };
-		OBJ_82 /* NSData+SentryCompression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+SentryCompression.m"; sourceTree = "<group>"; };
-		OBJ_83 /* NSDate+SentryExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SentryExtras.m"; sourceTree = "<group>"; };
-		OBJ_84 /* NSDictionary+SentrySanitize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SentrySanitize.m"; sourceTree = "<group>"; };
-		OBJ_85 /* NSLocale+Sentry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Sentry.m"; sourceTree = "<group>"; };
-		OBJ_86 /* NSMutableDictionary+Sentry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Sentry.m"; sourceTree = "<group>"; };
-		OBJ_87 /* PrivateSentrySDKOnly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateSentrySDKOnly.m; sourceTree = "<group>"; };
-		OBJ_88 /* SentryANRTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryANRTracker.m; sourceTree = "<group>"; };
-		OBJ_89 /* SentryANRTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryANRTrackingIntegration.m; sourceTree = "<group>"; };
 		OBJ_9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		OBJ_90 /* SentryAppStartMeasurement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAppStartMeasurement.m; sourceTree = "<group>"; };
-		OBJ_91 /* SentryAppStartTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAppStartTracker.m; sourceTree = "<group>"; };
-		OBJ_92 /* SentryAppStartTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAppStartTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_93 /* SentryAppState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAppState.m; sourceTree = "<group>"; };
-		OBJ_94 /* SentryAppStateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAppStateManager.m; sourceTree = "<group>"; };
-		OBJ_95 /* SentryAsynchronousOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAsynchronousOperation.m; sourceTree = "<group>"; };
-		OBJ_96 /* SentryAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAttachment.m; sourceTree = "<group>"; };
-		OBJ_97 /* SentryAutoBreadcrumbTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAutoBreadcrumbTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_98 /* SentryAutoSessionTrackingIntegration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SentryAutoSessionTrackingIntegration.m; sourceTree = "<group>"; };
-		OBJ_99 /* SentryBacktrace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SentryBacktrace.cpp; sourceTree = "<group>"; };
-		"ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OHHTTPStubsSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"sentry-cocoa::Sentry::Product" /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sentry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SentryPrivate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XenditObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = XenditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_418 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_431 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_432 /* OHHTTPStubs.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_712 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_713 /* SentryPrivate.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_730 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		OBJ_768 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_769 /* Sentry.framework in Frameworks */,
-				OBJ_770 /* SentryPrivate.framework in Frameworks */,
 				OBJ_771 /* XenditObjC.framework in Frameworks */,
+				648184A52BF7556800DC5FBF /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,11 +190,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_811 /* OHHTTPStubsSwift.framework in Frameworks */,
-				OBJ_812 /* OHHTTPStubs.framework in Frameworks */,
 				OBJ_813 /* Xendit.framework in Frameworks */,
-				OBJ_814 /* Sentry.framework in Frameworks */,
-				OBJ_815 /* SentryPrivate.framework in Frameworks */,
+				648184AA2BF7558D00DC5FBF /* OHHTTPStubsSwift in Frameworks */,
+				648184A82BF7558D00DC5FBF /* OHHTTPStubs in Frameworks */,
 				OBJ_816 /* XenditObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -920,174 +244,6 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
-		OBJ_261 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_262 /* SentryDisplayLinkWrapper.m */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		OBJ_263 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_264 /* SentryMeasurementUnit.h */,
-				OBJ_265 /* SentryNSError.h */,
-				OBJ_266 /* SentryEnvelopeItemHeader.h */,
-				OBJ_267 /* SentryBreadcrumb.h */,
-				OBJ_268 /* SentryFrame.h */,
-				OBJ_269 /* SentryHttpStatusCodeRange.h */,
-				OBJ_270 /* SentrySampleDecision.h */,
-				OBJ_271 /* SentryUserFeedback.h */,
-				OBJ_272 /* SentryEvent.h */,
-				OBJ_273 /* SentryDsn.h */,
-				OBJ_274 /* SentryError.h */,
-				OBJ_275 /* SentrySpanId.h */,
-				OBJ_276 /* SentryException.h */,
-				OBJ_277 /* SentrySpanContext.h */,
-				OBJ_278 /* SentryUser.h */,
-				OBJ_279 /* SentryRequest.h */,
-				OBJ_280 /* SentryId.h */,
-				OBJ_281 /* SentryClient.h */,
-				OBJ_282 /* SentryScope.h */,
-				OBJ_283 /* SentryTransactionContext.h */,
-				OBJ_284 /* SentryMessage.h */,
-				OBJ_285 /* SentrySerializable.h */,
-				OBJ_286 /* SentryDefines.h */,
-				OBJ_287 /* SentryStacktrace.h */,
-				OBJ_288 /* SentryOptions.h */,
-				OBJ_289 /* SentryHub.h */,
-				OBJ_290 /* SentryCrashExceptionApplication.h */,
-				OBJ_291 /* SentrySamplingContext.h */,
-				OBJ_292 /* SentryMechanismMeta.h */,
-				OBJ_293 /* SentrySDK.h */,
-				OBJ_294 /* SentryDebugMeta.h */,
-				OBJ_295 /* SentrySpanStatus.h */,
-				OBJ_296 /* SentryDebugImageProvider.h */,
-				OBJ_297 /* Sentry.h */,
-				OBJ_298 /* SentryGeo.h */,
-				OBJ_299 /* SentryMechanism.h */,
-				OBJ_300 /* SentryAttachment.h */,
-				OBJ_301 /* SentryThread.h */,
-				OBJ_302 /* SentryIntegrationProtocol.h */,
-				OBJ_303 /* SentrySpanProtocol.h */,
-				OBJ_304 /* SentryProfilingConditionals.h */,
-				OBJ_305 /* SentryTraceHeader.h */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		OBJ_306 /* SentryCrash */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_307 /* Installations */,
-				OBJ_309 /* Recording */,
-				OBJ_356 /* Reporting */,
-			);
-			path = SentryCrash;
-			sourceTree = "<group>";
-		};
-		OBJ_307 /* Installations */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_308 /* SentryCrashInstallation.m */,
-			);
-			path = Installations;
-			sourceTree = "<group>";
-		};
-		OBJ_309 /* Recording */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_310 /* Monitors */,
-				OBJ_319 /* SentryCrash.m */,
-				OBJ_320 /* SentryCrashBinaryImageCache.c */,
-				OBJ_321 /* SentryCrashC.c */,
-				OBJ_322 /* SentryCrashCachedData.c */,
-				OBJ_323 /* SentryCrashDoctor.m */,
-				OBJ_324 /* SentryCrashReport.c */,
-				OBJ_325 /* SentryCrashReportFixer.c */,
-				OBJ_326 /* SentryCrashReportStore.c */,
-				OBJ_327 /* Tools */,
-			);
-			path = Recording;
-			sourceTree = "<group>";
-		};
-		OBJ_310 /* Monitors */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_311 /* SentryCrashMonitor.c */,
-				OBJ_312 /* SentryCrashMonitorType.c */,
-				OBJ_313 /* SentryCrashMonitor_AppState.c */,
-				OBJ_314 /* SentryCrashMonitor_CPPException.cpp */,
-				OBJ_315 /* SentryCrashMonitor_MachException.c */,
-				OBJ_316 /* SentryCrashMonitor_NSException.m */,
-				OBJ_317 /* SentryCrashMonitor_Signal.c */,
-				OBJ_318 /* SentryCrashMonitor_System.m */,
-			);
-			path = Monitors;
-			sourceTree = "<group>";
-		};
-		OBJ_327 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_328 /* NSError+SentrySimpleConstructor.m */,
-				OBJ_329 /* SentryCrashCPU.c */,
-				OBJ_330 /* SentryCrashCPU_arm.c */,
-				OBJ_331 /* SentryCrashCPU_arm64.c */,
-				OBJ_332 /* SentryCrashCPU_x86_32.c */,
-				OBJ_333 /* SentryCrashCPU_x86_64.c */,
-				OBJ_334 /* SentryCrashDate.c */,
-				OBJ_335 /* SentryCrashDebug.c */,
-				OBJ_336 /* SentryCrashDynamicLinker.c */,
-				OBJ_337 /* SentryCrashFileUtils.c */,
-				OBJ_338 /* SentryCrashID.c */,
-				OBJ_339 /* SentryCrashJSONCodec.c */,
-				OBJ_340 /* SentryCrashJSONCodecObjC.m */,
-				OBJ_341 /* SentryCrashLogger.c */,
-				OBJ_342 /* SentryCrashMach.c */,
-				OBJ_343 /* SentryCrashMachineContext.c */,
-				OBJ_344 /* SentryCrashMemory.c */,
-				OBJ_345 /* SentryCrashObjC.c */,
-				OBJ_346 /* SentryCrashSignalInfo.c */,
-				OBJ_347 /* SentryCrashStackCursor.c */,
-				OBJ_348 /* SentryCrashStackCursor_Backtrace.c */,
-				OBJ_349 /* SentryCrashStackCursor_MachineContext.c */,
-				OBJ_350 /* SentryCrashStackCursor_SelfThread.m */,
-				OBJ_351 /* SentryCrashString.c */,
-				OBJ_352 /* SentryCrashSymbolicator.c */,
-				OBJ_353 /* SentryCrashSysCtl.c */,
-				OBJ_354 /* SentryCrashThread.c */,
-				OBJ_355 /* SentryCrashUUIDConversion.c */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		OBJ_356 /* Reporting */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_357 /* Filters */,
-				OBJ_361 /* Tools */,
-			);
-			path = Reporting;
-			sourceTree = "<group>";
-		};
-		OBJ_357 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_358 /* SentryCrashReportFilterBasic.m */,
-				OBJ_359 /* Tools */,
-			);
-			path = Filters;
-			sourceTree = "<group>";
-		};
-		OBJ_359 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_360 /* Container+SentryDeepSearch.m */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
 		OBJ_36 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1096,82 +252,6 @@
 			);
 			path = Utils;
 			sourceTree = "<group>";
-		};
-		OBJ_361 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_362 /* SentryCrashCString.m */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		OBJ_363 /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_364 /* MetricKit */,
-				OBJ_367 /* Sentry.swift */,
-				OBJ_368 /* SwiftDescriptor.swift */,
-			);
-			path = Swift;
-			sourceTree = "<group>";
-		};
-		OBJ_364 /* MetricKit */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_365 /* SentryMXCallStackTree.swift */,
-				OBJ_366 /* SentryMXManager.swift */,
-			);
-			path = MetricKit;
-			sourceTree = "<group>";
-		};
-		OBJ_370 /* OHHTTPStubs 9.1.0 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_371 /* OHHTTPStubs */,
-				OBJ_387 /* OHHTTPStubsSwift */,
-				OBJ_389 /* Package.swift */,
-			);
-			name = "OHHTTPStubs 9.1.0";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_371 /* OHHTTPStubs */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_372 /* HTTPStubs+NSURLSessionConfiguration.m */,
-				OBJ_373 /* HTTPStubs.m */,
-				OBJ_374 /* HTTPStubsMethodSwizzling.m */,
-				OBJ_375 /* HTTPStubsPathHelpers.m */,
-				OBJ_376 /* HTTPStubsResponse+JSON.m */,
-				OBJ_377 /* HTTPStubsResponse.m */,
-				OBJ_378 /* NSURLRequest+HTTPBodyTesting.m */,
-				OBJ_379 /* include */,
-			);
-			name = OHHTTPStubs;
-			path = .build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_379 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_380 /* Compatibility.h */,
-				OBJ_381 /* HTTPStubsResponse+JSON.h */,
-				OBJ_382 /* HTTPStubsPathHelpers.h */,
-				OBJ_383 /* HTTPStubsResponse.h */,
-				OBJ_384 /* NSURLRequest+HTTPBodyTesting.h */,
-				OBJ_385 /* HTTPStubs.h */,
-				OBJ_386 /* module.modulemap */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		OBJ_387 /* OHHTTPStubsSwift */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_388 /* OHHTTPStubsSwift.swift */,
-			);
-			name = OHHTTPStubsSwift;
-			path = .build/checkouts/OHHTTPStubs/Sources/OHHTTPStubsSwift;
-			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_39 /* WebViewController */ = {
 			isa = PBXGroup;
@@ -1185,10 +265,6 @@
 		OBJ_390 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */,
-				"ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */,
-				"sentry-cocoa::Sentry::Product" /* Sentry.framework */,
-				"sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */,
 				"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */,
 				"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */,
 				"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */,
@@ -1223,20 +299,18 @@
 			path = LogDNA;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_58 /* Tests */,
-				OBJ_73 /* Dependencies */,
 				OBJ_390 /* Products */,
 				OBJ_401 /* LICENSE */,
 				OBJ_402 /* Xendit.podspec */,
 				OBJ_404 /* README.md */,
 				OBJ_405 /* cortex.yaml */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_51 /* Utils */ = {
@@ -1303,252 +377,6 @@
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_73 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_74 /* Sentry 8.8.0 */,
-				OBJ_370 /* OHHTTPStubs 9.1.0 */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		OBJ_74 /* Sentry 8.8.0 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_75 /* Sentry */,
-				OBJ_76 /* SentryInternal */,
-				OBJ_77 /* SentryPrivate */,
-				OBJ_78 /* SentrySwiftUI */,
-				OBJ_369 /* Package.swift */,
-			);
-			name = "Sentry 8.8.0";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_75 /* Sentry */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Sentry;
-			path = ".build/checkouts/sentry-cocoa/Sources";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_76 /* SentryInternal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SentryInternal;
-			path = ".build/checkouts/sentry-cocoa/Sources";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_77 /* SentryPrivate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SentryPrivate;
-			path = ".build/checkouts/sentry-cocoa/Sources";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_78 /* SentrySwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_79 /* Sentry */,
-				OBJ_306 /* SentryCrash */,
-				OBJ_363 /* Swift */,
-			);
-			name = SentrySwiftUI;
-			path = ".build/checkouts/sentry-cocoa/Sources";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_79 /* Sentry */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_80 /* NSArray+SentrySanitize.m */,
-				OBJ_81 /* NSData+Sentry.m */,
-				OBJ_82 /* NSData+SentryCompression.m */,
-				OBJ_83 /* NSDate+SentryExtras.m */,
-				OBJ_84 /* NSDictionary+SentrySanitize.m */,
-				OBJ_85 /* NSLocale+Sentry.m */,
-				OBJ_86 /* NSMutableDictionary+Sentry.m */,
-				OBJ_87 /* PrivateSentrySDKOnly.m */,
-				OBJ_88 /* SentryANRTracker.m */,
-				OBJ_89 /* SentryANRTrackingIntegration.m */,
-				OBJ_90 /* SentryAppStartMeasurement.m */,
-				OBJ_91 /* SentryAppStartTracker.m */,
-				OBJ_92 /* SentryAppStartTrackingIntegration.m */,
-				OBJ_93 /* SentryAppState.m */,
-				OBJ_94 /* SentryAppStateManager.m */,
-				OBJ_95 /* SentryAsynchronousOperation.m */,
-				OBJ_96 /* SentryAttachment.m */,
-				OBJ_97 /* SentryAutoBreadcrumbTrackingIntegration.m */,
-				OBJ_98 /* SentryAutoSessionTrackingIntegration.m */,
-				OBJ_99 /* SentryBacktrace.cpp */,
-				OBJ_100 /* SentryBaggage.m */,
-				OBJ_101 /* SentryBaseIntegration.m */,
-				OBJ_102 /* SentryBreadcrumb.m */,
-				OBJ_103 /* SentryBreadcrumbTracker.m */,
-				OBJ_104 /* SentryByteCountFormatter.m */,
-				OBJ_105 /* SentryClient.m */,
-				OBJ_106 /* SentryClientReport.m */,
-				OBJ_107 /* SentryConcurrentRateLimitsDictionary.m */,
-				OBJ_108 /* SentryCoreDataSwizzling.m */,
-				OBJ_109 /* SentryCoreDataTracker.m */,
-				OBJ_110 /* SentryCoreDataTrackingIntegration.m */,
-				OBJ_111 /* SentryCrashDefaultBinaryImageProvider.m */,
-				OBJ_112 /* SentryCrashDefaultMachineContextWrapper.m */,
-				OBJ_113 /* SentryCrashExceptionApplication.m */,
-				OBJ_114 /* SentryCrashInstallationReporter.m */,
-				OBJ_115 /* SentryCrashIntegration.m */,
-				OBJ_116 /* SentryCrashReportConverter.m */,
-				OBJ_117 /* SentryCrashReportSink.m */,
-				OBJ_118 /* SentryCrashScopeObserver.m */,
-				OBJ_119 /* SentryCrashStackEntryMapper.m */,
-				OBJ_120 /* SentryCrashWrapper.m */,
-				OBJ_121 /* SentryCurrentDate.m */,
-				OBJ_122 /* SentryDataCategoryMapper.m */,
-				OBJ_123 /* SentryDateUtil.m */,
-				OBJ_124 /* SentryDebugImageProvider.m */,
-				OBJ_125 /* SentryDebugMeta.m */,
-				OBJ_126 /* SentryDefaultCurrentDateProvider.m */,
-				OBJ_127 /* SentryDefaultObjCRuntimeWrapper.m */,
-				OBJ_128 /* SentryDefaultRateLimits.m */,
-				OBJ_129 /* SentryDependencyContainer.m */,
-				OBJ_130 /* SentryDevice.mm */,
-				OBJ_131 /* SentryDiscardReasonMapper.m */,
-				OBJ_132 /* SentryDiscardedEvent.m */,
-				OBJ_133 /* SentryDispatchFactory.m */,
-				OBJ_134 /* SentryDispatchQueueWrapper.m */,
-				OBJ_135 /* SentryDispatchSourceWrapper.m */,
-				OBJ_136 /* SentryDsn.m */,
-				OBJ_137 /* SentryEnvelope.m */,
-				OBJ_138 /* SentryEnvelopeAttachmentHeader.m */,
-				OBJ_139 /* SentryEnvelopeItemHeader.m */,
-				OBJ_140 /* SentryEnvelopeRateLimit.m */,
-				OBJ_141 /* SentryError.mm */,
-				OBJ_142 /* SentryEvent.m */,
-				OBJ_143 /* SentryException.m */,
-				OBJ_144 /* SentryExtraContextProvider.m */,
-				OBJ_145 /* SentryFileContents.m */,
-				OBJ_146 /* SentryFileIOTrackingIntegration.m */,
-				OBJ_147 /* SentryFileManager.m */,
-				OBJ_148 /* SentryFrame.m */,
-				OBJ_149 /* SentryFrameRemover.m */,
-				OBJ_150 /* SentryFramesTracker.m */,
-				OBJ_151 /* SentryFramesTrackingIntegration.m */,
-				OBJ_152 /* SentryGeo.m */,
-				OBJ_153 /* SentryGlobalEventProcessor.m */,
-				OBJ_154 /* SentryHttpDateParser.m */,
-				OBJ_155 /* SentryHttpStatusCodeRange.m */,
-				OBJ_156 /* SentryHttpTransport.m */,
-				OBJ_157 /* SentryHub.m */,
-				OBJ_158 /* SentryId.m */,
-				OBJ_159 /* SentryInAppLogic.m */,
-				OBJ_160 /* SentryInstallation.m */,
-				OBJ_161 /* SentryLevelMapper.m */,
-				OBJ_162 /* SentryLog.m */,
-				OBJ_163 /* SentryLogOutput.m */,
-				OBJ_164 /* SentryMachLogging.cpp */,
-				OBJ_165 /* SentryMeasurementUnit.m */,
-				OBJ_166 /* SentryMeasurementValue.m */,
-				OBJ_167 /* SentryMechanism.m */,
-				OBJ_168 /* SentryMechanismMeta.m */,
-				OBJ_169 /* SentryMessage.m */,
-				OBJ_170 /* SentryMeta.m */,
-				OBJ_171 /* SentryMetricKitIntegration.m */,
-				OBJ_172 /* SentryMetricProfiler.mm */,
-				OBJ_173 /* SentryMigrateSessionInit.m */,
-				OBJ_174 /* SentryNSDataSwizzling.m */,
-				OBJ_175 /* SentryNSDataTracker.m */,
-				OBJ_176 /* SentryNSError.m */,
-				OBJ_177 /* SentryNSNotificationCenterWrapper.m */,
-				OBJ_178 /* SentryNSProcessInfoWrapper.mm */,
-				OBJ_179 /* SentryNSTimerWrapper.m */,
-				OBJ_180 /* SentryNSURLRequest.m */,
-				OBJ_181 /* SentryNSURLRequestBuilder.m */,
-				OBJ_182 /* SentryNSURLSessionTaskSearch.m */,
-				OBJ_183 /* SentryNetworkTracker.m */,
-				OBJ_184 /* SentryNetworkTrackingIntegration.m */,
-				OBJ_185 /* SentryNoOpSpan.m */,
-				OBJ_186 /* SentryOptions.m */,
-				OBJ_187 /* SentryPerformanceTracker.m */,
-				OBJ_188 /* SentryPerformanceTrackingIntegration.m */,
-				OBJ_189 /* SentryPredicateDescriptor.m */,
-				OBJ_190 /* SentryProfileTimeseries.mm */,
-				OBJ_191 /* SentryProfiler.mm */,
-				OBJ_192 /* SentryProfilesSampler.m */,
-				OBJ_193 /* SentryProfilingLogging.mm */,
-				OBJ_194 /* SentryQueueableRequestManager.m */,
-				OBJ_195 /* SentryRandom.m */,
-				OBJ_196 /* SentryRateLimitParser.m */,
-				OBJ_197 /* SentryReachability.m */,
-				OBJ_198 /* SentryRequest.m */,
-				OBJ_199 /* SentryRequestOperation.m */,
-				OBJ_200 /* SentryRetryAfterHeaderParser.m */,
-				OBJ_201 /* SentrySDK.m */,
-				OBJ_202 /* SentrySampleDecision.m */,
-				OBJ_203 /* SentrySamplingContext.m */,
-				OBJ_204 /* SentrySamplingProfiler.cpp */,
-				OBJ_205 /* SentryScope.m */,
-				OBJ_206 /* SentryScopeSyncC.c */,
-				OBJ_207 /* SentryScreenFrames.m */,
-				OBJ_208 /* SentryScreenshot.m */,
-				OBJ_209 /* SentryScreenshotIntegration.m */,
-				OBJ_210 /* SentrySdkInfo.m */,
-				OBJ_211 /* SentrySerialization.m */,
-				OBJ_212 /* SentrySession.m */,
-				OBJ_213 /* SentrySessionCrashedHandler.m */,
-				OBJ_214 /* SentrySessionTracker.m */,
-				OBJ_215 /* SentrySpan.m */,
-				OBJ_216 /* SentrySpanContext.m */,
-				OBJ_217 /* SentrySpanId.m */,
-				OBJ_218 /* SentrySpanStatus.m */,
-				OBJ_219 /* SentryStacktrace.m */,
-				OBJ_220 /* SentryStacktraceBuilder.m */,
-				OBJ_221 /* SentrySubClassFinder.m */,
-				OBJ_222 /* SentrySwiftAsyncIntegration.m */,
-				OBJ_223 /* SentrySwizzle.m */,
-				OBJ_224 /* SentrySwizzleWrapper.m */,
-				OBJ_225 /* SentrySysctl.m */,
-				OBJ_226 /* SentrySystemEventBreadcrumbs.m */,
-				OBJ_227 /* SentrySystemWrapper.mm */,
-				OBJ_228 /* SentryThread.m */,
-				OBJ_229 /* SentryThreadHandle.cpp */,
-				OBJ_230 /* SentryThreadInspector.m */,
-				OBJ_231 /* SentryThreadMetadataCache.cpp */,
-				OBJ_232 /* SentryThreadWrapper.m */,
-				OBJ_233 /* SentryTime.mm */,
-				OBJ_234 /* SentryTimeToDisplayTracker.m */,
-				OBJ_235 /* SentryTraceContext.m */,
-				OBJ_236 /* SentryTraceHeader.m */,
-				OBJ_237 /* SentryTracer.m */,
-				OBJ_238 /* SentryTracerConcurrency.mm */,
-				OBJ_239 /* SentryTracerConfiguration.m */,
-				OBJ_240 /* SentryTracesSampler.m */,
-				OBJ_241 /* SentryTransaction.m */,
-				OBJ_242 /* SentryTransactionContext.mm */,
-				OBJ_243 /* SentryTransportAdapter.m */,
-				OBJ_244 /* SentryTransportFactory.m */,
-				OBJ_245 /* SentryUIApplication.m */,
-				OBJ_246 /* SentryUIDeviceWrapper.m */,
-				OBJ_247 /* SentryUIEventTracker.m */,
-				OBJ_248 /* SentryUIEventTrackingIntegration.m */,
-				OBJ_249 /* SentryUIViewControllerPerformanceTracker.m */,
-				OBJ_250 /* SentryUIViewControllerSwizzling.m */,
-				OBJ_251 /* SentryUser.m */,
-				OBJ_252 /* SentryUserFeedback.m */,
-				OBJ_253 /* SentryViewHierarchy.m */,
-				OBJ_254 /* SentryViewHierarchyIntegration.m */,
-				OBJ_255 /* SentryWatchdogTerminationLogic.m */,
-				OBJ_256 /* SentryWatchdogTerminationScopeObserver.m */,
-				OBJ_257 /* SentryWatchdogTerminationTracker.m */,
-				OBJ_258 /* SentryWatchdogTerminationTrackingIntegration.m */,
-				OBJ_259 /* UIView+Sentry.m */,
-				OBJ_260 /* UIViewController+Sentry.m */,
-				OBJ_261 /* include */,
-				OBJ_263 /* Public */,
-			);
-			path = Sentry;
-			sourceTree = "<group>";
-		};
 		OBJ_8 /* Xendit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,6 +391,7 @@
 				OBJ_44 /* XDTSentry.swift */,
 				OBJ_45 /* Xendit.swift */,
 				OBJ_46 /* XenditError.swift */,
+				644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */,
 			);
 			name = Xendit;
 			path = Sources/Xendit;
@@ -1570,154 +399,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		OBJ_669 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_670 /* SentryMeasurementUnit.h in Headers */,
-				OBJ_671 /* SentryNSError.h in Headers */,
-				OBJ_672 /* SentryEnvelopeItemHeader.h in Headers */,
-				OBJ_673 /* SentryBreadcrumb.h in Headers */,
-				OBJ_674 /* SentryFrame.h in Headers */,
-				OBJ_675 /* SentryHttpStatusCodeRange.h in Headers */,
-				OBJ_676 /* SentrySampleDecision.h in Headers */,
-				OBJ_677 /* SentryUserFeedback.h in Headers */,
-				OBJ_678 /* SentryEvent.h in Headers */,
-				OBJ_679 /* SentryDsn.h in Headers */,
-				OBJ_680 /* SentryError.h in Headers */,
-				OBJ_681 /* SentrySpanId.h in Headers */,
-				OBJ_682 /* SentryException.h in Headers */,
-				OBJ_683 /* SentrySpanContext.h in Headers */,
-				OBJ_684 /* SentryUser.h in Headers */,
-				OBJ_685 /* SentryRequest.h in Headers */,
-				OBJ_686 /* SentryId.h in Headers */,
-				OBJ_687 /* SentryClient.h in Headers */,
-				OBJ_688 /* SentryScope.h in Headers */,
-				OBJ_689 /* SentryTransactionContext.h in Headers */,
-				OBJ_690 /* SentryMessage.h in Headers */,
-				OBJ_691 /* SentrySerializable.h in Headers */,
-				OBJ_692 /* SentryDefines.h in Headers */,
-				OBJ_693 /* SentryStacktrace.h in Headers */,
-				OBJ_694 /* SentryOptions.h in Headers */,
-				OBJ_695 /* SentryHub.h in Headers */,
-				OBJ_696 /* SentryCrashExceptionApplication.h in Headers */,
-				OBJ_697 /* SentrySamplingContext.h in Headers */,
-				OBJ_698 /* SentryMechanismMeta.h in Headers */,
-				OBJ_699 /* SentrySDK.h in Headers */,
-				OBJ_700 /* SentryDebugMeta.h in Headers */,
-				OBJ_701 /* SentrySpanStatus.h in Headers */,
-				OBJ_702 /* SentryDebugImageProvider.h in Headers */,
-				OBJ_703 /* Sentry.h in Headers */,
-				OBJ_704 /* SentryGeo.h in Headers */,
-				OBJ_705 /* SentryMechanism.h in Headers */,
-				OBJ_706 /* SentryAttachment.h in Headers */,
-				OBJ_707 /* SentryThread.h in Headers */,
-				OBJ_708 /* SentryIntegrationProtocol.h in Headers */,
-				OBJ_709 /* SentrySpanProtocol.h in Headers */,
-				OBJ_710 /* SentryProfilingConditionals.h in Headers */,
-				OBJ_711 /* SentryTraceHeader.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		"ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_407 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */;
-			buildPhases = (
-				OBJ_410 /* Sources */,
-				OBJ_418 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OHHTTPStubs;
-			productName = OHHTTPStubs;
-			productReference = "ohhttpstubs::OHHTTPStubs::Product" /* OHHTTPStubs.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_426 /* Build configuration list for PBXNativeTarget "OHHTTPStubsSwift" */;
-			buildPhases = (
-				OBJ_429 /* Sources */,
-				OBJ_431 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_433 /* PBXTargetDependency */,
-			);
-			name = OHHTTPStubsSwift;
-			productName = OHHTTPStubsSwift;
-			productReference = "ohhttpstubs::OHHTTPStubsSwift::Product" /* OHHTTPStubsSwift.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"ohhttpstubs::SwiftPMPackageDescription" /* OHHTTPStubsPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_420 /* Build configuration list for PBXNativeTarget "OHHTTPStubsPackageDescription" */;
-			buildPhases = (
-				OBJ_423 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OHHTTPStubsPackageDescription;
-			productName = OHHTTPStubsPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-		"sentry-cocoa::Sentry" /* Sentry */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_435 /* Build configuration list for PBXNativeTarget "Sentry" */;
-			buildPhases = (
-				OBJ_438 /* Sources */,
-				OBJ_669 /* Headers */,
-				OBJ_712 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_714 /* PBXTargetDependency */,
-			);
-			name = Sentry;
-			productName = Sentry;
-			productReference = "sentry-cocoa::Sentry::Product" /* Sentry.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"sentry-cocoa::SentryPrivate" /* SentryPrivate */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_722 /* Build configuration list for PBXNativeTarget "SentryPrivate" */;
-			buildPhases = (
-				OBJ_725 /* Sources */,
-				OBJ_730 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SentryPrivate;
-			productName = SentryPrivate;
-			productReference = "sentry-cocoa::SentryPrivate::Product" /* SentryPrivate.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"sentry-cocoa::SwiftPMPackageDescription" /* SentryPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_717 /* Build configuration list for PBXNativeTarget "SentryPackageDescription" */;
-			buildPhases = (
-				OBJ_720 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SentryPackageDescription;
-			productName = SentryPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
 		"xendit-sdk-ios-src::SwiftPMPackageDescription" /* XenditPackageDescription */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_784 /* Build configuration list for PBXNativeTarget "XenditPackageDescription" */;
@@ -1742,11 +424,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_772 /* PBXTargetDependency */,
-				OBJ_773 /* PBXTargetDependency */,
 				OBJ_774 /* PBXTargetDependency */,
 			);
 			name = Xendit;
+			packageProductDependencies = (
+				648184A42BF7556800DC5FBF /* Sentry */,
+			);
 			productName = Xendit;
 			productReference = "xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1777,14 +460,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_817 /* PBXTargetDependency */,
-				OBJ_818 /* PBXTargetDependency */,
 				OBJ_819 /* PBXTargetDependency */,
-				OBJ_820 /* PBXTargetDependency */,
-				OBJ_821 /* PBXTargetDependency */,
 				OBJ_822 /* PBXTargetDependency */,
 			);
 			name = XenditTests;
+			packageProductDependencies = (
+				648184A72BF7558D00DC5FBF /* OHHTTPStubs */,
+				648184A92BF7558D00DC5FBF /* OHHTTPStubsSwift */,
+			);
 			productName = XenditTests;
 			productReference = "xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1805,17 +488,15 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
+			packageReferences = (
+				648184A32BF7556800DC5FBF /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				648184A62BF7558D00DC5FBF /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+			);
 			productRefGroup = OBJ_390 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */,
-				"ohhttpstubs::SwiftPMPackageDescription" /* OHHTTPStubsPackageDescription */,
-				"ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */,
-				"sentry-cocoa::Sentry" /* Sentry */,
-				"sentry-cocoa::SwiftPMPackageDescription" /* SentryPackageDescription */,
-				"sentry-cocoa::SentryPrivate" /* SentryPrivate */,
 				"xendit-sdk-ios-src::Xendit" /* Xendit */,
 				"xendit-sdk-ios-src::XenditObjC" /* XenditObjC */,
 				"xendit-sdk-ios-src::SwiftPMPackageDescription" /* XenditPackageDescription */,
@@ -1826,292 +507,6 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_410 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_411 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
-				OBJ_412 /* HTTPStubs.m in Sources */,
-				OBJ_413 /* HTTPStubsMethodSwizzling.m in Sources */,
-				OBJ_414 /* HTTPStubsPathHelpers.m in Sources */,
-				OBJ_415 /* HTTPStubsResponse+JSON.m in Sources */,
-				OBJ_416 /* HTTPStubsResponse.m in Sources */,
-				OBJ_417 /* NSURLRequest+HTTPBodyTesting.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_423 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_424 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_429 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_430 /* OHHTTPStubsSwift.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_438 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_439 /* NSArray+SentrySanitize.m in Sources */,
-				OBJ_440 /* NSData+Sentry.m in Sources */,
-				OBJ_441 /* NSData+SentryCompression.m in Sources */,
-				OBJ_442 /* NSDate+SentryExtras.m in Sources */,
-				OBJ_443 /* NSDictionary+SentrySanitize.m in Sources */,
-				OBJ_444 /* NSLocale+Sentry.m in Sources */,
-				OBJ_445 /* NSMutableDictionary+Sentry.m in Sources */,
-				OBJ_446 /* PrivateSentrySDKOnly.m in Sources */,
-				OBJ_447 /* SentryANRTracker.m in Sources */,
-				OBJ_448 /* SentryANRTrackingIntegration.m in Sources */,
-				OBJ_449 /* SentryAppStartMeasurement.m in Sources */,
-				OBJ_450 /* SentryAppStartTracker.m in Sources */,
-				OBJ_451 /* SentryAppStartTrackingIntegration.m in Sources */,
-				OBJ_452 /* SentryAppState.m in Sources */,
-				OBJ_453 /* SentryAppStateManager.m in Sources */,
-				OBJ_454 /* SentryAsynchronousOperation.m in Sources */,
-				OBJ_455 /* SentryAttachment.m in Sources */,
-				OBJ_456 /* SentryAutoBreadcrumbTrackingIntegration.m in Sources */,
-				OBJ_457 /* SentryAutoSessionTrackingIntegration.m in Sources */,
-				OBJ_458 /* SentryBacktrace.cpp in Sources */,
-				OBJ_459 /* SentryBaggage.m in Sources */,
-				OBJ_460 /* SentryBaseIntegration.m in Sources */,
-				OBJ_461 /* SentryBreadcrumb.m in Sources */,
-				OBJ_462 /* SentryBreadcrumbTracker.m in Sources */,
-				OBJ_463 /* SentryByteCountFormatter.m in Sources */,
-				OBJ_464 /* SentryClient.m in Sources */,
-				OBJ_465 /* SentryClientReport.m in Sources */,
-				OBJ_466 /* SentryConcurrentRateLimitsDictionary.m in Sources */,
-				OBJ_467 /* SentryCoreDataSwizzling.m in Sources */,
-				OBJ_468 /* SentryCoreDataTracker.m in Sources */,
-				OBJ_469 /* SentryCoreDataTrackingIntegration.m in Sources */,
-				OBJ_470 /* SentryCrashDefaultBinaryImageProvider.m in Sources */,
-				OBJ_471 /* SentryCrashDefaultMachineContextWrapper.m in Sources */,
-				OBJ_472 /* SentryCrashExceptionApplication.m in Sources */,
-				OBJ_473 /* SentryCrashInstallationReporter.m in Sources */,
-				OBJ_474 /* SentryCrashIntegration.m in Sources */,
-				OBJ_475 /* SentryCrashReportConverter.m in Sources */,
-				OBJ_476 /* SentryCrashReportSink.m in Sources */,
-				OBJ_477 /* SentryCrashScopeObserver.m in Sources */,
-				OBJ_478 /* SentryCrashStackEntryMapper.m in Sources */,
-				OBJ_479 /* SentryCrashWrapper.m in Sources */,
-				OBJ_480 /* SentryCurrentDate.m in Sources */,
-				OBJ_481 /* SentryDataCategoryMapper.m in Sources */,
-				OBJ_482 /* SentryDateUtil.m in Sources */,
-				OBJ_483 /* SentryDebugImageProvider.m in Sources */,
-				OBJ_484 /* SentryDebugMeta.m in Sources */,
-				OBJ_485 /* SentryDefaultCurrentDateProvider.m in Sources */,
-				OBJ_486 /* SentryDefaultObjCRuntimeWrapper.m in Sources */,
-				OBJ_487 /* SentryDefaultRateLimits.m in Sources */,
-				OBJ_488 /* SentryDependencyContainer.m in Sources */,
-				OBJ_489 /* SentryDevice.mm in Sources */,
-				OBJ_490 /* SentryDiscardReasonMapper.m in Sources */,
-				OBJ_491 /* SentryDiscardedEvent.m in Sources */,
-				OBJ_492 /* SentryDispatchFactory.m in Sources */,
-				OBJ_493 /* SentryDispatchQueueWrapper.m in Sources */,
-				OBJ_494 /* SentryDispatchSourceWrapper.m in Sources */,
-				OBJ_495 /* SentryDsn.m in Sources */,
-				OBJ_496 /* SentryEnvelope.m in Sources */,
-				OBJ_497 /* SentryEnvelopeAttachmentHeader.m in Sources */,
-				OBJ_498 /* SentryEnvelopeItemHeader.m in Sources */,
-				OBJ_499 /* SentryEnvelopeRateLimit.m in Sources */,
-				OBJ_500 /* SentryError.mm in Sources */,
-				OBJ_501 /* SentryEvent.m in Sources */,
-				OBJ_502 /* SentryException.m in Sources */,
-				OBJ_503 /* SentryExtraContextProvider.m in Sources */,
-				OBJ_504 /* SentryFileContents.m in Sources */,
-				OBJ_505 /* SentryFileIOTrackingIntegration.m in Sources */,
-				OBJ_506 /* SentryFileManager.m in Sources */,
-				OBJ_507 /* SentryFrame.m in Sources */,
-				OBJ_508 /* SentryFrameRemover.m in Sources */,
-				OBJ_509 /* SentryFramesTracker.m in Sources */,
-				OBJ_510 /* SentryFramesTrackingIntegration.m in Sources */,
-				OBJ_511 /* SentryGeo.m in Sources */,
-				OBJ_512 /* SentryGlobalEventProcessor.m in Sources */,
-				OBJ_513 /* SentryHttpDateParser.m in Sources */,
-				OBJ_514 /* SentryHttpStatusCodeRange.m in Sources */,
-				OBJ_515 /* SentryHttpTransport.m in Sources */,
-				OBJ_516 /* SentryHub.m in Sources */,
-				OBJ_517 /* SentryId.m in Sources */,
-				OBJ_518 /* SentryInAppLogic.m in Sources */,
-				OBJ_519 /* SentryInstallation.m in Sources */,
-				OBJ_520 /* SentryLevelMapper.m in Sources */,
-				OBJ_521 /* SentryLog.m in Sources */,
-				OBJ_522 /* SentryLogOutput.m in Sources */,
-				OBJ_523 /* SentryMachLogging.cpp in Sources */,
-				OBJ_524 /* SentryMeasurementUnit.m in Sources */,
-				OBJ_525 /* SentryMeasurementValue.m in Sources */,
-				OBJ_526 /* SentryMechanism.m in Sources */,
-				OBJ_527 /* SentryMechanismMeta.m in Sources */,
-				OBJ_528 /* SentryMessage.m in Sources */,
-				OBJ_529 /* SentryMeta.m in Sources */,
-				OBJ_530 /* SentryMetricKitIntegration.m in Sources */,
-				OBJ_531 /* SentryMetricProfiler.mm in Sources */,
-				OBJ_532 /* SentryMigrateSessionInit.m in Sources */,
-				OBJ_533 /* SentryNSDataSwizzling.m in Sources */,
-				OBJ_534 /* SentryNSDataTracker.m in Sources */,
-				OBJ_535 /* SentryNSError.m in Sources */,
-				OBJ_536 /* SentryNSNotificationCenterWrapper.m in Sources */,
-				OBJ_537 /* SentryNSProcessInfoWrapper.mm in Sources */,
-				OBJ_538 /* SentryNSTimerWrapper.m in Sources */,
-				OBJ_539 /* SentryNSURLRequest.m in Sources */,
-				OBJ_540 /* SentryNSURLRequestBuilder.m in Sources */,
-				OBJ_541 /* SentryNSURLSessionTaskSearch.m in Sources */,
-				OBJ_542 /* SentryNetworkTracker.m in Sources */,
-				OBJ_543 /* SentryNetworkTrackingIntegration.m in Sources */,
-				OBJ_544 /* SentryNoOpSpan.m in Sources */,
-				OBJ_545 /* SentryOptions.m in Sources */,
-				OBJ_546 /* SentryPerformanceTracker.m in Sources */,
-				OBJ_547 /* SentryPerformanceTrackingIntegration.m in Sources */,
-				OBJ_548 /* SentryPredicateDescriptor.m in Sources */,
-				OBJ_549 /* SentryProfileTimeseries.mm in Sources */,
-				OBJ_550 /* SentryProfiler.mm in Sources */,
-				OBJ_551 /* SentryProfilesSampler.m in Sources */,
-				OBJ_552 /* SentryProfilingLogging.mm in Sources */,
-				OBJ_553 /* SentryQueueableRequestManager.m in Sources */,
-				OBJ_554 /* SentryRandom.m in Sources */,
-				OBJ_555 /* SentryRateLimitParser.m in Sources */,
-				OBJ_556 /* SentryReachability.m in Sources */,
-				OBJ_557 /* SentryRequest.m in Sources */,
-				OBJ_558 /* SentryRequestOperation.m in Sources */,
-				OBJ_559 /* SentryRetryAfterHeaderParser.m in Sources */,
-				OBJ_560 /* SentrySDK.m in Sources */,
-				OBJ_561 /* SentrySampleDecision.m in Sources */,
-				OBJ_562 /* SentrySamplingContext.m in Sources */,
-				OBJ_563 /* SentrySamplingProfiler.cpp in Sources */,
-				OBJ_564 /* SentryScope.m in Sources */,
-				OBJ_565 /* SentryScopeSyncC.c in Sources */,
-				OBJ_566 /* SentryScreenFrames.m in Sources */,
-				OBJ_567 /* SentryScreenshot.m in Sources */,
-				OBJ_568 /* SentryScreenshotIntegration.m in Sources */,
-				OBJ_569 /* SentrySdkInfo.m in Sources */,
-				OBJ_570 /* SentrySerialization.m in Sources */,
-				OBJ_571 /* SentrySession.m in Sources */,
-				OBJ_572 /* SentrySessionCrashedHandler.m in Sources */,
-				OBJ_573 /* SentrySessionTracker.m in Sources */,
-				OBJ_574 /* SentrySpan.m in Sources */,
-				OBJ_575 /* SentrySpanContext.m in Sources */,
-				OBJ_576 /* SentrySpanId.m in Sources */,
-				OBJ_577 /* SentrySpanStatus.m in Sources */,
-				OBJ_578 /* SentryStacktrace.m in Sources */,
-				OBJ_579 /* SentryStacktraceBuilder.m in Sources */,
-				OBJ_580 /* SentrySubClassFinder.m in Sources */,
-				OBJ_581 /* SentrySwiftAsyncIntegration.m in Sources */,
-				OBJ_582 /* SentrySwizzle.m in Sources */,
-				OBJ_583 /* SentrySwizzleWrapper.m in Sources */,
-				OBJ_584 /* SentrySysctl.m in Sources */,
-				OBJ_585 /* SentrySystemEventBreadcrumbs.m in Sources */,
-				OBJ_586 /* SentrySystemWrapper.mm in Sources */,
-				OBJ_587 /* SentryThread.m in Sources */,
-				OBJ_588 /* SentryThreadHandle.cpp in Sources */,
-				OBJ_589 /* SentryThreadInspector.m in Sources */,
-				OBJ_590 /* SentryThreadMetadataCache.cpp in Sources */,
-				OBJ_591 /* SentryThreadWrapper.m in Sources */,
-				OBJ_592 /* SentryTime.mm in Sources */,
-				OBJ_593 /* SentryTimeToDisplayTracker.m in Sources */,
-				OBJ_594 /* SentryTraceContext.m in Sources */,
-				OBJ_595 /* SentryTraceHeader.m in Sources */,
-				OBJ_596 /* SentryTracer.m in Sources */,
-				OBJ_597 /* SentryTracerConcurrency.mm in Sources */,
-				OBJ_598 /* SentryTracerConfiguration.m in Sources */,
-				OBJ_599 /* SentryTracesSampler.m in Sources */,
-				OBJ_600 /* SentryTransaction.m in Sources */,
-				OBJ_601 /* SentryTransactionContext.mm in Sources */,
-				OBJ_602 /* SentryTransportAdapter.m in Sources */,
-				OBJ_603 /* SentryTransportFactory.m in Sources */,
-				OBJ_604 /* SentryUIApplication.m in Sources */,
-				OBJ_605 /* SentryUIDeviceWrapper.m in Sources */,
-				OBJ_606 /* SentryUIEventTracker.m in Sources */,
-				OBJ_607 /* SentryUIEventTrackingIntegration.m in Sources */,
-				OBJ_608 /* SentryUIViewControllerPerformanceTracker.m in Sources */,
-				OBJ_609 /* SentryUIViewControllerSwizzling.m in Sources */,
-				OBJ_610 /* SentryUser.m in Sources */,
-				OBJ_611 /* SentryUserFeedback.m in Sources */,
-				OBJ_612 /* SentryViewHierarchy.m in Sources */,
-				OBJ_613 /* SentryViewHierarchyIntegration.m in Sources */,
-				OBJ_614 /* SentryWatchdogTerminationLogic.m in Sources */,
-				OBJ_615 /* SentryWatchdogTerminationScopeObserver.m in Sources */,
-				OBJ_616 /* SentryWatchdogTerminationTracker.m in Sources */,
-				OBJ_617 /* SentryWatchdogTerminationTrackingIntegration.m in Sources */,
-				OBJ_618 /* UIView+Sentry.m in Sources */,
-				OBJ_619 /* UIViewController+Sentry.m in Sources */,
-				OBJ_620 /* SentryDisplayLinkWrapper.m in Sources */,
-				OBJ_621 /* SentryCrashInstallation.m in Sources */,
-				OBJ_622 /* SentryCrashMonitor.c in Sources */,
-				OBJ_623 /* SentryCrashMonitorType.c in Sources */,
-				OBJ_624 /* SentryCrashMonitor_AppState.c in Sources */,
-				OBJ_625 /* SentryCrashMonitor_CPPException.cpp in Sources */,
-				OBJ_626 /* SentryCrashMonitor_MachException.c in Sources */,
-				OBJ_627 /* SentryCrashMonitor_NSException.m in Sources */,
-				OBJ_628 /* SentryCrashMonitor_Signal.c in Sources */,
-				OBJ_629 /* SentryCrashMonitor_System.m in Sources */,
-				OBJ_630 /* SentryCrash.m in Sources */,
-				OBJ_631 /* SentryCrashBinaryImageCache.c in Sources */,
-				OBJ_632 /* SentryCrashC.c in Sources */,
-				OBJ_633 /* SentryCrashCachedData.c in Sources */,
-				OBJ_634 /* SentryCrashDoctor.m in Sources */,
-				OBJ_635 /* SentryCrashReport.c in Sources */,
-				OBJ_636 /* SentryCrashReportFixer.c in Sources */,
-				OBJ_637 /* SentryCrashReportStore.c in Sources */,
-				OBJ_638 /* NSError+SentrySimpleConstructor.m in Sources */,
-				OBJ_639 /* SentryCrashCPU.c in Sources */,
-				OBJ_640 /* SentryCrashCPU_arm.c in Sources */,
-				OBJ_641 /* SentryCrashCPU_arm64.c in Sources */,
-				OBJ_642 /* SentryCrashCPU_x86_32.c in Sources */,
-				OBJ_643 /* SentryCrashCPU_x86_64.c in Sources */,
-				OBJ_644 /* SentryCrashDate.c in Sources */,
-				OBJ_645 /* SentryCrashDebug.c in Sources */,
-				OBJ_646 /* SentryCrashDynamicLinker.c in Sources */,
-				OBJ_647 /* SentryCrashFileUtils.c in Sources */,
-				OBJ_648 /* SentryCrashID.c in Sources */,
-				OBJ_649 /* SentryCrashJSONCodec.c in Sources */,
-				OBJ_650 /* SentryCrashJSONCodecObjC.m in Sources */,
-				OBJ_651 /* SentryCrashLogger.c in Sources */,
-				OBJ_652 /* SentryCrashMach.c in Sources */,
-				OBJ_653 /* SentryCrashMachineContext.c in Sources */,
-				OBJ_654 /* SentryCrashMemory.c in Sources */,
-				OBJ_655 /* SentryCrashObjC.c in Sources */,
-				OBJ_656 /* SentryCrashSignalInfo.c in Sources */,
-				OBJ_657 /* SentryCrashStackCursor.c in Sources */,
-				OBJ_658 /* SentryCrashStackCursor_Backtrace.c in Sources */,
-				OBJ_659 /* SentryCrashStackCursor_MachineContext.c in Sources */,
-				OBJ_660 /* SentryCrashStackCursor_SelfThread.m in Sources */,
-				OBJ_661 /* SentryCrashString.c in Sources */,
-				OBJ_662 /* SentryCrashSymbolicator.c in Sources */,
-				OBJ_663 /* SentryCrashSysCtl.c in Sources */,
-				OBJ_664 /* SentryCrashThread.c in Sources */,
-				OBJ_665 /* SentryCrashUUIDConversion.c in Sources */,
-				OBJ_666 /* SentryCrashReportFilterBasic.m in Sources */,
-				OBJ_667 /* Container+SentryDeepSearch.m in Sources */,
-				OBJ_668 /* SentryCrashCString.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_720 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_721 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_725 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_726 /* SentryMXCallStackTree.swift in Sources */,
-				OBJ_727 /* SentryMXManager.swift in Sources */,
-				OBJ_728 /* Sentry.swift in Sources */,
-				OBJ_729 /* SwiftDescriptor.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		OBJ_735 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -2189,26 +584,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_433 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */;
-			targetProxy = A126D99A2A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_714 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "sentry-cocoa::SentryPrivate" /* SentryPrivate */;
-			targetProxy = A126D9972A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_772 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "sentry-cocoa::Sentry" /* Sentry */;
-			targetProxy = A126D9962A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_773 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "sentry-cocoa::SentryPrivate" /* SentryPrivate */;
-			targetProxy = A126D9982A529191009F715C /* PBXContainerItemProxy */;
-		};
 		OBJ_774 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "xendit-sdk-ios-src::XenditObjC" /* XenditObjC */;
@@ -2219,30 +594,10 @@
 			target = "xendit-sdk-ios-src::XenditTests" /* XenditTests */;
 			targetProxy = A126D9A12A529191009F715C /* PBXContainerItemProxy */;
 		};
-		OBJ_817 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "ohhttpstubs::OHHTTPStubsSwift" /* OHHTTPStubsSwift */;
-			targetProxy = A126D99B2A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_818 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "ohhttpstubs::OHHTTPStubs" /* OHHTTPStubs */;
-			targetProxy = A126D99C2A529191009F715C /* PBXContainerItemProxy */;
-		};
 		OBJ_819 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "xendit-sdk-ios-src::Xendit" /* Xendit */;
 			targetProxy = A126D99D2A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_820 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "sentry-cocoa::Sentry" /* Sentry */;
-			targetProxy = A126D99E2A529191009F715C /* PBXContainerItemProxy */;
-		};
-		OBJ_821 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "sentry-cocoa::SentryPrivate" /* SentryPrivate */;
-			targetProxy = A126D99F2A529191009F715C /* PBXContainerItemProxy */;
 		};
 		OBJ_822 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2300,338 +655,9 @@
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				USE_HEADERMAP = NO;
-			};
-			name = Release;
-		};
-		OBJ_408 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = NO;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubs_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubs;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = OHHTTPStubs;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_409 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = NO;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubs_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubs;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = OHHTTPStubs;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_421 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -package-description-version 5.0.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		OBJ_422 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -package-description-version 5.0.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		OBJ_427 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
-					"$(SRCROOT)/Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs",
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubsSwift_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubsSwift;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = OHHTTPStubsSwift;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_428 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include",
-					"$(SRCROOT)/Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs",
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/OHHTTPStubsSwift_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = OHHTTPStubsSwift;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = OHHTTPStubsSwift;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_436 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = "GCC_ENABLE_CPP_EXCEPTIONS=YES";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/sentry-cocoa/Sources/Sentry/Public",
-					Sentry/include,
-					Sentry/include/HybridPublic,
-					Sentry/Public,
-					SentryCrash/Installations,
-					SentryCrash/Recording,
-					SentryCrash/Recording/Monitors,
-					SentryCrash/Recording/Tools,
-					SentryCrash/Reporting/Filters,
-					SentryCrash/Reporting/Filters/Tools,
-					SentryCrash/Reporting/Tools,
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/Sentry_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-					"-lc++",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Sentry;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = Sentry;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_437 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = "GCC_ENABLE_CPP_EXCEPTIONS=YES";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/sentry-cocoa/Sources/Sentry/Public",
-					Sentry/include,
-					Sentry/include/HybridPublic,
-					Sentry/Public,
-					SentryCrash/Installations,
-					SentryCrash/Recording,
-					SentryCrash/Recording/Monitors,
-					SentryCrash/Recording/Tools,
-					SentryCrash/Reporting/Filters,
-					SentryCrash/Reporting/Filters/Tools,
-					SentryCrash/Reporting/Tools,
-				);
-				INFOPLIST_FILE = Xendit.xcodeproj/Sentry_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-					"-lc++",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Sentry;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				TARGET_NAME = Sentry;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_718 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		OBJ_719 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/ManifestAPI -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		OBJ_723 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Xendit.xcodeproj/SentryPrivate_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SentryPrivate;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SentryPrivate;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Xendit.xcodeproj/SentryPrivate_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SentryPrivate;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SentryPrivate;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -2652,7 +678,10 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/Xendit_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2686,7 +715,10 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/Xendit_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2720,7 +752,10 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/XenditObjC_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2753,7 +788,10 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/XenditObjC_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2819,7 +857,11 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/XenditTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2852,7 +894,11 @@
 				);
 				INFOPLIST_FILE = Xendit.xcodeproj/XenditTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -2873,60 +919,6 @@
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
 				OBJ_4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_407 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_408 /* Debug */,
-				OBJ_409 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_420 /* Build configuration list for PBXNativeTarget "OHHTTPStubsPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_421 /* Debug */,
-				OBJ_422 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_426 /* Build configuration list for PBXNativeTarget "OHHTTPStubsSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_427 /* Debug */,
-				OBJ_428 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_435 /* Build configuration list for PBXNativeTarget "Sentry" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_436 /* Debug */,
-				OBJ_437 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_717 /* Build configuration list for PBXNativeTarget "SentryPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_718 /* Debug */,
-				OBJ_719 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_722 /* Build configuration list for PBXNativeTarget "SentryPrivate" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_723 /* Debug */,
-				OBJ_724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2977,6 +969,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		648184A32BF7556800DC5FBF /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.2.1;
+			};
+		};
+		648184A62BF7558D00DC5FBF /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		648184A42BF7556800DC5FBF /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648184A32BF7556800DC5FBF /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+		648184A72BF7558D00DC5FBF /* OHHTTPStubs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648184A62BF7558D00DC5FBF /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubs;
+		};
+		648184A92BF7558D00DC5FBF /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648184A62BF7558D00DC5FBF /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }
