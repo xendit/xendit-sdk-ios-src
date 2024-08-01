@@ -53,7 +53,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if let error = validateTokenizationRequest(tokenizationRequest: tokenizationRequest) {
             Log.shared.verbose("\(logPrefix) \(error)")
-            completion(nil, error)
+            return completion(nil, error)
         }
         
         var extraHeaders: [String: String] = [:]
@@ -82,7 +82,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if let error = validateRetokenizationRequest(retokenizationRequest: retokenizationRequest) {
             Log.shared.verbose("\(logPrefix) \(error)")
-            completion(nil, error)
+            return completion(nil, error)
         }
         
         var extraHeaders: [String: String] = [:]
@@ -103,7 +103,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         if let error = validateRetokenizationRequest(retokenizationRequest: storeCVNRequest) {
             Log.shared.verbose("\(logPrefix) \(error)")
-            completion(nil, error)
+            return completion(nil, error)
         }
         
         var extraHeaders: [String: String] = [:]
