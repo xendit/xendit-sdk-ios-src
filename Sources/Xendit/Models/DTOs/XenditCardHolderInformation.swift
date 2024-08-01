@@ -37,8 +37,8 @@ import Foundation
         var json: [String: Any] = [:]
         if cardHolderFirstName != nil { json["card_holder_first_name"] = cardHolderFirstName }
         if cardHolderLastName != nil { json["card_holder_last_name"] = cardHolderLastName }
-        if cardHolderEmail != nil { json["email"] = cardHolderEmail }
-        if cardHolderPhoneNumber != nil { json["mobile_number"] = cardHolderPhoneNumber }
+        if cardHolderEmail != nil { json["card_holder_email"] = cardHolderEmail }
+        if cardHolderPhoneNumber != nil { json["card_holder_mobile_number"] = cardHolderPhoneNumber }
         return json
     }
 
