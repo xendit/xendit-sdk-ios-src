@@ -21,6 +21,7 @@ extension URLRequest {
         request.setValue(XDTApiClient.CLIENT_TYPE, forHTTPHeaderField: "client-type")
         request.setValue(XDTApiClient.CLIENT_API_VERSION, forHTTPHeaderField: "client-version")
         request.setValue(XDTApiClient.CLIENT_IDENTIFIER, forHTTPHeaderField: "x-client-identifier")
+        request.setValue(XDTApiClient.CLIENT_SDK_VERSION, forHTTPHeaderField: "x-client-sdk-version")
         
         if extraHeaders != nil {
             for (key, value) in extraHeaders! {
@@ -37,7 +38,7 @@ class XDTApiClient {
     internal static let CLIENT_TYPE = "SDK";
     internal static let CLIENT_API_VERSION = "2.0.0";
     internal static let CLIENT_IDENTIFIER = "Xendit iOS SDK";
-    internal static let CLIENT_SDK_VERSION = "3.8.7";
+    internal static let CLIENT_SDK_VERSION = "3.9.2";
     
     private static let WEBAPI_FLEX_BASE_URL = "https://sandbox.webapi.visa.com"
     
