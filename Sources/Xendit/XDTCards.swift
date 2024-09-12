@@ -137,7 +137,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             fromViewController: fromViewController,
             tokenId: tokenId,
             amount: amount,
-            currency: nil,
+            currency: currency,
             onBehalfOf: onBehalfOf,
             customer: customer,
             cardCvn: nil,
@@ -159,10 +159,10 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             fromViewController: fromViewController,
             tokenId: tokenId,
             amount: amount,
-            currency: nil,
+            currency: currency,
             onBehalfOf: onBehalfOf,
             customer: customer,
-            cardCvn: nil,
+            cardCvn: cardCvn,
             cardData: nil,
             completion: completion
         );
@@ -190,7 +190,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             currency: currency,
             onBehalfOf: onBehalfOf,
             cardCvn: cardCvn,
-            cardData:cardData,
+            cardData: cardData,
             completion: completion
         )
     }
