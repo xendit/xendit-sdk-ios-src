@@ -54,12 +54,24 @@ import Foundation
         var cardDataJson: [String: String] = [
             "account_number": cardData.cardNumber,
             "exp_month": cardData.cardExpMonth,
-            "exp_year": cardData.cardExpYear,
-            "card_holder_first_name": cardData.cardHolderFirstName ?? "",
-            "card_holder_last_name": cardData.cardHolderLastName ?? "",
-            "card_holder_email": cardData.cardHolderEmail ?? "",
-            "card_holder_phone_number": cardData.cardHolderPhoneNumber ?? ""
+            "exp_year": cardData.cardExpYear
         ]
+        
+        if let firstName = cardData.cardHolderFirstName, !firstName.isEmpty {
+            cardDataJson["card_holder_first_name"] = firstName
+        }
+
+        if let lastName = cardData.cardHolderLastName, !lastName.isEmpty {
+            cardDataJson["card_holder_last_name"] = lastName
+        }
+
+        if let email = cardData.cardHolderEmail, !email.isEmpty {
+            cardDataJson["card_holder_email"] = email
+        }
+
+        if let phoneNumber = cardData.cardHolderPhoneNumber, !phoneNumber.isEmpty {
+            cardDataJson["card_holder_mobile_number"] = phoneNumber
+        }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
             cardDataJson["cvn"] = cardData.cardCvn
