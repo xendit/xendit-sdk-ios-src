@@ -53,7 +53,8 @@ import XenditObjC
         let amount = authenticationRequest.amount
         let customer = authenticationRequest.customer
         let currency = authenticationRequest.currency
-        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, customer: customer, cardCvn: authenticationRequest.cardCvn, completion: completion)
+        let cardData = authenticationRequest.cardData
+        XDTCards.createAuthentication(fromViewController: fromViewController, tokenId: tokenId, amount: amount, currency: currency, onBehalfOf: onBehalfOf, customer: customer, cardCvn: authenticationRequest.cardCvn, cardData: cardData, completion: completion)
     }
     
     @available(*, deprecated, message: "Use createToken(UIViewController, XenditTokenizationRequest, String, Callback) instead")
