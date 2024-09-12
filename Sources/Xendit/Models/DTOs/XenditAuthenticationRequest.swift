@@ -8,7 +8,7 @@
 import Foundation
 
 @objcMembers
-@objc(XenditAuthenticationRequest) open class XenditAuthenticationRequest: NSObject, JsonSerializable {
+@objc(XenditAuthenticationRequest) open class XenditAuthenticationRequest: NSObject {
     
     public var amount: NSNumber
     public var tokenId: String
@@ -24,36 +24,5 @@ import Foundation
         self.tokenId = tokenId
         self.currency = currency
         self.cardData = cardData
-    }
-    
-    func toJsonObject() -> [String : Any] {
-        
-        var json: [String: Any] = [
-            "amount": amount,
-            "credit_card_token_id": tokenId,
-            "currency": currency
-        ]
-        
-        if (midLabel != nil) {
-            json["mid_label"] = midLabel
-        }
-        
-        if (billingDetails != nil) {
-            json["billing_details"] = billingDetails!.toJsonObject()
-        }
-        
-        if (cardCvn != nil) {
-            json["card_cvn"] = cardCvn
-        }
-        
-        if (customer != nil) {
-            json["customer"] = customer!.toJsonObject()
-        }
-
-        if (cardData != nil) {
-            json["card_data"] = cardData!.toJsonObject()
-        }
-        
-        return json
     }
 }
