@@ -70,7 +70,7 @@ import Foundation
         }
 
         if let phoneNumber = cardData.cardHolderPhoneNumber, !phoneNumber.isEmpty {
-            cardDataJson["card_holder_mobile_number"] = phoneNumber
+            cardDataJson["card_holder_phone_number"] = phoneNumber
         }
         
         if cardData.cardCvn != nil && cardData.cardCvn != "" {
