@@ -12,12 +12,14 @@ Slack Mentions: `@troops-cards`
 
 ## Usage
 
+Note that starting version 3.10.0, it requires minimum version of iOS 11. If you still want to support iOS 9, you may use [version 3.9.2](https://github.com/xendit/xendit-sdk-ios-src/releases/tag/3.9.2) instead.
+
 ### Install Xendit iOS SDK with CocoaPods
 
 Add this to your Podfile.
 
 ```ruby
-pod 'Xendit', '~> 3.9.2'
+pod 'Xendit', '~> 3.10.0'
 ```
 
 **Important:** Import SDK in Objective-C project with CocoaPods integration, you can do as following
