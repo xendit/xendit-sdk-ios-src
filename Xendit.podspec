@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Xendit'
-  s.version          = '3.9.2'
+  s.version          = '3.10.0'
   s.license          = 'MIT'
   s.homepage         = 'https://www.xendit.co'
   s.author           = { 'Juan Gonzalez’' => 'juan@xendit.co' }
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/xendit/xendit-sdk-ios-src.git', :tag => s.version }
   s.swift_versions   = ['4', '5']
 
-  s.platform              = :ios, '9.0'
-  s.ios.deployment_target = '9.0'
+  s.platform              = :ios, '11.0'
+  s.ios.deployment_target = '11.0'
   s.resource_bundles = {
     'Xendit' => ['Sources/Xendit/PrivacyInfo.xcprivacy'] 
   }
