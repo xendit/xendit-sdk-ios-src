@@ -33,10 +33,6 @@ import Foundation
         self.cardHolderPhoneNumber = cardHolderPhoneNumber
     }
     
-    func isEmpty() -> Bool {
-        return self.cardHolderEmail != nil && self.cardHolderFirstName != nil && self.cardHolderLastName != nil && self.cardHolderPhoneNumber != nil
-    }
-    
     func toJsonObject() -> [String : Any] {
         var json: [String: Any] = [:]
         if cardHolderFirstName != nil { json["card_holder_first_name"] = cardHolderFirstName }

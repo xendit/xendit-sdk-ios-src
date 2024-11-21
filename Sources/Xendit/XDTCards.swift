@@ -213,8 +213,8 @@ public class XDTCards: CanTokenize, CanAuthenticate {
             requestBody["card_cvn"] = cardCvn
         }
         
-        if let cardData, !cardData.isEmpty() {
-            requestBody["card_data"] = cardData.toJsonObject()
+        if let cardDataJson = cardData?.toJsonObject(), !cardDataJson.isEmpty {
+            requestBody["card_data"] = cardDataJson
         }
         
         var extraHeaders: [String: String] = [:]
