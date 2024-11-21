@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		210C1C162CEEE13800D5950A /* XenditCardHolderInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C1C152CEEE13800D5950A /* XenditCardHolderInformation.swift */; };
 		648184A52BF7556800DC5FBF /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A42BF7556800DC5FBF /* Sentry */; };
 		648184A82BF7558D00DC5FBF /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A72BF7558D00DC5FBF /* OHHTTPStubs */; };
 		648184AA2BF7558D00DC5FBF /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A92BF7558D00DC5FBF /* OHHTTPStubsSwift */; };
@@ -107,6 +108,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210C1C152CEEE13800D5950A /* XenditCardHolderInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardHolderInformation.swift; sourceTree = "<group>"; };
 		644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				OBJ_20 /* XenditAddress.swift */,
 				OBJ_21 /* XenditAuthenticationRequest.swift */,
 				OBJ_22 /* XenditBillingDetails.swift */,
+				210C1C152CEEE13800D5950A /* XenditCardHolderInformation.swift */,
 				OBJ_23 /* XenditCardData.swift */,
 				OBJ_24 /* XenditCustomer.swift */,
 				OBJ_25 /* XenditJWT.swift */,
@@ -525,6 +528,7 @@
 				OBJ_747 /* XenditCustomer.swift in Sources */,
 				OBJ_748 /* XenditJWT.swift in Sources */,
 				OBJ_749 /* XenditJWTRequest.swift in Sources */,
+				210C1C162CEEE13800D5950A /* XenditCardHolderInformation.swift in Sources */,
 				OBJ_750 /* XenditRetokenizationRequest.swift in Sources */,
 				OBJ_751 /* XenditStoreCVNRequest.swift in Sources */,
 				OBJ_752 /* XenditTokenizationRequest.swift in Sources */,
