@@ -48,7 +48,7 @@ class CreditCard {
         let cardExpMonthValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationMonth)
         let cardExpYearValid = NSRegularExpression.regexCardNumberValidation(cardNumber: cardExpirationYear)
         if cardExpMonthValid && cardExpYearValid  {
-            let calendar = Calendar.current
+            let calendar = Calendar(identifier: .gregorian)
             let components = calendar.dateComponents([.month, .year], from: Date())
             let currentMonth = components.month ?? 1
             let currentYear = components.year ?? 2024
