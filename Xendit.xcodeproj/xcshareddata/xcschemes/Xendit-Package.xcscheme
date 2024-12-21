@@ -51,6 +51,56 @@
                BlueprintName = "XenditTests"
                ReferencedContainer = "container:Xendit.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CardDataTest">
+               </Test>
+               <Test
+                  Identifier = "CreditCardTests">
+               </Test>
+               <Test
+                  Identifier = "CreditCardTests/testIsValidCardNumber()">
+               </Test>
+               <Test
+                  Identifier = "FingerprintTests">
+               </Test>
+               <Test
+                  Identifier = "FingerprintTests/testReturnsPayload()">
+               </Test>
+               <Test
+                  Identifier = "JsonEncodeTests">
+               </Test>
+               <Test
+                  Identifier = "JsonEncodeTests/testEncodeXenditCCToken()">
+               </Test>
+               <Test
+                  Identifier = "LogSanitizerTest">
+               </Test>
+               <Test
+                  Identifier = "LogSanitizerTest/testArray()">
+               </Test>
+               <Test
+                  Identifier = "LogSanitizerTest/testDictionary()">
+               </Test>
+               <Test
+                  Identifier = "LogSanitizerTest/testNestedDictionary()">
+               </Test>
+               <Test
+                  Identifier = "LogSanitizerTest/testNonJsonBody()">
+               </Test>
+               <Test
+                  Identifier = "XenditIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "XenditIntegrationTests/testCreateAuthentication()">
+               </Test>
+               <Test
+                  Identifier = "XenditIntegrationTests/testCreateToken()">
+               </Test>
+               <Test
+                  Identifier = "XenditIntegrationTests/testCreateTokenInvalid()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

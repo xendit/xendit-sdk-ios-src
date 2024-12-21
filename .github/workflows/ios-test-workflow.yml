@@ -1,0 +1,93 @@
+name: iOS Tests
+
+on:
+ pull_request:
+
+
+jobs:
+  test:
+    name: Run Xcode Tests
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
+      
+    - name: Build and Test
+      run: |
+        xcodebuild test \
+          -scheme "Xendit-Package" \
+          -configuration Debug \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          -enableCodeCoverage YES \
+          -resultBundlePath TestResults.xcresult \
+          clean test | xcpretty --report junit && exit ${PIPESTATUS[0]}
+    
+    - name: Generate Test Report
+      if: success() || failure()    # Run this step even if tests fail
+      run: |
+        xcrun xcresulttool get --format json --path TestResults.xcresult > test_report.json
+        
+    - name: Parse test coverage
+      if: success() || failure()
+      run: |
+        xcrun xccov view --report --json TestResults.xcresult > coverage_report.json
+      
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: |
+          test_report.json
+          coverage_report.json
+          TestResults.xcresult
+          build/reports/
+
+    - name: Upload test results to Github
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: build/reports/junit.xml
+        
+    - name: Create Test Summary
+      if: always()
+      run: |
+        echo "### Test Results Summary" >> $GITHUB_STEP_SUMMARY
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        
+        # Get failed tests specifically
+        echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
+        xcrun xcresulttool get --format json --path TestResults.xcresult | jq -r '.. | select(.identifier? == "com.apple.xcode.tests.failed")? | .._message?' >> $GITHUB_STEP_SUMMARY
+        
+        # Get full test results
+        echo "### Full Test Results" >> $GITHUB_STEP_SUMMARY
+        xcrun xcresulttool get --format human-readable --path TestResults.xcresult >> $GITHUB_STEP_SUMMARY
+        
+    - name: Comment PR with Test Failures
+      if: failure() && github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const testReport = JSON.parse(fs.readFileSync('test_report.json', 'utf8'));
+          
+          let failureMessage = '### ❌ Test Failures\n\n';
+          // Extract and format test failures from the report
+          // This will be shown as a PR comment
+          const failures = testReport.actions.testsRef.tests
+            .filter(test => test.status === 'Failure')
+            .map(test => `- ${test.identifier}: ${test.message}`)
+            .join('\n');
+            
+          failureMessage += failures;
+          
+          github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: failureMessage
+          });
