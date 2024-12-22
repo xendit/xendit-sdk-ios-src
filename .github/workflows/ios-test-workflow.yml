@@ -29,7 +29,14 @@ jobs:
         DESTINATION=$(grep -E "platform:iOS Simulator.*name:iPhone" destinations.txt | \
           sort -t':' -k4,4V | \
           tail -n1 | \
-          sed -e 's/^[[:space:]]*//')
+          sed -e 's/^[[:space:]]*//' | \
+          sed -e 's/[[:space:]]*$//' | \
+          sed -e 's/[{}]//g' | \
+          sed -e 's/platform:/platform=/g' | \
+          sed -e 's/id:/id=/g' | \
+          sed -e 's/, /,/g' | \
+          sed -e 's/,OS.*//g' | \
+          xargs)
         
         if [ -z "$DESTINATION" ]; then
           echo "Error: No iPhone simulator destination found!"
