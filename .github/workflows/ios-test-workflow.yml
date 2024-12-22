@@ -62,7 +62,7 @@ jobs:
           -destination "$DESTINATION" \
           -enableCodeCoverage YES \
           -resultBundlePath TestResults.xcresult \
-          clean test | xcpretty --report junit && exit ${PIPESTATUS[0]}
+          clean test | xcpretty
     
     - name: Generate Test Report
       if: success() || failure()
@@ -76,11 +76,10 @@ jobs:
       with:
         name: test-results
         path: |
+          TestResults.xcresult/**/*
           test_report.json
           coverage_report.json
-          TestResults.xcresult
-          build/reports/
-          destinations.txt
+        if-no-files-found: error
 
     - name: Create Test Summary
       if: always()
