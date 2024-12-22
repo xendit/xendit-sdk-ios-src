@@ -65,13 +65,9 @@ jobs:
           clean test | xcpretty --report junit && exit ${PIPESTATUS[0]}
     
     - name: Generate Test Report
-      if: success() || failure()    # Run this step even if tests fail
-      run: |
-        xcrun xcresulttool get --format json --path TestResults.xcresult > test_report.json
-        
-    - name: Parse test coverage
       if: success() || failure()
       run: |
+        xcrun xcresulttool get --format json --path TestResults.xcresult > test_report.json
         xcrun xccov view --report --json TestResults.xcresult > coverage_report.json
       
     - name: Upload test results
@@ -110,8 +106,8 @@ jobs:
         else
           echo "❌ No test results found" >> $GITHUB_STEP_SUMMARY
         fi
-        
-    - name: Comment PR
+
+    - name: Comment PR with Results
       if: github.event_name == 'pull_request'
       uses: actions/github-script@v6
       with:
@@ -142,42 +138,4 @@ jobs:
             repo: context.repo.repo,
             issue_number: context.issue.number,
             body: message
-          });
-      if: always()
-      run: |
-        echo "### Test Results Summary" >> $GITHUB_STEP_SUMMARY
-        echo "---" >> $GITHUB_STEP_SUMMARY
-        echo "Using destination: ${{ steps.get-destination.outputs.DESTINATION }}" >> $GITHUB_STEP_SUMMARY
-        
-        # Get failed tests specifically
-        echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
-        xcrun xcresulttool get --format json --path TestResults.xcresult | jq -r '.. | select(.identifier? == "com.apple.xcode.tests.failed")? | .._message?' >> $GITHUB_STEP_SUMMARY
-        
-        # Get full test results
-        echo "### Full Test Results" >> $GITHUB_STEP_SUMMARY
-        xcrun xcresulttool get --format human-readable --path TestResults.xcresult >> $GITHUB_STEP_SUMMARY
-        
-    - name: Comment PR with Test Failures
-      if: failure() && github.event_name == 'pull_request'
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const fs = require('fs');
-          const testReport = JSON.parse(fs.readFileSync('test_report.json', 'utf8'));
-          
-          let failureMessage = '### ❌ Test Failures\n\n';
-          // Extract and format test failures from the report
-          // This will be shown as a PR comment
-          const failures = testReport.actions.testsRef.tests
-            .filter(test => test.status === 'Failure')
-            .map(test => `- ${test.identifier}: ${test.message}`)
-            .join('\n');
-            
-          failureMessage += failures;
-          
-          github.rest.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-            body: failureMessage
           });
