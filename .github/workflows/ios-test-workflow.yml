@@ -16,12 +16,43 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -s /Applications/Xcode.app
       
+    - name: Get Available Destination
+      id: get-destination
+      run: |
+        # Get all available destinations and save to a file
+        xcodebuild -scheme "Xendit-Package" -showdestinations | tee destinations.txt
+        
+        # Extract iPhone simulator with latest OS
+        DESTINATION=$(grep "platform:iOS Simulator.*name:iPhone" destinations.txt | \
+          awk -F'OS:' '{print $2}' | awk -F',' '{print $1 " " NR " " FNR}' | \
+          sort -V | tail -n1 | \
+          xargs -I {} grep -m{} "platform:iOS Simulator.*name:iPhone" destinations.txt | tail -n1 | \
+          sed -e 's/^[[:space:]]*//')
+        
+        if [ -z "$DESTINATION" ]; then
+          echo "No iPhone simulator destination found!"
+          exit 1
+        fi
+        
+        # Set the destination as an output
+        echo "DESTINATION=$DESTINATION" >> "$GITHUB_OUTPUT"
+        
+        # Print the selected destination for logging
+        echo "Selected destination: $DESTINATION"
+        
+        # Also print all available destinations for debugging
+        echo "All available destinations:"
+        grep "platform:iOS Simulator.*name:iPhone" destinations.txt
+      
     - name: Build and Test
       run: |
+        DESTINATION="${{ steps.get-destination.outputs.DESTINATION }}"
+        echo "Using destination: $DESTINATION"
+        
         xcodebuild test \
           -scheme "Xendit-Package" \
           -configuration Debug \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          -destination "$DESTINATION" \
           -enableCodeCoverage YES \
           -resultBundlePath TestResults.xcresult \
           clean test | xcpretty --report junit && exit ${PIPESTATUS[0]}
@@ -46,6 +77,7 @@ jobs:
           coverage_report.json
           TestResults.xcresult
           build/reports/
+          destinations.txt
 
     - name: Upload test results to Github
       uses: EnricoMi/publish-unit-test-result-action@v2
@@ -58,6 +90,7 @@ jobs:
       run: |
         echo "### Test Results Summary" >> $GITHUB_STEP_SUMMARY
         echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "Using destination: ${{ steps.get-destination.outputs.DESTINATION }}" >> $GITHUB_STEP_SUMMARY
         
         # Get failed tests specifically
         echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
