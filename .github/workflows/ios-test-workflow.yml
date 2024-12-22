@@ -63,78 +63,84 @@ jobs:
           -enableCodeCoverage YES \
           -resultBundlePath TestResults.xcresult \
           clean test | xcpretty
-    
+          
     - name: Generate Test Report
-      if: success() || failure()
-      run: |
-        xcrun xcresulttool get --format json --path TestResults.xcresult > test_report.json
-        xcrun xccov view --report --json TestResults.xcresult > coverage_report.json
+      uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
+
+    # - name: Generate Test Report
+    #   if: success() || failure()
+    #   run: |
+    #     xcrun xcresulttool get --format json --path TestResults.xcresult > test_report.json
+    #     xcrun xccov view --report --json TestResults.xcresult > coverage_report.json
       
-    - name: Upload test results
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: |
-          TestResults.xcresult/**/*
-          test_report.json
-          coverage_report.json
-        if-no-files-found: error
+    # - name: Upload test results
+    #   if: always()
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: test-results
+    #     path: |
+    #       TestResults.xcresult/**/*
+    #       test_report.json
+    #       coverage_report.json
+    #     if-no-files-found: error
 
-    - name: Create Test Summary
-      if: always()
-      run: |
-        echo "### Test Results Summary" >> $GITHUB_STEP_SUMMARY
-        echo "---" >> $GITHUB_STEP_SUMMARY
-        echo "Using destination: ${{ steps.get-destination.outputs.DESTINATION }}" >> $GITHUB_STEP_SUMMARY
+    # - name: Create Test Summary
+    #   if: always()
+    #   run: |
+    #     echo "### Test Results Summary" >> $GITHUB_STEP_SUMMARY
+    #     echo "---" >> $GITHUB_STEP_SUMMARY
+    #     echo "Using destination: ${{ steps.get-destination.outputs.DESTINATION }}" >> $GITHUB_STEP_SUMMARY
         
-        if [ -f "TestResults.xcresult" ]; then
-          # Get test results summary
-          echo "### Test Results" >> $GITHUB_STEP_SUMMARY
-          xcrun xcresulttool get --format human-readable --path TestResults.xcresult >> $GITHUB_STEP_SUMMARY
+    #     if [ -f "TestResults.xcresult" ]; then
+    #       # Get test results summary
+    #       echo "### Test Results" >> $GITHUB_STEP_SUMMARY
+    #       xcrun xcresulttool get --format human-readable --path TestResults.xcresult >> $GITHUB_STEP_SUMMARY
           
-          # Get failed tests if any
-          echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
-          xcrun xcresulttool get --format json --path TestResults.xcresult | \
-            jq -r '.. | select(.identifier? == "com.apple.xcode.tests.failed")? | .._message?' >> $GITHUB_STEP_SUMMARY
+    #       # Get failed tests if any
+    #       echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
+    #       xcrun xcresulttool get --format json --path TestResults.xcresult | \
+    #         jq -r '.. | select(.identifier? == "com.apple.xcode.tests.failed")? | .._message?' >> $GITHUB_STEP_SUMMARY
           
-          # Get code coverage if enabled
-          echo "### Code Coverage" >> $GITHUB_STEP_SUMMARY
-          xcrun xccov view --report --json TestResults.xcresult | \
-            jq -r '.targets[] | "- \(.name): \(.lineCoverage)%"' >> $GITHUB_STEP_SUMMARY
-        else
-          echo "❌ No test results found" >> $GITHUB_STEP_SUMMARY
-        fi
+    #       # Get code coverage if enabled
+    #       echo "### Code Coverage" >> $GITHUB_STEP_SUMMARY
+    #       xcrun xccov view --report --json TestResults.xcresult | \
+    #         jq -r '.targets[] | "- \(.name): \(.lineCoverage)%"' >> $GITHUB_STEP_SUMMARY
+    #     else
+    #       echo "❌ No test results found" >> $GITHUB_STEP_SUMMARY
+    #     fi
 
-    - name: Comment PR with Results
-      if: github.event_name == 'pull_request'
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const fs = require('fs');
-          const testReport = JSON.parse(fs.readFileSync('test_report.json', 'utf8'));
+    # - name: Comment PR with Results
+    #   if: github.event_name == 'pull_request'
+    #   uses: actions/github-script@v6
+    #   with:
+    #     script: |
+    #       const fs = require('fs');
+    #       const testReport = JSON.parse(fs.readFileSync('test_report.json', 'utf8'));
           
-          let message = '';
-          const failures = testReport.actions.testsRef.tests
-            .filter(test => test.status === 'Failure')
-            .map(test => `- ${test.identifier}: ${test.message}`);
+    #       let message = '';
+    #       const failures = testReport.actions.testsRef.tests
+    #         .filter(test => test.status === 'Failure')
+    #         .map(test => `- ${test.identifier}: ${test.message}`);
             
-          if (failures.length > 0) {
-            message = `### ❌ Test Failures\n\n${failures.join('\n')}`;
-          } else {
-            const coverage = JSON.parse(fs.readFileSync('coverage_report.json', 'utf8'));
-            const coverageSummary = coverage.targets
-              .map(target => `- ${target.name}: ${(target.lineCoverage * 100).toFixed(2)}%`)
-              .join('\n');
+    #       if (failures.length > 0) {
+    #         message = `### ❌ Test Failures\n\n${failures.join('\n')}`;
+    #       } else {
+    #         const coverage = JSON.parse(fs.readFileSync('coverage_report.json', 'utf8'));
+    #         const coverageSummary = coverage.targets
+    #           .map(target => `- ${target.name}: ${(target.lineCoverage * 100).toFixed(2)}%`)
+    #           .join('\n');
               
-            message = `### ✅ All Tests Passed!\n\n` +
-                     `**Code Coverage:**\n${coverageSummary}\n\n` +
-                     `Total tests: ${testReport.actions.testsRef.tests.length}`;
-          }
+    #         message = `### ✅ All Tests Passed!\n\n` +
+    #                  `**Code Coverage:**\n${coverageSummary}\n\n` +
+    #                  `Total tests: ${testReport.actions.testsRef.tests.length}`;
+    #       }
           
-          github.rest.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-            body: message
-          });
+    #       github.rest.issues.createComment({
+    #         owner: context.repo.owner,
+    #         repo: context.repo.repo,
+    #         issue_number: context.issue.number,
+    #         body: message
+    #       });
