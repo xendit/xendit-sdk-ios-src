@@ -63,12 +63,12 @@ jobs:
           -enableCodeCoverage YES \
           -resultBundlePath TestResults.xcresult \
           clean test | xcpretty
-          
+
     - name: Generate Test Report
       uses: kishikawakatsumi/xcresulttool@v1
-        with:
-          path: TestResults.xcresult
-        if: success() || failure()
+      with:
+        path: TestResults.xcresult
+      if: success() || failure()
 
     # - name: Generate Test Report
     #   if: success() || failure()
