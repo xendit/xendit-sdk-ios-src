@@ -396,7 +396,6 @@ private extension XenditIntegrationTestsV3 {
             tokenizationRequest.midLabel = midLabel
         }
         
-        //TODO: Will add flag for this
         Xendit.createToken(
             fromViewController: viewController,
             tokenizationRequest: tokenizationRequest,
