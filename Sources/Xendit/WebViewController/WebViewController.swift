@@ -20,8 +20,8 @@ class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
         let webViewController = WebViewController(URL: URL)
 
         webViewController.token = authenticatedToken
-        webViewController.authenticateCompletion = { (token, error) -> Void in
-            webViewController.dismiss(animated: true, completion: nil)
+        webViewController.authenticateCompletion = { [weak webViewController] (token, error) -> Void in
+            webViewController?.dismiss(animated: true, completion: nil)
             guard error == nil else {
                 return completion(nil, error)
             }
