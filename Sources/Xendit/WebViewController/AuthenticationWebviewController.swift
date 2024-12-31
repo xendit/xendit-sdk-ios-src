@@ -19,8 +19,8 @@ class AuthenticationProvider: AuthenticationProviderProtocol {
     func authenticate(fromViewController: UIViewController, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         let webViewController = AuthenticationWebViewController(URL: URL)
         webViewController.authentication = authentication
-        webViewController.authenticateCompletion = { updatedAuthentication, error in
-            webViewController.dismiss(animated: true, completion: nil)
+        webViewController.authenticateCompletion = { [weak webViewController] updatedAuthentication, error in
+            webViewController?.dismiss(animated: true, completion: nil)
             completion(updatedAuthentication, error)
         }
         DispatchQueue.main.async {
