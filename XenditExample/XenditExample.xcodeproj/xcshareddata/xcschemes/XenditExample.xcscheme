@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "943ABDC41E79614400B61098"
+               BlueprintIdentifier = "xendit-sdk-ios-src::XenditTests"
                BuildableName = "XenditTests.xctest"
                BlueprintName = "XenditTests"
                ReferencedContainer = "container:../Xendit.xcodeproj">

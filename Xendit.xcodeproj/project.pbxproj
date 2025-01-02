@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		210C1C162CEEE13800D5950A /* XenditCardHolderInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C1C152CEEE13800D5950A /* XenditCardHolderInformation.swift */; };
+		2122891C2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122891B2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift */; };
 		648184A52BF7556800DC5FBF /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A42BF7556800DC5FBF /* Sentry */; };
 		648184A82BF7558D00DC5FBF /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A72BF7558D00DC5FBF /* OHHTTPStubs */; };
 		648184AA2BF7558D00DC5FBF /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 648184A92BF7558D00DC5FBF /* OHHTTPStubsSwift */; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		210C1C152CEEE13800D5950A /* XenditCardHolderInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditCardHolderInformation.swift; sourceTree = "<group>"; };
+		2122891B2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTestsV3.swift; sourceTree = "<group>"; };
 		644E27A82BB2A82E007B0F1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		OBJ_10 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -166,9 +168,9 @@
 		OBJ_71 /* XenditIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTests.swift; sourceTree = "<group>"; };
 		OBJ_72 /* XenditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTests.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XenditObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = XenditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XenditObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"xendit-sdk-ios-src::XenditTests::Product" /* XenditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = XenditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 				OBJ_64 /* Helpers */,
 				OBJ_69 /* JsonEncodeTest.swift */,
 				OBJ_70 /* LogSanitizerTests.swift */,
+				2122891B2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift */,
 				OBJ_71 /* XenditIntegrationTests.swift */,
 				OBJ_72 /* XenditTests.swift */,
 			);
@@ -572,6 +575,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_799 /* CardDataTest.swift in Sources */,
+				2122891C2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift in Sources */,
 				OBJ_800 /* CreditCardTests.swift in Sources */,
 				OBJ_801 /* FingerprintTests.swift in Sources */,
 				OBJ_802 /* AuthenticationProviderStub.swift in Sources */,
@@ -625,15 +629,16 @@
 					"$(inherited)",
 					"SWIFT_PACKAGE=1",
 					"DEBUG=1",
+					"INTEGRATION_TEST=1",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -DBETULKA";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG INTEGRATION_TEST SWIFT_PACKAGE";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USE_HEADERMAP = NO;
 			};
@@ -869,8 +874,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Xendit.xcodeproj/GeneratedModuleMap/OHHTTPStubs/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Sources/XenditObjC/include/module.modulemap";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) INTEGRATION_TEST";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = XenditTests;
 				TVOS_DEPLOYMENT_TARGET = 14.0;

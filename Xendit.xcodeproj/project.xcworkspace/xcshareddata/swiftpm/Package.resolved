@@ -1,0 +1,24 @@
+{
+  "originHash" : "d7e0e43420e3fa599e3c710c3fe3d9cdbdb543e9a85bc423361644c780765d59",
+  "pins" : [
+    {
+      "identity" : "ohhttpstubs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/OHHTTPStubs.git",
+      "state" : {
+        "revision" : "12f19662426d0434d6c330c6974d53e2eb10ecd9",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa.git",
+      "state" : {
+        "revision" : "0ffc3c6287461962cb2a81e57fc0ee0335d8d56a",
+        "version" : "8.40.1"
+      }
+    }
+  ],
+  "version" : 3
+}

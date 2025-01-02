@@ -13,19 +13,34 @@ protocol CanTokenize {
     // @param tokenizationRequest: Card and billing details
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
-    static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    static func createToken(
+        fromViewController: UIViewController,
+        tokenizationRequest: XenditTokenizationRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    )
     
     // Retokenization method
     // @param retokenizationRequest: Token ID and billing details
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
-    static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    static func createToken(
+        fromViewController: UIViewController,
+        retokenizationRequest: XenditRetokenizationRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    )
     
     // Store CVN method
     // @param storeCVNRequest: Token ID and billing details
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when tokenization is completed
-    static func storeCVN(fromViewController: UIViewController, storeCVNRequest: XenditStoreCVNRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void)
+    static func storeCVN(
+        fromViewController: UIViewController,
+        storeCVNRequest: XenditStoreCVNRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    )
 }
 
 protocol CanAuthenticate {
@@ -35,7 +50,17 @@ protocol CanAuthenticate {
     // @param amount The transaction amount
     // @param onBehalfOf (Optional) Business id for xenPlaform use cases
     // @param completion callback function when authentication is completed
-    static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion:@escaping (_: XenditAuthentication?, _: XenditError?) -> Void)
+    static func createAuthentication(
+        fromViewController: UIViewController,
+        tokenId: String,
+        amount: NSNumber,
+        currency: String?,
+        onBehalfOf: String?,
+        customer: XenditCustomer?,
+        cardCvn: String?,
+        cardData: XenditCardHolderInformation?,
+        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
+    )
 }
 
 public class XDTCards: CanTokenize, CanAuthenticate {
@@ -47,7 +72,12 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTCards.publishableKey = publishableKey
     }
     
-    public static func createToken(fromViewController: UIViewController, tokenizationRequest: XenditTokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    public static func createToken(
+        fromViewController: UIViewController,
+        tokenizationRequest: XenditTokenizationRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    ) {
         let logPrefix = "createToken:"
         let currency = tokenizationRequest.currency
         
@@ -71,13 +101,27 @@ public class XDTCards: CanTokenize, CanAuthenticate {
                     completion(tokenWith3DSRecommendation, nil);
                 })
             } else {
-                handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: tokenizationRequest.amount ?? 0, currency: currency, onBehalfOf: onBehalfOf, cardCvn: tokenizationRequest.cardData.cardCvn, error: error, completion: completion)
+                handleCreditCardTokenization(
+                    fromViewController: fromViewController,
+                    authenticatedToken: authenticatedToken,
+                    amount: tokenizationRequest.amount ?? 0,
+                    currency: currency,
+                    onBehalfOf: onBehalfOf,
+                    cardCvn: tokenizationRequest.cardData.cardCvn,
+                    error: error,
+                    completion: completion
+                )
             }
         }
     }
     
     @available(*, deprecated, message: "Use storeCVN(UIViewController, XenditStoreCVNRequest, String, Callback) instead")
-    public static func createToken(fromViewController: UIViewController, retokenizationRequest: XenditRetokenizationRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    public static func createToken(
+        fromViewController: UIViewController,
+        retokenizationRequest: XenditRetokenizationRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    ) {
         let logPrefix = "createToken:"
         
         if let error = validateRetokenizationRequest(retokenizationRequest: retokenizationRequest) {
@@ -94,11 +138,25 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
             
-            handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: 0, currency: nil, onBehalfOf: onBehalfOf, cardCvn: retokenizationRequest.cardCvn, error: error, completion: completion)
+            handleCreditCardTokenization(
+                fromViewController: fromViewController,
+                authenticatedToken: authenticatedToken,
+                amount: 0,
+                currency: nil,
+                onBehalfOf: onBehalfOf,
+                cardCvn: retokenizationRequest.cardCvn,
+                error: error,
+                completion: completion
+            )
         }
     }
     
-    public static func storeCVN(fromViewController: UIViewController, storeCVNRequest: XenditStoreCVNRequest, onBehalfOf: String?, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+    public static func storeCVN(
+        fromViewController: UIViewController,
+        storeCVNRequest: XenditStoreCVNRequest,
+        onBehalfOf: String?,
+        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+    ) {
         let logPrefix = "storeCVN:"
         
         if let error = validateRetokenizationRequest(retokenizationRequest: storeCVNRequest) {
@@ -115,68 +173,27 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         
         XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
             
-            handleCreditCardTokenization(fromViewController: fromViewController, authenticatedToken: authenticatedToken, amount: 0, currency: nil, onBehalfOf: onBehalfOf, cardCvn: storeCVNRequest.cardCvn, error: error, completion: completion)
+            handleCreditCardTokenization(
+                fromViewController: fromViewController,
+                authenticatedToken: authenticatedToken,
+                amount: 0,
+                currency: nil,
+                onBehalfOf: onBehalfOf,
+                cardCvn: storeCVNRequest.cardCvn,
+                error: error, completion: completion
+            )
         }
     }
     
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
-        
-        createAuthentication(
-            fromViewController: fromViewController,
-            tokenId: tokenId,
-            amount: amount,
-            currency: nil,
-            onBehalfOf: onBehalfOf,
-            customer: customer,
-            completion: completion);
-    }
-    
-    public static func createAuthentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, customer: XenditCustomer?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
-        
-        createAuthentication(
-            fromViewController: fromViewController,
-            tokenId: tokenId,
-            amount: amount,
-            currency: currency,
-            onBehalfOf: onBehalfOf,
-            customer: customer,
-            cardCvn: nil,
-            completion: completion
-        );
-    }
-    
     public static func createAuthentication(
         fromViewController: UIViewController,
         tokenId: String,
         amount: NSNumber,
-        currency: String?,
+        currency: String? = nil,
         onBehalfOf: String?,
         customer: XenditCustomer?,
-        cardCvn: String?,
-        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
-    ) {
-        createAuthentication(
-            fromViewController: fromViewController,
-            tokenId: tokenId,
-            amount: amount,
-            currency: currency,
-            onBehalfOf: onBehalfOf,
-            customer: customer,
-            cardCvn: cardCvn,
-            cardData: nil,
-            completion: completion
-        );
-    }
-    
-    public static func createAuthentication(
-        fromViewController: UIViewController,
-        tokenId: String,
-        amount: NSNumber,
-        currency: String?,
-        onBehalfOf: String?,
-        customer: XenditCustomer?,
-        cardCvn: String?,
-        cardData: XenditCardHolderInformation?,
+        cardCvn: String? = nil,
+        cardData: XenditCardHolderInformation? = nil,
         completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
@@ -195,7 +212,16 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         )
     }
     
-    private static func create3DS1Authentication(fromViewController: UIViewController, tokenId: String, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, cardData: XenditCardHolderInformation?, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+    private static func create3DS1Authentication(
+        fromViewController: UIViewController,
+        tokenId: String,
+        amount: NSNumber,
+        currency: String?,
+        onBehalfOf: String?,
+        cardCvn: String?,
+        cardData: XenditCardHolderInformation?,
+        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
+    ) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -221,8 +247,17 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         if onBehalfOf != nil || onBehalfOf != "" {
             extraHeaders["for-user-id"] = onBehalfOf
         }
-        XDTApiClient.createAuthenticationRequest(publishableKey: publishableKey!, tokenId: tokenId, bodyJson: requestBody, extraHeader: extraHeaders) { (authentication, error) in
-            handleCreateAuthentication(fromViewController: fromViewController, authentication: authentication, error: error, completion: completion)
+        XDTApiClient.createAuthenticationRequest(
+            publishableKey: publishableKey!,
+            tokenId: tokenId,
+            bodyJson: requestBody,
+            extraHeader: extraHeaders) { (authentication, error) in
+            handleCreateAuthentication(
+                fromViewController: fromViewController,
+                authentication: authentication,
+                error: error,
+                completion: completion
+            )
         }
     }
     
@@ -292,7 +327,16 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         return nil
     }
     
-    private static func handleCreditCardTokenization(fromViewController: UIViewController, authenticatedToken: XenditAuthenticatedToken?, amount: NSNumber, currency: String?, onBehalfOf: String?, cardCvn: String?, error: XenditError?, completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void) {
+    private static func handleCreditCardTokenization(
+        fromViewController: UIViewController,
+        authenticatedToken: XenditAuthenticatedToken?,
+        amount: NSNumber,
+        currency: String?,
+        onBehalfOf: String?,
+        cardCvn: String?,
+        error: XenditError?,
+        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+    ) {
         if let error = error {
             // handle error message
             if error.errorCode == "INVALID_USER_ID" {
@@ -308,23 +352,33 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
         
         if status != nil {
-            if status == "IN_REVIEW", let authenticationURL = authenticatedToken?.authenticationURL {
-                cardAuthenticationProvider.authenticate(
-                    fromViewController: fromViewController,
-                    URL: authenticationURL,
-                    authenticatedToken: authenticatedToken!,
-                    completion: completion
-                )
-            } else {
+            #if INTEGRATION_TEST
                 let token = XenditCCToken(authenticatedToken: authenticatedToken!)
                 completion(token, nil)
-            }
+            #else
+                if status == "IN_REVIEW", let authenticationURL = authenticatedToken?.authenticationURL {
+                    cardAuthenticationProvider.authenticate(
+                        fromViewController: fromViewController,
+                        URL: authenticationURL,
+                        authenticatedToken: authenticatedToken!,
+                        completion: completion
+                    )
+                } else {
+                    let token = XenditCCToken(authenticatedToken: authenticatedToken!)
+                    completion(token, nil)
+                }
+            #endif
         } else {
             completion(nil, XenditError.ServerError())
         }
     }
     
-    private static func handleCreateAuthentication(fromViewController: UIViewController, authentication: XenditAuthentication?, error: XenditError?, completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void) {
+    private static func handleCreateAuthentication(
+        fromViewController: UIViewController,
+        authentication: XenditAuthentication?,
+        error: XenditError?,
+        completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+    ) {
         if (error != nil) {
             // handle error message
             if error!.errorCode == "INVALID_USER_ID" {
@@ -337,16 +391,20 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         let status = authentication?.status
         
         if status != nil {
-            if status == "IN_REVIEW", let authenticationURL = authentication?.authenticationURL {
-                authenticationProvider.authenticate(
-                    fromViewController: fromViewController,
-                    URL: authenticationURL,
-                    authentication: authentication!,
-                    completion: completion
-                )
-            } else {
+            #if INTEGRATION_TEST
                 completion(authentication, nil)
-            }
+            #else
+                if status == "IN_REVIEW", let authenticationURL = authentication?.authenticationURL {
+                    authenticationProvider.authenticate(
+                        fromViewController: fromViewController,
+                        URL: authenticationURL,
+                        authentication: authentication!,
+                        completion: completion
+                    )
+                } else {
+                    completion(authentication, nil)
+                }
+            #endif
         } else {
             completion(nil, XenditError.ServerError())
         }
