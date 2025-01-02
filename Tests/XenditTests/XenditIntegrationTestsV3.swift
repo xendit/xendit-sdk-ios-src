@@ -18,101 +18,11 @@ class XenditIntegrationTestsV3: XCTestCase {
         continueAfterFailure = false
         
         Xendit.publishableKey = "xnd_public_development_D8wJuWpOY15JvjJyUNfCdDUTRYKGp8CSM3W0ST4d0N4CsugKyoGEIx6b84j1D7Pg"
+        Xendit.setLogLevel(.verbose)
     }
     //TODO: Need to setup CARD
     
     
-}
-//DATA
-/*
- - cardNumber: 4000000000001091
- - cardExpMonth: 12
- - cardExpYear: 2030
- - cardCvn: 123
- 
- */
-
-//MARK: - Authentication
-extension XenditIntegrationTestsV3 {
-    //MARK: - CREATE SINGLE USE TOKEN
-    
-    //MARK: Create token with invalid card expiry month
-    //    func testCreateSingleUseTokenWithInvalidCardExpiryMonth() {
-    //        let expect = expectation(description: XenditIntegrationTestsV3.setDescription(for: .success, description: "Create token with invalid card expiry month"))
-    //
-    //        let cardData = getCardData(
-    //            cardNumber: TestCard.validCard,
-    //            cardExpMonth: "13",
-    //            cardExpYear: "2030",
-    //            cardCvn: "123"
-    //        )
-    //        let amount: NSNumber = 0
-    //        let currency = "IDR"
-    //
-    //        let tokenizationRequest = XenditTokenizationRequest.init(
-    //            cardData: cardData,
-    //            isSingleUse: true,
-    //            shouldAuthenticate: true,
-    //            amount: amount,
-    //            currency: currency
-    //        )
-    //
-    //        Xendit.createToken(
-    //            fromViewController: viewController,
-    //            tokenizationRequest: tokenizationRequest,
-    //            onBehalfOf: nil) { [weak self] (token, error) in
-    //
-    //                // Check for expected error conditions
-    //                XCTAssertNotNil(error, XenditIntegrationTestsV3.setDescription(for: .failed, description: "error should not be nil"))
-    //                XCTAssertEqual(error?.errorCode, "VALIDATION_ERROR", XenditIntegrationTestsV3.setDescription(for: .failed, description: "error code should be VALIDATION_ERROR"))
-    //                XCTAssertEqual(error?.message, "Card expiration date is invalid", XenditIntegrationTestsV3.setDescription(for: .failed, description: "error message should indicate invalid expiration date"))
-    //
-    //                expect.fulfill()
-    //            }
-    //
-    //        waitForExpectations(timeout: 200) { error in
-    //            XCTAssertNil(error, "Oh, we got timeout")
-    //        }
-    //    }
-    
-    
-    func testAuthenticationWithMultipleUseToken() {
-        let expect = expectation(description: XenditIntegrationTestsV3.setDescription(for: .success, description: "Authentication With Multiple Use Token"))
-        
-        let cardData = getCardData()
-        let amount: NSNumber = 10000
-        let currency = "IDR"
-        
-        let tokenizationRequest = XenditTokenizationRequest.init(
-            cardData: cardData,
-            isSingleUse: false,
-            shouldAuthenticate: false, //TODO: Ask dhiar on this
-            amount: amount,
-            currency: nil
-        )
-        
-        Xendit.createToken(fromViewController: viewController, tokenizationRequest: tokenizationRequest, onBehalfOf: nil) { [weak self] (token, error) in
-            guard let self, let tokenId = token?.id else { XCTAssertNotNil(token, XenditIntegrationTestsV3.setDescription(for: .failed, description: "token.id should not be nil")); return } //TODO: Can it be written in this style?
-            XCTAssertNil(error, XenditIntegrationTestsV3.setDescription(for: .failed, description: "error should be nil"))
-            
-            let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenId, amount: amount, currency: currency, cardData: nil)
-            
-            Xendit.createAuthentication(
-                fromViewController: viewController,
-                authenticationRequest: authenticationRequest,
-                onBehalfOf: nil
-            ) { (authentication, error) in
-                XCTAssertNotNil(authentication, XenditIntegrationTestsV3.setDescription(for: .failed, description: "authentication should not be nil"))
-                XCTAssertNil(error, XenditIntegrationTestsV3.setDescription(for: .failed, description: "error should be nil"))
-                XCTAssertTrue(authentication?.status == "IN_REVIEW", XenditIntegrationTestsV3.setDescription(for: .failed, description: "Authentication With Multiple Use Token should be IN_REVIEW"))
-                expect.fulfill()
-            }
-        }
-        
-        waitForExpectations(timeout: 200) { error in
-            XCTAssertNil(error, "Oh, we got timeout")
-        }
-    }
 }
 
 private extension XenditIntegrationTestsV3 {
@@ -461,6 +371,7 @@ private extension XenditIntegrationTestsV3 {
                     XCTAssertNotNil(response?.authenticationURL)
                     
                 case let .error(code, message):
+                    print("error \(message) errorcode \(error?.message ?? "emtpy")")
                     XCTAssertNotNil(error)
                     XCTAssertEqual(error?.errorCode, code.rawValue)
                     XCTAssertEqual(error?.message?.contains(message), true)
@@ -918,6 +829,190 @@ extension XenditIntegrationTestsV3 {
             createTokenExpectation: .xenditExpectation(description: "Create token with billing details")
         )
         
+    }
+
+    //MARK: - CREATE AUTHENTICATION : SINGLE USE TOKEN
+
+    // Test case for creating authentication with single use token (Row 27)
+    func testCreateAuthenticationWithSingleUseToken() {
+        let createTokenExpectation = expectation(description: "Create single use token")
+        let createAuthenticationExpectation = expectation(description: "Create authentication")
+        
+        // First create single use token
+        let tokenRequest = TokenRequest(
+            cardNumber: TestConstants.CardData.validCardNumber,
+            cardExpMonth: TestConstants.CardData.validExpMonth,
+            cardExpYear: TestConstants.CardData.validExpYear,
+            cardCVN: TestConstants.CardData.validCVN,
+            shouldAuthenticate: false, // PRE-REQUISITE: shouldAuthenticate: false
+            tokenType: .singleUse,
+            expectedResult: .success(status: TestConstants.TokenStatus.verified),
+            completionHandler: { [weak self] token in
+                guard let self = self,
+                      let tokenId = token?.id else {
+                    XCTFail("Failed to get token ID")
+                    return
+                }
+                
+                // Then create authentication
+                let authenticationRequest = AuthenticationRequest(
+                    tokenId: tokenId,
+                    amount: TestConstants.defaultAmount,
+                    expectedResult: .success(status: TestConstants.TokenStatus.inReview)
+                )
+                
+                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
+            }
+        )
+        
+        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
+        waitForExpectations(timeout: TestConstants.defaultTimeout)
+    }
+    
+    // Test case for creating authentication with CVN (Row 28-29)
+    func testCreateAuthenticationWithSingleUseTokenAndCVN() {
+        let createTokenExpectation = expectation(description: "Create single use token")
+        let createAuthenticationExpectation = expectation(description: "Create authentication with CVN")
+        
+        let tokenRequest = TokenRequest(
+            cardNumber: TestConstants.CardData.validCardNumber,
+            cardExpMonth: TestConstants.CardData.validExpMonth,
+            cardExpYear: TestConstants.CardData.validExpYear,
+            cardCVN: TestConstants.CardData.validCVN,
+            shouldAuthenticate: false,
+            tokenType: .singleUse,
+            expectedResult: .success(status: TestConstants.TokenStatus.verified),
+            completionHandler: { [weak self] token in
+                guard let self = self,
+                      let tokenId = token?.id else {
+                    XCTFail("Failed to get token ID")
+                    return
+                }
+                
+                let authenticationRequest = AuthenticationRequest(
+                    tokenId: tokenId,
+                    amount: TestConstants.defaultAmount,
+                    cardCVN: "123", // Adding CVN to authentication
+                    expectedResult: .success(status: TestConstants.TokenStatus.inReview)
+                )
+                
+                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
+            }
+        )
+        
+        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
+        waitForExpectations(timeout: TestConstants.defaultTimeout)
+    }
+    
+    // Test case for creating authentication with supported currency (Row 29)
+    func testCreateAuthenticationWithSingleUseTokenAndCurrency() {
+        let createTokenExpectation = expectation(description: "Create single use token")
+        let createAuthenticationExpectation = expectation(description: "Create authentication with currency")
+        
+        let tokenRequest = TokenRequest(
+            cardNumber: TestConstants.CardData.validCardNumber,
+            cardExpMonth: TestConstants.CardData.validExpMonth,
+            cardExpYear: TestConstants.CardData.validExpYear,
+            cardCVN: TestConstants.CardData.validCVN,
+            shouldAuthenticate: false,
+            tokenType: .singleUse,
+            expectedResult: .success(status: TestConstants.TokenStatus.verified),
+            completionHandler: { [weak self] token in
+                guard let self = self,
+                      let tokenId = token?.id else {
+                    XCTFail("Failed to get token ID")
+                    return
+                }
+                
+                let authenticationRequest = AuthenticationRequest(
+                    tokenId: tokenId,
+                    amount: TestConstants.defaultAmount,
+                    currency: TestConstants.defaultCurrency,
+                    expectedResult: .success(status: TestConstants.TokenStatus.inReview)
+                )
+                
+                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
+            }
+        )
+        
+        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
+        waitForExpectations(timeout: TestConstants.defaultTimeout)
+    }
+    
+    // Test case for creating authentication with unsupported currency (Row 30)
+    func testCreateAuthenticationWithSingleUseTokenAndUnsupportedCurrency() {
+        let createTokenExpectation = expectation(description: "Create single use token")
+        let createAuthenticationExpectation = expectation(description: "Create authentication with unsupported currency")
+        
+        let tokenRequest = TokenRequest(
+            cardNumber: TestConstants.CardData.validCardNumber,
+            cardExpMonth: TestConstants.CardData.validExpMonth,
+            cardExpYear: TestConstants.CardData.validExpYear,
+            cardCVN: TestConstants.CardData.validCVN,
+            shouldAuthenticate: false,
+            tokenType: .singleUse,
+            expectedResult: .success(status: TestConstants.TokenStatus.verified),
+            completionHandler: { [weak self] token in
+                guard let self = self,
+                      let tokenId = token?.id else {
+                    XCTFail("Failed to get token ID")
+                    return
+                }
+                
+                let authenticationRequest = AuthenticationRequest(
+                    tokenId: tokenId,
+                    amount: TestConstants.defaultAmount,
+                    currency: "GBP",
+                    expectedResult: .error(
+                        code: .mismatchCurrency,
+                        message: TestConstants.ErrorMessages.unsupportedCurrency
+                    )
+                )
+                
+                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
+            }
+        )
+        
+        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
+        waitForExpectations(timeout: TestConstants.defaultTimeout)
+    }
+    
+    // Test case for creating authentication with invalid currency (Row 31)
+    func testCreateAuthenticationWithSingleUseTokenAndInvalidCurrency() {
+        let createTokenExpectation = expectation(description: "Create single use token")
+        let createAuthenticationExpectation = expectation(description: "Create authentication with invalid currency")
+        
+        let tokenRequest = TokenRequest(
+            cardNumber: TestConstants.CardData.validCardNumber,
+            cardExpMonth: TestConstants.CardData.validExpMonth,
+            cardExpYear: TestConstants.CardData.validExpYear,
+            cardCVN: TestConstants.CardData.validCVN,
+            shouldAuthenticate: false,
+            tokenType: .singleUse,
+            expectedResult: .success(status: TestConstants.TokenStatus.verified),
+            completionHandler: { [weak self] token in
+                guard let self = self,
+                      let tokenId = token?.id else {
+                    XCTFail("Failed to get token ID")
+                    return
+                }
+                                
+                let authenticationRequest = AuthenticationRequest(
+                    tokenId: tokenId,
+                    amount: TestConstants.defaultAmount,
+                    currency: "ZZZ",
+                    expectedResult: .error(
+                        code: .invalidCurrency,
+                        message: TestConstants.ErrorMessages.invalidCurrency
+                    )
+                )
+                
+                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
+            }
+        )
+        
+        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
+        waitForExpectations(timeout: TestConstants.defaultTimeout)
     }
     
     //MARK: - CREATE MULTIPLE USE TOKEN
