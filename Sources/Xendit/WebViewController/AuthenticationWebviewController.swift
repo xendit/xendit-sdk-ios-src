@@ -76,6 +76,7 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
 
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         webView.navigationDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(webView)
 
@@ -133,5 +134,15 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         Log.shared.verbose("web auth: navigation error \(error)")
         authenticateCompletion(nil, XenditError(errorCode: "WEBVIEW_ERROR", message: error.localizedDescription))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Remove script message handler
+        webView.configuration.userContentController.removeAllUserScripts()
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: "callbackHandler")
+        // Clear any other references
+        webView.navigationDelegate = nil
+        webView = nil
     }
 }
