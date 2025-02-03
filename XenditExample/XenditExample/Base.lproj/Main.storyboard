@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q2w-d8-3ZJ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,6 +38,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWP-q1-nTx">
                                 <rect key="frame" x="20" y="252" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="createTokenButton"/>
                                 <state key="normal" title="Create Token"/>
                                 <connections>
                                     <segue destination="WxF-OF-wGW" kind="show" id="aPO-li-wS7"/>
@@ -45,6 +46,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-3t-iUy">
                                 <rect key="frame" x="20" y="352" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="validationUtilButton"/>
                                 <state key="normal" title="Validation Util"/>
                                 <connections>
                                     <segue destination="R1S-eQ-A8s" kind="show" id="Y8r-Z6-Ru0"/>
@@ -52,6 +54,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-zi-WvI">
                                 <rect key="frame" x="20" y="302" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="3dsAuthenticationButton"/>
                                 <state key="normal" title="3DS Authentication"/>
                                 <connections>
                                     <segue destination="sKq-YQ-t0P" kind="show" id="wLO-Je-krO"/>
@@ -94,6 +97,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000001091" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="cardNumberField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
@@ -102,16 +106,19 @@
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-yC-LbE">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="cardExpiredMonthField"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2039" borderStyle="roundedRect" placeholder="Exp Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-ij-bFC">
                                                 <rect key="frame" x="119.5" y="0.0" width="104" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="cardExpiredYearField"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Cvn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-fP-859">
                                                 <rect key="frame" x="239.5" y="0.0" width="103.5" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="cardCvnField"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -132,6 +139,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Doe" borderStyle="roundedRect" placeholder="Card Holder Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-uk-Xak" userLabel="Card Holder Last Name">
                                                 <rect key="frame" x="179.5" y="0.0" width="163.5" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="cardHolderLastNameField"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -139,16 +147,19 @@
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Merchant ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHt-Xw-jcz">
                                         <rect key="frame" x="0.0" y="200" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="merchantIdField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john.doe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-cI-DDc" userLabel="Email">
                                         <rect key="frame" x="0.0" y="250" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="emailField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+662233445566" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uwc-Ib-RO9" userLabel="Phone Number">
                                         <rect key="frame" x="0.0" y="300" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="phoneNumberField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -163,7 +174,7 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="033-hj-Fto">
                                                 <rect key="frame" x="111" y="0.0" width="51" height="31"/>
-                                                <accessibility key="accessibilityConfiguration" label="Multiple Use"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="multipleUserSwitchButton" label="Multiple Use"/>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPZ-B0-X2a">
                                                 <rect key="frame" x="176" y="0.0" width="167" height="31"/>
@@ -173,6 +184,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
                                         <rect key="frame" x="0.0" y="397" width="343" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="createTokenButton"/>
                                         <state key="normal" title="Create token"/>
                                         <connections>
                                             <action selector="createTokenAction:" destination="WxF-OF-wGW" eventType="touchUpInside" id="5jJ-d7-9xt"/>
@@ -220,26 +232,31 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eo2-zo-6og">
                                 <rect key="frame" x="20" y="84" width="335" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardNumberField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-wB-oIt">
                                 <rect key="frame" x="20" y="138" width="157.5" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardExpiredMonthField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exp year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-I0-y0l">
                                 <rect key="frame" x="197.5" y="138" width="157.5" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardExpiredYearField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-YR-0X4">
                                 <rect key="frame" x="20" y="192" width="157.5" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardCvnField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTe-Fo-rj6">
                                 <rect key="frame" x="20" y="318.5" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="validateButton"/>
                                 <state key="normal" title="Validate"/>
                                 <connections>
                                     <action selector="validateAction:" destination="R1S-eQ-A8s" eventType="touchUpInside" id="tc5-Ul-IGQ"/>
@@ -295,45 +312,53 @@
                             </stackView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5X-cK-T79">
                                 <rect key="frame" x="20" y="84" width="335" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tokenIdField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Card CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMW-15-FJr">
                                 <rect key="frame" x="197.5" y="138" width="157.5" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardCvnField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hs-dI-Mqd">
                                 <rect key="frame" x="20" y="138" width="157.5" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="amountField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-Q1-vVt" userLabel="Card Holder First Name">
                                 <rect key="frame" x="20" y="204" width="157.5" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardHolderFirstNameField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Doe" borderStyle="roundedRect" placeholder="Card holder last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-Hq-yA5" userLabel="Card Holder Last Name">
                                 <rect key="frame" x="197" y="204" width="157.5" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cardHolderLastNameField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+662233445566" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkS-Jg-xiE" userLabel="Phone Number">
                                 <rect key="frame" x="20" y="253" width="335" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="phoneNumberField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john.doe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRG-8K-Tma" userLabel="Email">
                                 <rect key="frame" x="20" y="295" width="335" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-aV-aGd">
                                 <rect key="frame" x="20" y="342" width="335" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="authentificateButton"/>
                                 <state key="normal" title="Authentificate"/>
                                 <connections>
                                     <action selector="authentificateAction:" destination="sKq-YQ-t0P" eventType="touchUpInside" id="lEa-Ic-oW9"/>
