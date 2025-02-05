@@ -93,16 +93,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2KF-c8-hDj">
-                                <rect key="frame" x="16" y="80" width="343" height="427"/>
+                                <rect key="frame" x="16" y="80" width="343" height="574"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000001091" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG" borderStyle="roundedRect" placeholder="Publishable Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F3K-Ik-VhS">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="apiKeyField"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4000000000001091" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-Bl-cvE">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="cardNumberField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RKg-Ti-Kff">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="100" width="343" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="Exp Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-yC-LbE">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="34"/>
@@ -125,15 +131,23 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-zB-QZK">
-                                        <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="amountField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="IDR" borderStyle="roundedRect" placeholder="Currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvR-3X-2JJ" userLabel="Currency Text Field">
+                                        <rect key="frame" x="0.0" y="200" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="currencyField"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zto-Wv-eH9">
-                                        <rect key="frame" x="0.0" y="150" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="250" width="343" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" borderStyle="roundedRect" placeholder="Card Holder First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spl-Ef-S1k" userLabel="Card Holder First Name Text Field">
                                                 <rect key="frame" x="0.0" y="0.0" width="163.5" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="cardHolderFirstNameField"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -146,25 +160,25 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Merchant ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHt-Xw-jcz">
-                                        <rect key="frame" x="0.0" y="200" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="300" width="343" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="merchantIdField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john.doe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-cI-DDc" userLabel="Email">
-                                        <rect key="frame" x="0.0" y="250" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="350" width="343" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="emailField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+662233445566" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uwc-Ib-RO9" userLabel="Phone Number">
-                                        <rect key="frame" x="0.0" y="300" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="400" width="343" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="phoneNumberField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ftO-Wf-9xL">
-                                        <rect key="frame" x="0.0" y="350" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="450" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-x0-L4h">
                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="31"/>
@@ -182,8 +196,27 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-9E-nuV">
+                                        <rect key="frame" x="0.0" y="497" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTb-t1-Lkh">
+                                                <rect key="frame" x="0.0" y="0.0" width="146" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Eix-6h-aww" userLabel="is authentication Skip Switch">
+                                                <rect key="frame" x="162" y="0.0" width="51" height="31"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="skipAuthenticationSwitch" label="Multiple Use"/>
+                                            </switch>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myf-De-Jog">
+                                                <rect key="frame" x="227" y="0.0" width="116" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-vm-fAA">
-                                        <rect key="frame" x="0.0" y="397" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="544" width="343" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="createTokenButton"/>
                                         <state key="normal" title="Create token"/>
                                         <connections>
@@ -202,6 +235,7 @@
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="AaR-zB-QZK" id="Ec9-Uv-Zbo"/>
+                        <outlet property="apiKeyTextField" destination="F3K-Ik-VhS" id="EkT-Jh-jdl"/>
                         <outlet property="cardCvnTextField" destination="IHb-fP-859" id="i45-kP-B8N"/>
                         <outlet property="cardExpMonthTextField" destination="p9g-yC-LbE" id="QO1-qU-9AR"/>
                         <outlet property="cardExpYearTextField" destination="xyV-ij-bFC" id="FIe-qc-lzb"/>
@@ -210,7 +244,9 @@
                         <outlet property="cardHolderLastNameTextField" destination="K0t-uk-Xak" id="RU3-Ig-5Kj"/>
                         <outlet property="cardHolderPhoneNumberTextField" destination="Uwc-Ib-RO9" id="QjY-KO-IF4"/>
                         <outlet property="cardNumberTextField" destination="uNx-Bl-cvE" id="WlL-CX-idt"/>
+                        <outlet property="currencyTextField" destination="CvR-3X-2JJ" id="hfb-oD-4kl"/>
                         <outlet property="isMultipleUseSwitch" destination="033-hj-Fto" id="re7-C7-dln"/>
+                        <outlet property="isSkipAuthenticationSwitch" destination="Eix-6h-aww" id="AZW-Ec-qka"/>
                         <outlet property="midTextField" destination="dHt-Xw-jcz" id="GPz-mL-q4F"/>
                     </connections>
                 </viewController>
@@ -297,6 +333,7 @@
         <!--3DS Authentication-->
         <scene sceneID="weI-ph-EIT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URA-BG-csG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="3DS Authentication" id="sKq-YQ-t0P" customClass="CreateAuthentification" customModule="XenditExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OWL-2K-lFj"/>
@@ -306,93 +343,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T9D-sL-IDO">
-                                <rect key="frame" x="132" y="233" width="110" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T9D-sL-IDO">
+                                <rect key="frame" x="132" y="390" width="111" height="43"/>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5X-cK-T79">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG" borderStyle="roundedRect" placeholder="Publishable Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-dG-qGh" userLabel="Api Key Text Field">
                                 <rect key="frame" x="20" y="84" width="335" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="apiKeyField"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5X-cK-T79">
+                                <rect key="frame" x="20" y="132" width="335" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="tokenIdField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Card CVN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMW-15-FJr">
-                                <rect key="frame" x="197.5" y="138" width="157.5" height="34"/>
+                                <rect key="frame" x="262.5" y="186" width="92.5" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="cardCvnField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hs-dI-Mqd">
-                                <rect key="frame" x="20" y="138" width="157.5" height="34"/>
+                                <rect key="frame" x="20" y="186" width="92.5" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="amountField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-Q1-vVt" userLabel="Card Holder First Name">
-                                <rect key="frame" x="20" y="204" width="157.5" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-Q1-vVt" userLabel="Card Holder First Name">
+                                <rect key="frame" x="20" y="252" width="150" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="cardHolderFirstNameField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Doe" borderStyle="roundedRect" placeholder="Card holder last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-Hq-yA5" userLabel="Card Holder Last Name">
-                                <rect key="frame" x="197" y="204" width="157.5" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Doe" borderStyle="roundedRect" placeholder="Card holder last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-Hq-yA5" userLabel="Card Holder Last Name">
+                                <rect key="frame" x="190" y="252" width="164.5" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="cardHolderLastNameField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+662233445566" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkS-Jg-xiE" userLabel="Phone Number">
-                                <rect key="frame" x="20" y="253" width="335" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+662233445566" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkS-Jg-xiE" userLabel="Phone Number">
+                                <rect key="frame" x="20" y="301" width="335" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="phoneNumberField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john.doe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRG-8K-Tma" userLabel="Email">
-                                <rect key="frame" x="20" y="295" width="335" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john.doe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRG-8K-Tma" userLabel="Email">
+                                <rect key="frame" x="20" y="343" width="335" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="emailField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-aV-aGd">
-                                <rect key="frame" x="20" y="342" width="335" height="30"/>
+                                <rect key="frame" x="20" y="390" width="335" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="authentificateButton"/>
                                 <state key="normal" title="Authentificate"/>
                                 <connections>
                                     <action selector="authentificateAction:" destination="sKq-YQ-t0P" eventType="touchUpInside" id="lEa-Ic-oW9"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="IDR" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A23-3S-sCq" userLabel="Currency Text Field">
+                                <rect key="frame" x="139" y="186" width="97" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="currencyField"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="iek-gx-wZf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="T9D-sL-IDO" firstAttribute="top" secondItem="jRG-8K-Tma" secondAttribute="bottom" constant="13" id="1DK-ac-HRU"/>
                             <constraint firstItem="2c0-aV-aGd" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="20" id="1lu-dM-LeY"/>
-                            <constraint firstItem="Z5X-cK-T79" firstAttribute="top" secondItem="OWL-2K-lFj" secondAttribute="bottom" constant="20" id="6yZ-eB-Brk"/>
+                            <constraint firstItem="Z5X-cK-T79" firstAttribute="top" secondItem="Ffo-dG-qGh" secondAttribute="bottom" constant="14" id="2as-Nm-5Fb"/>
+                            <constraint firstItem="jRG-8K-Tma" firstAttribute="centerX" secondItem="T9D-sL-IDO" secondAttribute="centerX" id="7Ev-kq-3lo"/>
+                            <constraint firstItem="Nyy-Q1-vVt" firstAttribute="top" secondItem="5hs-dI-Mqd" secondAttribute="bottom" constant="32" id="7og-zZ-v6n"/>
                             <constraint firstItem="5hs-dI-Mqd" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="20" id="AI9-3d-YwR"/>
+                            <constraint firstItem="eR6-Hq-yA5" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="190" id="AYr-zD-7Xi"/>
                             <constraint firstAttribute="trailing" secondItem="Z5X-cK-T79" secondAttribute="trailing" constant="20" id="BXC-Mp-FI6"/>
                             <constraint firstAttribute="trailing" secondItem="2c0-aV-aGd" secondAttribute="trailing" constant="20" id="DVf-Q5-nmN"/>
+                            <constraint firstItem="lMW-15-FJr" firstAttribute="leading" secondItem="A23-3S-sCq" secondAttribute="trailing" constant="26.5" id="Kd5-Hp-cEJ"/>
                             <constraint firstItem="2c0-aV-aGd" firstAttribute="centerY" secondItem="ML1-mC-CIN" secondAttribute="centerY" id="M4B-v2-vFe"/>
                             <constraint firstItem="5hs-dI-Mqd" firstAttribute="top" secondItem="Z5X-cK-T79" secondAttribute="bottom" constant="20" id="M75-B7-Cud"/>
+                            <constraint firstItem="eR6-Hq-yA5" firstAttribute="leading" secondItem="Nyy-Q1-vVt" secondAttribute="trailing" constant="20" id="O8X-h5-0gG"/>
+                            <constraint firstItem="Ffo-dG-qGh" firstAttribute="top" secondItem="OWL-2K-lFj" secondAttribute="bottom" constant="20" id="OfL-eG-6kL"/>
+                            <constraint firstItem="A23-3S-sCq" firstAttribute="top" secondItem="Z5X-cK-T79" secondAttribute="bottom" constant="20" id="P5h-ae-tsd"/>
+                            <constraint firstItem="Nyy-Q1-vVt" firstAttribute="leading" secondItem="jRG-8K-Tma" secondAttribute="leading" id="PAF-Uv-e9z"/>
+                            <constraint firstItem="jRG-8K-Tma" firstAttribute="trailing" secondItem="2c0-aV-aGd" secondAttribute="trailing" id="PbH-kU-YdS"/>
+                            <constraint firstItem="A23-3S-sCq" firstAttribute="leading" secondItem="5hs-dI-Mqd" secondAttribute="trailing" constant="26.5" id="QIi-y6-zQ8"/>
                             <constraint firstItem="2c0-aV-aGd" firstAttribute="centerX" secondItem="ML1-mC-CIN" secondAttribute="centerX" id="UbX-Tu-Dr3"/>
+                            <constraint firstAttribute="trailing" secondItem="eR6-Hq-yA5" secondAttribute="trailing" constant="20.5" id="Uxi-P6-lWN"/>
+                            <constraint firstItem="T9D-sL-IDO" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="132" id="a3J-Fq-Suk"/>
                             <constraint firstItem="lMW-15-FJr" firstAttribute="width" secondItem="5hs-dI-Mqd" secondAttribute="width" id="dIv-02-kq6"/>
+                            <constraint firstItem="Nyy-Q1-vVt" firstAttribute="leading" secondItem="5hs-dI-Mqd" secondAttribute="leading" id="fue-38-xtA"/>
+                            <constraint firstItem="jRG-8K-Tma" firstAttribute="top" secondItem="WkS-Jg-xiE" secondAttribute="bottom" constant="8" id="hcV-eS-XHd"/>
                             <constraint firstAttribute="trailing" secondItem="lMW-15-FJr" secondAttribute="trailing" constant="20" id="jmV-mH-pho"/>
-                            <constraint firstItem="lMW-15-FJr" firstAttribute="leading" secondItem="5hs-dI-Mqd" secondAttribute="trailing" constant="20" id="kFF-pz-5ip"/>
                             <constraint firstItem="Z5X-cK-T79" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="20" id="lq6-qY-2BO"/>
+                            <constraint firstItem="Ffo-dG-qGh" firstAttribute="leading" secondItem="ML1-mC-CIN" secondAttribute="leading" constant="20" id="ngb-yB-zdF"/>
                             <constraint firstItem="lMW-15-FJr" firstAttribute="top" secondItem="Z5X-cK-T79" secondAttribute="bottom" constant="20" id="paW-Pm-7R1"/>
+                            <constraint firstItem="Nyy-Q1-vVt" firstAttribute="leading" secondItem="WkS-Jg-xiE" secondAttribute="leading" id="pgw-zi-q1u"/>
+                            <constraint firstItem="Nyy-Q1-vVt" firstAttribute="top" secondItem="eR6-Hq-yA5" secondAttribute="top" id="x6i-dy-aZE"/>
+                            <constraint firstItem="fT2-rS-QUH" firstAttribute="top" secondItem="T9D-sL-IDO" secondAttribute="bottom" constant="234" id="xtj-pb-Hbd"/>
+                            <constraint firstItem="jRG-8K-Tma" firstAttribute="trailing" secondItem="WkS-Jg-xiE" secondAttribute="trailing" id="z6S-3W-5Du"/>
+                            <constraint firstItem="WkS-Jg-xiE" firstAttribute="top" secondItem="Nyy-Q1-vVt" secondAttribute="bottom" constant="15" id="zZh-d9-UYj"/>
+                            <constraint firstAttribute="trailing" secondItem="Ffo-dG-qGh" secondAttribute="trailing" constant="20" symbolic="YES" id="zqg-kJ-qCY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="5hs-dI-Mqd" id="pe3-qJ-f69"/>
+                        <outlet property="apiKeyTextField" destination="Ffo-dG-qGh" id="1Ne-8P-c6A"/>
                         <outlet property="cardCVNTextField" destination="lMW-15-FJr" id="Gvb-do-DcK"/>
                         <outlet property="cardHolderEmailTextField" destination="jRG-8K-Tma" id="tkJ-d9-uIf"/>
                         <outlet property="cardHolderFirstNameTextField" destination="Nyy-Q1-vVt" id="a6B-2a-kR6"/>
                         <outlet property="cardHolderLastNameTextField" destination="eR6-Hq-yA5" id="5Ag-Ce-Jvg"/>
                         <outlet property="cardHolderPhoneNumberTextField" destination="WkS-Jg-xiE" id="Ibg-4n-cCD"/>
+                        <outlet property="currencyTextField" destination="A23-3S-sCq" id="PjN-ng-ZcV"/>
                         <outlet property="tokenIDTextField" destination="Z5X-cK-T79" id="m6Y-1w-6ZX"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="URA-BG-csG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="912.79999999999995" y="470.91454272863569"/>
         </scene>

@@ -23,14 +23,13 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var cardHolderLastNameTextField: UITextField!
     @IBOutlet weak var cardHolderEmailTextField: UITextField!
     @IBOutlet weak var cardHolderPhoneNumberTextField: UITextField!
+    @IBOutlet weak var apiKeyTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
+    @IBOutlet weak var isSkipAuthenticationSwitch: UISwitch!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set Publishable Key
-        Xendit.publishableKey = "xnd_public_development_9fB0J1Ase70afEL6FPJTBrpIc5NfJCu6evsAxiHSECvUDiz6ZAKWryQObfkS"
-        
     }
     
     
@@ -50,13 +49,14 @@ class CreateTokenViewController: UIViewController {
         cardData.cardCvn = cvn
         
         let isMultipleUse = isMultipleUseSwitch.isOn
-        let currency = "IDR"
+        let isSkipAuthentication = isSkipAuthenticationSwitch.isOn
+        let currency = currencyTextField.text
         let amountText = amountTextField.text!
         var amount: NSNumber?
         if (amountText != "") {
             amount = NSNumber(value: Double.init(amountText)!)
         }
-        let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: true, amount: amount, currency: currency)
+        let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: !isSkipAuthentication, amount: amount, currency: currency)
         // Set MID if it is set
         if let text = midTextField.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             tokenizationRequest.midLabel = text
@@ -67,6 +67,8 @@ class CreateTokenViewController: UIViewController {
         billingDetails.surname = "Smith"
         billingDetails.address = XenditAddress()
         billingDetails.address?.postalCode = "123456"
+        
+        Xendit.publishableKey = apiKeyTextField.text
 
         Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: nil) { (token, error) in
             if let token = token {
