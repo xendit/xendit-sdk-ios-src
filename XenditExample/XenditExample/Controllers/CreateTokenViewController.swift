@@ -75,15 +75,15 @@ class CreateTokenViewController: UIViewController {
                 // Handle successful tokenization. Token is of type XenditCCToken
                 let issuingBank = token.cardInfo?.bank ?? "n/a"
                 let country = token.cardInfo?.country ?? "n/a"
-                let message = String(format: "TokenID - %@, AuthID - %@, Status - %@, MaskedCardNumber - %@, Should_3DS - %@, IssuingBank - %@, Country - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank, country)
+                let message = String(format: "TokenID - %@ | AuthID - %@ | Status - %@ | MaskedCardNumber - %@ | Should_3DS - %@, IssuingBank - %@ | Country - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank, country)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
-                var errorMessage = error!.message
+                var errorMessage = String(format: "error_code - %@ | message - %@", error!.errorCode, error!.message ?? "Error creating token.")
                 if error!.errorCode == "INVALID_USER_ID" {
                     errorMessage = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
                 }
-                self.showAlert(title: error!.errorCode, message: errorMessage ?? "Error creating token.")
+                self.showAlert(title: "Error", message: errorMessage)
             }
         }
     }
