@@ -858,6 +858,7 @@ extension XenditIntegrationTestsV3 {
                 let authenticationRequest = AuthenticationRequest(
                     tokenId: tokenId,
                     amount: TestConstants.defaultAmount,
+                    currency: TestConstants.defaultCurrency,
                     expectedResult: .success(status: TestConstants.TokenStatus.inReview)
                 )
                 
@@ -869,7 +870,7 @@ extension XenditIntegrationTestsV3 {
         waitForExpectations(timeout: TestConstants.defaultTimeout)
     }
     
-    // Test case for creating authentication with CVN (Row 28-29)
+    // Test case for creating authentication with CVN (Row 28)
     func testCreateAuthenticationWithSingleUseTokenAndCVN() {
         let createTokenExpectation = expectation(description: "Create single use token")
         let createAuthenticationExpectation = expectation(description: "Create authentication with CVN")
@@ -893,6 +894,7 @@ extension XenditIntegrationTestsV3 {
                     tokenId: tokenId,
                     amount: TestConstants.defaultAmount,
                     cardCVN: "123", // Adding CVN to authentication
+                    currency: TestConstants.defaultCurrency,
                     expectedResult: .success(status: TestConstants.TokenStatus.inReview)
                 )
                 
