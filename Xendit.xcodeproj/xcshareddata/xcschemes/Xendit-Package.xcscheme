@@ -101,6 +101,9 @@
                   Identifier = "XenditIntegrationTests/testCreateTokenInvalid()">
                </Test>
                <Test
+                  Identifier = "XenditIntegrationTestsV3/testCreateAuthenticationWithSingleUseTokenAndCurrency()">
+               </Test>
+               <Test
                   Identifier = "XenditIntegrationTestsV3/testCreateSingleUseTokenWith3DSDisabled()">
                </Test>
                <Test
