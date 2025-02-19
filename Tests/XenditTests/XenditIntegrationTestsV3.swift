@@ -857,7 +857,7 @@ extension XenditIntegrationTestsV3 {
                 // Then create authentication
                 let authenticationRequest = AuthenticationRequest(
                     tokenId: tokenId,
-                    amount: TestConstants.defaultAmount,
+                    amount: TestConstants.defaultAmount3DS,
                     currency: TestConstants.defaultCurrency,
                     expectedResult: .success(status: TestConstants.TokenStatus.inReview)
                 )
@@ -892,7 +892,7 @@ extension XenditIntegrationTestsV3 {
                 
                 let authenticationRequest = AuthenticationRequest(
                     tokenId: tokenId,
-                    amount: TestConstants.defaultAmount,
+                    amount: TestConstants.defaultAmount3DS,
                     cardCVN: "123", // Adding CVN to authentication
                     currency: TestConstants.defaultCurrency,
                     expectedResult: .success(status: TestConstants.TokenStatus.inReview)
@@ -963,7 +963,7 @@ extension XenditIntegrationTestsV3 {
                 
                 let authenticationRequest = AuthenticationRequest(
                     tokenId: tokenId,
-                    amount: TestConstants.defaultAmount,
+                    amount: TestConstants.defaultAmount3DS,
                     currency: "GBP",
                     expectedResult: .error(
                         code: .mismatchCurrency,
@@ -1001,7 +1001,7 @@ extension XenditIntegrationTestsV3 {
                                 
                 let authenticationRequest = AuthenticationRequest(
                     tokenId: tokenId,
-                    amount: TestConstants.defaultAmount,
+                    amount: TestConstants.defaultAmount3DS,
                     currency: "ZZZ",
                     expectedResult: .error(
                         code: .invalidCurrency,
