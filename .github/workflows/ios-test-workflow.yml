@@ -1,0 +1,72 @@
+name: iOS Tests
+
+on:
+ pull_request:
+
+jobs:
+  test:
+    name: Run Xcode Tests
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
+      
+    - name: Get Available Destination
+      id: get-destination
+      run: |
+        # Get all available destinations and save to a file
+        xcodebuild -scheme "Xendit-Package" -showdestinations | tee destinations.txt
+        
+        # Print all destinations for debugging
+        echo "Available destinations:"
+        cat destinations.txt
+        
+        # Extract simulator with latest OS (works for both iPhone and iPhone SE)
+        DESTINATION=$(grep -E "platform:iOS Simulator.*name:iPhone" destinations.txt | \
+          sort -t':' -k4,4V | \
+          tail -n1 | \
+          sed -e 's/^[[:space:]]*//' | \
+          sed -e 's/[[:space:]]*$//' | \
+          sed -e 's/[{}]//g' | \
+          sed -e 's/platform:/platform=/g' | \
+          sed -e 's/id:/id=/g' | \
+          sed -e 's/, /,/g' | \
+          sed -e 's/,OS.*//g' | \
+          xargs)
+        
+        if [ -z "$DESTINATION" ]; then
+          echo "Error: No iPhone simulator destination found!"
+          echo "Available destinations were:"
+          cat destinations.txt
+          exit 1
+        fi
+        
+        # Set the destination as an output
+        echo "DESTINATION=$DESTINATION" >> "$GITHUB_OUTPUT"
+        
+        # Print the selected destination for logging
+        echo "Selected destination: $DESTINATION"
+      
+    - name: Build and Test
+      run: |
+        DESTINATION="${{ steps.get-destination.outputs.DESTINATION }}"
+        echo "Using destination: $DESTINATION"
+        
+        xcodebuild test \
+          -scheme "Xendit-Package" \
+          -configuration Debug \
+          -destination "$DESTINATION" \
+          -enableCodeCoverage YES \
+          -resultBundlePath TestResults.xcresult \
+          clean test | xcpretty
+
+    - name: Generate Test Report
+      uses: kishikawakatsumi/xcresulttool@v1
+      with:
+        path: TestResults.xcresult
+        upload-bundles: never
+      if: success() || failure()

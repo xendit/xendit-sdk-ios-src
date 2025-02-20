@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "DEF526EB-CC7C-4E75-A22F-D0C92A9BA319",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [],
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "XenditTests",
+        "name" : "XenditTests"
+      }
+    }
+  ],
+  "version" : 1
+}
