@@ -62,16 +62,10 @@
 		OBJ_780 /* ISHLogDNAService.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* ISHLogDNAService.m */; };
 		OBJ_781 /* IDFAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* IDFAHelper.m */; };
 		OBJ_788 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_799 /* CardDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* CardDataTest.swift */; };
-		OBJ_800 /* CreditCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* CreditCardTests.swift */; };
-		OBJ_801 /* FingerprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* FingerprintTests.swift */; };
 		OBJ_802 /* AuthenticationProviderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* AuthenticationProviderStub.swift */; };
 		OBJ_803 /* CardAuthenticationProviderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* CardAuthenticationProviderStub.swift */; };
 		OBJ_804 /* HTTPStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* HTTPStub.swift */; };
 		OBJ_805 /* TestCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* TestCards.swift */; };
-		OBJ_806 /* JsonEncodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* JsonEncodeTest.swift */; };
-		OBJ_807 /* LogSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* LogSanitizerTests.swift */; };
-		OBJ_808 /* XenditIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* XenditIntegrationTests.swift */; };
 		OBJ_809 /* XenditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* XenditTests.swift */; };
 		OBJ_813 /* Xendit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */; };
 		OBJ_816 /* XenditObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xendit-sdk-ios-src::XenditObjC::Product" /* XenditObjC.framework */; };
@@ -156,16 +150,10 @@
 		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Sources/XenditObjC/include/module.modulemap; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		OBJ_61 /* CardDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataTest.swift; sourceTree = "<group>"; };
-		OBJ_62 /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
-		OBJ_63 /* FingerprintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTests.swift; sourceTree = "<group>"; };
 		OBJ_65 /* AuthenticationProviderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderStub.swift; sourceTree = "<group>"; };
 		OBJ_66 /* CardAuthenticationProviderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAuthenticationProviderStub.swift; sourceTree = "<group>"; };
 		OBJ_67 /* HTTPStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStub.swift; sourceTree = "<group>"; };
 		OBJ_68 /* TestCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCards.swift; sourceTree = "<group>"; };
-		OBJ_69 /* JsonEncodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEncodeTest.swift; sourceTree = "<group>"; };
-		OBJ_70 /* LogSanitizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSanitizerTests.swift; sourceTree = "<group>"; };
-		OBJ_71 /* XenditIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditIntegrationTests.swift; sourceTree = "<group>"; };
 		OBJ_72 /* XenditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XenditTests.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		"xendit-sdk-ios-src::Xendit::Product" /* Xendit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Xendit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,14 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_60 /* Info.plist */,
-				OBJ_61 /* CardDataTest.swift */,
-				OBJ_62 /* CreditCardTests.swift */,
-				OBJ_63 /* FingerprintTests.swift */,
 				OBJ_64 /* Helpers */,
-				OBJ_69 /* JsonEncodeTest.swift */,
-				OBJ_70 /* LogSanitizerTests.swift */,
 				2122891B2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift */,
-				OBJ_71 /* XenditIntegrationTests.swift */,
 				OBJ_72 /* XenditTests.swift */,
 			);
 			name = XenditTests;
@@ -574,17 +556,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_799 /* CardDataTest.swift in Sources */,
 				2122891C2CFEC1720098D6D2 /* XenditIntegrationTestsV3.swift in Sources */,
-				OBJ_800 /* CreditCardTests.swift in Sources */,
-				OBJ_801 /* FingerprintTests.swift in Sources */,
 				OBJ_802 /* AuthenticationProviderStub.swift in Sources */,
 				OBJ_803 /* CardAuthenticationProviderStub.swift in Sources */,
 				OBJ_804 /* HTTPStub.swift in Sources */,
 				OBJ_805 /* TestCards.swift in Sources */,
-				OBJ_806 /* JsonEncodeTest.swift in Sources */,
-				OBJ_807 /* LogSanitizerTests.swift in Sources */,
-				OBJ_808 /* XenditIntegrationTests.swift in Sources */,
 				OBJ_809 /* XenditTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

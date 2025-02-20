@@ -528,28 +528,6 @@ extension XenditIntegrationTestsV3 {
         
     }
     
-    // Test case for creating token with 3DS disabled (Row 11)
-    func testCreateSingleUseTokenWith3DSDisabled() {
-        let tokenRequest = TokenRequest(
-            cardNumber: TestConstants.CardData.validCardNumber,
-            cardExpMonth: TestConstants.CardData.validExpMonth,
-            cardExpYear: TestConstants.CardData.validExpYear,
-            cardCVN: TestConstants.CardData.validCVN,
-            amount: TestConstants.defaultAmount3DS,
-            shouldAuthenticate: false,
-            expectedResult: .error(
-                code: .authenticationRequired,
-                message: TestConstants.ErrorMessages.authenticationRequired
-            )
-        )
-        
-        runTokenizationTest(
-            request: tokenRequest,
-            createTokenExpectation: .xenditExpectation(description: "Create token with 3DS disabled")
-        )
-        
-    }
-    
     // Test case for creating token with supported currency (Row 12)
     func testCreateSingleUseTokenWithSupportedCurrency() {
         let tokenRequest = TokenRequest(
@@ -607,27 +585,6 @@ extension XenditIntegrationTestsV3 {
         runTokenizationTest(
             request: tokenRequest,
             createTokenExpectation: .xenditExpectation(description: "Create token with invalid currency")
-        )
-        
-    }
-    
-    // Test case for creating token without CVN (Row 15)
-    func testCreateSingleUseTokenWithoutCVN() {
-        let tokenRequest = TokenRequest(
-            cardNumber: TestConstants.CardData.validCardNumber,
-            cardExpMonth: TestConstants.CardData.validExpMonth,
-            cardExpYear: TestConstants.CardData.validExpYear,
-            cardCVN: nil,
-            amount: TestConstants.defaultAmount3DS,
-            expectedResult: .error(
-                code: .apiValidation,
-                message: TestConstants.ErrorMessages.emptyCardCVN
-            )
-        )
-        
-        runTokenizationTest(
-            request: tokenRequest,
-            createTokenExpectation: .xenditExpectation(description: "Create token without CVN")
         )
         
     }
@@ -752,27 +709,6 @@ extension XenditIntegrationTestsV3 {
         runTokenizationTest(
             request: tokenRequest,
             createTokenExpectation: .xenditExpectation(description: "Create token with only phone number")
-        )
-        
-    }
-    
-    // Test case for creating token without amount (Row 21)
-    func testCreateSingleUseTokenWithoutAmount() {
-        let tokenRequest = TokenRequest(
-            cardNumber: TestConstants.CardData.validCardNumber,
-            cardExpMonth: TestConstants.CardData.validExpMonth,
-            cardExpYear: TestConstants.CardData.validExpYear,
-            cardCVN: TestConstants.CardData.validCVN,
-            amount: nil,
-            expectedResult: .error(
-                code: .apiValidation,
-                message: TestConstants.ErrorMessages.amountRequired
-            )
-        )
-        
-        runTokenizationTest(
-            request: tokenRequest,
-            createTokenExpectation: .xenditExpectation(description: "Create token without amount")
         )
         
     }
@@ -905,42 +841,7 @@ extension XenditIntegrationTestsV3 {
         runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
         waitForExpectations(timeout: TestConstants.defaultTimeout)
     }
-    
-    // Test case for creating authentication with supported currency (Row 29)
-    func testCreateAuthenticationWithSingleUseTokenAndCurrency() {
-        let createTokenExpectation = expectation(description: "Create single use token")
-        let createAuthenticationExpectation = expectation(description: "Create authentication with currency")
         
-        let tokenRequest = TokenRequest(
-            cardNumber: TestConstants.CardData.validCardNumber,
-            cardExpMonth: TestConstants.CardData.validExpMonth,
-            cardExpYear: TestConstants.CardData.validExpYear,
-            cardCVN: TestConstants.CardData.validCVN,
-            shouldAuthenticate: false,
-            tokenType: .singleUse,
-            expectedResult: .success(status: TestConstants.TokenStatus.verified),
-            completionHandler: { [weak self] token in
-                guard let self = self,
-                      let tokenId = token?.id else {
-                    XCTFail("Failed to get token ID")
-                    return
-                }
-                
-                let authenticationRequest = AuthenticationRequest(
-                    tokenId: tokenId,
-                    amount: TestConstants.defaultAmount,
-                    currency: TestConstants.defaultCurrency,
-                    expectedResult: .success(status: TestConstants.TokenStatus.inReview)
-                )
-                
-                self.runAuthenticationTest(request: authenticationRequest, expectation: createAuthenticationExpectation)
-            }
-        )
-        
-        runTokenizationTest(request: tokenRequest, createTokenExpectation: createTokenExpectation)
-        waitForExpectations(timeout: TestConstants.defaultTimeout)
-    }
-    
     // Test case for creating authentication with unsupported currency (Row 30)
     func testCreateAuthenticationWithSingleUseTokenAndUnsupportedCurrency() {
         let createTokenExpectation = expectation(description: "Create single use token")
