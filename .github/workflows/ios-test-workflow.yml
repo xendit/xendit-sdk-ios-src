@@ -65,7 +65,8 @@ jobs:
           clean test | xcpretty
 
     - name: Generate Test Report
-      uses: Rumiya/xcresulttool@v1
+      uses: kishikawakatsumi/xcresulttool@v1
       with:
         path: TestResults.xcresult
+        upload-bundles: never
       if: success() || failure()
