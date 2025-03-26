@@ -23,14 +23,13 @@ class CreateTokenViewController: UIViewController {
     @IBOutlet weak var cardHolderLastNameTextField: UITextField!
     @IBOutlet weak var cardHolderEmailTextField: UITextField!
     @IBOutlet weak var cardHolderPhoneNumberTextField: UITextField!
+    @IBOutlet weak var apiKeyTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
+    @IBOutlet weak var isSkipAuthenticationSwitch: UISwitch!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set Publishable Key
-        Xendit.publishableKey = "xnd_public_development_9fB0J1Ase70afEL6FPJTBrpIc5NfJCu6evsAxiHSECvUDiz6ZAKWryQObfkS"
-        
     }
     
     
@@ -50,13 +49,14 @@ class CreateTokenViewController: UIViewController {
         cardData.cardCvn = cvn
         
         let isMultipleUse = isMultipleUseSwitch.isOn
-        let currency = "IDR"
+        let isSkipAuthentication = isSkipAuthenticationSwitch.isOn
+        let currency = currencyTextField.text
         let amountText = amountTextField.text!
         var amount: NSNumber?
         if (amountText != "") {
             amount = NSNumber(value: Double.init(amountText)!)
         }
-        let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: true, amount: amount, currency: currency)
+        let tokenizationRequest = XenditTokenizationRequest.init(cardData: cardData, isSingleUse: !isMultipleUse, shouldAuthenticate: !isSkipAuthentication, amount: amount, currency: currency)
         // Set MID if it is set
         if let text = midTextField.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             tokenizationRequest.midLabel = text
@@ -67,21 +67,23 @@ class CreateTokenViewController: UIViewController {
         billingDetails.surname = "Smith"
         billingDetails.address = XenditAddress()
         billingDetails.address?.postalCode = "123456"
+        
+        Xendit.publishableKey = apiKeyTextField.text
 
         Xendit.createToken(fromViewController: self, tokenizationRequest: tokenizationRequest, onBehalfOf: nil) { (token, error) in
             if let token = token {
                 // Handle successful tokenization. Token is of type XenditCCToken
                 let issuingBank = token.cardInfo?.bank ?? "n/a"
                 let country = token.cardInfo?.country ?? "n/a"
-                let message = String(format: "TokenID - %@, AuthID - %@, Status - %@, MaskedCardNumber - %@, Should_3DS - %@, IssuingBank - %@, Country - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank, country)
+                let message = String(format: "TokenID - %@ | AuthID - %@ | Status - %@ | MaskedCardNumber - %@ | Should_3DS - %@, IssuingBank - %@ | Country - %@", token.id, token.authenticationId ?? "n/a", token.status, token.maskedCardNumber ?? "n/a", token.should3DS?.description ?? "n/a", issuingBank, country)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
-                var errorMessage = error!.message
+                var errorMessage = String(format: "error_code - %@ | message - %@", error!.errorCode, error!.message ?? "Error creating token.")
                 if error!.errorCode == "INVALID_USER_ID" {
                     errorMessage = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
                 }
-                self.showAlert(title: error!.errorCode, message: errorMessage ?? "Error creating token.")
+                self.showAlert(title: "Error", message: errorMessage)
             }
         }
     }
