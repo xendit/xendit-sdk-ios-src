@@ -19,7 +19,7 @@ public class XenditAddress: Jsonable {
     
     public init() {}
 
-    static func FromJson(response: [String: Any]?) -> XenditAddress {
+    static func FromJson(response: [String: any Sendable]?) -> XenditAddress {
         let xenditAddress = XenditAddress()
         if response == nil {
             return xenditAddress
@@ -35,8 +35,8 @@ public class XenditAddress: Jsonable {
         return xenditAddress
     }
     
-    func toJsonObject() -> [String: Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String: any Sendable] {
+        var json: [String: any Sendable] = [:]
         if country != nil { json["country"] = country }
         if streetLine1 != nil { json["street_line1"] = streetLine1 }
         if streetLine2 != nil { json["street_line2"] = streetLine2 }

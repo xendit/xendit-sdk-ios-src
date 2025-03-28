@@ -33,8 +33,8 @@ import Foundation
         self.cardHolderPhoneNumber = cardHolderPhoneNumber
     }
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [:]
         if cardHolderFirstName != nil { json["card_holder_first_name"] = cardHolderFirstName }
         if cardHolderLastName != nil { json["card_holder_last_name"] = cardHolderLastName }
         if cardHolderEmail != nil { json["card_holder_email"] = cardHolderEmail }

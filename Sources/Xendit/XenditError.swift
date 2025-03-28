@@ -9,7 +9,7 @@
 import Foundation
 
 @objcMembers
-@objc(XENError) open class XenditError: NSObject {
+@objc(XENError) open class XenditError: NSObject, @unchecked Sendable {
 
     // Error Code
     @objc(errorCode) open var errorCode: String!

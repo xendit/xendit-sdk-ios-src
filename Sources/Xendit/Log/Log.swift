@@ -18,7 +18,7 @@ import XenditObjC
 
 
 internal class Log {
-    static let shared = Log()
+    nonisolated(unsafe) static let shared = Log()
     
     public var level: XenditLogLevel? = .info
     public var logDNALevel: ISHLogDNALevel? = .warn
@@ -91,7 +91,7 @@ internal class Log {
         }
     }
     
-    func logUnexpectedWebScriptMessage(url: String, message: WKScriptMessage) {
+    @MainActor func logUnexpectedWebScriptMessage(url: String, message: WKScriptMessage) {
         let messageBody: Any
         switch message.body {
         case is NSNumber, is NSString: messageBody = message.body

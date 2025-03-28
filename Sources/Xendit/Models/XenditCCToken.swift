@@ -33,8 +33,8 @@ import Foundation
     // Failure reason
     open var failureReason : String?
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [:]
         if id != nil { json["id"] = id }
         if status != nil { json["status"] = status }
         if authenticationId != nil { json["authentication_id"] = authenticationId }

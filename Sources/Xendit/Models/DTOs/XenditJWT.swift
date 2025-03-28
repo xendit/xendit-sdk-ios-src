@@ -11,7 +11,7 @@ class XenditJWT: JsonDeserializable {
     public var jwt: String?
     public var environment: String?
     
-    static func FromJson(response: [String : Any]?) -> XenditJWT {
+    static func FromJson(response: [String : any Sendable]?) -> XenditJWT {
         let jwt = XenditJWT()
         if response == nil {
             return jwt

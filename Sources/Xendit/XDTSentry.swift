@@ -9,7 +9,7 @@ import Foundation
 import Sentry
 
 class XDTSentry {
-    static let shared = XDTSentry()
+    nonisolated(unsafe) static let shared = XDTSentry()
     
     private init() {
         SentrySDK.start { options in

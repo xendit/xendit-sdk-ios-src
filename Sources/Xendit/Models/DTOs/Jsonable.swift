@@ -11,10 +11,10 @@ protocol Jsonable: JsonSerializable, JsonDeserializable {
 }
 
 protocol JsonSerializable {
-    func toJsonObject() -> [String: Any]
+    func toJsonObject() -> [String: any Sendable]
 }
 
 protocol JsonDeserializable {
     associatedtype T
-    static func FromJson(response: [String: Any]?) -> T
+    static func FromJson(response: [String: any Sendable]?) -> T
 }

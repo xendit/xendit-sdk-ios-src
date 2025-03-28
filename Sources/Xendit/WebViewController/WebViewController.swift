@@ -15,8 +15,8 @@ protocol CardAuthenticationProviderProtocol {
 }
 
 
-class CardAuthenticationProvider: CardAuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
+class CardAuthenticationProvider: @preconcurrency CardAuthenticationProviderProtocol {
+    @MainActor func authenticate(fromViewController: UIViewController, URL: String, authenticatedToken: XenditAuthenticatedToken, completion: @escaping (XenditCCToken?, XenditError?) -> Void) {
         let webViewController = WebViewController(URL: URL)
 
         webViewController.token = authenticatedToken
