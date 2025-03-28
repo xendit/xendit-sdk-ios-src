@@ -56,8 +56,8 @@ class XDTApiClient {
     
     private static let session = URLSession(configuration: URLSessionConfiguration.default)
     
-    static func tokenizeCardRequest(URL: URL, requestBody: [String:Any], completion: @escaping (_ : String?, _ : XenditError?) -> Void) {
-        var request = URLRequest.request(ur: URL)
+    static func tokenizeCardRequest(URL: URL, requestBody: [String: any Sendable], completion: @Sendable @escaping (_ : String?, _ : XenditError?) -> Void) {
+        nonisolated(unsafe) var request = URLRequest.request(ur: URL)
         request.httpMethod = "POST"
         
         Log.shared.logUrlRequest(prefix: "tokenizeCardRequest", request: request, requestBody: requestBody)
@@ -93,14 +93,14 @@ class XDTApiClient {
         }.resume()
     }
     
-    static func createAuthenticationRequest(publishableKey: String, tokenId: String, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_: XenditAuthentication?, _: XenditError?) -> Void) {
+    static func createAuthenticationRequest(publishableKey: String, tokenId: String, bodyJson: [String:any Sendable], extraHeader: [String:String], completion: @Sendable @escaping (_: XenditAuthentication?, _: XenditError?) -> Void) {
         
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)!
         url.appendPathComponent(CREDIT_CARD_PATH)
         url.appendPathComponent(tokenId)
         url.appendPathComponent(AUTHENTICATION_PATH)
         
-        var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
+        nonisolated(unsafe) var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
         
         Log.shared.logUrlRequest(prefix: "createAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
@@ -136,12 +136,12 @@ class XDTApiClient {
         }.resume()
     }
     
-    static func verifyAuthenticationRequest(publishableKey: String, authenticationId: String, bodyJson: [String:Any], extraHeader: [String:String]?, completion: @escaping (_: XenditAuthentication?, _: XenditError?) -> Void) {
+    static func verifyAuthenticationRequest(publishableKey: String, authenticationId: String, bodyJson: [String:any Sendable], extraHeader: [String:String]?, completion: @Sendable @escaping (_: XenditAuthentication?, _: XenditError?) -> Void) {
         
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)!
         url.appendPathComponent(VERIFY_AUTHENTICATION_PATH.replacingOccurrences(of: ":authentication_id", with: authenticationId))
         
-        var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
+        nonisolated(unsafe) var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
         
         Log.shared.logUrlRequest(prefix: "verifyAuthenticationRequest", request: request, requestBody: bodyJson)
         do {
@@ -177,12 +177,12 @@ class XDTApiClient {
         }.resume()
     }
     
-    static func createTokenRequest(publishableKey: String, bodyJson: [String:Any], extraHeader: [String:String], completion: @escaping (_ : XenditAuthenticatedToken?, _ : XenditError?) -> Void) {
+    static func createTokenRequest(publishableKey: String, bodyJson: [String:any Sendable], extraHeader: [String:String], completion: @Sendable @escaping (_ : XenditAuthenticatedToken?, _ : XenditError?) -> Void) {
         
         var url = URL.init(string: PRODUCTION_XENDIT_BASE_URL)!
         url.appendPathComponent(CREATE_CREDIT_CARD_PATH)
         
-        var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
+        nonisolated(unsafe) var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: extraHeader)
         Log.shared.logUrlRequest(prefix: "createTokenRequest", request: request, requestBody: bodyJson)
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: bodyJson)
@@ -217,7 +217,7 @@ class XDTApiClient {
         }.resume()
     }
     
-    public static func create3DSRecommendationRequest(publishableKey: String, tokenId: String, completion: @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
+    public static func create3DSRecommendationRequest(publishableKey: String, tokenId: String, completion: @Sendable @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = PRODUCTION_XENDIT_HOST
@@ -234,7 +234,7 @@ class XDTApiClient {
             Log.shared.logUrlResponse(prefix: "create3DSRecommendationRequest", request: request, requestBody: nil, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
-                    let token = Xendit3DSRecommendation.init(response: parsedData!)
+                    nonisolated(unsafe) let token = Xendit3DSRecommendation.init(response: parsedData!)
                     if token != nil {
                         DispatchQueue.main.async {
                             completion(token, nil)
@@ -253,14 +253,14 @@ class XDTApiClient {
         }.resume()
     }
     
-    public static func getJWT(publishableKey: String, tokenId: String, requestBody: XenditJWTRequest, completion: @escaping (_ : XenditJWT?, _ : XenditError?) -> Void) {
+    public static func getJWT(publishableKey: String, tokenId: String, requestBody: XenditJWTRequest, completion: @Sendable @escaping (_ : XenditJWT?, _ : XenditError?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = PRODUCTION_XENDIT_HOST
         components.path = JWT_PATH.replacingOccurrences(of: ":token_id", with: tokenId)
         
         let url = components.url!
-        var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: nil)
+        nonisolated(unsafe) var request = URLRequest.authorizedRequest(url: url, method: "POST", publishableKey: publishableKey, extraHeaders: nil)
         
         do {
             let bodyData = try JSONSerialization.data(withJSONObject: requestBody.toJsonObject())
@@ -278,7 +278,7 @@ class XDTApiClient {
             Log.shared.logUrlResponse(prefix: "getJWT", request: request, requestBody: nil, data: data, response: response, error: error)
             handleResponse(data: data, urlResponse: response, error: error, handleCompletion: { (parsedData, handledError) in
                 if parsedData != nil {
-                    let jwt = XenditJWT.FromJson(response: parsedData)
+                    nonisolated(unsafe) let jwt = XenditJWT.FromJson(response: parsedData)
                     DispatchQueue.main.async {
                         completion(jwt, nil)
                     }
@@ -291,13 +291,13 @@ class XDTApiClient {
         }.resume()
     }
     
-    static func handleResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
+    static func handleResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @Sendable @escaping (_ : [String : any Sendable]?, _ : XenditError?) -> Void) {
         if let error = error {
             handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error.localizedDescription))
         } else if let httpResponse = urlResponse as? HTTPURLResponse {
             if acceptableStatusCodes.contains(httpResponse.statusCode) {
                 do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : any Sendable]
                     handleCompletion(parsedData, nil)
                 } catch {
                     handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: "Unable to parse server response"))
@@ -315,7 +315,7 @@ class XDTApiClient {
         }
     }
     
-    static func handleFlexResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
+    static func handleFlexResponse(data: Data?, urlResponse: URLResponse?, error: Error?, handleCompletion: @Sendable @escaping (_ : [String : Any]?, _ : XenditError?) -> Void) {
         if let error = error {
             handleCompletion(nil, XenditError(errorCode: "SERVER_ERROR", message: error.localizedDescription))
         } else if let httpResponse = urlResponse as? HTTPURLResponse {

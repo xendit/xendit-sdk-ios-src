@@ -8,7 +8,7 @@
 import Foundation
 
 @objcMembers
-@objc(XenditStoreCVNRequest) public class XenditStoreCVNRequest: XenditRetokenizationRequest {
+@objc(XenditStoreCVNRequest) public class XenditStoreCVNRequest: XenditRetokenizationRequest, @unchecked Sendable {
     
     public override init (tokenId: String) {
         super.init(tokenId: tokenId)

@@ -18,14 +18,14 @@ import XenditObjC
     // MARK: - Public methods
     
     // Publishable key
-    public static var publishableKey: String?
+    nonisolated(unsafe) public static var publishableKey: String?
     
     // Create token method with billing details and customer object
     public static func createToken(
         fromViewController: UIViewController,
         tokenizationRequest: XenditTokenizationRequest,
         onBehalfOf: String?,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -43,7 +43,7 @@ import XenditObjC
         fromViewController: UIViewController,
         retokenizationRequest: XenditRetokenizationRequest,
         onBehalfOf: String?,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -60,7 +60,7 @@ import XenditObjC
         fromViewController: UIViewController,
         storeCVNRequest: XenditStoreCVNRequest,
         onBehalfOf: String?,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
             XDTSentry.shared.configure()
             XDTCards.setup(publishableKey: publishableKey!)
@@ -76,7 +76,7 @@ import XenditObjC
         fromViewController: UIViewController,
         authenticationRequest: XenditAuthenticationRequest,
         onBehalfOf: String?,
-        completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -104,7 +104,7 @@ import XenditObjC
         cardData: CardData!,
         shouldAuthenticate: Bool,
         onBehalfOf: String,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -121,7 +121,7 @@ import XenditObjC
     public static func createToken(
         fromViewController: UIViewController,
         cardData: CardData!,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -139,7 +139,7 @@ import XenditObjC
         fromViewController: UIViewController,
         cardData: CardData!,
         shouldAuthenticate: Bool!,
-        completion:@escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditCCToken?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -158,7 +158,7 @@ import XenditObjC
         tokenId: String,
         amount: NSNumber,
         onBehalfOf: String,
-        completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -179,7 +179,7 @@ import XenditObjC
         fromViewController: UIViewController,
         tokenId: String,
         amount: NSNumber,
-        completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)
@@ -201,7 +201,7 @@ import XenditObjC
         tokenId: String,
         amount: NSNumber,
         cardCVN: String,
-        completion:@escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
+        completion: @Sendable @escaping (_ : XenditAuthentication?, _ : XenditError?) -> Void
     ) {
         XDTSentry.shared.configure()
         XDTCards.setup(publishableKey: publishableKey!)

@@ -18,8 +18,8 @@ public class XenditJWTRequest: JsonSerializable {
         self.amount = amount
     }
     
-    func toJsonObject() -> [String : Any] {
-        var jsonObject: [String: Any] = [
+    func toJsonObject() -> [String : any Sendable] {
+        var jsonObject: [String: any Sendable] = [
             "amount": self.amount,
         ]
         if self.currency != nil { jsonObject["currency"] = self.currency }

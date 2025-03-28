@@ -8,7 +8,7 @@
 import Foundation
 
 @objcMembers
-@objc(XENAuthenticatedToken) open class XenditAuthenticatedToken: NSObject, Authenticatable, Codable, JsonSerializable {
+@objc(XENAuthenticatedToken) open class XenditAuthenticatedToken: NSObject, Authenticatable, Codable, JsonSerializable, @unchecked Sendable {
     
     // Token id
     @objc(tokenID) open var id: String!
@@ -44,8 +44,8 @@ import Foundation
         return authenticationURL;
     }
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [:]
         if id != nil { json["id"] = id }
         if status != nil { json["status"] = status }
         if authenticationURL != nil { json["authentication_url"] = authenticationURL }

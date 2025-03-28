@@ -7,7 +7,7 @@
 import Foundation
 
 @objcMembers
-@objc(XenditRetokenizationRequest) public class XenditRetokenizationRequest: NSObject, JsonSerializable {
+@objc(XenditRetokenizationRequest) public class XenditRetokenizationRequest: NSObject, JsonSerializable, @unchecked Sendable {
     
     public var tokenId: String
     public var cardCvn: String?
@@ -18,8 +18,8 @@ import Foundation
         self.tokenId = tokenId
     }
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [
             "token_id": tokenId
         ]
         

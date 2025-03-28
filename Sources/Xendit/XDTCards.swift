@@ -17,7 +17,7 @@ protocol CanTokenize {
         fromViewController: UIViewController,
         tokenizationRequest: XenditTokenizationRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     )
     
     // Retokenization method
@@ -28,7 +28,7 @@ protocol CanTokenize {
         fromViewController: UIViewController,
         retokenizationRequest: XenditRetokenizationRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     )
     
     // Store CVN method
@@ -39,7 +39,7 @@ protocol CanTokenize {
         fromViewController: UIViewController,
         storeCVNRequest: XenditStoreCVNRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     )
 }
 
@@ -59,14 +59,14 @@ protocol CanAuthenticate {
         customer: XenditCustomer?,
         cardCvn: String?,
         cardData: XenditCardHolderInformation?,
-        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditAuthentication?, XenditError?) -> Void
     )
 }
 
 public class XDTCards: CanTokenize, CanAuthenticate {
-    private static var cardAuthenticationProvider: CardAuthenticationProviderProtocol = CardAuthenticationProvider()
-    private static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
-    private static var publishableKey: String?
+    nonisolated(unsafe) private static var cardAuthenticationProvider: CardAuthenticationProviderProtocol = CardAuthenticationProvider()
+    nonisolated(unsafe) private static var authenticationProvider: AuthenticationProviderProtocol = AuthenticationProvider()
+    nonisolated(unsafe) private static var publishableKey: String?
     
     public static func setup(publishableKey: String) {
         XDTCards.publishableKey = publishableKey
@@ -76,7 +76,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         fromViewController: UIViewController,
         tokenizationRequest: XenditTokenizationRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     ) {
         let logPrefix = "createToken:"
         let currency = tokenizationRequest.currency
@@ -96,7 +96,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         XDTApiClient.createTokenRequest(publishableKey: publishableKey!, bodyJson: requestBody, extraHeader: extraHeaders) { (authenticatedToken, error) in
             if tokenizationRequest.isSingleUse == false && authenticatedToken != nil {
                 get3DSRecommendation(tokenId: authenticatedToken!.id, completion: { (threeDSRecommendation, get3DSRecommendationError) in
-                    let tokenWith3DSRecommendation = XenditCCToken(authenticatedToken: authenticatedToken!)
+                    nonisolated(unsafe) let tokenWith3DSRecommendation = XenditCCToken(authenticatedToken: authenticatedToken!)
                     tokenWith3DSRecommendation?.should3DS = threeDSRecommendation?.should3DS ?? true
                     completion(tokenWith3DSRecommendation, nil);
                 })
@@ -120,7 +120,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         fromViewController: UIViewController,
         retokenizationRequest: XenditRetokenizationRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     ) {
         let logPrefix = "createToken:"
         
@@ -155,7 +155,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         fromViewController: UIViewController,
         storeCVNRequest: XenditStoreCVNRequest,
         onBehalfOf: String?,
-        completion: @escaping (XenditCCToken?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditCCToken?, XenditError?) -> Void
     ) {
         let logPrefix = "storeCVN:"
         
@@ -194,7 +194,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         customer: XenditCustomer?,
         cardCvn: String? = nil,
         cardData: XenditCardHolderInformation? = nil,
-        completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+        completion: @Sendable @escaping (XenditAuthentication?, XenditError?) -> Void) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
@@ -220,14 +220,14 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         onBehalfOf: String?,
         cardCvn: String?,
         cardData: XenditCardHolderInformation?,
-        completion: @escaping (XenditAuthentication?, XenditError?) -> Void
+        completion: @Sendable @escaping (XenditAuthentication?, XenditError?) -> Void
     ) {
         if publishableKey == nil {
             completion(nil, XenditError(errorCode: "VALIDATION_ERROR", message: "Empty publishable key"))
             return
         }
         
-        var requestBody: [String:  Any] = [
+        var requestBody: [String:  any Sendable] = [
             "amount" : amount
         ]
         
@@ -261,7 +261,7 @@ public class XDTCards: CanTokenize, CanAuthenticate {
         }
     }
     
-    public static func get3DSRecommendation(tokenId: String, completion: @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
+    public static func get3DSRecommendation(tokenId: String, completion: @Sendable @escaping (_ : Xendit3DSRecommendation?, _ : XenditError?) -> Void) {
         XDTApiClient.create3DSRecommendationRequest(publishableKey: publishableKey!, tokenId: tokenId, completion: completion)
     }
     

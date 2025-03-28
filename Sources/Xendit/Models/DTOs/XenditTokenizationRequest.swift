@@ -8,7 +8,7 @@
 import Foundation
 
 @objcMembers
-@objc(XenditTokenizationRequest) public class XenditTokenizationRequest: NSObject, JsonSerializable {
+@objc(XenditTokenizationRequest) public class XenditTokenizationRequest: NSObject, JsonSerializable, @unchecked Sendable {
     
     public var amount: NSNumber?
     public var isSingleUse: Bool
@@ -49,7 +49,7 @@ import Foundation
         self.currency = currency
     }
     
-    func toJsonObject() -> [String : Any] {
+    func toJsonObject() -> [String : any Sendable] {
         // To be refactored using a request API DTO
         var cardDataJson: [String: String] = [
             "account_number": cardData.cardNumber,

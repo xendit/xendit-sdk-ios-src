@@ -31,8 +31,8 @@ import Foundation
     public override init() {
     }
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [:]
         if bank != nil { json["bank"] = bank }
         if country != nil { json["country"] = country }
         if type != nil { json["type"] = type }

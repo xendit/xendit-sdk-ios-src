@@ -22,7 +22,7 @@ public class XenditCustomer: Jsonable {
     
     public init() {}
     
-    static func FromJson(response: [String : Any]?) -> XenditCustomer {
+    static func FromJson(response: [String : any Sendable]?) -> XenditCustomer {
         let xenditCustomer = XenditCustomer()
         if response == nil {
             return xenditCustomer
@@ -38,7 +38,7 @@ public class XenditCustomer: Jsonable {
         xenditCustomer.dateOfBirth = response!["date_of_birth"] as? String
         
         xenditCustomer.metadata = response!["metadata"] as? [String: String]
-        let addresses = response!["addresses"] as? [[String: Any]]
+        let addresses = response!["addresses"] as? [[String: any Sendable]]
         if addresses != nil && (addresses?.count ?? 0) > 0 {
             xenditCustomer.addresses = []
             addresses?.forEach() {
@@ -50,8 +50,8 @@ public class XenditCustomer: Jsonable {
         return xenditCustomer
     }
     
-    func toJsonObject() -> [String : Any] {
-        var json: [String: Any] = [:]
+    func toJsonObject() -> [String : any Sendable] {
+        var json: [String: any Sendable] = [:]
         if referenceId != nil { json["reference_id"] = referenceId }
         if email != nil { json["email"] = email }
         if givenNames != nil { json["given_names"] = givenNames }
@@ -69,7 +69,7 @@ public class XenditCustomer: Jsonable {
             json["metadata"] = jsonMetadata
         }
         if addresses != nil && (addresses?.count ?? 0 > 0) {
-            var jsonAddresses = [[String: Any]]()
+            var jsonAddresses = [[String: any Sendable]]()
             for address in addresses! {
                 jsonAddresses.append(address.toJsonObject())
             }
