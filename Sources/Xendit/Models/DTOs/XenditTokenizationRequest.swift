@@ -77,7 +77,7 @@ import Foundation
             cardDataJson["cvn"] = cardData.cardCvn
         }
         
-        var json: [String: Any] = [
+        var json: [String: any Sendable] = [
             "should_authenticate": shouldAuthenticate,
             "card_data": cardDataJson,
             "is_single_use": isSingleUse

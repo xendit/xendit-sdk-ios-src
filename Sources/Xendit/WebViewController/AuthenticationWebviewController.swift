@@ -15,8 +15,8 @@ protocol AuthenticationProviderProtocol {
 }
 
 
-class AuthenticationProvider: AuthenticationProviderProtocol {
-    func authenticate(fromViewController: UIViewController, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
+class AuthenticationProvider: @preconcurrency AuthenticationProviderProtocol {
+    @MainActor func authenticate(fromViewController: UIViewController, URL: String, authentication: XenditAuthentication, completion: @escaping (XenditAuthentication?, XenditError?) -> Void) {
         let webViewController = AuthenticationWebViewController(URL: URL)
         webViewController.authentication = authentication
         webViewController.authenticateCompletion = { [weak webViewController] updatedAuthentication, error in

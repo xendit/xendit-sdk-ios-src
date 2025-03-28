@@ -18,7 +18,7 @@ class Fingerprint: NSObject {
     private var locationManager = CLLocationManager()
     
     private(set) var location: CLLocation?
-    var idfv: String? {
+    @MainActor var idfv: String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
     var idfa: String? {
@@ -74,9 +74,13 @@ class Fingerprint: NSObject {
         let data = Data(bytes: &sysinfo.machine, count: Int(_SYS_NAMELEN))
         return String(bytes: data, encoding: .ascii)?.trimmingCharacters(in: .controlCharacters)
     }
+    
+    @MainActor
     var osVersion: String {
         return UIDevice.current.systemVersion
     }
+    
+    @MainActor
     var screenResolution: String {
         let bounds = UIScreen.main.bounds
         return String(format: "%.0fx%.0f@%.0f", bounds.width, bounds.height, UIScreen.main.scale)
@@ -91,6 +95,7 @@ class Fingerprint: NSObject {
         return String(format: "%+.2d:%.2d", hours, minutes)
     }
     
+    @MainActor
     var payload: [String: String] {
         var res = [
             "fp_language": language,
@@ -144,12 +149,12 @@ class Fingerprint: NSObject {
 }
 
 
-@objc extension Fingerprint: CLLocationManagerDelegate {
+@objc extension Fingerprint: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // Do nothing
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    @MainActor func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = manager.location
         print("Got location: \(payload)")
     }
