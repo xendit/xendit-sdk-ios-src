@@ -136,8 +136,8 @@ class AuthenticationWebViewController: UIViewController, WKScriptMessageHandler,
         authenticateCompletion(nil, XenditError(errorCode: "WEBVIEW_ERROR", message: error.localizedDescription))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         // Remove script message handler
         webView.configuration.userContentController.removeAllUserScripts()
         webView.configuration.userContentController.removeScriptMessageHandler(forName: "callbackHandler")
