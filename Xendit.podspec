@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'Xendit'
-  s.version          = '3.10.5'
+  s.version          = '3.10.6'
   s.license          = 'MIT'
   s.homepage         = 'https://www.xendit.co'
   s.author           = { 'Juan Gonzalez’' => 'juan@xendit.co' }
   s.social_media_url = 'https://www.facebook.com/xendit'
   s.summary          = 'Xendit is an API for accepting payments online'
   s.source           = { :git => 'https://github.com/xendit/xendit-sdk-ios-src.git', :tag => s.version }
-  s.swift_versions   = ['4', '5']
+  s.swift_versions   = ['4', '5', '6']
 
   s.platform              = :ios, '11.0'
   s.ios.deployment_target = '11.0'
