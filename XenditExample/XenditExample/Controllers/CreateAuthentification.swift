@@ -18,12 +18,12 @@ class CreateAuthentification: UIViewController {
     @IBOutlet weak var cardHolderLastNameTextField: UITextField!
     @IBOutlet weak var cardHolderEmailTextField: UITextField!
     @IBOutlet weak var cardHolderPhoneNumberTextField: UITextField!
-    
+    @IBOutlet weak var apiKeyTextField: UITextField!
     @IBOutlet weak var cardCVNTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Xendit.publishableKey = "xnd_public_development_LH4fWw2s6eAxVR9mHAsSJZi0hx3jWEUb9dIN8lm4It4MPVNl86LIk1Hh1nDUG"
     }
     
     @IBAction func authentificateAction(_ sender: UIButton) {
@@ -49,19 +49,21 @@ class CreateAuthentification: UIViewController {
         
         let authenticationRequest = XenditAuthenticationRequest.init(tokenId: tokenID!, amount: amount, currency: currency, cardData: cardData);
         authenticationRequest.cardCvn = cardCVN;
+        
+        Xendit.publishableKey = apiKeyTextField.text
 
         Xendit.createAuthentication(fromViewController: self, authenticationRequest: authenticationRequest, onBehalfOf: nil) { (authentication, error) in
             if authentication != nil {
                 // Will return authentication with id. ID will be used later
-                let message = String(format: "AuthenticationId - %@, Status - %@", (authentication?.id)!, (authentication?.status)!)
+                let message = String(format: "AuthenticationId - %@ | status - %@ | credit_card_token_id - %@ | masked_card_number - %@", (authentication?.id)!, (authentication?.status)!, (authentication?.tokenId)!, (authentication?.maskedCardNumber)!)
                 self.showAlert(title: "Token", message: message)
             } else {
                 // Handle error. Error is of type XenditError
-                var errorMessage = error!.message
+                var errorMessage = String(format: "error_code - %@ | message - %@", error!.errorCode, error!.message ?? "Error creating token.")
                 if error!.errorCode == "INVALID_USER_ID" {
                     errorMessage = error!.message.replacingOccurrences(of: "for-user-id", with: "onBehalfOf")
                 }
-                self.showAlert(title: error!.errorCode, message: errorMessage ?? "Error creating authentication.")
+                self.showAlert(title: "Error", message: errorMessage)
             }
         }
     }
