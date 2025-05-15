@@ -19,7 +19,7 @@ Note that starting version 3.10.0, it requires minimum version of iOS 11. If you
 Add this to your Podfile.
 
 ```ruby
-pod 'Xendit', '~> 3.10.6'
+pod 'Xendit', '~> 3.10.7'
 ```
 
 **Important:** Import SDK in Objective-C project with CocoaPods integration, you can do as following
