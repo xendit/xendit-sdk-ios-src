@@ -143,11 +143,12 @@ class WebViewController: UIViewController, WKScriptMessageHandler, WKNavigationD
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        guard let webView = webView else { return }
         // Remove script message handler
         webView.configuration.userContentController.removeAllUserScripts()
         webView.configuration.userContentController.removeScriptMessageHandler(forName: "callbackHandler")
         // Clear any other references
         webView.navigationDelegate = nil
-        webView = nil
+        self.webView = nil
     }
 }
